@@ -1,0 +1,497 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\begin{document}
+	
+	\section*{II: Boundary-Value Problems in Electrostatics (I)}
+	
+	\subsection*{2.1 Method of images}
+
+    \begin{figure}[h]
+	    \centering
+	    \includegraphics[width=0.7\linewidth]{figure1}
+	    \caption{}
+    	\label{fig:figure1}
+    \end{figure}
+	
+	The potentials must be solutions of the Laplace equation inside the volume. The particular integral must be solution of the Poisson equation, and is provided by the sum of the potentials of the charge inside the volume.
+	
+	\subsection*{2.2 Point charge in the presence of a Grounded Conducting Sphere.}
+
+	\textcircled{1} A point charge $q$ located at $\vec{y}$, the sphere of radius $a$. The potential is such that $\Phi(|\vec{x}|=a) = 0$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure2}
+		\caption{}
+		\label{fig:figure2}
+	\end{figure}
+	
+	The potential due to $q$ and $q'$ is:
+	$$ \Phi(\vec{x}) = \frac{1}{4\pi\varepsilon_0} \left[ \frac{q}{|\vec{x}-\vec{y}|} + \frac{q'}{|\vec{x}'-\vec{y}'|} \right] $$
+	Using a unit vector in the direction $\vec{x}$ as $\vec{n}$ and $\vec{n}'$ in the direction $\vec{y}$, then
+	$$ \Phi(\vec{x}) = \frac{1}{4\pi\varepsilon_0} \left[ \frac{q}{|\vec{x}\vec{n} - y\vec{n}'|} + \frac{q'}{|\vec{x}\vec{n}' - y'\vec{n}|} \right] $$
+	$$ \Phi(x=a) = \frac{q/a}{4\pi\varepsilon_0|\vec{n} - \frac{y}{a}\vec{n}'|} + \frac{q'/y'}{4\pi\varepsilon_0|\frac{a}{y'}\vec{n} - \vec{n}'|} = 0 $$
+	We obtain: $\frac{y}{a} = \frac{a}{y'}$, $-\frac{q}{a} = \frac{q'}{y'}$
+	or $q' = -\frac{a}{y}q$, $y' = \frac{a^2}{y}$
+	
+	\textcircled{2} Now a charge $q$ outside a grounded conducting sphere and consider various effects. The charge density on the surface of the sphere
+	$$ \sigma = -\varepsilon_0 \frac{\partial\Phi}{\partial x}|_{x=a} = -\frac{q}{4\pi a^2} \left(\frac{a}{y}\right) \frac{1 - \frac{a^2}{y^2}}{\left(1 + \frac{a^2}{y^2} - 2\frac{a}{y}\cos\gamma\right)^{\frac{3}{2}}} $$
+	where $\gamma$ is the angle between $\vec{x}$ and $\vec{y}$.
+	$\sigma$ is a function of $\gamma$ with given value of $\frac{y}{a}$
+	
+	\textcircled{3} In other way, we write the force between $q$ and $q'$, the distance between which is $y-y' = y(1 - \frac{a^2}{y^2})$.
+	Hence, $|\vec{F}| = \frac{1}{4\pi\varepsilon_0} \frac{qq'}{(y-y')^2} = \frac{1}{4\pi\varepsilon_0} \frac{q^2(\frac{a}{y})}{(y(1-\frac{a^2}{y^2}))^2}$
+	
+	\textcircled{4} The force on each element of area $da$ is $(\sigma^2/2\varepsilon_0)da$ where $\sigma$ is given.
+	From symmetry, we only consider the component parallel to the radius vector of $q,q'$.
+	$$ |\vec{F}| = \frac{q^2}{32\pi^2\varepsilon_0 a^2} \left(\frac{a}{y}\right)^2 \frac{(1-\frac{a^2}{y^2})^2 \int \frac{\cos\gamma d\Omega}{(1+\frac{a^2}{y^2} - 2\frac{a}{y}\cos\gamma)^3} }{...} $$
+	which is equal to the equation above.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure3}
+		\caption{}
+		\label{fig:figure3}
+	\end{figure}
+	
+	The $q'$ can be considered as the induced charge by $q$ ($q'=-aq/y$) on the sphere.
+	
+	\subsection*{2.3 Point Charge in the Presence of a Charged, Insulated Conducting Sphere.}
+	Consider an insulated conducting sphere with total charge $Q$ and a point charge $q$. We solve the problem by linear superposition.
+	First, we make the conducting sphere with induced charge $q'$ grounded so as to make $q'$ distribute uniformly.
+	Second, we add to the sphere an amount of charge $Q-q'$ which will distribute uniformly over the surface.
+	Hence, the potential will be the sum of the potential due to $q$ and $q'$ and the potential due to a charge point charge $Q-q'$ at the origin.
+	$$ \Phi(\vec{x}) = \frac{1}{4\pi\varepsilon_0} \left[ \frac{q}{|\vec{x}-\vec{y}|} + \frac{-\frac{aq}{y}}{|\vec{x} - \frac{a^2}{y^2}\vec{y}|} + \frac{Q+\frac{aq}{y}}{|\vec{x}|} \right] $$
+	Also, the force on $q$ which is directed along the radius vector to $q$:
+	$$ \vec{F} = \frac{1}{4\pi\varepsilon_0} \frac{q}{y^2} \left[ Q - \frac{qa^3(2y^2-a^2)}{y(y^2-a^2)^2} \right] \frac{\vec{y}}{y} $$
+	It's a function of $y/a$ with given $Q/q$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure4}
+		\caption{}
+		\label{fig:figure4}
+	\end{figure}
+	
+	\section*{2.9 Point Charge near a Conducting Sphere at Fixed Potential}
+	
+	We replace the potential due to $q$ and $q'$ with $V_a$, and at $|\vec{x}|=a$, the potentials cancel each other. Thus:
+	$$
+	\Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \left[ \frac{q}{|\vec{x}-\vec{y}|} - \frac{aq/y}{|\vec{x} - (a^2/y^2)\vec{y}|} \right] + \frac{V_a a}{|\vec{x}|}
+	$$
+	The force on $q$ due to the sphere is:
+	$$
+	\vec{F} = \frac{q}{4\pi\epsilon_0} \left[ \frac{-q a/y}{(y-a^2/y)^2} \frac{\vec{y}}{y} + \frac{V_a a}{y^2} \frac{\vec{y}}{y} \right]
+	$$
+	because we have known a problem of a grounded sphere with a point...
+	
+	\section*{2.5 Conducting Sphere in a Uniform Electric Field by Method of Images}
+	
+	We consider a conducting sphere of radius $a$ in $E_0$ which can be produced by positive and negative charges at infinity. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure5}
+		\caption{}
+		\label{fig:figure5}
+	\end{figure}
+	
+	Now, for charges $\pm Q$ at $\mp R$ and their images $\mp Qa/R$ at $z=\mp a^2/R$, the potential will be
+	$$
+	\Phi = \frac{1}{4\pi\epsilon_0} \left[ \frac{Q}{(r^2+R^2-2rR\cos\theta)^{1/2}} + \frac{-aQ/R}{(r^2+a^4/R^2-2ra^2/R\cos\theta)^{1/2}} \right.
+	$$
+	$$
+	\left. - \frac{Q}{(r^2+R^2+2rR\cos\theta)^{1/2}} + \frac{aQ/R}{(r^2+a^4/R^2+2ra^2/R\cos\theta)^{1/2}} \right]
+	$$
+	We can expand it considering $R \gg r$
+	$$
+	\Phi = \frac{1}{4\pi\epsilon_0} \left[ -\frac{2Qr}{R^2}\cos\theta + \frac{2a^3Q}{R^2r^2}r\cos\theta \right] + \dots
+	$$
+	where the omitted terms vanish in the limit $R \to \infty$.
+	
+	In that limit
+	$$
+	E_0 \approx \frac{2Q}{4\pi\epsilon_0 R^2}
+	$$
+	$$
+	\Phi = -E_0\left(r - \frac{a^3}{r^2}\right)\cos\theta
+	$$
+	The first term is the potential of $E_0$ and the second is due to the induced surface charge density (or the image charges).
+	
+	The image charges form a dipole of strength
+	$$
+	D = \frac{Qa}{R} \times \frac{2a^2}{R} = 4\pi\epsilon_0 E_0 a^3
+	$$
+	The induced surface charge density
+	$$
+	\sigma = -\epsilon_0 \frac{\partial\Phi}{\partial r}\bigg|_{r=a} = 3\epsilon_0 E_0 \cos\theta
+	$$
+	Since the surface integral of $\theta$ vanishes, there is no difference between a grounded and an insulated sphere.
+	
+	\section*{2.6 Green Function for the Sphere, General Solution for the Potential}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure6}
+		\caption{}
+		\label{fig:figure6}
+	\end{figure}
+	
+	
+	We obtain the Green function
+	$$
+	G(\vec{x}, \vec{x'}) = \frac{1}{|\vec{x} - \vec{x'}|} - \frac{a/x'}{|\vec{x} - \frac{a^2}{x'^2}\vec{x'}|}
+	$$
+	In terms of spherical coordinates
+	$$
+	G(\vec{x}, \vec{x'}) = \frac{1}{(x^2+x'^2-2xx'\cos\gamma)^{1/2}} - \frac{a/x'}{(x^2+a^4/x'^2 - 2xa^2/x' \cos\gamma)^{1/2}}
+	$$
+	where $\gamma$ is the angle between $\vec{x}$ and $\vec{x'}$.
+	
+	If $\vec{x}$ or $\vec{x'}$ on the surface of the sphere, $G=0$. For the unit normal outward from the volume $\vec{n}'$, we have
+	$$
+	\frac{\partial G}{\partial n'}\bigg|_{x'=a} = \frac{\partial G}{\partial x'}\bigg|_{x'=a} = -\frac{(x^2-a^2)}{a(x^2+a^2-2xa\cos\gamma)^{3/2}}
+	$$
+	With the potential on the surface given, the solution of the Laplace equation outward the sphere is
+	$$
+	\Phi(\vec{x}) = \frac{1}{4\pi} \oint \Phi(a, \theta', \phi') \frac{a(x^2-a^2)}{(x^2+a^2-2ax\cos\gamma)^{3/2}} d\Omega'
+	$$
+	where $d\Omega'$ is the element of solid angle at $(a, \theta', \phi')$, and $\cos\gamma = \cos\theta\cos\theta' + \sin\theta\sin\theta'\cos(\phi-\phi')$.
+	
+	For the interior problem, $\frac{\partial G}{\partial n'}$ is opposite to the outward one, so we can replace $(x^2-a^2)$ by $(a^2-x^2)$.
+	
+	\section*{2.7 Conducting Sphere with Hemisphere at Different Potential}
+	We consider the conducting sphere of radius $a$ made up of two hemispherical shells separated by a small insulated ring. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure7}
+		\caption{}
+		\label{fig:figure7}
+	\end{figure}
+	
+	
+	$$
+	\Phi(x, \theta, \phi) = \frac{V}{4\pi} \int_0^{2\pi} d\phi' \left\{ \int_0^1 d(\cos\theta') - \int_{-1}^0 d(\cos\theta') \right\} \frac{a(x^2-a^2)}{(a^2+x^2-2ax\cos\gamma)^{3/2}}
+	$$
+	we change: $\theta' \to \pi-\theta'$, $\phi' \to \phi'+\pi$.
+	$$
+	\Phi(\theta, x, \phi) = \frac{Va}{4\pi} (x^2-a^2) \int_0^{2\pi}d\phi' \int_0^1 d(\cos\theta') [ (a^2+x^2-2ax\cos\gamma)^{-3/2} - (a^2+x^2+2ax\cos\gamma)^{-3/2} ]
+	$$
+	A special case: consider the potential on the positive $z$ axis. then $\cos\gamma = \cos\theta'$, and $\theta=0$.
+	$$
+	\Phi(z) = V \left[ 1 - \frac{z^2-a^2}{z\sqrt{z^2+a^2}} \right]
+	$$
+	At $z=a$, $\Phi=V$ and at large distances, $\Phi \approx \frac{3Va^2}{2z^2}$.
+	
+	By factoring out $(a^2+x^2)$, we can expand the denominator
+	$$
+	\Phi(x, \theta, \phi) = \frac{Va(x^2-a^2)}{4\pi(x^2+a^2)^{3/2}} \int_0^{2\pi}d\phi' \int_0^1 d(\cos\theta') \{ [1-2\alpha\cos\gamma]^{-3/2} - [1+2\alpha\cos\gamma]^{-3/2} \}
+	$$
+	where
+	$$
+	\alpha = ax/(x^2+a^2)
+	$$
+	$$
+	\{ [1-2\alpha\cos\gamma]^{-3/2} - [1+2\alpha\cos\gamma]^{-3/2} \} = 6\alpha\cos\gamma + 35\alpha^3\cos^3\gamma + \dots
+	$$
+	$$
+	\int_0^{2\pi}d\phi' \int_0^1 d(\cos\theta') \cos\gamma = \pi \cos\theta
+	$$
+	$$
+	\int_0^{2\pi}d\phi' \int_0^1 d(\cos\theta') \cos^3\gamma = \pi \cos\theta (1 - \frac{3}{5}\sin^2\theta)
+	$$
+	$$
+	\Rightarrow \Phi(x, \theta, \phi) = \frac{3Va^2}{2(x^2+a^2)^{3/2}}\cos\theta \left[ 1 + \frac{35}{24}\frac{a^2x^2}{(x^2+a^2)^2}(3-5\cos^2\theta) + \dots \right]
+	$$
+	
+	\section*{2.8 Orthogonal Functions and Expansions}
+	(1) We consider an interval $(a,b)$ in a variable $\xi$ with a set of real or complex functions $U_n(\xi), n=1,2,\dots$ square integrable and orthogonal on $(a,b)$.
+	$$
+	\Rightarrow \int_a^b U_n^*(\xi) U_m(\xi) d\xi = \delta_{nm}
+	$$
+	An arbitrary function $f(\xi)$ square integrable on $(a,b)$ can be expanded in terms of $U_n(\xi)$.
+	$$
+	f(\xi) \Leftrightarrow \sum_{n=1}^N a_n U_n(\xi)
+	$$
+	The mean square error $M_N$:
+	$$
+	M_N = \int_a^b \left|f(\xi) - \sum_{n=1}^N a_n U_n(\xi)\right|^2 d\xi
+	$$
+	$$
+	a_n = \int_a^b U_n^*(\xi) f(\xi) d\xi
+	$$
+	We define completeness such that there exist a finite number $N_0$, for $N>N_0$, $M_N$ can be smaller than any given small positive quantity. Then:
+	$$
+	f(\xi) = \sum_{n=1}^{\infty} a_n U_n(\xi)
+	$$
+	Or:
+	$$
+	f(\xi) = \int_a^b \left[ \sum_{n=1}^{\infty} U_n^*(\xi') U_n(\xi) \right] f(\xi') d\xi'
+	$$
+	where
+	$$
+	\sum_{n=1}^{\infty} U_n^*(\xi') U_n(\xi) = \delta(\xi'-\xi)
+	$$
+	which is the closure relation.
+	
+	One example is the Fourier series
+	$$
+	f(x) = \frac{A_0}{2} + \sum_{n=1}^\infty [A_n \cos(\frac{2\pi n x}{a}) + B_n \sin(\frac{2\pi n x}{a})]
+	$$
+	$$
+	A_n = \frac{2}{a} \int_0^a f(x) \cos(\frac{2\pi n x}{a}) dx
+	$$
+	$$
+	B_n = \frac{2}{a} \int_0^a f(x) \sin(\frac{2\pi n x}{a}) dx
+	$$
+	
+	(2) It can also be expanded to more than one dimension
+	$$
+	\Rightarrow f(\xi, \eta) = \sum_n \sum_m a_{nm} U_n(\xi) V_m(\eta)
+	$$
+	where
+	$$
+	a_{nm} = \int_a^b d\xi \int_c^d d\eta\ U_n^*(\xi) V_m^*(\eta) f(\xi, \eta)
+	$$
+	for $\xi$ on $(a,b)$ and $\eta$ on $(c,d)$.
+	
+	In particular, if $(a,b)$ becomes infinite, $U_n(\xi)$ becomes a continuum of functions.
+	One example is Fourier integral
+	$$
+	U_m(x) = \frac{1}{\sqrt{a}} e^{i(2\pi mx/a)}, \quad m=0, \pm 1, \pm 2, \dots \text{ on } (-\frac{a}{2}, \frac{a}{2})
+	$$
+	$$
+	f(x) = \sum_{m=-\infty}^{\infty} A_m e^{i(2\pi mx/a)}
+	$$
+	$$
+	A_m = \frac{1}{a} \int_{-a/2}^{a/2} e^{-i(2\pi mx/a)} f(x') dx'
+	$$
+	Then let $a \to \infty$, transforming
+	$$
+	\begin{cases}
+		\frac{2\pi m}{a} \to k \\
+		\sum_m \to \int dm = \frac{a}{2\pi} \int dk \\
+		A_m \to \sqrt{\frac{2\pi}{a}} A(k)
+	\end{cases}
+	$$
+	Thus
+	$$
+	f(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} A(k) e^{ikx} dk
+	$$
+	$$
+	A(k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-ikx'} f(x') dx'
+	$$
+	The orthogonality condition is
+	$$
+	\frac{1}{2\pi} \int_{-\infty}^{\infty} e^{i(k-k')x} dx = \delta(k-k')
+	$$
+	while the completeness condition is
+	$$
+	\frac{1}{2\pi} \int_{-\infty}^{\infty} e^{ik(x-x')} dk = \delta(x-x')
+	$$
+	(Tip: $x$ and $k$ are equivalent)
+	
+	
+	\section*{2.9 Separation of Variables; Laplace Equation in Rectangular Coordinates}
+	
+	The Laplace equation in rectangular coordinates is:
+	\[
+	\nabla^2 \Phi = \frac{\partial^2 \Phi}{\partial x^2} + \frac{\partial^2 \Phi}{\partial y^2} + \frac{\partial^2 \Phi}{\partial z^2} = 0
+	\]
+	We assume a separable solution of the form:
+	\[
+	\Phi(x,y,z) = X(x)Y(y)Z(z)
+	\]
+	Substituting this into the Laplace equation and dividing by \(\Phi\) yields:
+	\[
+	\frac{1}{X}\frac{d^2X}{dx^2} + \frac{1}{Y}\frac{d^2Y}{dy^2} + \frac{1}{Z}\frac{d^2Z}{dz^2} = 0
+	\]
+	Each term must be a constant, so we have three ordinary differential equations:
+	\[
+	\begin{cases}
+		\frac{1}{X}\frac{d^2X}{dx^2} = -\alpha^2 \\
+		\frac{1}{Y}\frac{d^2Y}{dy^2} = -\beta^2 \\
+		\frac{1}{Z}\frac{d^2Z}{dz^2} = \gamma^2
+	\end{cases}
+	\quad \text{where } \alpha^2 + \beta^2 = \gamma^2
+	\]
+	The solutions to these three ODEs are:
+	\[
+	e^{\pm i \alpha x}, \quad e^{\pm i \beta y}, \quad e^{\pm \gamma z}
+	\]
+	This leads to a general solution of the form:
+	\[
+	\Phi = \exp[\pm i \alpha x \pm i \beta y \pm \sqrt{\alpha^2 + \beta^2} z]
+	\]
+	where \(\alpha\) and \(\beta\) are arbitrary and depend on the boundary conditions.
+	
+	\subsection*{Example: Potential inside a Hollow Rectangular Box}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure8}
+		\caption{}
+		\label{fig:figure8}
+	\end{figure}
+	
+	
+	Consider a box where all surfaces are at zero potential, except for the surface at \(z=c\), where the potential is given by \(\Phi(x,y,c) = V(x,y)\).
+	\begin{itemize}
+		\item For \(\Phi=0\) at \(x=0\) and \(y=0\), we must choose sine solutions for \(X(x)\) and \(Y(y)\).
+		\item For \(\Phi=0\) at \(z=0\), we must choose a sinh solution for \(Z(z)\).
+	\end{itemize}
+	This gives a solution of the form \(\Phi = \sin(\alpha x)\sin(\beta y)\sinh(\gamma z)\).
+	\begin{itemize}
+		\item For \(\Phi=0\) at \(x=a\) and \(y=b\), we must have:
+		\[
+		\alpha_n = \frac{n\pi}{a} \quad \text{and} \quad \beta_m = \frac{m\pi}{b}
+		\]
+		where \(n, m\) are integers. This determines the value of \(\gamma_{nm}\):
+		\[
+		\gamma_{nm} = \pi \sqrt{\frac{n^2}{a^2} + \frac{m^2}{b^2}}
+		\]
+	\end{itemize}
+	The general solution is a superposition of all possible modes:
+	\[
+	\Phi(x,y,z) = \sum_{n=1}^{\infty} \sum_{m=1}^{\infty} A_{nm} \sin(\alpha_n x) \sin(\beta_m y) \sinh(\gamma_{nm} z)
+	\]
+	To find the coefficients \(A_{nm}\), we apply the final boundary condition at \(z=c\):
+	\[
+	V(x,y) = \sum_{n,m} A_{nm} \sin(\alpha_n x) \sin(\beta_m y) \sinh(\gamma_{nm} c)
+	\]
+	By Fourier's trick, we find the coefficients:
+	\[
+	A_{nm} = \frac{4}{ab \sinh(\gamma_{nm}c)} \int_0^a dx \int_0^b dy \, V(x,y) \sin(\alpha_n x) \sin(\beta_m y)
+	\]
+	
+	\hrulefill
+	
+	\section*{2.10 A Two-Dimensional Potential Problem; Summation of a Fourier Series}
+	
+	For the two-dimensional Laplace equation in Cartesian coordinates, we know the solutions are of the form \(e^{\pm i \alpha x} e^{\pm \alpha y}\), where \(\alpha\) is determined by the boundary conditions.
+	
+	\subsection*{Example: Potential in a Semi-Infinite Channel}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure9}
+		\caption{}
+		\label{fig:figure9}
+	\end{figure}
+	
+	Consider a channel defined by boundaries:
+	\begin{itemize}
+		\item \(x=0, x=a\) for \(y \ge 0\), potential \(\Phi=0\).
+		\item \(y=0\) for \(0 \le x \le a\), potential \(\Phi=V\).
+		\item \(y \to \infty\), potential \(\Phi=0\).
+	\end{itemize}
+	The solution that satisfies these conditions is a Fourier series:
+	\[
+	\Phi(x,y) = \sum_{n=1}^{\infty} A_n \exp(-n\pi y/a) \sin(n\pi x/a)
+	\]
+	Applying the boundary condition at \(y=0\), we find \(A_n\):
+	\[
+	A_n = \frac{2}{a} \int_0^a V \sin(n\pi x/a) dx = 
+	\begin{cases}
+		\frac{4V}{n\pi} & \text{for } n \text{ odd} \\
+		0 & \text{for } n \text{ even}
+	\end{cases}
+	\]
+	So the potential is:
+	\[
+	\Phi(x,y) = \frac{4V}{\pi} \sum_{n \text{ odd}} \frac{1}{n} \exp(-n\pi y/a) \sin(n\pi x/a)
+	\]
+	To sum this series, we use the identity \(\sin\theta = \text{Im}(e^{i\theta})\):
+	\[
+	\Phi(x,y) = \frac{4V}{\pi} \text{Im} \sum_{n \text{ odd}} \frac{1}{n} \left( e^{-\pi y/a} e^{i\pi x/a} \right)^n
+	\]
+	Let \(\mathcal{Z} = e^{i\pi/a (x+iy)}\). Using the series expansion \(\sum_{n \text{ odd}} \frac{z^n}{n} = \frac{1}{2} \ln\left(\frac{1+z}{1-z}\right)\), we get:
+	\[
+	\Phi(x,y) = \frac{4V}{\pi} \text{Im} \left[ \frac{1}{2} \ln\left(\frac{1+\mathcal{Z}}{1-\mathcal{Z}}\right) \right] = \frac{2V}{\pi} \text{Im} \left[ \ln\left(\frac{1+\mathcal{Z}}{1-\mathcal{Z}}\right) \right]
+	\]
+	This simplifies to the closed-form expression:
+	\[
+	\Phi(x,y) = \frac{2V}{\pi} \tan^{-1}\left( \frac{\sin(\pi x/a)}{\sinh(\pi y/a)} \right)
+	\]
+	
+	\hrulefill
+	
+	\section*{2.11 Fields and Charge Densities in Two-Dimensional Corners and Edges}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure10}
+		\caption{}
+		\label{fig:figure10}
+	\end{figure}
+	
+	
+	We assume that the corners and edges are infinitely sharp. We use polar coordinates \((\rho, \phi)\).
+	The 2D Laplace equation in polar coordinates is:
+	\[
+	\frac{1}{\rho}\frac{\partial}{\partial \rho}\left(\rho \frac{\partial \Phi}{\partial \rho}\right) + \frac{1}{\rho^2}\frac{\partial^2 \Phi}{\partial \phi^2} = 0
+	\]
+	We substitute a separable solution \(\Phi(\rho, \phi) = R(\rho)\Phi(\phi)\), which gives two ODEs:
+	\[
+	\frac{\rho}{R} \frac{d}{d\rho}\left(\rho \frac{dR}{d\rho}\right) = \nu^2 \quad \text{and} \quad \frac{1}{\Phi}\frac{d^2\Phi}{d\phi^2} = -\nu^2
+	\]
+	The solutions are:
+	\[
+	R(\rho) = a\rho^{\nu} + b\rho^{-\nu}, \quad \Phi(\phi) = A\cos(\nu\phi) + B\sin(\nu\phi)
+	\]
+	For the special case \(\nu=0\):
+	\[
+	R(\rho) = a_0 + b_0 \ln\rho, \quad \Phi(\phi) = A_0 + B_0 \phi
+	\]
+	A general solution is formed by the sum of these solutions.
+	
+	\subsection*{Example: Potential near a Corner (Wedge)}
+	Consider a conducting corner defined by planes at \(\phi=0\) and \(\phi=\beta\), both held at potential \(V\). The boundary conditions are \(\Phi(\rho, 0) = V\) and \(\Phi(\rho, \beta) = V\) for \(\rho>0\).
+	
+	The boundary conditions require that \(b_n=0\) if the origin is included in the volume without charge. The situation requires that for \(\rho>0\), \(\Phi=V\) at \(\phi=0\) and \(\phi=\beta\).
+	This implies \(b_0=0\), \(B_0 = V\), \(b=0\), \(A=0\), and \(\sin(\nu\beta)=0\).
+	This last condition quantizes the separation constant:
+	\[
+	\nu_m = \frac{m\pi}{\beta}, \quad m=1, 2, 3, ...
+	\]
+	The solution is a superposition:
+	\[
+	\Phi(\rho, \phi) = V + \sum_{m=1}^{\infty} a_m \rho^{m\pi/\beta} \sin(m\pi\phi/\beta)
+	\]
+	Near the corner (\(\rho \to 0\)), the \(m=1\) term dominates:
+	\[
+	\Phi(\rho, \phi) \approx V + a_1 \rho^{\pi/\beta} \sin(\pi\phi/\beta)
+	\]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure11}
+		\caption{}
+		\label{fig:figure11}
+	\end{figure}
+	
+	The components of the electric field are:
+	\[
+	E_\rho(\rho, \phi) = -\frac{\partial\Phi}{\partial\rho} \approx -a_1 \frac{\pi}{\beta} \rho^{\pi/\beta-1} \sin(\pi\phi/\beta)
+	\]
+	\[
+	E_\phi(\rho, \phi) = -\frac{1}{\rho}\frac{\partial\Phi}{\partial\phi} \approx -a_1 \frac{\pi}{\beta} \rho^{\pi/\beta-1} \cos(\pi\phi/\beta)
+	\]
+	The surface charge densities at \(\phi=0\) and \(\phi=\beta\) are equal. The normal electric field at \(\phi=0\) is \(E_n = E_\phi(\rho, 0)\). The surface charge density is:
+	\[
+	\sigma(\rho) = \epsilon_0 E_n(\rho, 0) \approx -\epsilon_0 a_1 \frac{\pi}{\beta} \rho^{\pi/\beta-1}
+	\]
+	which shows that the charge density depends on the corner angle \(\beta\).
+	
+	
+	
+	
+	
+
+	\section*{2.12 Introduction to Finite Element Analysis for Electrostatics}
+	\textit{(Omitted)}
+	
+\end{document}

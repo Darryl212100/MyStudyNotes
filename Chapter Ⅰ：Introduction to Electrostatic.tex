@@ -1,0 +1,570 @@
+\documentclass[12pt, a4paper]{article}
+
+% Preamble: Load necessary packages
+\usepackage[margin=1in]{geometry} % Set page margins
+\usepackage{amsmath}             % For advanced math environments and symbols
+\usepackage{amssymb}             % For more math symbols
+\usepackage{bm}                  % For bold math symbols (vectors)
+\usepackage{graphicx}            % To include images (not used here, but good practice)
+\usepackage[utf8]{inputenc}      % UTF-8 input encoding
+\usepackage[T1]{fontenc}         % Font encoding
+\usepackage{hyperref}            % For creating hyperlinks in the document
+\usepackage{tikz}      % 用于绘制图形的主要宏包
+\usepackage {CJKutf8}
+
+\usepackage{geometry}  % 用于轻松设置页面边距
+\usepackage[hang, small, bf]{caption} % 用于自定义图表标题的样式
+% ----- 2. 页面与字体设置 -----
+% ----- 3. TikZ 图形库与样式定义 -----
+% 增加了 intersections 和 calc 库用于精确计算
+
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdftitle={Introduction to Electrostatics},
+	pdfauthor={Notes Transcription},
+}
+
+% Custom command for partial derivatives
+\newcommand{\pdev}[2]{\frac{\partial #1}{\partial #2}}
+
+% Document Title
+\title{\textbf{Electrodynamics\\Introduction to Electrostatics}}
+\author{Darryl}
+\date{\today}
+
+
+\begin{document}
+	
+	\maketitle
+	\tableofcontents
+	\newpage
+	
+	\section{Coulomb's Law}
+	
+	Coulomb's Law describes the electrostatic force between two stationary, electrically charged particles. The force is proportional to the product of the two charges and inversely proportional to the square of the distance between them.
+	
+	The force $\bm{F}$ between two point charges, $q_1$ and $q_2$, separated by a distance $r = |\bm{x}_1 - \bm{x}_2|$, is given by:
+	\begin{equation}
+		\bm{F} = k \frac{q_1 q_2}{r^2} \hat{\bm{r}} = \frac{1}{4\pi\epsilon_0} \frac{q_1 q_2}{|\bm{x}_1 - \bm{x}_2|^2} \frac{\bm{x}_1 - \bm{x}_2}{|\bm{x}_1 - \bm{x}_2|}
+	\end{equation}
+	where:
+	\begin{itemize}
+		\item $\hat{\bm{r}}$ is the unit vector along the line joining the two charges.
+		\item The force is attractive if the charges have opposite signs ($q_1 q_2 < 0$) and repulsive if they have the same sign ($q_1 q_2 > 0$).
+		\item $\epsilon_0$ is the permittivity of free space, with a value of $\epsilon_0 \approx 8.854 \times 10^{-12} \, \text{F/m}$.
+		\item $k = \frac{1}{4\pi\epsilon_0} \approx 8.987 \times 10^9 \, \text{N}\cdot\text{m}^2/\text{C}^2$ is Coulomb's constant.
+	\end{itemize}
+	
+	\section{Electric Field $E$}
+	
+	The electric field $\bm{E}$ is a vector field that associates to each point in space the Coulomb force that would be experienced per unit of electric charge, by an infinitesimal test charge at that point.
+	\begin{equation}
+		\bm{E} = \frac{\bm{F}}{q}
+	\end{equation}
+    	
+	For a single point charge $q_1$ located at position $\bm{x}_1$, the electric field at a point $\bm{x}$ is:
+	\begin{equation}
+		\bm{E}(\bm{x}) = \frac{1}{4\pi\epsilon_0} \frac{q_1}{|\bm{x} - \bm{x}_1|^3} (\bm{x} - \bm{x}_1)
+	\end{equation}
+        	
+	By the principle of superposition, the total electric field from a system of $N$ point charges is the vector sum of the fields from each charge:
+	\begin{equation}
+		\bm{E}(\bm{x}) = \sum_{i=1}^{N} \bm{E}_i(\bm{x}) = \frac{1}{4\pi\epsilon_0} \sum_{i=1}^{N} \frac{q_i}{|\bm{x} - \bm{x}_i|^3} (\bm{x} - \bm{x}_i)
+	\end{equation}
+	
+	For a continuous charge distribution with volume charge density $\rho(\bm{x}')$, the sum becomes an integral over the volume $V'$ containing the charge:
+	\begin{equation}
+		\bm{E}(\bm{x}) = \frac{1}{4\pi\epsilon_0} \int_{V'} \frac{\rho(\bm{x}')(\bm{x} - \bm{x}')}{|\bm{x} - \bm{x}'|^3} d^3x'
+	\end{equation}
+	Here, $d^3x'$ is an infinitesimal volume element at position $\bm{x}'$.
+	
+	\subsection{Dirac Delta Function}
+	The Dirac delta function, $\delta(x)$, is a generalized function that can be used to represent point charges. It has the following properties:
+	\begin{enumerate}
+		\item $\delta(x-a) = 0$ if $x \neq a$.
+		\item $\int \delta(x-a) dx = 1$ if the region of integration includes $x=a$.
+		\item $\int f(x) \delta(x-a) dx = f(a)$.
+		\item $\int f(x) \delta'(x-a) dx = -f'(a)$.
+		\item $\delta(g(x)) = \sum_i \frac{\delta(x-x_i)}{|g'(x_i)|}$, where $x_i$ are the simple zeros of $g(x)$.
+		\item In three dimensions, $\delta(\bm{x}-\bm{X}) = \delta(x_1-X_1)\delta(x_2-X_2)\delta(x_3-X_3)$.
+		\item $\int_V \delta(\bm{x}-\bm{X}) d^3x = 1$ if $\bm{X} \in V$, and $0$ otherwise.
+	\end{enumerate}
+	Using the delta function, the charge density for a collection of point charges can be written as:
+	\begin{equation}
+		\rho(\bm{x}) = \sum_{i=1}^{N} q_i \delta(\bm{x} - \bm{x}_i)
+	\end{equation}
+	
+	\section{Gauss's Law (Integral Form)}
+	
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=0.7\linewidth]{figure1，page27}
+    	\caption{}
+    	\label{fig:figure1page27}
+    \end{figure}
+	
+	Gauss's law relates the electric flux through a closed surface to the net electric charge enclosed by that surface.
+
+	Consider the flux element $d\Phi_E$ through an infinitesimal surface area $d\bm{a}$:
+	\begin{equation}
+		d\Phi_E = \bm{E} \cdot d\bm{a}
+	\end{equation}
+	For a point charge $q$ at the origin, $\bm{E} = \frac{q}{4\pi\epsilon_0 r^2}\hat{\bm{r}}$. The flux element is:
+	\begin{equation}
+		d\Phi_E = \frac{q}{4\pi\epsilon_0 r^2} \hat{\bm{r}} \cdot d\bm{a} = \frac{q}{4\pi\epsilon_0} \frac{da \cos\theta}{r^2}
+	\end{equation}
+	where $\theta$ is the angle between $\bm{E}$ and the surface normal $\bm{n}$. The quantity $\frac{da \cos\theta}{r^2}$ is the element of solid angle $d\Omega$ subtended by $da$ at the position of the charge.
+	\begin{equation}
+		d\Phi_E = \frac{q}{4\pi\epsilon_0} d\Omega
+	\end{equation}
+	Integrating over a closed surface $S$, we get the total flux:
+	\begin{equation}
+		\oint_S \bm{E} \cdot d\bm{a} = \frac{q}{4\pi\epsilon_0} \oint_S d\Omega =
+		\begin{cases}
+			q/\epsilon_0 & \text{if } q \text{ is inside } S \\
+			0 & \text{if } q \text{ is outside } S
+		\end{cases}
+	\end{equation}
+	For a general charge distribution, Gauss's Law is:
+	\begin{equation}
+		\oint_S \bm{E} \cdot d\bm{a} = \frac{Q_{enc}}{\epsilon_0} = \frac{1}{\epsilon_0} \int_V \rho(\bm{x}) d^3x
+	\end{equation}
+	where $V$ is the volume enclosed by the surface $S$.
+	
+	\section{Gauss's Law (Differential Form)}
+	The differential form of Gauss's Law can be derived from the integral form using the Divergence Theorem, which states that for any well-behaved vector field $\bm{A}$:
+	\begin{equation}
+		\oint_S \bm{A} \cdot d\bm{a} = \int_V (\bm{\nabla} \cdot \bm{A}) d^3x
+	\end{equation}
+	Applying this to the electric field $\bm{E}$:
+	\begin{equation}
+		\oint_S \bm{E} \cdot d\bm{a} = \int_V (\bm{\nabla} \cdot \bm{E}) d^3x
+	\end{equation}
+	Comparing with the integral form of Gauss's Law:
+	\begin{equation}
+		\int_V (\bm{\nabla} \cdot \bm{E}) d^3x = \frac{1}{\epsilon_0} \int_V \rho(\bm{x}) d^3x
+	\end{equation}
+	Since this equality must hold for any arbitrary volume $V$, the integrands must be equal. This gives the differential form:
+	\begin{equation}
+		\bm{\nabla} \cdot \bm{E} = \frac{\rho}{\epsilon_0}
+	\end{equation}
+	
+	\section{Scalar Potential $\Phi$}
+	From Coulomb's law, we have $\bm{E}(\bm{x}) = \frac{1}{4\pi\epsilon_0} \int_{V'} \rho(\bm{x}') \frac{\bm{x} - \bm{x}'}{|\bm{x} - \bm{x}'|^3} d^3x'$. We can use the vector identity:
+	\begin{equation}
+		\bm{\nabla} \left( \frac{1}{|\bm{x} - \bm{x}'|} \right) = -\frac{\bm{x} - \bm{x}'}{|\bm{x} - \bm{x}'|^3}
+	\end{equation}
+	where the gradient $\bm{\nabla}$ is with respect to the coordinates $\bm{x}$. Substituting this into the expression for $\bm{E}$:
+	\begin{equation}
+		\bm{E}(\bm{x}) = -\frac{1}{4\pi\epsilon_0} \int_{V'} \rho(\bm{x}') \bm{\nabla} \left( \frac{1}{|\bm{x} - \bm{x}'|} \right) d^3x'
+	\end{equation}
+	Since the integration is over $\bm{x}'$, the gradient operator $\bm{\nabla}$ can be moved outside the integral:
+	\begin{equation}
+		\bm{E}(\bm{x}) = -\bm{\nabla} \left( \frac{1}{4\pi\epsilon_0} \int_{V'} \frac{\rho(\bm{x}')}{|\bm{x} - \bm{x}'|} d^3x' \right)
+	\end{equation}
+	This shows that the electrostatic field $\bm{E}$ can be expressed as the negative gradient of a scalar function, called the scalar potential $\Phi(\bm{x})$.
+	\begin{equation}
+		\bm{E} = -\bm{\nabla}\Phi
+	\end{equation}
+	where the scalar potential is defined as:
+	\begin{equation}
+		\Phi(\bm{x}) = \frac{1}{4\pi\epsilon_0} \int_{V'} \frac{\rho(\bm{x}')}{|\bm{x} - \bm{x}'|} d^3x'
+	\end{equation}
+	A consequence of $\bm{E} = -\bm{\nabla}\Phi$ is that the curl of the electrostatic field is always zero, since the curl of a gradient is identically zero ($\bm{\nabla} \times \bm{\nabla}\Phi \equiv 0$).
+	\begin{equation}
+		\bm{\nabla} \times \bm{E} = 0
+	\end{equation}
+	
+	\subsection{Physical Interpretation of Potential}
+	The work $W$ done by the electric field in moving a test charge $q$ from point A to point B is:
+	\begin{equation}
+		W = \int_A^B \bm{F} \cdot d\bm{l} = q \int_A^B \bm{E} \cdot d\bm{l}
+	\end{equation}
+	Substituting $\bm{E} = -\bm{\nabla}\Phi$:
+	\begin{equation}
+		W = -q \int_A^B (\bm{\nabla}\Phi) \cdot d\bm{l} = -q \int_A^B d\Phi = -q[\Phi(B) - \Phi(A)]
+	\end{equation}
+	The potential difference $\Phi(B) - \Phi(A)$ is the negative of the work done per unit charge by the electric field. The quantity $q\Phi$ can be interpreted as the potential energy of the charge $q$ in the electrostatic field. For a closed path, the line integral of $\bm{E}$ is zero, which means the electrostatic force is conservative.
+	\begin{equation}
+		\oint \bm{E} \cdot d\bm{l} = 0
+	\end{equation}
+	This is consistent with Stokes's Theorem: $\oint \bm{E} \cdot d\bm{l} = \int_S (\bm{\nabla} \times \bm{E}) \cdot d\bm{a} = 0$.
+	
+	\section{Surface Distributions and Discontinuities}
+	
+    \begin{figure}[h]
+	    \centering
+     	\includegraphics[width=0.7\linewidth]{figure2，page31}
+    	\caption{}
+	    \label{fig:figure2page31}
+    \end{figure}
+	\subsection{Discontinuity of $E$ across a Charged Surface}
+	Consider a thin pillbox-shaped Gaussian surface across a surface with charge density $\sigma$. Applying Gauss's Law, the flux through the sides of the pillbox vanishes as the height goes to zero. The flux is only through the top and bottom faces.
+	\begin{equation}
+		(\bm{E}_{above} \cdot \bm{n} - \bm{E}_{below} \cdot \bm{n}) A = \frac{\sigma A}{\epsilon_0}
+	\end{equation}
+	This implies that the normal component of the electric field is discontinuous across a charged surface:
+	\begin{equation}
+		(\bm{E}_{above} - \bm{E}_{below}) \cdot \bm{n} = \frac{\sigma}{\epsilon_0}
+	\end{equation}
+	For a surface charge distribution $\sigma(\bm{x}')$, the scalar potential is given by:
+	\begin{equation}
+		\Phi(\bm{x}) = \frac{1}{4\pi\epsilon_0} \int_S \frac{\sigma(\bm{x}')}{|\bm{x}-\bm{x}'|} da'
+	\end{equation}
+	
+	
+	\subsection{Potential of a Dipole Layer}
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=0.7\linewidth]{figure3，page32}
+    	\caption{}
+    	\label{fig:figure3page32}
+    \end{figure}
+    
+   
+    \begin{figure}
+    	\centering
+    	\includegraphics[width=0.7\linewidth]{figure4，page33}
+	    \caption{}
+	    \label{fig:figure4page33}
+    \end{figure}
+	A dipole layer consists of two closely spaced surfaces with opposite surface charge densities, $+\sigma$ and $-\sigma$. Let the surfaces be $S'$ and $S$, with $S$ displaced from $S'$ by a vector $\bm{d} = d\bm{n}$. The potential is the sum of potentials from both layers.
+	\begin{equation}
+		\Phi(\bm{x}) = \frac{1}{4\pi\epsilon_0} \int_S \left( \frac{\sigma(\bm{x}')}{|\bm{x}-\bm{x}'|} - \frac{\sigma(\bm{x}')}{|\bm{x}-(\bm{x}'+\bm{d})|} \right) da'
+	\end{equation}
+	For small $d$, we can Taylor expand the second term:
+	\begin{equation}
+		\frac{1}{|\bm{x}-(\bm{x}'+\bm{d})|} \approx \frac{1}{|\bm{x}-\bm{x}'|} - \bm{d} \cdot \bm{\nabla}_{\bm{x}} \left(\frac{1}{|\bm{x}-\bm{x}'|}\right)
+	\end{equation}
+	Substituting this into the potential integral, we get:
+	\begin{equation}
+		\Phi(\bm{x}) = \frac{1}{4\pi\epsilon_0} \int_S \sigma(\bm{x}')\bm{d} \cdot \bm{\nabla}_{\bm{x}} \left(\frac{1}{|\bm{x}-\bm{x}'|}\right) da'
+	\end{equation}
+	We define the surface dipole moment density as $\bm{D}(\bm{x}') = \sigma(\bm{x}')\bm{d}$. Since $\bm{\nabla}_{\bm{x}} = -\bm{\nabla}_{\bm{x}'}$:
+	\begin{equation}
+		\Phi(\bm{x}) = \frac{1}{4\pi\epsilon_0} \int_S \bm{D}(\bm{x}') \cdot \left(-\bm{\nabla}_{\bm{x}'}\left(\frac{1}{|\bm{x}-\bm{x}'|}\right)\right) da'
+	\end{equation}
+	The expression $-\bm{\nabla}_{\bm{x}'}\left(\frac{1}{|\bm{x}-\bm{x}'|}\right) \cdot d\bm{a}'$ is equal to the solid angle $d\Omega$ subtended by the surface element $da'$ at the point $\bm{x}$.
+	\begin{equation}
+		d\Omega = \frac{\bm{n}' \cdot (\bm{x}-\bm{x}')}{|\bm{x}-\bm{x}'|^3} da' = -\bm{n}' \cdot \bm{\nabla}_{\bm{x}'}\left(\frac{1}{|\bm{x}-\bm{x}'|}\right) da'
+	\end{equation}
+	Hence, the potential of a dipole layer is:
+	\begin{equation}
+		\Phi(\bm{x}) = \frac{1}{4\pi\epsilon_0} \int_S D(\bm{x}') d\Omega
+	\end{equation}
+	For a constant dipole density $D$ over a surface, this leads to a discontinuity in the potential itself as one crosses the surface:
+	\begin{equation}
+		\Phi_{above} - \Phi_{below} = \frac{D}{\epsilon_0}
+	\end{equation}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure5，page33}
+		\caption{}
+		\label{fig:figure5page33}
+	\end{figure}
+	\section{Poisson and Laplace Equations}
+	By combining Gauss's law for electric fields, $\nabla \cdot \vec{E} = \rho / \epsilon_0$, and the definition of the electrostatic potential, $\vec{E} = -\nabla\Phi$, we obtain the \textbf{Poisson equation}:
+	\begin{equation*}
+		\nabla^2 \Phi = -\rho / \epsilon_0
+	\end{equation*}
+	When the charge density $\rho = 0$, we have the \textbf{Laplace equation}:
+	\begin{equation*}
+		\nabla^2 \Phi = 0
+	\end{equation*}
+	The solution for the potential $\Phi$ given a charge distribution $\rho$ is:
+	\begin{equation*}
+		\Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \int \frac{\rho(\vec{x'})}{|\vec{x}-\vec{x'}|} d^3x'
+	\end{equation*}
+	To show this, we can take the Laplacian of $\Phi$:
+	\begin{equation*}
+		\nabla^2 \Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \int \rho(\vec{x'}) \nabla^2 \left( \frac{1}{|\vec{x}-\vec{x'}|} \right) d^3x'
+	\end{equation*}
+	The term $\nabla^2(1/r)$ where $r=|\vec{x}-\vec{x'}|$ can be related to the Dirac delta function. Using a Taylor series expansion of $\rho(\vec{x'})$ around $\vec{x}$, one can show consistency with the Poisson equation. A key result from this analysis is:
+	\begin{equation}
+		\boxed{
+			\nabla^2\left(\frac{1}{|\vec{x}-\vec{x'}|}\right) = -4\pi\delta(\vec{x}-\vec{x'})
+		}
+	\end{equation}
+	
+	\section{Green's Theorem}
+	The divergence theorem states that for a vector field $\vec{A}$:
+	\begin{equation*}
+		\int_V (\nabla \cdot \vec{A}) \,d^3x = \oint_S \vec{A} \cdot \hat{n} \,da
+	\end{equation*}
+	Let $\vec{A} = \psi \nabla \phi$, where $\phi$ and $\psi$ are arbitrary scalar fields. Since $\nabla \cdot (\psi\nabla\phi) = \psi\nabla^2\phi + \nabla\phi \cdot \nabla\psi$, we obtain \textbf{Green's first identity}:
+	\begin{equation*}
+		\int_V (\psi\nabla^2\phi + \nabla\phi \cdot \nabla\psi) \,d^3x = \oint_S \psi \frac{\partial\phi}{\partial n} \,da
+	\end{equation*}
+	By interchanging $\phi$ and $\psi$ to get a second equation and subtracting it from the first, we obtain \textbf{Green's second identity} (or Green's Theorem):
+	\begin{equation*}
+		\int_V (\psi\nabla^2\phi - \phi\nabla^2\psi) \,d^3x = \oint_S \left[\psi \frac{\partial\phi}{\partial n} - \phi \frac{\partial\psi}{\partial n}\right] da
+	\end{equation*}
+	We can use this to solve for the potential $\Phi(\vec{x})$. Let $\phi = \Phi(\vec{x'})$ and $\psi = \frac{1}{R} = \frac{1}{|\vec{x}-\vec{x'}|}$. We know that $\nabla'^2\Phi = -\rho(\vec{x'})/\epsilon_0$ and $\nabla'^2(1/R) = -4\pi\delta(\vec{x}'-\vec{x})$. Substituting these into Green's second identity gives:
+	\begin{equation*}
+		\int_V \left[\frac{1}{R} \left(-\frac{\rho(\vec{x'})}{\epsilon_0}\right) - \Phi(\vec{x'})(-4\pi\delta(\vec{x}'-\vec{x}))\right] d^3x' = \oint_S \left[\frac{1}{R} \frac{\partial\Phi}{\partial n'} - \Phi \frac{\partial}{\partial n'}\left(\frac{1}{R}\right)\right] da'
+	\end{equation*}
+	If $\vec{x}$ is within the volume $V$, the delta function contributes, and we can solve for $\Phi(\vec{x})$:
+	\begin{equation}
+		\boxed{
+			\Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \int_V \frac{\rho(\vec{x'})}{R} d^3x' + \frac{1}{4\pi} \oint_S \left[\frac{1}{R} \frac{\partial\Phi}{\partial n'} - \Phi \frac{\partial}{\partial n'}\left(\frac{1}{R}\right)\right] da'
+		}
+	\end{equation}
+	This shows the potential at any point is determined by the charges within the volume and the values of the potential and its normal derivative on the bounding surface.
+	
+	\section{Uniqueness of the Solution}
+	For the Poisson equation in a volume $V$, subject to boundary conditions, the solution is unique. We prove this by assuming two solutions, $\Phi_1$ and $\Phi_2$, exist for the same charge distribution $\rho$ and boundary conditions. Let $U = \Phi_1 - \Phi_2$. Then inside $V$:
+	\begin{equation*}
+		\nabla^2 U = \nabla^2\Phi_1 - \nabla^2\Phi_2 = (-\rho/\epsilon_0) - (-\rho/\epsilon_0) = 0
+	\end{equation*}
+	Using Green's first identity with $\phi=\psi=U$, we have:
+	\begin{equation*}
+		\int_V (U\nabla^2U + |\nabla U|^2) \,d^3x = \oint_S U \frac{\partial U}{\partial n} \,da
+	\end{equation*}
+	Since $\nabla^2 U = 0$, this simplifies to $\int_V |\nabla U|^2 \,d^3x = \oint_S U \frac{\partial U}{\partial n} \,da$.
+	\begin{enumerate}
+		\item \textbf{For Dirichlet boundary condition:} $\Phi_1 = \Phi_2$ on the surface $S$. This implies $U=0$ on $S$. The surface integral is zero, so $\int_V |\nabla U|^2 \,d^3x = 0$. Since $|\nabla U|^2 \ge 0$, this requires $\nabla U = 0$ everywhere inside $V$. Thus $U$ is constant. Since $U=0$ on the boundary, $U=0$ everywhere. Therefore, $\Phi_1 = \Phi_2$.
+		\item \textbf{For Neumann boundary condition:} $\frac{\partial\Phi_1}{\partial n} = \frac{\partial\Phi_2}{\partial n}$ on $S$. This implies $\frac{\partial U}{\partial n}=0$ on $S$. Again, the surface integral vanishes, which implies $U$ is a constant inside $V$. Thus, the solutions $\Phi_1$ and $\Phi_2$ can differ only by a constant.
+	\end{enumerate}
+	
+	\section{Formal Solution with Green's Functions}
+	The general solution for $\Phi(\vec{x})$ depends on the boundary values. To simplify, we introduce a \textbf{Green's function} $G(\vec{x}, \vec{x'})$ which satisfies:
+	\begin{equation*}
+		\nabla'^2 G(\vec{x}, \vec{x'}) = -4\pi\delta(\vec{x}-\vec{x'})
+	\end{equation*}
+	and also satisfies specific boundary conditions. Applying Green's theorem with $\psi = G$ and $\phi = \Phi$:
+	\begin{equation*}
+		\Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \int_V G(\vec{x},\vec{x'}) \rho(\vec{x'}) d^3x' + \frac{1}{4\pi} \oint_S \left[G \frac{\partial\Phi}{\partial n'} - \Phi \frac{\partial G}{\partial n'}\right] da'
+	\end{equation*}
+	We choose the boundary conditions on $G$ to simplify the surface integral.
+	\begin{enumerate}
+		\item[a)] \textbf{For Dirichlet boundary conditions} (where $\Phi$ is specified on $S$): We choose the Dirichlet Green's function $G_D$ such that $G_D(\vec{x}, \vec{x'}) = 0$ for $\vec{x'}$ on $S$. The solution becomes:
+		\begin{equation}
+			\boxed{
+				\Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \int_V G_D(\vec{x},\vec{x'}) \rho(\vec{x'}) d^3x' - \frac{1}{4\pi} \oint_S \Phi(\vec{x'}) \frac{\partial G_D}{\partial n'} da'
+			}
+		\end{equation}
+		
+		\item[b)] \textbf{For Neumann boundary conditions} (where $\frac{\partial\Phi}{\partial n}$ is specified on $S$): We choose the Neumann Green's function $G_N$ such that $\frac{\partial G_N}{\partial n'}(\vec{x}, \vec{x'}) = -\frac{4\pi}{S}$ (a constant) for $\vec{x'}$ on $S$. The solution becomes:
+		\begin{equation}
+			\boxed{
+				\Phi(\vec{x}) = \langle\Phi\rangle_S + \frac{1}{4\pi\epsilon_0} \int_V G_N \rho d^3x' + \frac{1}{4\pi} \oint_S G_N \frac{\partial \Phi}{\partial n'} da'
+			}
+		\end{equation}
+		where $\langle\Phi\rangle_S$ is the average value of the potential over the surface $S$.
+	\end{enumerate}
+	%===========================================================
+	% New Part of the Document: Electrostatics
+	%===========================================================
+	
+	\part{Electrostatics}
+	
+	\section{1.11 Electrostatic Potential Energy and Energy Density; Capacitance}
+	
+	\subsection*{1. Calculating Potential Energy}
+	
+	If a point charge $q_i$ is brought from infinity to a point $\vec{x}_i$ in a region of localized electric fields with the scalar potential $\Phi$ (which vanishes at infinity), the work done is:
+	$$
+	W_i = q_i \Phi(\vec{x}_i)
+	$$
+	If the potential $\Phi$ can be viewed as being produced by an array of ($N-1$) other charges $q_j$ at positions $\vec{x}_j$, then:
+	$$
+	\Phi(\vec{x}_i) = \sum_{j=1, j\neq i}^{N} \frac{1}{4\pi\epsilon_0} \frac{q_j}{|\vec{x}_i - \vec{x}_j|}
+	$$
+	So the work done on charge $q_i$ is:
+	$$
+	W_i = \frac{q_i}{4\pi\epsilon_0} \sum_{j=1, j\neq i}^{N} \frac{q_j}{|\vec{x}_i - \vec{x}_j|}
+	$$
+	The total potential energy $W$ of the system of charges is the total work done to assemble them, which is $\frac{1}{2}\sum_i W_i$ (the factor of 1/2 prevents double counting of pairs).
+	$$
+	W = \frac{1}{8\pi\epsilon_0} \sum_{i=1}^{N} \sum_{j=1, j\neq i}^{N} \frac{q_i q_j}{|\vec{x}_i - \vec{x}_j|}
+	$$
+	(Note: $i=j$ terms are omitted in the double sum).
+	
+	For a continuous charge distribution $\rho(\vec{x})$, we can write the energy using the Dirac delta functions:
+	$$
+	W = \frac{1}{2} \iint \frac{\rho(\vec{x})\rho(\vec{x}')}{4\pi\epsilon_0|\vec{x}-\vec{x}'|} d^3x d^3x'
+	$$
+	or more simply, by defining $\Phi(\vec{x}) = \int \frac{\rho(\vec{x}')}{4\pi\epsilon_0|\vec{x}-\vec{x}'|}d^3x'$:
+	$$
+	W = \frac{1}{2} \int \rho(\vec{x}) \Phi(\vec{x}) d^3x
+	$$
+	Using the Poisson equation, $\rho(\vec{x}) = -\epsilon_0 \nabla^2 \Phi(\vec{x})$, to eliminate $\rho(\vec{x})$:
+	$$
+	W = -\frac{\epsilon_0}{2} \int \Phi (\nabla^2 \Phi) d^3x
+	$$
+	Integration by parts (using Green's first identity, with the surface integral at infinity vanishing) leads to:
+	$$
+	W = \frac{\epsilon_0}{2} \int |\nabla\Phi|^2 d^3x
+	$$
+	Since the electric field is $\vec{E} = -\nabla\Phi$, we get the total energy in terms of the electric field:
+	$$
+	W = \frac{\epsilon_0}{2} \int |\vec{E}|^2 d^3x
+	$$
+	This allows us to define the energy density, $w$, or energy per unit volume:
+	$$
+	w = \frac{\epsilon_0}{2} |\vec{E}|^2
+	$$
+	
+	\subsection*{2. Example: Two Point Charges}
+	
+	Consider two point charges $q_1$ and $q_2$ located at $\vec{x}_1$ and $\vec{x}_2$. The electric field at a point P with position vector $\vec{x}$ is:
+	$$
+	\vec{E} = \frac{1}{4\pi\epsilon_0} \left[ q_1 \frac{\vec{x}-\vec{x}_1}{|\vec{x}-\vec{x}_1|^3} + q_2 \frac{\vec{x}-\vec{x}_2}{|\vec{x}-\vec{x}_2|^3} \right]
+	$$
+	So that the energy density $w = \frac{\epsilon_0}{2}|\vec{E}|^2$ is:
+	$$
+	w = \frac{1}{32\pi^2\epsilon_0} \left[ \frac{q_1^2}{|\vec{x}-\vec{x}_1|^4} + \frac{q_2^2}{|\vec{x}-\vec{x}_2|^4} + \frac{2q_1q_2(\vec{x}-\vec{x}_1)\cdot(\vec{x}-\vec{x}_2)}{|\vec{x}-\vec{x}_1|^3|\vec{x}-\vec{x}_2|^3} \right]
+	$$
+	Clearly, the first two terms are self-energy contributions and the third term is the interaction potential energy. We integrate over all space (only the interaction term to find the interaction energy):
+	$$
+	W_{int} = \frac{2q_1q_2}{32\pi^2\epsilon_0} \int \frac{(\vec{x}-\vec{x}_1)\cdot(\vec{x}-\vec{x}_2)}{|\vec{x}-\vec{x}_1|^3|\vec{x}-\vec{x}_2|^3} d^3x
+	$$
+	After a change of variables and performing the integration, this yields the familiar result:
+	$$
+	W_{int} = \frac{q_1q_2}{4\pi\epsilon_0 |\vec{x}_1 - \vec{x}_2|}
+	$$
+	
+	\subsection*{3. Energy and Force on a Conductor}
+	Using the surface-charge density on a conductor, $\sigma = \epsilon_0 E_n$, where $E_n$ is the normal component of the field at the surface. The energy density right at the surface is:
+	$$
+	w = \frac{\epsilon_0}{2} |\vec{E}|^2 = \frac{\sigma^2}{2\epsilon_0}
+	$$
+	Imagine a small outward displacement $\Delta x$ of an elemental area $\Delta A$ of the conducting surface. The work done by the field is:
+	$$
+	\Delta W = (\text{Force}) \cdot (\text{Displacement}) = (w \cdot \Delta A) \cdot \Delta x = \frac{\sigma^2}{2\epsilon_0}\Delta A \Delta x
+	$$
+	
+	\subsection*{4. System of Conductors and Capacitance}
+	For a system of $N$ conductors, each with potential $V_i$ and total charge $Q_i$ in empty space. The potential of the $i$-th conductor is a linear function of the charges:
+	$$
+	V_i = \sum_{j=1}^{N} P_{ij} Q_j
+	$$
+	where the coefficients $P_{ij}$ depend on the geometry of the conductors. Conversely, the charge on the $i$-th conductor can be written as a function of the potentials:
+	$$
+	Q_i = \sum_{j=1}^{N} C_{ij} V_j
+	$$
+	where $C_{ii}$ are called coefficients of capacitance and $C_{ij}$ ($i \neq j$) are coefficients of induction. The potential energy for the system is:
+	$$
+	W = \frac{1}{2} \sum_{i=1}^{N} Q_i V_i = \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} C_{ij} V_i V_j
+	$$
+	
+	\section{1.12 Variational Approach to the Solution of the Laplace and Poisson Equations}
+	
+	\subsection*{1. The Variational Principle}
+	
+	In equilibrium, electrostatic systems have minimal energy. This allows a variational approach. Consider the functional $I[\psi]$ for a potential $\psi$:
+	$$
+	I[\psi] = \frac{1}{2} \int_V (\nabla\psi \cdot \nabla\psi) d^3x - \int_V g\psi d^3x
+	$$
+	where $\psi(\vec{x})$ is well-behaved inside volume $V$ and on its surface $S$, and $g(\vec{x})$ is a specific source function (proportional to charge density, $g = \rho/\epsilon_0$) without singularities within $V$. As $\psi \rightarrow \psi + \delta\psi$, the change in the functional, $\delta I = I[\psi+\delta\psi] - I[\psi]$, is:
+	$$
+	\delta I = \int_V (\nabla\psi \cdot \nabla(\delta\psi)) d^3x - \int_V g\delta\psi d^3x
+	$$
+	Using Green's first identity, $\int_V (A \nabla^2 B + \nabla A \cdot \nabla B)d^3x = \oint_S A \frac{\partial B}{\partial n} da$, with $A=\delta\psi$ and $B=\psi$, yields:
+	$$
+	\delta I = \int_V (-\nabla^2\psi - g)\delta\psi d^3x + \oint_S \delta\psi \frac{\partial\psi}{\partial n} da
+	$$
+	If we require that the potential is fixed on the boundary (Dirichlet condition), then $\delta\psi = 0$ on $S$, so the surface integral vanishes. For the energy to be stationary ($\delta I = 0$) for any arbitrary variation $\delta\psi$ inside $V$, the term in the square brackets must be zero. This gives the Poisson equation:
+	$$
+	\nabla^2\psi = -g
+	$$
+	
+	For Neumann boundary conditions, where $\frac{\partial\psi}{\partial n}=f(\vec{s})$ is specified on the surface, we must use a different functional:
+	$$
+	I[\psi] = \frac{1}{2} \int_V |\nabla\psi|^2 d^3x - \int_V g\psi d^3x - \oint_S f\psi da
+	$$
+	Varying this functional, $\psi \rightarrow \psi + \delta\psi$, leads to:
+	$$
+	\delta I = \int_V (-\nabla^2\psi - g)\delta\psi d^3x + \oint_S \left(\frac{\partial\psi}{\partial n} - f\right)\delta\psi da
+	$$
+	To require that $\delta I$ vanishes for any $\delta\psi$ (in $V$ and on $S$), we must have:
+	$$
+	\nabla^2\psi = -g \quad \text{within V, and} \quad \frac{\partial\psi}{\partial n} = f(\vec{s}) \quad \text{on S}
+	$$
+	
+	\subsection*{2. Example in Planar Coordinates (Complete)}
+	In polar coordinates, for a problem with azimuthal symmetry where $g(\vec{x}) = g(\rho)$, the Poisson equation becomes:
+	$$
+	\frac{1}{\rho}\frac{\partial}{\partial\rho}\left(\rho\frac{\partial\psi}{\partial\rho}\right) = -g(\rho)
+	$$
+	The functional to minimize (per unit length, divided by $2\pi$) is:
+	$$
+	\frac{1}{2\pi} I[\psi] = \frac{1}{2} \int_0^1 \left(\frac{d\psi}{d\rho}\right)^2 \rho d\rho - \int_0^1 g(\rho) \psi(\rho) \rho d\rho
+	$$
+	We can test trial functions to approximate the true potential that minimizes this functional. The notes provide an example where we consider two trial functions (the exact form is hard to read, but they appear to be polynomials):
+	$$
+	\Psi_1 = \alpha(1-\rho^2) + \beta(1-\rho^4) + \dots
+	$$
+	$$
+	\Psi_2 = \alpha\rho^2 + \beta\rho^4 - (\alpha+\beta) + \gamma
+	$$
+	For a given source function, for instance:
+	$$
+	g(\rho) = -5(1-\rho) + 10\rho^4(1-\rho)
+	$$
+	The functional for a given trial function $\Psi_k(\rho)$ with parameters $\alpha, \beta, \gamma, \dots$ becomes a quadratic function of those parameters. The handwritten note shows the result of evaluating the functional as:
+	% The following is a direct transcription of the hard-to-read formula
+	$$
+	\frac{1}{2\pi} I[\Psi_k] = \frac{1}{2}\left[\frac{1}{3}\alpha^2 + \frac{1}{2}\alpha\beta + \frac{4}{3}\beta^2 + \dots\right] - [e_1\alpha + e_2\beta + e_3\gamma + \dots]
+	$$
+	where the coefficients $e_n$ are defined by integrals of the form $\int g(\rho) \phi_n(\rho) \rho d\rho$, with $\phi_n$ being the basis functions of the trial solution. Minimizing $I[\Psi_k]$ with respect to the parameters $\alpha, \beta, \gamma$ gives the best approximation for that choice of trial function.
+	
+	For the exact solution $\Psi_E(\rho)$, which satisfies the differential equation, we can find it by direct integration. The equation is:
+	$$
+	\frac{d}{d\rho}\left(\rho\frac{d\Psi_E}{d\rho}\right) = -\rho g(\rho)
+	$$
+	Integrating this equation twice yields the solution. The handwritten note sketches this as:
+	$$
+	\Psi_E(\rho) = - \int^{\rho} \frac{1}{\rho'} \left( \int^{\rho'} s g(s) ds + C_1 \right) d\rho' + C_2
+	$$
+	The constants of integration $C_1$ and $C_2$ are determined by the physical boundary conditions of the problem (e.g., potential is finite at $\rho=0$ and has a specific value at $\rho=1$).
+	
+	\section*{Some Exercises}
+	
+	\subsection*{1.10 Mean value theorem}
+	For free charge space, the value of electrostatic potential at any point is equal to the average of the potential over the surface of any sphere centered on that point.
+	
+	\subsubsection*{Proof 1}
+	Let $E_{rad}(\vec{r}, \theta, \phi) = \vec{E}(\vec{r}, \theta, \phi) \cdot \frac{\vec{r}}{R}$ be the radial component of electric field.
+	For a sphere with radius R centered at origin.
+	\[ \Delta \Phi(R, \theta, \phi) = \int_0^R E_{rad}(\vec{r}, \theta, \phi) dr \]
+	The average value of potential at R
+	\[ \langle \Delta \Phi(R, \theta, \phi) \rangle = \frac{1}{4\pi R^2} \int_\Omega \Delta \Phi \cdot R^2 d\Omega \]
+	\[ = \frac{1}{4\pi R^2} \int_\Omega \int_0^R E_{rad} \, dr \, R^2 d\Omega \]
+	\[ = \frac{1}{4\pi} \int_0^R dr \int_\Omega E_{rad} \, d\Omega = \Phi(R) - \Phi(0) \]
+	By Gauss's theorem, $\int_\Omega E_{rad} \, d\Omega = 0$.
+	\[ \Rightarrow \Phi(R) = \Phi(0) \]
+	
+	\subsubsection*{Proof 2}
+	We define $G(\vec{x}, \vec{x'}) = \frac{1}{|\vec{x}-\vec{x'}|} + F(\vec{x}, \vec{x'})$ where $\nabla^2 F(\vec{x}, \vec{x'}) = 0$. And on S, $|\vec{x}-\vec{x'}| = R \Rightarrow G=0$.
+	We choose $F = -\frac{1}{R}$.
+	\[ \Phi(\vec{x}) = \frac{1}{4\pi} \oint_S \left[ G \frac{\partial \Phi}{\partial n'} - \Phi(\vec{x'}) \frac{\partial G}{\partial n'} \right] ds' \]
+	where the first term vanishes since $G=0$ on S.
+	\[ \frac{\partial G}{\partial n'} = \frac{\partial}{\partial r} \left( \frac{1}{r} - \frac{1}{R} \right) \Big|_{r=R} = -\frac{1}{R^2} \]
+	\[ \Phi(0) = - \frac{1}{4\pi} \oint_S \Phi(\vec{x'}) \left( -\frac{1}{R^2} \right) ds' = \frac{1}{4\pi R^2} \oint_S \Phi(\vec{x'}) ds' = \bar{\Phi}(R) \]
+	
+	\subsection*{1.11}
+	The surface of a curved conductor, the normal derivative of E is given by
+	\[ \frac{1}{E} \frac{\partial E}{\partial n} = - \left( \frac{1}{R_1} + \frac{1}{R_2} \right) \]
+	where $R_1$ and $R_2$ are the principal radii of curvature of the surface.
+	
+	\subsection*{1.12 Green's reciprocation theorem}
+	$\Phi$ is due to $\rho$ within V and $\sigma$ on S, while $\Phi'$ is due to $\rho'$ and $\sigma'$.
+	Then,
+	\[ \int_V \rho \Phi' d^3x + \int_S \sigma \Phi' da = \int_V \rho' \Phi d^3x + \int_S \sigma' \Phi da \]
+	\subsubsection*{Proof}
+	\[ \Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \left[ \int_V \rho(\vec{x'}) d^3x' + \oint_S \sigma(\vec{x'}) da' \right] \]
+	\[ \Phi'(\vec{x}) = \frac{1}{4\pi\epsilon_0} \left[ \int_V \rho'(\vec{x'}) d^3x' + \oint_S \sigma'(\vec{x'}) da' \right] \]
+	$\Rightarrow$ (left-side)
+	\[ = \frac{1}{4\pi\epsilon_0} \int_V \rho(\vec{x}) \left\{ \int_V \rho' d^3x' + \oint_S \sigma' da' \right\} d^3x \]
+	\[ + \int_S \sigma \left\{ \int_V \rho' d^3x' + \oint_S \sigma' da' \right\} da \]
+	(we just need to exchange the integrals)
+	so that
+	\[ = \frac{1}{4\pi\epsilon_0} \cdot (\text{right side}) \]
+	
+	
+\end{document}
