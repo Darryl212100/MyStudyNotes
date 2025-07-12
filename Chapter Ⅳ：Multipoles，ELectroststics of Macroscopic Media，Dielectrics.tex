@@ -1,0 +1,681 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+\title{Notes on Electrostatics: Multipoles and Macroscopic Media}
+\author{Compiled from handwritten notes}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	
+	\section{Multipole Expansion}
+	
+	\subsection{Electrostatic Potential}
+	For a localized charge distribution $\rho(\vec{x}')$, the potential at a point $\vec{x}$ outside a sphere of radius $R$ that encloses the entire distribution can be expressed using an expansion in spherical harmonics.
+	\[
+	\Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \frac{4\pi}{2l+1} q_{lm} \frac{Y_{lm}(\theta, \phi)}{r^{l+1}}
+	\]
+	This is the multipole expansion. The terms are named as follows:
+	\begin{itemize}
+		\item $l=0$ is the monopole term.
+		\item $l=1$ are the dipole terms.
+		\item $l=2$ are the quadrupole terms.
+	\end{itemize}
+	
+	The potential is fundamentally given by the integral over the charge distribution:
+	\[
+	\Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \int \frac{\rho(\vec{x}')}{|\vec{x} - \vec{x}'|} d^3x'
+	\]
+	By expanding the term $|\vec{x} - \vec{x}'|^{-1}$ for $r' < r$ (where $r = |\vec{x}|$ and $r' = |\vec{x}'|$),
+	\[
+	\frac{1}{|\vec{x} - \vec{x}'|} = 4\pi \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \frac{1}{2l+1} \frac{r'^l}{r^{l+1}} Y_{lm}^*(\theta', \phi') Y_{lm}(\theta, \phi)
+	\]
+	we find that the coefficients $q_{lm}$, known as the multipole moments, are given by:
+	\[
+	q_{lm} = \int Y_{lm}^*(\theta', \phi') r'^l \rho(\vec{x}') d^3x'
+	\]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure1}
+		\caption{}
+		\label{fig:figure1}
+	\end{figure}
+	
+	The lowest order moments are related to more familiar quantities:
+	\begin{itemize}
+		\item \textbf{Monopole moment:} For $l=0, m=0$, $q_{00} = \int Y_{00}^* r'^0 \rho \,d^3x' = \frac{1}{\sqrt{4\pi}} \int \rho \,d^3x' = \frac{q}{\sqrt{4\pi}}$, where $q$ is the total charge.
+		\item \textbf{Electric dipole moment:}
+		\[
+		\vec{p} = \int \vec{x}' \rho(\vec{x}') d^3x'
+		\]
+		\item \textbf{Traceless quadrupole moment tensor:}
+		\[
+		Q_{ij} = \int (3x_i' x_j' - r'^2 \delta_{ij}) \rho(\vec{x}') d^3x'
+		\]
+	\end{itemize}
+	
+	In rectangular coordinates, the expansion of the potential is:
+	\[
+	\Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \left[ \frac{q}{r} + \frac{\vec{p}\cdot\vec{x}}{r^3} + \frac{1}{2} \sum_{i,j} Q_{ij} \frac{x_i x_j}{r^5} + \dots \right]
+	\]
+	
+	\subsection{Electric Field Components}
+	In terms of spherical coordinates, the electric field components from the multipole expansion are:
+	\begin{align*}
+		E_r &= -\frac{\partial\Phi}{\partial r} = \frac{1}{4\pi\epsilon_0} \sum_{l,m} \frac{4\pi(l+1)}{2l+1} q_{lm} \frac{Y_{lm}(\theta, \phi)}{r^{l+2}} \\
+		E_\theta &= -\frac{1}{r}\frac{\partial\Phi}{\partial \theta} = -\frac{1}{4\pi\epsilon_0} \sum_{l,m} \frac{4\pi}{2l+1} \frac{q_{lm}}{r^{l+2}} \frac{\partial}{\partial \theta} Y_{lm}(\theta, \phi) \\
+		E_\phi &= -\frac{1}{r\sin\theta}\frac{\partial\Phi}{\partial \phi} = -\frac{1}{4\pi\epsilon_0} \sum_{l,m} \frac{4\pi}{2l+1} \frac{q_{lm}}{r^{l+2}} \frac{i m}{\sin\theta} Y_{lm}(\theta, \phi)
+	\end{align*}
+	
+	\section{The Electric Field of a Dipole}
+	For a dipole $\vec{p}$ located at the origin and aligned along the z-axis ($p_z = p, p_x=p_y=0$), the field components simplify to:
+	\[
+	E_r = \frac{2p\cos\theta}{4\pi\epsilon_0 r^3}, \quad E_\theta = \frac{p\sin\theta}{4\pi\epsilon_0 r^3}, \quad E_\phi = 0
+	\]
+	In general vector form, the dipole field $\vec{E}(\vec{x})$ from a dipole $\vec{p}$ at a point $\vec{x}_0$ is often written for points outside the dipole source ($\vec{x} \neq \vec{x}_0$):
+	\[
+	\vec{E}_{out}(\vec{x}) = \frac{1}{4\pi\epsilon_0} \left[ \frac{3\vec{n}(\vec{n}\cdot\vec{p}) - \vec{p}}{|\vec{x}-\vec{x}_0|^3} \right]
+	\]
+	where $\vec{n}$ is a unit vector from $\vec{x}_0$ to $\vec{x}$.
+	
+	To obtain the complete field, including the point $\vec{x}=\vec{x}_0$, we must consider the behavior of the field inside the source. The full field includes a contact term involving a Dirac delta function. This can be derived by analyzing the integral of the field over a small sphere.
+	
+	Consider an integral of an electric field $\vec{E}(\vec{x}')$ over a spherical volume $V$ of radius $R$ centered at the origin.
+	\begin{itemize}
+		\item If the sphere completely encloses a polarization density $\vec{P}(\vec{x}')$ (where $\vec{p} = \int \vec{P} dV$), we have:
+		\[
+		\int_{r'<R} \vec{E}(\vec{x}') d^3x' = -\frac{\vec{p}}{3\epsilon_0}
+		\]
+		\item If the charge is all exterior to the sphere ($r' > R$), the average field inside the sphere is related to the field at the center:
+		\[
+		\int_{r'<R} \vec{E}(\vec{x}') d^3x' = \frac{4\pi}{3} R^3 \vec{E}(0)
+		\]
+	\end{itemize}
+	These considerations lead to the conclusion that the complete dipole field must be written as:
+	\[
+	\vec{E}(\vec{x}) = \frac{1}{4\pi\epsilon_0} \left[ \frac{3\vec{n}(\vec{p}\cdot\vec{n}) - \vec{p}}{|\vec{x}-\vec{x}_0|^3} - \frac{4\pi}{3}\vec{p}\delta(\vec{x}-\vec{x}_0) \right]
+	\]
+	
+	\section{Energy of a Charge Distribution in an External Field}
+	Consider a localized charge distribution $\rho(\vec{x})$ placed in an external potential
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure2}
+		\caption{}
+		\label{fig:figure2}
+	\end{figure}
+	
+	$\Phi(\vec{x})$. The electrostatic energy is:
+	\[
+	W = \int \rho(\vec{x}') \Phi(\vec{x}') d^3x'
+	\]
+	We expand the external potential $\Phi(\vec{x}')$ in a Taylor series around an origin $\vec{x}'=0$ located within the charge distribution.
+	\[
+	\Phi(\vec{x}') = \Phi(0) + \vec{x}' \cdot \nabla\Phi(0) + \frac{1}{2}\sum_{i,j} x_i' x_j' \frac{\partial^2 \Phi}{\partial x_i \partial x_j}(0) + \dots
+	\]
+	Utilizing $\vec{E} = -\nabla\Phi$, this becomes:
+	\[
+	\Phi(\vec{x}') = \Phi(0) - \vec{x}' \cdot \vec{E}(0) - \frac{1}{2}\sum_{i,j} x_i' x_j' \frac{\partial E_j}{\partial x_i}(0) + \dots
+	\]
+	Since the external field is source-free in the region of the charge distribution, $\nabla \cdot \vec{E} = 0$, or $\sum_i \partial E_i / \partial x_i = 0$. This allows for a simplification of the quadrupole term. Substituting the expansion into the energy integral gives:
+	\[
+	W = q\Phi(0) - \vec{p}\cdot\vec{E}(0) - \frac{1}{6}\sum_{i,j} Q_{ij} \frac{\partial E_j}{\partial x_i}(0) + \dots
+	\]
+	
+	\subsection{Interaction Energy of Two Dipoles}
+	For two dipoles $\vec{p}_1$ and $\vec{p}_2$ separated by vector $\vec{x}_{12}$, the interaction energy is the energy of one dipole in the field of the other. For instance, the energy of $\vec{p}_2$ in the field of $\vec{p}_1$ is $W_{12} = -\vec{p}_2 \cdot \vec{E}_1(\vec{x}_2)$. This gives the result:
+	\[
+	W_{12} = \frac{1}{4\pi\epsilon_0} \frac{\vec{p}_1 \cdot \vec{p}_2 - 3(\vec{n} \cdot \vec{p}_1)(\vec{n} \cdot \vec{p}_2)}{|\vec{x}_1 - \vec{x}_2|^3}
+	\]
+	where $\vec{n}$ is the unit vector along $\vec{x}_{12}$.
+	\section*{4.3 Elementary Treatment of Electrostatics with Ponderable Media}
+	
+	We note that $\nabla \times \vec{E} = 0$, by $\nabla \times \vec{E}_{micro} = 0$.
+	
+	The electric polarization $\vec{P}$ is given by
+	\[
+	\vec{P}(\vec{x}) = \sum_{i} N_i \langle \vec{p}_i \rangle \quad \text{(dipole moment per unit volume)}
+	\]
+	where $\vec{p}_i$ is the dipole moment of the $i$-th type of molecule in the medium.
+	
+	If the molecules have a net charge $e_i$ and there is macroscopic excess or free charge, the charge density at the macroscopic level will be:
+	\[
+	\rho(\vec{x}) = \sum_{i} N_i \langle e_i \rangle + \rho_{excess}
+	\]
+	where the first term is usually zero.
+	
+	By superposition of small volume element $\Delta V$
+	\[
+	\Delta \Phi(\vec{x}; \vec{x}') = \frac{1}{4\pi\epsilon_0} \left[ \frac{\rho(\vec{x}') \Delta V}{|\vec{x}-\vec{x}'|} + \frac{\vec{P}(\vec{x}') \cdot (\vec{x}-\vec{x}')}{|\vec{x}-\vec{x}'|^3} \Delta V \right]
+	\]
+	where $\vec{x}$ is outside $\Delta V$.
+	
+	We treat $\Delta V$ as $d^3x'$
+	\begin{align*}
+		\Phi(\vec{x}) &= \frac{1}{4\pi\epsilon_0} \int d^3x' \left[ \frac{\rho(\vec{x}')}{|\vec{x}-\vec{x}'|} + \vec{P}(\vec{x}') \cdot \nabla' \left( \frac{1}{|\vec{x}-\vec{x}'|} \right) \right] \\
+		&= \frac{1}{4\pi\epsilon_0} \int d^3x' \frac{1}{|\vec{x}-\vec{x}'|} \left[ \rho(\vec{x}') - \nabla' \cdot \vec{P}(\vec{x}') \right]
+	\end{align*}
+	With $\vec{E} = -\nabla \Phi$, we have the first Maxwell equation:
+	\[
+	\nabla \cdot \vec{E} = \frac{1}{\epsilon_0} (\rho - \nabla \cdot \vec{P})
+	\]
+	With the definition of electric displacement $\vec{D}$
+	\[
+	\vec{D} = \epsilon_0 \vec{E} + \vec{P}
+	\]
+	which implies
+	\[
+	\nabla \cdot \vec{D} = \rho
+	\]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure3}
+		\caption{}
+		\label{fig:figure3}
+	\end{figure}
+	
+	If the polarization is non-uniform, there can be a net increase/decrease of charge within any small volume.
+	
+	We suppose the medium is isotropic, $\vec{P} \parallel \vec{E}$
+	\[
+	\implies \vec{P} = \epsilon_0 \chi_e \vec{E}
+	\]
+	where $\chi_e$ is the electric susceptibility of the medium and thus $\vec{D} = \epsilon \vec{E}$
+	where $\epsilon = \epsilon_0(1+\chi_e)$ is the electric permittivity. $\epsilon/\epsilon_0 = 1+\chi_e$ is the dielectric constant.
+	Therefore we obtain:
+	\[
+	\nabla \cdot \vec{E} = \rho/\epsilon
+	\]
+	The normal components of $\vec{D}$ and the tangential components of $\vec{E}$ on either side of an interface satisfy the boundary conditions.
+	\[
+	\begin{cases}
+		(\vec{D}_2 - \vec{D}_1) \cdot \vec{n}_{21} = 0 \\
+		(\vec{E}_2 - \vec{E}_1) \times \vec{n}_{21} = 0
+	\end{cases}
+	\]
+	where $\vec{n}_{21}$ is a unit normal to the surface directed from region 1 to region 2.
+	
+	\section*{4.4 Boundary-Value Problems with Dielectrics}
+	
+	We, to illustrate the method of images, consider a point charge, $q$, embedded in a semi-infinite dielectric $\epsilon_1$ a distance $d$ away from a plane interface that separates the first medium from another semi-infinite dielectric $\epsilon_2$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure4}
+		\caption{}
+		\label{fig:figure4}
+	\end{figure}
+	
+	We have:
+	\[
+	\begin{cases}
+		\epsilon_1 \nabla \cdot \vec{E} = \rho, & z>0 \\
+		\epsilon_2 \nabla \cdot \vec{E} = 0, & z<0
+	\end{cases}
+	\]
+	\[
+	\nabla \times \vec{E} = 0, \quad \text{everywhere}
+	\]
+	The boundary:
+	\[
+	\lim_{z \to 0^+} \begin{pmatrix} \epsilon_1 E_z \\ E_x \\ E_y \end{pmatrix} = \lim_{z \to 0^-} \begin{pmatrix} \epsilon_2 E_z \\ E_x \\ E_y \end{pmatrix}
+	\]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure5}
+		\caption{}
+		\label{fig:figure5}
+	\end{figure}
+	
+	For $z>0$ the potential at a point $P$ by $(p, \phi, z)$
+	\[
+	\Phi = \frac{1}{4\pi\epsilon_1} \left( \frac{q}{R_1} + \frac{q'}{R_2} \right), \quad z>0
+	\]
+	where $R_1 = \sqrt{\rho^2+(d-z)^2}$, $R_2=\sqrt{\rho^2+(d+z)^2}$.
+	
+	At the position $A$, the charge $q''$ results in the potential for $z<0$.
+	\[
+	\Phi = \frac{1}{4\pi\epsilon_1} \frac{q''}{R_1}, \quad z<0
+	\]
+	Since
+	\begin{gather*}
+		\frac{\partial}{\partial z} \left( \frac{1}{R_1} \right)_{z=0} = -\frac{\partial}{\partial z} \left( \frac{1}{R_2} \right)_{z=0} = \frac{d}{(\rho^2+d^2)^{3/2}} \\
+		\frac{\partial}{\partial \rho} \left( \frac{1}{R_1} \right)_{z=0} = \frac{\partial}{\partial \rho} \left( \frac{1}{R_2} \right)_{z=0} = \frac{-\rho}{(\rho^2+d^2)^{3/2}}
+	\end{gather*}
+	
+	we obtain:
+	\begin{align*}
+		\begin{cases}
+			q - q' = q'' \\
+			\frac{1}{\epsilon_1}(q-q') = \frac{1}{\epsilon_2} q''
+		\end{cases}
+		&\implies q' = - \left( \frac{\epsilon_2-\epsilon_1}{\epsilon_2+\epsilon_1} \right) q \\
+		&\implies q'' = \left( \frac{2\epsilon_2}{\epsilon_1+\epsilon_2} \right) q
+	\end{align*}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure6}
+		\caption{}
+		\label{fig:figure6}
+	\end{figure}
+	
+	Since $\vec{P} = \epsilon_0 \chi_e \vec{E}$, we obtain $-\nabla \cdot \vec{P} = -\epsilon_0 \chi_e \nabla \cdot \vec{E}=0$ at the surface, $\chi_e$ takes a discontinuous jump so that $\nabla \chi_e = (\epsilon_1 - \epsilon_0)/ \epsilon_0$ as $z$ passes through $z=0$
+	$\implies$ on the plane $z=0$: $\sigma_{pol} = -(\vec{P}_2 - \vec{P}_1) \cdot \vec{n}_{21}$ where $\vec{n}_{21}$ is the unit normal from dielectric 1 to dielectric 2, $\vec{P}_i$ is the polarization in the dielectric $i$ at $z=0$.
+	
+	Since $\vec{P_1} = (\epsilon_1 - \epsilon_0) \vec{E_1} = -(\epsilon_1-\epsilon_0) \nabla \Phi(z\to 0^+)$, we have
+	\[
+	\sigma_{pol} = \frac{-q}{\epsilon_0} \frac{\epsilon_0(\epsilon_2-\epsilon_1)}{\epsilon_1(\epsilon_2+\epsilon_1)} \frac{d}{(\rho^2+d^2)^{3/2}}
+	\]
+	In the limit $\epsilon_2 \gg \epsilon_1$, the dielectric $\epsilon_2$ behaves much like a conductor since the electric field becomes very small.
+	
+	We consider another example that a dielectric sphere of radius $a$ with $\epsilon/\epsilon_0$ placed in an initially uniform electric field $\vec{E}_0$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure7}
+		\caption{}
+		\label{fig:figure7}
+	\end{figure}
+	
+	\paragraph{Inside:}
+	\[
+	\Phi_{in} = \sum_{l=0}^{\infty} A_l r^l P_l(\cos\theta)
+	\]
+	\paragraph{Outside:}
+	\[
+	\Phi_{out} = \sum_{l=0}^{\infty} \left[ E_0 r^l + C_l r^{-(l+1)} \right] P_l(\cos\theta)
+	\]
+	\paragraph{At infinity:}
+	\[
+	\Phi \to -E_0 z = -E_0 r \cos\theta
+	\]
+	\section{Boundary Value Problem for a Dielectric Sphere}
+	
+	We consider a dielectric sphere of radius $a$ and permittivity $\epsilon$ placed in a uniform electric field $\vec{E}_0 = E_0 \hat{z}$. The potential must satisfy Laplace's equation, and the solutions can be expressed in terms of Legendre polynomials. The boundary conditions at the surface of the sphere ($r=a$) are:
+	
+	\subsection{Boundary Conditions}
+	
+	\begin{enumerate}
+		\item The tangential component of the electric field $\vec{E}$ is continuous.
+		\[
+		\text{Tangential E: } -\frac{1}{a}\frac{\partial \Phi_{in}}{\partial \theta}\bigg|_{r=a} = -\frac{1}{a}\frac{\partial \Phi_{out}}{\partial \theta}\bigg|_{r=a}
+		\]
+		
+		\item The normal component of the electric displacement field $\vec{D}$ is continuous (assuming no free surface charge).
+		\[
+		\text{Normal D: } -\epsilon \frac{\partial \Phi_{in}}{\partial r}\bigg|_{r=a} = -\epsilon_0 \frac{\partial \Phi_{out}}{\partial r}\bigg|_{r=a}
+		\]
+	\end{enumerate}
+	
+	\subsection{Solving for the Potentials}
+	
+	The general solutions for the potential inside and outside the sphere are:
+	\begin{align*}
+		\Phi_{in}(r, \theta) &= \sum_{l=0}^{\infty} A_l r^l P_l(\cos\theta) \\
+		\Phi_{out}(r, \theta) &= -E_0 r \cos\theta + \sum_{l=0}^{\infty} \frac{C_l}{r^{l+1}} P_l(\cos\theta)
+	\end{align*}
+	where $-E_0 r \cos\theta$ is the potential of the applied uniform field.
+	
+	Applying the boundary conditions and using the orthogonality of the Legendre polynomials ($P_l(\cos\theta)$), we can solve for the coefficients $A_l$ and $C_l$.
+	
+	\paragraph{First Boundary Condition (Tangential E):}
+	For each $l$, the coefficients of $P_l(\cos\theta)$ must be equal.
+	\begin{align*}
+		A_1 a &= -E_0 a + \frac{C_1}{a^2} \quad (\text{for } l=1) \\
+		A_l a^l &= \frac{C_l}{a^{l+1}} \quad (\text{for } l \neq 1)
+	\end{align*}
+	
+	\paragraph{Second Boundary Condition (Normal D):}
+	Similarly, for each $l$, we match coefficients.
+	\begin{align*}
+		\epsilon A_1 &= -\epsilon_0(-E_0) - \epsilon_0 \frac{2C_1}{a^3} \implies (\epsilon/\epsilon_0)A_1 = E_0 - \frac{2C_1}{a^3} \quad (\text{for } l=1) \\
+		\epsilon (l A_l a^{l-1}) &= -\epsilon_0 \left( -(l+1)\frac{C_l}{a^{l+2}} \right) \implies (\epsilon/\epsilon_0) l A_l = (l+1)\frac{C_l}{a^{2l+1}} \quad (\text{for } l \neq 1)
+	\end{align*}
+	
+	\paragraph{Combined Equations:}
+	For $l \neq 1$, combining the two conditions gives $A_l = C_l = 0$.
+	For $l=1$, we solve the system of two equations for $A_1$ and $C_1$:
+	\begin{align*}
+		A_1 &= -\frac{3}{\epsilon/\epsilon_0 + 2} E_0 \\
+		C_1 &= \left( \frac{\epsilon/\epsilon_0 - 1}{\epsilon/\epsilon_0 + 2} \right) a^3 E_0
+	\end{align*}
+	
+	\subsection{Final Potentials and Fields}
+	Therefore, the potentials are:
+	\begin{align}
+		\Phi_{in} &= A_1 r \cos\theta = -\frac{3}{\epsilon/\epsilon_0 + 2} E_0 r \cos\theta \\
+		\Phi_{out} &= -E_0 r \cos\theta + \frac{C_1}{r^2}\cos\theta = -E_0 r \cos\theta + \left( \frac{\epsilon/\epsilon_0 - 1}{\epsilon/\epsilon_0 + 2} \right) \frac{a^3 E_0}{r^2} \cos\theta
+	\end{align}
+	
+	The electric field inside the sphere is uniform:
+	\[
+	\vec{E}_{in} = -\nabla \Phi_{in} = -A_1 \hat{z} = \frac{3}{\epsilon/\epsilon_0 + 2} \vec{E}_0
+	\]
+	For a dielectric with $\epsilon > \epsilon_0$, the field inside, $E_{in}$, is less than the applied field $E_0$.
+	
+	The potential outside, $\Phi_{out}$, is the sum of the potential of the applied field $E_0$ and the potential of an electric dipole at the origin with dipole moment:
+	\[
+	\vec{p} = 4\pi\epsilon_0 C_1 \hat{z} = 4\pi\epsilon_0 \left( \frac{\epsilon/\epsilon_0 - 1}{\epsilon/\epsilon_0 + 2} \right) a^3 \vec{E}_0
+	\]
+	oriented in the direction of the applied field.
+	
+	\section{Polarization and Bound Charge}
+	The polarization $\vec{P}$ inside the dielectric is given by:
+	\[
+	\vec{P} = (\epsilon - \epsilon_0)\vec{E}_{in} = \epsilon_0(\epsilon/\epsilon_0 - 1) \vec{E}_{in} = 3\epsilon_0 \left( \frac{\epsilon/\epsilon_0 - 1}{\epsilon/\epsilon_0 + 2} \right) \vec{E}_0
+	\]
+	The bound surface charge density $\sigma_{pol}$ is:
+	\[
+	\sigma_{pol} = \vec{P} \cdot \hat{r} = P \cos\theta = 3\epsilon_0 \left( \frac{\epsilon/\epsilon_0 - 1}{\epsilon/\epsilon_0 + 2} \right) E_0 \cos\theta
+	\]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure8}
+		\caption{}
+		\label{fig:figure8}
+	\end{figure}
+	
+	\section{Molecular Polarizability and the Clausius-Mossotti Equation}
+	
+	\subsection{The Local Field}
+	The internal field $\vec{E}_i$ experienced by a molecule can be written as the sum of the field from nearby molecules, $\vec{E}_{near}$, and the field from more distant molecules, $\vec{E}_p$, which can be treated as a continuum.
+	\[
+	\vec{E}_i = \vec{E}_{near} + \vec{E}_p
+	\]
+	For a spherical cavity of radius $R$ carved out of a uniformly polarized dielectric, the field $\vec{E}_p$ due to the polarization outside the cavity is:
+	\[
+	\vec{E}_p = \frac{\vec{P}}{3\epsilon_0}
+	\]
+	The field due to all dipoles at the origin for a cubic array is shown to be zero by symmetry.
+	\[
+	\vec{E}_{near} = 0
+	\]
+	This holds for amorphous substances and most materials as well. Thus, the local field is:
+	\[
+	\vec{E}_i = \vec{E}_{macro} + \vec{E}_p = \vec{E} + \frac{\vec{P}}{3\epsilon_0}
+	\]
+	where $\vec{E}$ is the macroscopic average field.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure10}
+		\caption{}
+		\label{fig:figure10}
+	\end{figure}
+	
+	\subsection{Derivation}
+	The macroscopic polarization $\vec{P}$ is the total dipole moment per unit volume, which can be written as:
+	\[
+	\vec{P} = N \langle \vec{p}_{mol} \rangle
+	\]
+	where $N$ is the number of molecules per unit volume and $\langle \vec{p}_{mol} \rangle$ is the average molecular dipole moment.
+	
+	We define the molecular polarizability $\gamma_{mol}$ as the ratio of the average molecular dipole moment to $\epsilon_0$ times the local field at the molecule.
+	\[
+	\langle \vec{p}_{mol} \rangle = \epsilon_0 \gamma_{mol} \vec{E}_i
+	\]
+	Thus, since $\vec{E}_{near} \approx 0$:
+	\[
+	\vec{P} = N \gamma_{mol} (\vec{E} + \frac{\vec{P}}{3\epsilon_0})
+	\]
+	By definition, $\vec{P} = \epsilon_0 \chi_e \vec{E}$. Substituting this, we find:
+	\[
+	\epsilon_0 \chi_e \vec{E} = N \gamma_{mol} (\vec{E} + \frac{\epsilon_0 \chi_e \vec{E}}{3\epsilon_0}) = N \gamma_{mol} \vec{E} (1 + \frac{\chi_e}{3})
+	\]
+	Solving for $\chi_e$:
+	\[
+	\chi_e = \frac{N \gamma_{mol}}{1 - \frac{1}{3}N \gamma_{mol}}
+	\]
+	Using the relation $\epsilon/\epsilon_0 = 1 + \chi_e$, we can rearrange to find:
+	\[
+	\frac{\chi_e}{\chi_e + 3} = \frac{N \gamma_{mol}}{3}
+	\]
+	Substituting $\chi_e = \epsilon/\epsilon_0 - 1$:
+	\[
+	\frac{\epsilon/\epsilon_0 - 1}{\epsilon/\epsilon_0 + 2} = \frac{N \gamma_{mol}}{3}
+	\]
+	which is the \textbf{Clausius-Mossotti equation}.
+	\section{Models for Molecular Polarizability}
+	
+	The polarization of a collection of atoms or molecules can arise in two main ways:
+	\begin{enumerate}
+		\item[(i)] The applied electric field distorts the charge distributions and so produces an \textbf{induced dipole moment} in each molecule.
+		\item[(ii)] The applied field tends to line up the initially randomly oriented \textbf{permanent dipole moments} of the molecules. This is called orientation polarization.
+	\end{enumerate}
+	
+	\subsection{Induced Polarization}
+	
+	We consider a simple model where a charge $e$ is bound harmonically (representing electrons and ions) and is under the action of a restoring force:
+	\[
+	\vec{F} = -m\omega_0^2 \vec{x}
+	\]
+	where $\omega_0$ is the natural frequency of oscillation about equilibrium and $m$ is the mass of the charge.
+	
+	Under the action of an external electric field $\vec{E}$, the charge is displaced from its equilibrium by an amount $\vec{x}$. At the new equilibrium position, the restoring force balances the electric force:
+	\[
+	m\omega_0^2 \vec{x} = e\vec{E}
+	\]
+	The induced dipole moment is therefore:
+	\[
+	\vec{p}_{mol} = e\vec{x} = \frac{e^2}{m\omega_0^2} \vec{E}
+	\]
+	Thus, the electronic polarizability $\gamma$ is given by:
+	\[
+	\gamma = \frac{e^2}{m\omega_0^2}
+	\]
+	If there is a set of charges $e_j$ with mass $m_j$ and natural frequency $\omega_j$ in each molecule, we have a total molecular polarizability:
+	\[
+	\gamma_{mol} = \sum_j \frac{e_j^2}{m_j \omega_j^2}
+	\]
+	
+	\subsubsection*{Effect of Thermal Agitation}
+	We now consider the thermal agitation of molecules, which could modify the induced dipole polarizability. For classical systems, we use the Boltzmann factor $f(H) = e^{-H/kT}$.
+	
+	For a harmonically bound charge with an applied field $\vec{E}$ in the $z$-direction, the Hamiltonian is:
+	\[
+	H = \frac{1}{2m} |\vec{P}|^2 + \frac{1}{2} m\omega_0^2 z^2 - eEz
+	\]
+	where $\vec{P}$ is the momentum of the charged particle. The average value of the dipole moment in the $z$-direction is a statistical average over phase space:
+	\[
+	\langle p_{mol} \rangle = \frac{\int d^3p \int d^3x (ez) f(H)}{\int d^3p \int d^3x f(H)} = \frac{\int d^3p \int d^3x (ez) e^{-H/kT}}{\int d^3p \int d^3x e^{-H/kT}}
+	\]
+	We can simplify the Hamiltonian by completing the square, introducing a displaced coordinate $z' = z - \frac{eE}{m\omega_0^2}$:
+	\begin{align*}
+		H &= \frac{1}{2m} |\vec{P}|^2 + \frac{1}{2} m\omega_0^2 \left( z - \frac{eE}{m\omega_0^2} \right)^2 - \frac{e^2E^2}{2m\omega_0^2} \\
+		&= \frac{1}{2m} |\vec{P}|^2 + \frac{1}{2} m\omega_0^2 (z')^2 - \frac{e^2E^2}{2m\omega_0^2}
+	\end{align*}
+	Let's call the constant energy shift $E_0 = \frac{e^2E^2}{2m\omega_0^2}$ and $H' = \frac{1}{2m} |\vec{P}|^2 + \frac{1}{2} m\omega_0^2 (z')^2$. Then $H = H' - E_0$.
+	The average dipole moment is:
+	\[
+	\langle p_{mol} \rangle = \frac{\int d^3p \int d^3x' e(z' + \frac{eE}{m\omega_0^2}) e^{-(H'-E_0)/kT}}{\int d^3p \int d^3x' e^{-(H'-E_0)/kT}}
+	\]
+	Since $H'$ is an even function of $z'$, the first integral in the numerator vanishes: $\int z' e^{-H'/kT} d^3x' = 0$.
+	The remaining terms, including the exponential factor $e^{E_0/kT}$, cancel out between the numerator and denominator.
+	\[
+	\langle p_{mol} \rangle = e \left( \frac{eE}{m\omega_0^2} \right) = \frac{e^2E}{m\omega_0^2}
+	\]
+	The result is the same as the zero-temperature case and is independent of temperature. This means that for induced polarization, thermal effects do not change the average polarizability in this classical model.
+	
+	\subsection{Orientation Polarization}
+	Suppose all molecules have a permanent dipole moment $\vec{p}_0$ which can be oriented in any direction in space. In the absence of a field, thermal agitation keeps the molecules randomly oriented so that there is no net dipole moment.
+	
+	The Hamiltonian of one such molecule in an external field $\vec{E}$ is:
+	\[
+	H = H_0 - \vec{p}_0 \cdot \vec{E}
+	\]
+	where $H_0$ is a function of only the internal coordinates of the molecule.
+	Using the Boltzmann factor, the average dipole moment is:
+	\[
+	\langle \vec{p}_{mol} \rangle = \frac{\int (\vec{p}_0) e^{(-H_0 + \vec{p}_0 \cdot \vec{E})/kT} d\Omega}{\int e^{(-H_0 + \vec{p}_0 \cdot \vec{E})/kT} d\Omega}
+	\]
+	We can cancel the $e^{-H_0/kT}$ term. Let's choose the $z$-axis along the direction of $\vec{E}$, so $\vec{p}_0 \cdot \vec{E} = p_0 E \cos\theta$. We are interested in the component of the average moment along $\vec{E}$:
+	\[
+	\langle p_{mol} \rangle_z = \frac{\int (p_0 \cos\theta) e^{p_0 E \cos\theta / kT} d\Omega}{\int e^{p_0 E \cos\theta / kT} d\Omega}
+	\]
+	where $d\Omega = \sin\theta d\theta d\phi$. In general, except at low temperatures, the argument of the exponential $(p_0 E / kT)$ is very small compared to unity. Hence, we can use the approximation $e^x \approx 1+x$:
+	\begin{align*}
+		\langle p_{mol} \rangle_z &\approx \frac{\int_0^{2\pi} d\phi \int_0^\pi (p_0 \cos\theta)(1 + \frac{p_0 E \cos\theta}{kT}) \sin\theta d\theta}{\int_0^{2\pi} d\phi \int_0^\pi (1 + \frac{p_0 E \cos\theta}{kT}) \sin\theta d\theta} \\
+		&= \frac{2\pi p_0 \int_0^\pi (\cos\theta + \frac{p_0 E}{kT}\cos^2\theta) \sin\theta d\theta}{2\pi \int_0^\pi (1 + \frac{p_0 E}{kT}\cos\theta) \sin\theta d\theta}
+	\end{align*}
+	Evaluating the integrals:
+	\begin{itemize}
+		\item $\int_0^\pi \cos\theta \sin\theta d\theta = 0$
+		\item $\int_0^\pi \cos^2\theta \sin\theta d\theta = [-\frac{1}{3}\cos^3\theta]_0^\pi = \frac{2}{3}$
+		\item $\int_0^\pi \sin\theta d\theta = 2$
+	\end{itemize}
+	The expression simplifies to:
+	\[
+	\langle p_{mol} \rangle_z \approx \frac{p_0 (\frac{p_0 E}{kT}) \frac{2}{3}}{2} = \frac{p_0^2 E}{3kT}
+	\]
+	This shows that the orientation polarization depends inversely on the temperature.
+	
+	\subsection{Total Molecular Polarizability}
+	For both types of polarization, induced ($\gamma_i$) and orientation, present, the general form of molecular polarizability is the sum of the two effects:
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure11}
+		\caption{}
+		\label{fig:figure11}
+	\end{figure}
+	
+	\[
+	\gamma_{mol} \approx \gamma_i + \frac{p_0^2}{3kT}
+	\]
+	
+	\section{Electrostatic Energy in Dielectric Media}
+	
+	For a charge density $\rho(\vec{x})$ and a potential $\Phi(\vec{x})$, the energy of a system is:
+	\[
+	W = \frac{1}{2} \int \rho(\vec{x}) \Phi(\vec{x}) d^3x
+	\]
+	This is the energy required to form the final configuration of charge by assembling it bit-by-bit against the action of the existing electric field.
+	
+	Let's consider the work done to accomplish some sort of charge change $\delta\rho$. The work done is:
+	\[
+	\delta W = \int \delta\rho(\vec{x}) \Phi(\vec{x}) d^3x
+	\]
+	In a dielectric, the free charge density $\rho_f$ is related to the electric displacement field $\vec{D}$ by Gauss's law: $\nabla \cdot \vec{D} = \rho_f$.
+	We can then relate a change in free charge to a change in displacement: $\delta\rho_f = \nabla \cdot (\delta\vec{D})$. The energy change can be cast into a new form:
+	\begin{align*}
+		\delta W &= \int (\nabla \cdot \delta\vec{D}) \Phi d^3x \\
+		&= - \int (\delta\vec{D}) \cdot (\nabla\Phi) d^3x \quad \text{(using integration by parts)}
+	\end{align*}
+	Since the electric field is the negative gradient of the potential, $\vec{E} = -\nabla\Phi$:
+	\[
+	\delta W = \int \vec{E} \cdot \delta\vec{D} d^3x
+	\]
+	By allowing $\vec{D}$ to be brought from an initial value of $\vec{D}=0$ to its final value $\vec{D}$, we can find the total work done, which is the stored electrostatic energy:
+	\[
+	W = \int d^3x \int_0^{\vec{D}} \vec{E} \cdot \delta\vec{D}
+	\]
+	If the medium is linear, then $\vec{D} = \epsilon \vec{E}$, and we can write:
+	\[
+	\vec{E} \cdot \delta\vec{D} = \frac{1}{\epsilon} \vec{D} \cdot \delta\vec{D} = \frac{1}{2\epsilon} \delta(\vec{D} \cdot \vec{D}) = \delta\left( \frac{1}{2} \vec{E} \cdot \vec{D} \right)
+	\]
+	The total energy is then:
+	\[
+	W = \int d^3x \int_0^{\vec{D}} \delta\left( \frac{1}{2} \vec{E} \cdot \vec{D} \right) = \frac{1}{2} \int \vec{E} \cdot \vec{D} d^3x
+	\]
+	\section{Energy of a Dielectric in an External Field}
+	
+	\subsection{Derivation of the Interaction Energy}
+	Suppose that initially the electric field $\vect{E}_0$ due to a certain distribution of charges $\rho_f$ exists in a medium of electric susceptibility $\epsilon_0$. The initial electrostatic energy is:
+	$$
+	W_0 = \frac{1}{2} \int \vect{E}_0 \cdot \vect{D}_0 \,d^3x
+	$$
+	where $\vect{D}_0 = \epsilon_0 \vect{E}_0$.
+	
+	In a volume $V_1$, from $\vect{E}_0$ to $\vect{E}$, the object is described by $\epsilon(\vect{r})$, which has the value $\epsilon_1$ inside $V_1$ and $\epsilon_0$ outside $V_1$. At the edge of the volume $V_1$, the new energy is:
+	$$
+	W_1 = \frac{1}{2} \int \vect{E} \cdot \vect{D} \,d^3x
+	$$
+	where $\vect{D} = \epsilon \vect{E}$.
+	
+	The difference in the energy is:
+	\begin{align*}
+		W &= W_1 - W_0 = \frac{1}{2} \int (\vect{E} \cdot \vect{D} - \vect{E}_0 \cdot \vect{D}_0) \,d^3x \\
+		&= \frac{1}{2} \int (\vect{E} \cdot \vect{D} - \vect{E}_0 \cdot \vect{D}_0) \,d^3x + \frac{1}{2} \int (\vect{E} + \vect{E}_0) \cdot (\vect{D} - \vect{D}_0) \,d^3x
+	\end{align*}
+	Since the free charge distribution is unchanged, $\nabla \cdot (\vect{D} - \vect{D}_0) = 0$.
+	Also, since both fields are electrostatic, $\nabla \times \vect{E} = 0$ and $\nabla \times \vect{E}_0 = 0$, which implies $\nabla \times (\vect{E} + \vect{E}_0) = 0$. We can therefore write the sum of the fields as the gradient of a scalar potential:
+	$$
+	\vect{E} + \vect{E}_0 = -\nabla \Phi
+	$$
+	Then the second integral becomes:
+	$$
+	I = -\frac{1}{2} \int \nabla\Phi \cdot (\vect{D} - \vect{D}_0) \,d^3x
+	$$
+	Using integration by parts (and assuming fields vanish at infinity):
+	$$
+	I = \frac{1}{2} \int \Phi \nabla \cdot (\vect{D} - \vect{D}_0) \,d^3x = 0
+	$$
+	since $\nabla \cdot (\vect{D} - \vect{D}_0) = 0$.
+	Consequently, the energy change simplifies to:
+	$$
+	W = \frac{1}{2} \int (\vect{E} \cdot \vect{D}_0 - \vect{E}_0 \cdot \vect{D}) \,d^3x
+	$$
+	Outside the volume $V_1$, $\vect{D} = \epsilon_0 \vect{E} = \vect{D}_0$, so the integrand is zero. We only need to integrate over the volume of the dielectric, $V_1$:
+	\begin{align*}
+		W &= \frac{1}{2} \int_{V_1} (\vect{E} \cdot (\epsilon_0 \vect{E}_0) - \vect{E}_0 \cdot (\epsilon_1 \vect{E})) \,d^3x \\
+		&= \frac{1}{2} \int_{V_1} (\epsilon_0 - \epsilon_1) \vect{E} \cdot \vect{E}_0 \,d^3x
+	\end{align*}
+	By definition of the polarization vector $\vect{P} = \vect{D} - \epsilon_0 \vect{E} = (\epsilon_1 - \epsilon_0)\vect{E}$, we can write:
+	$$
+	W = -\frac{1}{2} \int_{V_1} \vect{P} \cdot \vect{E}_0 \,d^3x
+	$$
+	
+	\subsection{Physical Interpretation and Force}
+	The energy density of a dielectric placed in a field $\vect{E}_0$ whose sources are fixed is given by:
+	$$
+	w = -\frac{1}{2} \vect{P} \cdot \vect{E}_0
+	$$
+	The factor $\frac{1}{2}$ represents the energy density of a polarizable dielectric in an external field. We imagine a small generalized displacement of the body, which tends to move toward regions of increasing field $\vect{E}_0$, provided $\epsilon_1 > \epsilon_0$.
+	
+	The change in field energy $\delta W$ can be interpreted as a change in the potential energy of the body. There is a force acting on the body. For a generalized displacement $\delta \xi$:
+	$$
+	F_\xi = -\left( \frac{\partial W}{\partial \xi} \right)_Q
+	$$
+	where the subscript $Q$ has been placed on the partial derivative to indicate that the sources of the field are kept fixed.
+	
+	\section{Energy Variations under Different Conditions}
+	
+	\subsection{Constant Charge vs. Constant Potential}
+	Let's consider two scenarios for the change in energy.
+	
+	\paragraph{1. Fixed Charges (Disconnected Electrodes)}
+	The electrodes are disconnected from the batteries and the charges on them held fixed ($\delta \rho = 0$). The energy change is:
+	$$
+	\delta W_1 = \frac{1}{2} \int \rho \delta \Phi_1 \,d^3x
+	$$
+	
+	\paragraph{2. Fixed Potential (Connected Batteries)}
+	Then the batteries are connected again to the electrodes to restore potentials to the original values. There will be a flow of charge $\delta \rho_2$ accompanying the potential change $\delta \Phi_2 = -\delta \Phi_1$. The energy change during this restoration is $\delta W_2$. The total energy change for the process at constant potential is $\delta W = \delta W_1 + \delta W_2$. It can be shown that $\delta W_2 = -2\delta W_1$.
+	Consequently, the total change in energy at constant potential is:
+	$$
+	\delta W = \delta W_1 + \delta W_2 = \delta W_1 - 2\delta W_1 = -\delta W_1
+	$$
+	Symbolically, we write this important result as:
+	$$
+	\delta W_V = -\delta W_Q
+	$$
+	
+	\subsection{Force on a Dielectric at Constant Potential}
+	If a dielectric with $\epsilon / \epsilon_0 > 1$ moves into a region of greater field strength, the energy increases. For a generalized displacement $d\xi$, the force is given by:
+	$$
+	F_\xi = +\left( \frac{\partial W}{\partial \xi} \right)_V
+	$$
+	Note the positive sign, which is a consequence of the system being held at constant potential (by a battery that can do work), in contrast to the constant charge (isolated system) case. A dielectric is therefore pulled into a region of stronger electric field.
+	
+	
+\end{document}
