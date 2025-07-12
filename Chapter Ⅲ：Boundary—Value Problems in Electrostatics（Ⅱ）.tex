@@ -1,0 +1,1023 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\title{Boundary-Value Problems in Electrostatics (II)}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\section{Boundary-Value Problems in Electrostatics (II)}
+	
+	\subsection{Laplace Equation in Spherical Coordinates}
+	In spherical coordinates, the Laplace equation is:
+	\begin{equation}
+		\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2 \frac{\partial \Phi}{\partial r}\right) + \frac{1}{r^2\sin\theta}\frac{\partial}{\partial \theta}\left(\sin\theta \frac{\partial \Phi}{\partial \theta}\right) + \frac{1}{r^2\sin^2\theta}\frac{\partial^2 \Phi}{\partial \phi^2} = 0
+	\end{equation}
+	We assume a solution of the form $\Phi(r, \theta, \phi) = U(r)P(\theta)Q(\phi)$.
+	\begin{equation}
+		\frac{1}{U}\frac{d}{dr}\left(r^2 \frac{dU}{dr}\right) + \frac{1}{P\sin\theta}\frac{d}{d\theta}\left(\sin\theta \frac{dP}{d\theta}\right) + \frac{1}{Q\sin^2\theta}\frac{d^2Q}{d\phi^2} = 0
+	\end{equation}
+	$\phi$ is isolated, hence we let $\frac{1}{Q}\frac{d^2Q}{d\phi^2} = -m^2$, whose solutions are $Q = e^{\pm im\phi}$, where $m$ is an integer.
+	
+	Similarly, we have
+	\begin{equation}
+		\frac{1}{\sin\theta}\frac{d}{d\theta}\left(\sin\theta \frac{dP}{d\theta}\right) + \left[l(l+1) - \frac{m^2}{\sin^2\theta}\right]P = 0
+	\end{equation}
+	and
+	\begin{equation}
+		\frac{d}{dr}\left(r^2 \frac{dU}{dr}\right) - l(l+1)U = 0
+	\end{equation}
+	The solutions of the second equation are $U = Ar^l + Br^{-l-1}$, where $A$ is a constant.
+	
+	\subsection{Legendre Equation and Legendre Polynomials}
+	In terms of $x = \cos\theta$, we have
+	\begin{equation}
+		\frac{d}{dx}\left[(1-x^2)\frac{dP}{dx}\right] + \left[l(l+1) - \frac{m^2}{1-x^2}\right]P = 0
+	\end{equation}
+	which is the generalized Legendre equation.
+	When $m=0$, we obtain the Legendre equation.
+	
+	The solution is assumed to be a power series:
+	\begin{equation}
+		P(x) = x^\alpha \sum_{j=0}^{\infty} a_j x^j
+	\end{equation}
+	\begin{equation}
+		\Rightarrow \sum_{j=0}^{\infty} \{ (\alpha+j)(\alpha+j-1)a_j x^{\alpha+j-2} - [(\alpha+j)(\alpha+j+1)-l(l+1)]a_j x^{\alpha+j} \} = 0
+	\end{equation}
+	We find that if $a_0 \neq 0$, then $\alpha(\alpha-1) = 0$. If $a_1 \neq 0$, then $(\alpha+1)\alpha=0$.
+	And the recurrence relation is:
+	\begin{equation}
+		a_{j+2} = \frac{(\alpha+j)(\alpha+j+1)-l(l+1)}{(\alpha+j+1)(\alpha+j+2)} a_j
+	\end{equation}
+	The solutions $P_l(x)$ are the Legendre polynomials.
+	
+	Rodrigues' formula for Legendre polynomials is:
+	\begin{equation}
+		P_l(x) = \frac{1}{2^l l!} \frac{d^l}{dx^l}(x^2-1)^l, \quad |x|<1
+	\end{equation}
+	
+	To prove the orthogonality, we need to show:
+	\begin{equation}
+		\int_{-1}^{1} P_l(x) \left\{ \frac{d}{dx}\left[(1-x^2)\frac{dP_{l'}}{dx}\right] + l'(l'+1)P_{l'}(x) \right\} dx = 0
+	\end{equation}
+	Integrating by parts, we obtain:
+	\begin{equation}
+		\int_{-1}^{1} \left[ (x^2-1)\frac{dP_l}{dx}\frac{dP_{l'}}{dx} + l'(l'+1)P_l P_{l'} \right] dx = 0
+	\end{equation}
+	Interchange $l$ and $l'$:
+	\begin{equation}
+		[l(l+1)-l'(l'+1)] \int_{-1}^{1} P_l P_{l'} dx = 0
+	\end{equation}
+	For $l \neq l'$, $\int_{-1}^{1} P_l P_{l'} dx = 0$.
+	
+	For $l=l'$, the normalization constant is:
+	\begin{align}
+		N_l = \int_{-1}^{1} [P_l(x)]^2 dx &= \frac{1}{2^{2l}(l!)^2} \int_{-1}^{1} \frac{d^l}{dx^l}(x^2-1)^l \frac{d^l}{dx^l}(x^2-1)^l dx \\
+		&\text{(Integration by parts, l times)} \nonumber \\
+		&= \frac{(-1)^l}{2^{2l}(l!)^2} \int_{-1}^{1} (x^2-1)^l \frac{d^{2l}}{dx^{2l}}(x^2-1)^l dx \\
+		&= \frac{(2l)!}{2^{2l}(l!)^2} \int_{-1}^{1} (1-x^2)^l dx
+	\end{align}
+	Since $(1-x^2)^l = (1-x)^l (1-x^2)^{-l+1} = (1-x)^l + \frac{x}{2l}\frac{d}{dx}(1-x^2)^l$.
+	Thus we have
+	\begin{align}
+		N_l &= \frac{(2l-1)!!}{2^l l!} N_{l-1} + \frac{(-1)^l}{(2^l l!)^2} \int_{-1}^{1} x \frac{d}{dx}[(1-x^2)^l] dx \\
+		&= \frac{(2l-1)!!}{2^l l!} N_{l-1} - \frac{1}{2l} N_l
+	\end{align}
+	Anyway,
+	\begin{equation}
+		\int_{-1}^{1} P_{l'}(x) P_l(x) dx = \frac{2}{2l+1} \delta_{l'l}
+	\end{equation}
+	Thus, the orthonormal functions are
+	\begin{equation}
+		U_l(x) = \sqrt{\frac{2l+1}{2}} P_l(x)
+	\end{equation}
+	
+	The Legendre series representation is
+	\begin{equation}
+		f(x) = \sum_{l=0}^{\infty} A_l P_l(x)
+	\end{equation}
+	where
+	\begin{equation}
+		A_l = \frac{2l+1}{2} \int_{-1}^{1} f(x) P_l(x) dx
+	\end{equation}
+	
+	\textbf{Example:}
+	\begin{equation}
+		f(x) = \begin{cases} 1, & x>0 \\ -1, & x<0 \end{cases}
+	\end{equation}
+	Then
+	\begin{align}
+		A_l &= \frac{2l+1}{2} \left[ \int_{0}^{1} P_l(x) dx - \int_{-1}^{0} P_l(x) dx \right] \\
+		&= (2l+1) \int_{0}^{1} P_l(x) dx \quad \text{(By Rodrigues' formula)} \\
+		&= \left(-\frac{1}{2}\right)^l \frac{(2l+1)(l-2)!!}{2(l+1)!!}
+	\end{align}
+	Thus,
+	\begin{equation}
+		f(x) = \frac{3}{2}P_1(x) - \frac{7}{8}P_3(x) + \frac{11}{16}P_5(x) - \dots
+	\end{equation}
+	
+	From Rodrigues' formula, we can prove the recurrence relation:
+	\begin{equation}
+		\frac{dP_{l+1}}{dx} - \frac{dP_{l-1}}{dx} - (2l+1)P_l = 0
+	\end{equation}
+	Combined with the Legendre equation, we obtain
+	\begin{equation}
+		(l+1)P_{l+1} - (2l+1)xP_l + lP_{l-1} = 0
+	\end{equation}
+	\begin{equation}
+		\frac{dP_{l+1}}{dx} - x\frac{dP_l}{dx} - (l+1)P_l = 0
+	\end{equation}
+	\begin{equation}
+		(x^2-1)\frac{dP_l}{dx} - lxP_l + lP_{l-1} = 0
+	\end{equation}
+	
+	We consider the integral
+	\begin{align}
+		I_1 &= \int_{-1}^{1} x P_{l'}(x) P_l(x) dx \\
+		&= \frac{1}{2l+1} \int_{-1}^{1} P_{l'}(x) [(l+1)P_{l+1}(x) + lP_{l-1}(x)] dx \\
+		&= \begin{cases} 0, & l' \neq l \pm 1 \\ \frac{2(l+1)}{(2l+1)(2l+3)}, & l' = l+1 \\ \frac{2l}{(2l-1)(2l+1)}, & l' = l-1 \end{cases}
+	\end{align}
+	Similarly,
+	\begin{equation}
+		\int_{-1}^{1} x^2 P_{l'}(x) P_l(x) dx =
+		\begin{cases}
+			\frac{2(l+1)(l+2)}{(2l+1)(2l+3)(2l+5)}, & l'=l+2 \\
+			\frac{2(l^2+l-1)}{(2l-1)(2l+3)}, & l'=l \\
+			\frac{2l(l-1)}{(2l+1)(2l-1)(2l-3)}, & l'=l-2
+		\end{cases}
+	\end{equation}
+	
+	
+	\subsection{Boundary-Value Problems with Azimuthal Symmetry}
+	We have the general solution for the Laplace equation in spherical coordinates:
+	\begin{equation}
+		\Phi(r, \theta) = \sum_{l=0}^{\infty} [A_l r^l + B_l r^{-l-1}] P_l(\cos\theta)
+	\end{equation}
+	Suppose the potential is $V(\theta)$ on the surface of a sphere of radius $a$.
+	\begin{equation}
+		V(\theta) = \sum_{l=0}^{\infty} A_l a^l P_l(\cos\theta) \quad (\text{since } B_l=0 \text{ as } \Phi \text{ must be finite at } r=0)
+	\end{equation}
+	\begin{equation}
+		A_l = \frac{2l+1}{2a^l} \int_{0}^{\pi} V(\theta) P_l(\cos\theta) \sin\theta d\theta
+	\end{equation}
+	
+	\textbf{Example:}
+	Potential on a sphere of radius $a$:
+	\begin{equation}
+		V(\theta) = \begin{cases} +V, & 0 \le \theta < \pi/2 \\ -V, & \pi/2 < \theta \le \pi \end{cases}
+	\end{equation}
+	Then the potential inside the sphere is
+	\begin{equation}
+		\Phi(r,\theta) = V \left[ \frac{3}{2}\left(\frac{r}{a}\right)P_1(\cos\theta) - \frac{7}{8}\left(\frac{r}{a}\right)^3 P_3(\cos\theta) + \frac{11}{16}\left(\frac{r}{a}\right)^5 P_5(\cos\theta) - \dots \right]
+	\end{equation}
+	On the symmetry axis, with $z=r$:
+	\begin{equation}
+		\Phi(z=r) = \sum_{l=0}^{\infty} A_l r^l, \quad \text{for } z>0
+	\end{equation}
+	As for $z<0$, each term must be multiplied by $(-1)^l$.
+	We also have the form for the potential on the z-axis:
+	\begin{equation}
+		\Phi(z=r) = V \left[ 1 - \frac{r^2 - a^2}{r\sqrt{r^2+a^2}} \right]
+	\end{equation}
+	which can be expanded in powers of $a/r$.
+	\begin{equation}
+		\Phi(z=r) = \frac{V}{\sqrt{\pi}} \sum_{j=0}^{\infty} (-1)^{j+1} \frac{(2j-1)\Gamma(j-\frac{1}{2})}{j!} \left(\frac{a}{r}\right)^{2j+1}
+	\end{equation}
+	Compared with the former expansion, we know that only odd $l$ values enter. Thus, the solution is:
+	\begin{equation}
+		\Phi(r, \theta) = \frac{V}{\sqrt{\pi}} \sum_{j=0}^{\infty} (-1)^{j+1} \frac{(2j-1)\Gamma(j-\frac{1}{2})}{j!} \left(\frac{r}{a}\right)^{2j+1} P_{2j+1}(\cos\theta)
+	\end{equation}
+	
+	The expansion of the inverse distance is:
+	\begin{equation}
+		\frac{1}{|\vec{x}-\vec{x}'|} = \sum_{l=0}^{\infty} \frac{r_<^l}{r_>^{l+1}} P_l(\cos\gamma)
+	\end{equation}
+	where $r_<$ ($r_>$) is the smaller (larger) of $|\vec{x}|$ and $|\vec{x}'|$, and $\gamma$ is the angle between $\vec{x}$ and $\vec{x}'$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure1}
+		\caption{}
+		\label{fig:figure1}
+	\end{figure}
+	
+	Except at $\vec{x}=\vec{x}'$:
+	\begin{equation}
+		\frac{1}{|\vec{x}-\vec{x}'|} = \sum_{l=0}^{\infty} (A_l r^l + B_l r^{-l-1}) P_l(\cos\gamma)
+	\end{equation}
+	If $\vec{x}'$ is on the z-axis,
+	\begin{equation}
+		\frac{1}{|\vec{x}-\vec{x}'|} = \frac{1}{\sqrt{r^2+r'^2 - 2rr'\cos\gamma}}
+	\end{equation}
+	If $\vec{x}$ is on the z-axis,
+	\begin{equation}
+		\frac{1}{|\vec{x}-\vec{x}'|} = \frac{1}{r_>} \sum_{l=0}^{\infty} \left(\frac{r_<}{r_>}\right)^l
+	\end{equation}
+	
+	\subsection{Example: Potential due to a charged ring}
+	Potential due to a total charge $q$ uniformly distributed around a circular ring of radius $a$. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure2}
+		\caption{}
+		\label{fig:figure2}
+	\end{figure}
+	
+	\begin{equation}
+		\Phi(z=r) = \frac{1}{4\pi\epsilon_0} \frac{q}{\sqrt{r^2+c^2-2rc\cos\alpha}}
+	\end{equation}
+	where $c^2=a^2+b^2$, $\alpha = \tan^{-1}(a/b)$.
+	For $r>c$,
+	\begin{equation}
+		\Phi(z=r) = \frac{q}{4\pi\epsilon_0} \sum_{l=0}^{\infty} \frac{c^l}{r^{l+1}} P_l(\cos\alpha)
+	\end{equation}
+	For $r<c$,
+	\begin{equation}
+		\Phi(z=r) = \frac{q}{4\pi\epsilon_0} \sum_{l=0}^{\infty} \frac{r^l}{c^{l+1}} P_l(\cos\alpha)
+	\end{equation}
+	This leads to the general expression for the potential:
+	\begin{equation}
+		\Phi(r, \theta) = \frac{q}{4\pi\epsilon_0} \sum_{l=0}^{\infty} \frac{r_<^l}{r_>^{l+1}} P_l(\cos\alpha) P_l(\cos\theta)
+	\end{equation}
+	where $r_<$ ($r_>$) is the smaller (larger) of $r$ and $c$.
+	
+	\subsection{Behavior of Fields in a Conical Hole or Near a Sharp Point}
+	For a range $0 \le \theta \le \beta$, $0 \le \phi \le 2\pi$.
+	\begin{itemize}
+		\item For $\beta < \pi/2 \rightarrow$ a deep conical hole bored in a conductor.
+		\item For $\beta > \pi/2 \rightarrow$ surrounding a pointed conical conductor.
+	\end{itemize}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure3}
+		\caption{}
+		\label{fig:figure3}
+	\end{figure}
+
+	
+	We introduce $\xi = \cos\theta = \frac{1}{2}(1-x)$. The Legendre equation becomes
+	\begin{equation}
+		\frac{d}{d\xi}\left[ \xi(1-\xi) \frac{dP}{d\xi} \right] + \nu(\nu+1)P = 0
+	\end{equation}
+	With a power series solution $P(\xi) = \xi^\alpha \sum_{j=0}^{\infty} a_j \xi^j$.
+	\begin{equation}
+		\Rightarrow \frac{a_{j+1}}{a_j} = \frac{(j-\nu)(j+\nu+1)}{(j+1)^2} \quad \text{and} \quad \alpha = 0
+	\end{equation}
+	To normalize, we choose $a_0=1$ at $\xi=0 (\cos\theta=1)$.
+	\begin{equation}
+		P_\nu(\xi) = 1 + \frac{(-\nu)(\nu+1)}{1! \cdot 1!} \xi + \frac{(-\nu)(-\nu+1)(\nu+1)(\nu+2)}{2! \cdot 2!} \xi^2 + \dots
+	\end{equation}
+	For $\nu = l = 0, 1, 2, 3, \dots \Rightarrow$ Legendre polynomials.
+	
+	For $\nu$ not an integer, this is one example of a hypergeometric function $_2F_1(a,b,c;z)$ whose expansion is
+	\begin{equation}
+		_2F_1(a,b,c;z) = 1 + \frac{ab}{c}\frac{z}{1!} + \frac{a(a+1)b(b+1)}{c(c+1)}\frac{z^2}{2!} + \dots
+	\end{equation}
+	\begin{equation}
+		P_\nu(x) = {}_2F_1\left(-\nu, \nu+1, 1; \frac{1-x}{2}\right)
+	\end{equation}
+	
+	The basic solution is $A r^\nu P_\nu(\cos\theta)$ for $\nu > 0$ and $P_\nu(\cos\beta)=0$.
+	The complete solution is
+	\begin{equation}
+		\Phi(r, \theta) = \sum_{k=0}^{\infty} A_k r^{\nu_k} P_{\nu_k}(\cos\theta) \quad \text{where } x=\cos\beta \text{ is the } k\text{th zero}
+	\end{equation}
+	for $\nu=\nu_k$.
+	We approximately write that
+	\begin{equation}
+		\Phi(r,\theta) \approx A r^\nu P_\nu(\cos\theta)
+	\end{equation}
+	where $\nu$ is the smallest root of $P_\nu(\cos\beta)=0$.
+	We obtain the electric field:
+	\begin{equation}
+		E_r = -\frac{\partial\Phi}{\partial r} \approx -\nu A r^{\nu-1} P_\nu(\cos\theta)
+	\end{equation}
+	\begin{equation}
+		E_\theta = -\frac{1}{r}\frac{\partial\Phi}{\partial\theta} \approx -A r^{\nu-1} \sin\theta P'_\nu(\cos\theta)
+	\end{equation}
+	The surface charge density is
+	\begin{equation}
+		\sigma(r) = -\frac{1}{4\pi} E_\theta \rvert_{\theta=\beta} = -\frac{A}{4\pi} r^{\nu-1} \sin\beta P'_\nu(\cos\beta)
+	\end{equation}
+	which is the surface-charge density on the conical conductor.
+	
+	For an approximation for large $\nu$ and $\theta \ll 1$:
+	\begin{equation}
+		P_\nu(\cos\theta) \approx J_0((2\nu+1)\sin\frac{\theta}{2})
+	\end{equation}
+	
+	\section{Mathematical Methods: Spherical Harmonics}
+	
+	\subsection{Associated Legendre Functions}
+	The associated Legendre function is defined by:
+	\[
+	P_l^m(x) = (-1)^m (1-x^2)^{m/2} \frac{d^m}{dx^m} P_l(x)
+	\]
+	By Rodrigues' formula for the Legendre polynomials $P_l(x)$:
+	\[
+	P_l(x) = \frac{1}{2^l l!} \frac{d^l}{dx^l} (x^2-1)^l
+	\]
+	We can write:
+	\[
+	P_l^m(x) = \frac{(-1)^m}{2^l l!} (1-x^2)^{m/2} \frac{d^{l+m}}{dx^{l+m}} (x^2-1)^l
+	\]
+	and for $m<0$, with $m \to -m$:
+	\[
+	P_l^{-m}(x) = (-1)^m \frac{(l-m)!}{(l+m)!} P_l^m(x)
+	\]
+	The orthogonality relation for the associated Legendre functions is:
+	\[
+	\int_{-1}^{1} P_l^m(x) P_k^m(x) dx = \frac{2}{2l+1} \frac{(l+m)!}{(l-m)!} \delta_{lk}
+	\]
+	
+	\subsection{Spherical Harmonics}
+	The normalization condition is that the spherical harmonics $Y_{lm}(\theta, \phi)$ are defined as:
+	\[
+	Y_{lm}(\theta, \phi) = \sqrt{\frac{2l+1}{4\pi} \frac{(l-m)!}{(l+m)!}} P_l^m(\cos\theta) e^{im\phi}
+	\]
+	and they satisfy the relation:
+	\[
+	Y_{l,-m}(\theta, \phi) = (-1)^m Y_{lm}^*(\theta, \phi)
+	\]
+	The orthonormality condition for spherical harmonics over the unit sphere is:
+	\[
+	\int_{0}^{2\pi} d\phi \int_{0}^{\pi} \sin\theta d\theta \, Y_{l'm'}^*(\theta, \phi) Y_{lm}(\theta, \phi) = \delta_{ll'} \delta_{mm'}
+	\]
+	The completeness relation is:
+	\[
+	\sum_{l=0}^{\infty} \sum_{m=-l}^{l} Y_{lm}^*(\theta', \phi') Y_{lm}(\theta, \phi) = \delta(\phi - \phi') \delta(\cos\theta - \cos\theta')
+	\]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure4}
+		\caption{}
+		\label{fig:figure4}
+	\end{figure}
+	
+	\subsubsection{Expansion of Functions}
+	An arbitrary function $g(\theta, \phi)$ can be expanded in a series of spherical harmonics:
+	\[
+	g(\theta, \phi) = \sum_{l=0}^{\infty} \sum_{m=-l}^{l} A_{lm} Y_{lm}(\theta, \phi)
+	\]
+	where the coefficients $A_{lm}$ are found by:
+	\[
+	A_{lm} = \int d\Omega \, Y_{lm}^*(\theta, \phi) g(\theta, \phi)
+	\]
+	with $d\Omega = \sin\theta d\theta d\phi$.
+	
+	As a special case, for $m=0$:
+	\[
+	Y_{l0}(\theta, \phi) = \sqrt{\frac{2l+1}{4\pi}} P_l(\cos\theta)
+	\]
+	The general solution to Laplace's equation in spherical coordinates can be written as:
+	\[
+	\Phi(r, \theta, \phi) = \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \left[ A_{lm}r^l + B_{lm}r^{-(l+1)} \right] Y_{lm}(\theta, \phi)
+	\]
+	
+	\subsection{Addition Theorem for Spherical Harmonics}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure1}
+		\caption{}
+		\label{fig:figure5}
+	\end{figure}
+	
+	We have an angle $\gamma$ between two vectors $\vec{x}'=(r', \theta', \phi')$ and $\vec{x}=(r, \theta, \phi)$.
+	The cosine of this angle is given by:
+	\[
+	\cos\gamma = \cos\theta \cos\theta' + \sin\theta \sin\theta' \cos(\phi - \phi')
+	\]
+	The Legendre polynomial $P_l(\cos\gamma)$ satisfies the angular part of Laplace's equation:
+	\[
+	\nabla^2 P_l(\cos\gamma) + \frac{l(l+1)}{r^2} P_l(\cos\gamma) = 0
+	\]
+	We choose the coordinate system so that $\vec{x}'$ is on the z-axis, then $\theta'=0$ and $\gamma$ becomes the usual polar angle $\theta$. We can expand $P_l(\cos\gamma)$ in a series of spherical harmonics in the $(\theta, \phi)$ coordinates:
+	\[
+	P_l(\cos\gamma) = \sum_{m=-l}^{l} A_m(\theta', \phi') Y_{lm}(\theta, \phi)
+	\]
+	where the coefficients $A_m$ depend on the direction $(\theta', \phi')$. They can be found by projection:
+	\begin{align*}
+		A_m(\theta', \phi') &= \int Y_{lm}^*(\theta, \phi) P_l(\cos\gamma) d\Omega \\
+	\end{align*}
+	This integral is most easily evaluated by rotating the coordinate system so the z-axis points along the direction $(\theta', \phi')$. In this new frame, $\theta \to \gamma$, $P_l(\cos\gamma) \to P_l(\cos\theta_{new})$, and $Y_{lm}^*(\theta, \phi)$ becomes $Y_{lm}^*(\theta'_{new}, \phi'_{new})$. The integral simplifies greatly, yielding the result:
+	\[
+	A_m(\theta', \phi') = \frac{4\pi}{2l+1} Y_{lm}^*(\theta', \phi')
+	\]
+	Thus, we have the addition theorem in its symmetric form:
+	\[
+	P_l(\cos\gamma) = \frac{4\pi}{2l+1} \sum_{m=-l}^{l} Y_{lm}^*(\theta', \phi') Y_{lm}(\theta, \phi)
+	\]
+	Using the definition of $Y_{lm}$, this can be rewritten as:
+	\[
+	P_l(\cos\gamma) = P_l(\cos\theta) P_l(\cos\theta') + 2 \sum_{m=1}^{l} \frac{(l-m)!}{(l+m)!} P_l^m(\cos\theta) P_l^m(\cos\theta') \cos[m(\phi-\phi')]
+	\]
+	If the angle $\gamma$ goes to zero, which means $\theta \to \theta'$ and $\phi \to \phi'$, we get $P_l(1)=1$. This leads to Unsöld's theorem:
+	\[
+	\sum_{m=-l}^{l} |Y_{lm}(\theta, \phi)|^2 = \frac{2l+1}{4\pi}
+	\]
+	
+	\subsubsection{Expansion of the Green's function}
+	We now obtain the expansion for the inverse distance between two points $\vec{x}$ and $\vec{x}'$:
+	\[
+	\frac{1}{|\vec{x} - \vec{x}'|} = 4\pi \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \frac{1}{2l+1} \frac{r_{<}^l}{r_{>}^{l+1}} Y_{lm}^*(\theta', \phi') Y_{lm}(\theta, \phi)
+	\]
+	where $r_<$ is the lesser of $|\vec{x}|$ and $|\vec{x}'|$, and $r_>$ is the greater.
+	\section*{3.7 Laplace Equation in Cylindrical Coordinates; Bessel Functions}
+	
+	\subsection*{Derivation of Bessel's Equation}
+	\begin{enumerate}
+		\item In the cylindrical coordinates $(\rho, \phi, z)$, the Laplace equation $\nabla^2 \Phi = 0$ becomes:
+		$$ \frac{\partial^2 \Phi}{\partial \rho^2} + \frac{1}{\rho} \frac{\partial \Phi}{\partial \rho} + \frac{1}{\rho^2} \frac{\partial^2 \Phi}{\partial \phi^2} + \frac{\partial^2 \Phi}{\partial z^2} = 0 $$
+		We use separation of variables, assuming a solution of the form $\Phi(\rho, \phi, z) = R(\rho) Q(\phi) Z(z)$. Substituting this into the equation and dividing by $RQD$ yields:
+		$$ \frac{R''}{R} + \frac{1}{\rho} \frac{R'}{R} + \frac{1}{\rho^2} \frac{Q''}{Q} + \frac{Z''}{Z} = 0 $$
+		This leads to a system of ordinary differential equations:
+		\begin{align}
+			\frac{d^2 Z}{dz^2} - k^2 Z &= 0 \label{eq:z} \\
+			\frac{d^2 Q}{d\phi^2} + \nu^2 Q &= 0 \label{eq:q} \\
+			\frac{d^2 R}{d\rho^2} + \frac{1}{\rho} \frac{dR}{d\rho} + \left(k^2 - \frac{\nu^2}{\rho^2}\right) R &= 0 \label{eq:r}
+		\end{align}
+		
+		\item The solutions of \eqref{eq:z} and \eqref{eq:q} are:
+		$$ Z(z) = e^{\pm ikz} $$
+		$$ Q(\phi) = e^{\pm i\nu\phi} $$
+		For $Q$ to be single-valued, $\nu$ must be an integer.
+		
+		\item By the change of variable $x = k\rho$, equation \eqref{eq:r} becomes Bessel's equation:
+		$$ \frac{d^2 R}{dx^2} + \frac{1}{x} \frac{dR}{dx} + \left(1 - \frac{\nu^2}{x^2}\right) R = 0 $$
+		We assume a series solution of the form $R(x) = x^\alpha \sum_{j=0}^{\infty} a_j x^j$. The indicial equation gives $\alpha = \pm \nu$.
+		The recurrence relation for the coefficients is:
+		$$ a_{2j} = \frac{-1}{4j(j+\alpha)} a_{2j-2} = \frac{(-1)^j}{2^{2j} j! (\alpha+1)(\alpha+2)\dots(\alpha+j)} a_0 $$
+		If we choose $a_0 = \frac{1}{2^\alpha \Gamma(\alpha+1)}$, then the solution is the Bessel function of the first kind of order $\nu$:
+		$$ J_\nu(x) = \left(\frac{x}{2}\right)^\nu \sum_{j=0}^{\infty} \frac{(-1)^j}{j! \Gamma(j+\nu+1)} \left(\frac{x}{2}\right)^{2j} $$
+		For $\alpha = -\nu$, the other solution is:
+		$$ J_{-\nu}(x) = \left(\frac{x}{2}\right)^{-\nu} \sum_{j=0}^{\infty} \frac{(-1)^j}{j! \Gamma(j-\nu+1)} \left(\frac{x}{2}\right)^{2j} $$
+	\end{enumerate}
+	
+	\subsection*{Properties of Bessel Functions}
+	\begin{itemize}
+		\item For $\nu = m$, an integer:
+		$$ J_{-m}(x) = (-1)^m J_m(x) $$
+		In this case, $J_m(x)$ and $J_{-m}(x)$ are linearly dependent.
+		
+		\item If $\nu$ is not an integer, we have the Neumann function (or Bessel function of the second kind):
+		$$ N_\nu(x) = \frac{J_\nu(x) \cos(\nu\pi) - J_{-\nu}(x)}{\sin(\nu\pi)} $$
+		which is independent of $J_\nu(x)$. For integer orders $m$, $N_m(x) = \lim_{\nu \to m} N_\nu(x)$.
+		
+		\item \textbf{Hankel functions} (or Bessel functions of the third kind) are defined as:
+		\begin{align*}
+			H_\nu^{(1)}(x) &= J_\nu(x) + i N_\nu(x) \\
+			H_\nu^{(2)}(x) &= J_\nu(x) - i N_\nu(x)
+		\end{align*}
+		
+		\item \textbf{Recurrence Relations:} The functions $J_\nu, N_\nu, H_\nu^{(1)}, H_\nu^{(2)}$ all satisfy the following relations (here denoted by $\Omega_\nu(x)$):
+		\begin{align*}
+			\Omega_{\nu-1}(x) + \Omega_{\nu+1}(x) &= \frac{2\nu}{x} \Omega_\nu(x) \\
+			\Omega_{\nu-1}(x) - \Omega_{\nu+1}(x) &= 2 \frac{d}{dx} \Omega_\nu(x)
+		\end{align*}
+	\end{itemize}
+	
+	\subsection*{Asymptotic Forms}
+	We only show the leading terms:
+	\begin{itemize}
+		\item For small arguments, $x \ll 1$:
+		$$ J_\nu(x) \to \frac{1}{\Gamma(\nu+1)} \left(\frac{x}{2}\right)^\nu $$
+		$$ N_\nu(x) \to 
+		\begin{cases}
+			\frac{2}{\pi} \left[ \ln\left(\frac{x}{2}\right) + 0.5772\dots \right], & \nu=0 \\
+			-\frac{\Gamma(\nu)}{\pi} \left(\frac{2}{x}\right)^\nu, & \nu \neq 0
+		\end{cases}
+		$$
+		
+		\item For large arguments, $x \gg 1$:
+		$$ J_\nu(x) \to \sqrt{\frac{2}{\pi x}} \cos\left(x - \frac{\nu\pi}{2} - \frac{\pi}{4}\right) $$
+		$$ N_\nu(x) \to \sqrt{\frac{2}{\pi x}} \sin\left(x - \frac{\nu\pi}{2} - \frac{\pi}{4}\right) $$
+	\end{itemize}
+	
+	\subsection*{Orthogonality and Fourier-Bessel Series}
+	\begin{enumerate}
+		\item We'll be concerned with the roots of $J_\nu(x)$. Let $x_{\nu n}$ be the $n$-th root of $J_\nu(x)$, so $J_\nu(x_{\nu n}) = 0$ for $n=1, 2, 3, \dots$
+		The asymptotic formula for the roots is: $x_{\nu n} \approx n\pi + (\nu-\frac{1}{2})\frac{\pi}{2}$.
+		
+		\item $J_\nu(x_{\nu n} \rho/a)$ satisfies the Sturm-Liouville equation:
+		$$ \frac{1}{\rho} \frac{d}{d\rho} \left[ \rho \frac{dJ_\nu}{d\rho} \right] + \left( \left(\frac{x_{\nu n}}{a}\right)^2 - \frac{\nu^2}{\rho^2} \right) J_\nu\left(\frac{x_{\nu n}\rho}{a}\right) = 0 $$
+		This property leads to the orthogonality of Bessel functions. Consider two different roots $x_{\nu n}$ and $x_{\nu n'}$.
+		$$ \int_0^a \rho J_\nu\left(\frac{x_{\nu n}\rho}{a}\right) \frac{d}{d\rho} \left[ \rho \frac{d}{d\rho} J_\nu\left(\frac{x_{\nu n'}\rho}{a}\right) \right] d\rho + \int_0^a \rho \left( \left(\frac{x_{\nu n'}}{a}\right)^2 - \frac{\nu^2}{\rho^2} \right) \rho J_\nu\left(\frac{x_{\nu n}\rho}{a}\right) J_\nu\left(\frac{x_{\nu n'}\rho}{a}\right) d\rho = 0 $$
+		After integration by parts and simplification, we get the orthogonality relation:
+		$$ \left( (x_{\nu n})^2 - (x_{\nu n'})^2 \right) \int_0^a \rho J_\nu\left(\frac{x_{\nu n}\rho}{a}\right) J_\nu\left(\frac{x_{\nu n'}\rho}{a}\right) d\rho = 0 $$
+		For $n \neq n'$, this implies:
+		$$ \int_0^a \rho J_\nu\left(\frac{x_{\nu n}\rho}{a}\right) J_\nu\left(\frac{x_{\nu n'}\rho}{a}\right) d\rho = \frac{a^2}{2} [J_{\nu+1}(x_{\nu n})]^2 \delta_{nn'} $$
+		
+		\item For an arbitrary function $f(\rho)$ on $0 \le \rho \le a$, we can write a \textbf{Fourier-Bessel series}:
+		$$ f(\rho) = \sum_{n=1}^{\infty} A_{\nu n} J_\nu\left(\frac{x_{\nu n}\rho}{a}\right) $$
+		where the coefficients are given by:
+		$$ A_{\nu n} = \frac{2}{a^2 J_{\nu+1}^2(x_{\nu n})} \int_0^a \rho f(\rho) J_\nu\left(\frac{x_{\nu n}\rho}{a}\right) d\rho $$
+		
+		\item \textbf{Other Forms} of series expansions involving Bessel functions exist:
+		\begin{itemize}
+			\item \textbf{Neumann series:} $\sum_{n=0}^{\infty} a_n J_{n}(z)$
+			\item \textbf{Kapteyn series:} $\sum_{n=0}^{\infty} a_n J_{\nu+n}((\nu+n)z)$
+			\item \textbf{Schlömilch series:} $\sum_{n=1}^{\infty} a_n J_0(nx)$
+		\end{itemize}
+	\end{enumerate}
+	
+	\subsection*{Modified Bessel Functions}
+	\begin{enumerate}
+		\item We change $k^2$ to $-k^2$ in the radial equation \eqref{eq:r}.
+		$$ \frac{d^2 R}{d\rho^2} + \frac{1}{\rho} \frac{dR}{d\rho} - \left(k^2 + \frac{\nu^2}{\rho^2}\right) R = 0 $$
+		With the change of variable $x = k\rho$, this becomes:
+		$$ \frac{d^2 R}{dx^2} + \frac{1}{x} \frac{dR}{dx} - \left(1 + \frac{\nu^2}{x^2}\right) R = 0 $$
+		which is the \textbf{modified Bessel equation}.
+		
+		\item The solutions are the modified Bessel functions:
+		\begin{align*}
+			I_\nu(x) &= i^{-\nu} J_\nu(ix) \\
+			K_\nu(x) &= \frac{\pi}{2} i^{\nu+1} H_\nu^{(1)}(ix)
+		\end{align*}
+		$I_\nu(x)$ is the modified Bessel function of the first kind, which is real and grows exponentially.
+		$K_\nu(x)$ is the modified Bessel function of the second kind, which is real and decays exponentially.
+	\end{enumerate}
+	
+	\section*{3.8 Boundary-Value Problems in Cylindrical Coordinates}
+	
+	\subsection*{}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure6}
+		\caption{}
+		\label{fig:figure6}
+	\end{figure}
+	
+	We make $\Phi = V(\rho, \phi)$ at $z=L$ and $\Phi=0$ at $z=0$. The solutions are:
+	\begin{align*}
+		Q(\phi) &= A \sin(m\phi) + B \cos(m\phi) \\
+		Z(z) &= \sinh(kz) \\
+		R(\rho) &= C J_m(k\rho) + D N_m(k\rho)
+	\end{align*}
+	where $\nu=m$, an integer, and $k$ is a constant. The potential is finite at $\rho=0$, hence $D=0$.
+	The potential is zero at $\rho=a$, hence
+	\begin{equation*}
+		J_m(k_n a) = 0
+	\end{equation*}
+	This implies $k_n = \frac{x_{mn}}{a}$, ($n=1,2,3,\dots$), where $J_m(x_{mn}) = 0$.
+	\begin{equation*}
+		\Phi(\rho, \phi, z) = \sum_{m=0}^{\infty} \sum_{n=1}^{\infty} J_m(k_{mn}\rho) \sinh(k_{mn}z) [A_{mn}\sin(m\phi) + B_{mn}\cos(m\phi)]
+	\end{equation*}
+	At $z=L$, $V(\rho, \phi) = \sum_{m,n} \sinh(k_{mn}L) J_m(k_{mn}\rho) [A_{mn}\sin(m\phi) + B_{mn}\cos(m\phi)]$.
+	By Fourier series in $\phi$ and Fourier-Bessel series in $\rho$:
+	\begin{align*}
+		A_{mn} &= \frac{2 \text{cosech}(k_{mn}L)}{\pi a^2 [J_{m+1}(k_{mn}a)]^2} \int_0^{2\pi} d\phi \int_0^a d\rho \, \rho V(\rho, \phi) J_m(k_{mn}\rho) \sin(m\phi) \\
+		B_{mn} &= \frac{2 \text{cosech}(k_{mn}L)}{\pi a^2 [J_{m+1}(k_{mn}a)]^2} \int_0^{2\pi} d\phi \int_0^a d\rho \, \rho V(\rho, \phi) J_m(k_{mn}\rho) \cos(m\phi)
+	\end{align*}
+	
+	If the potential in charge-free space is finite for $z>0$ and vanishes for $z \to \infty$, the general form must be $(e^{-kz})$
+	\begin{equation*}
+		\Phi(\rho, \phi, z) = \sum_{m=0}^{\infty} \int_0^\infty dk \, e^{-kz} J_m(k\rho) [A_m(k) \sin(m\phi) + B_m(k) \cos(m\phi)]
+	\end{equation*}
+	and
+	\begin{equation*}
+		V(\rho, \phi) = \sum_{m=0}^{\infty} \int_0^\infty dk \, J_m(k\rho) [A_m(k) \sin(m\phi) + B_m(k) \cos(m\phi)]
+	\end{equation*}
+	where $\frac{1}{\pi} \int_0^{2\pi} V(\rho,\phi) \begin{cases} \sin(m\phi) \\ \cos(m\phi) \end{cases} d\phi = \int_0^\infty J_m(k\rho) \begin{cases} A_m(k) \\ B_m(k) \end{cases} dk$.
+	By $\int_0^\infty J_m(k\rho) J_m(k'\rho) \rho \, d\rho = \frac{1}{k} \delta(k-k')$, we have
+	\begin{align*}
+		A_m(k) &= \frac{k}{\pi} \int_0^{2\pi} d\phi \int_0^\infty d\rho \, \rho \, V(\rho, \phi) J_m(k\rho) \sin(m\phi) \\
+		B_m(k) &= \frac{k}{\pi} \int_0^{2\pi} d\phi \int_0^\infty d\rho \, \rho \, V(\rho, \phi) J_m(k\rho) \cos(m\phi)
+	\end{align*}
+	Also, $\int_0^\infty A(k) J_\nu(kx) dk$ where $\tilde{A}(k) = k \int_0^\infty x A(x) J_\nu(kx) dx$.
+	
+	\subsection*{Spherical Bessel functions}
+	\begin{equation*}
+		j_l(z) = \sqrt{\frac{\pi}{2z}} J_{l+\frac{1}{2}}(z)
+	\end{equation*}
+	The orthogonality becomes
+	\begin{equation*}
+		\int_0^\infty r^2 j_l(kr) j_l(k'r) dr = \frac{\pi}{2k^2} \delta(k-k')
+	\end{equation*}
+	The completeness relation, with $r, k, k' > 0$
+	\begin{equation*}
+		A(r) = \int_0^\infty \tilde{A}(k) j_l(kr) dk \quad \text{where} \quad \tilde{A}(k) = \frac{2k^2}{\pi} \int_0^\infty r^2 A(r) j_l(kr) dr
+	\end{equation*}
+	
+	\section*{3.9 Expansion of Green Functions in Spherical Coordinates}
+	\textcircled{1} For the case of no boundary surfaces, except at infinity, we have the expansion of the Green function
+	\begin{equation*}
+		\frac{1}{|\vec{x}-\vec{x}'|} = 4\pi \sum_{l=0}^\infty \sum_{m=-l}^l \frac{1}{2l+1} \frac{r_<^l}{r_>^{l+1}} Y_{lm}^*(\theta', \phi') Y_{lm}(\theta, \phi)
+	\end{equation*}
+	We obtain:
+	\begin{equation*}
+		G(\vec{x}, \vec{x}') = 4\pi \sum_{l=0}^\infty \sum_{m=-l}^l \frac{1}{2l+1} \left[r_<^l - \frac{a^{2l+1}}{r_<^l}\right] \left[\frac{1}{r_>^{l+1}} - \frac{r_>}{b^{2l+1}}\right] Y_{lm}^*(\theta', \phi') Y_{lm}(\theta, \phi)
+	\end{equation*}
+	We exhibit the radial factors for $r<r'$ and $r>r'$.
+	\begin{equation*}
+		\left[ r^l - \frac{a^{2l+1}}{r^l} \right] \left[ \frac{1}{(r')^{l+1}} - \frac{r'}{b^{2l+1}} \right] =
+		\begin{cases}
+			\frac{1}{r_>^{l+1}} \left[ r_<^l - \frac{a^{2l+1}}{r_<^l} \right], & r<r' \\
+			\left[ (r')^l - \frac{a^{2l+1}}{(r')^l} \right] \frac{1}{r^{l+1}}, & r>r'
+		\end{cases}
+	\end{equation*}
+	
+	\textcircled{2} A Green function for a Dirichlet potential problem satisfies the equation:
+	\begin{equation*}
+		\nabla'^2 G(\vec{x}, \vec{x}') = -4\pi \delta(\vec{x}-\vec{x}') \quad \text{and} \quad G(\vec{x}, \vec{x}')=0 \text{ on S}
+	\end{equation*}
+	We exploit the delta function:
+	\begin{equation*}
+		\delta(\vec{x}-\vec{x}') = \frac{1}{r^2} \delta(r-r') \delta(\phi-\phi') \delta(\cos\theta - \cos\theta')
+	\end{equation*}
+	By completeness relation
+	\begin{equation*}
+		\delta(\vec{x}-\vec{x}') = \frac{1}{r^2} \delta(r-r') \sum_{l=0}^\infty \sum_{m=-l}^l Y_{lm}^*(\theta', \phi') Y_{lm}(\theta, \phi)
+	\end{equation*}
+	Then, $G(\vec{x}, \vec{x}') = \sum_{l=0}^\infty \sum_{m=-l}^l A_{lm}(r|r', \theta', \phi') = g_l(r, r') Y_{lm}^*(\theta', \phi')$.
+	Substitution leads to
+	\begin{equation*}
+		A_{lm}(r|r', \theta', \phi') = g_l(r,r') Y_{lm}^*(\theta', \phi')
+	\end{equation*}
+	with
+	\begin{equation*}
+		\frac{1}{r^2} \frac{d}{dr} \left(r^2 \frac{d g_l(r,r')}{dr} \right) - \frac{l(l+1)}{r^2} g_l(r,r') = -\frac{4\pi}{r^2} \delta(r-r')
+	\end{equation*}
+	\begin{equation*}
+		\implies g_l(r, r') =
+		\begin{cases}
+			A r^l + B r^{-(l+1)}, & \text{for } r < r' \\
+			A' r^l + B' r^{-(l+1)}, & \text{for } r > r'
+		\end{cases}
+	\end{equation*}
+	
+	Since $g_l(r,r')$ vanishes for $r=a$ and $r=b$,
+	\begin{align*}
+		g_l(r,r') &= A \left( r^l - \frac{a^{2l+1}}{r^{l+1}} \right), \quad r<r' \\
+		g_l(r,r') &= B' \left( \frac{1}{r^{l+1}} - \frac{r^l}{b^{2l+1}} \right), \quad r>r'
+	\end{align*}
+	By symmetry of $g_l(r,r')$ of $r$ and $r'$,
+	\begin{equation*}
+		g_l(r,r') = C r_<^l \left( 1 - \frac{a^{2l+1}}{r_<^ {2l+1}} \right) \frac{1}{r_>^{l+1}} \left( 1 - \frac{r_>^ {2l+1}}{b^{2l+1}} \right)
+	\end{equation*}
+	where $r_< (r_>)$ is the smaller (larger) of $r$ and $r'$.
+	To determine C, we multiply both sides of the differential equation of $g_l(r,r')$, and integrate over from $r=r'-\epsilon$ to $r=r'+\epsilon$, with $\epsilon$ very small.
+	\begin{equation*}
+		\int_{r'-\epsilon}^{r'+\epsilon} \left[ \frac{d}{dr} \left(r^2 \frac{dg_l}{dr}\right) - l(l+1)g_l \right] dr = \int_{r'-\epsilon}^{r'+\epsilon} -4\pi \delta(r-r') dr
+	\end{equation*}
+	\begin{equation*}
+		\left[ r^2 \frac{dg_l(r,r')}{dr} \right]_{r'-\epsilon}^{r'+\epsilon} = -4\pi
+	\end{equation*}
+	There is a discontinuity in slope at $r=r'$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure7}
+		\caption{}
+		\label{fig:figure7}
+	\end{figure}
+	
+	For $r=r'+\epsilon, r_>=r, r_<=r'$, hence
+	\begin{equation*}
+		\left\{ \frac{d}{dr} [r^2 g_l(r,r')] \right\}_{r=r'+\epsilon} = C \left( (r')^l - \frac{a^{2l+1}}{(r')^{l+1}} \right) \left[ \frac{d}{dr} \left( r^2 \frac{1}{r^{l+1}} \left( 1 - \frac{r^{2l+1}}{b^{2l+1}} \right) \right) \right]_{r=r'}
+	\end{equation*}
+	\begin{equation*}
+		= -C \left[ 1 - \left(\frac{a}{r'}\right)^{2l+1} \right] [l+1+l(l+1)]
+	\end{equation*}
+	Similarly,
+	\begin{equation*}
+		\left\{ \frac{d}{dr} [r g_l(r,r')] \right\}_{r=r'-\epsilon} = C \left[ 1 - \left(\frac{r'}{b}\right)^{2l+1} \right] [l+1+l(l+1)]
+	\end{equation*}
+	We thus find
+	\begin{equation*}
+		C = \frac{4\pi}{(2l+1) [1-(a/b)^{2l+1}]}
+	\end{equation*}
+	
+	\textcircled{3} Combining all these equations, the expansion of the Green function for a spherical shell bounded by $r=a$ and $r=b$ is
+	\begin{equation*}
+		G(\vec{x},\vec{x}') = 4\pi \sum_{l,m} \frac{Y_{lm}^*(\theta', \phi')Y_{lm}(\theta,\phi)}{(2l+1)[1-(a/b)^{2l+1}]} \left( r_<^l - \frac{a^{2l+1}}{r_<^l} \right) \left( \frac{1}{r_>^{l+1}} - \frac{r_>}{b^{2l+1}} \right)
+	\end{equation*}
+	
+	\section*{3.10 Solution of Potential Problems with the Spherical Green Function Expansion}
+	\textcircled{1} The general solution to the Poisson equation with specified potential on the boundary
+	\begin{equation*}
+		\Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \int_V \rho(\vec{x}') G(\vec{x},\vec{x}') d^3x' - \frac{1}{4\pi} \oint_S \Phi(\vec{x}') \frac{\partial G}{\partial n'} da'
+	\end{equation*}
+	We consider inside a sphere of radius $b$.
+	With $a=0$ in the equation of $G(\vec{x},\vec{x}')$
+	\begin{equation*}
+		\frac{\partial G}{\partial n'} \Big|_{r'=b} = -\frac{\partial G}{\partial r'}\Big|_{r'=b} = - \frac{4\pi}{b^2} \sum_{l,m} \left(\frac{r}{b}\right)^l Y_{lm}^*(\theta', \phi') Y_{lm}(\theta,\phi)
+	\end{equation*}
+	The solution of the Laplace equation inside $r=b$ with $\Phi=V(\theta', \phi')$ on the surface
+	\begin{equation*}
+		\Phi(\vec{x}) = \sum_{l,m} \left[ \int V(\theta', \phi') Y_{lm}^*(\theta', \phi') d\Omega' \right] \left(\frac{r}{b}\right)^l Y_{lm}(\theta,\phi)
+	\end{equation*}
+	
+	\textcircled{2} We consider the linear superposition of a hollow grounded sphere of radius $b$ with a concentric ring of charge of radius $a$ and total $Q$. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure8}
+		\caption{}
+		\label{fig:figure8}
+	\end{figure}
+	
+	The charge density of the ring:
+	\begin{equation*}
+		\rho(\vec{x}') = \frac{Q}{2\pi a^2} \delta(r'-a) \delta(\cos\theta')
+	\end{equation*}
+	Because of azimuthal symmetry, only terms in $m=0$ survive, and $a \to 0$, we find the $G(\vec{x}, \vec{x}')$.
+	\begin{equation*}
+		\Phi(\vec{x}) = \frac{1}{4\pi\epsilon_0} \int \rho(\vec{x}') G(\vec{x},\vec{x}') d^3x'
+	\end{equation*}
+	\begin{equation*}
+		= \frac{Q}{4\pi\epsilon_0} \sum_{l=0}^\infty P_l(0) r_<^l \left( \frac{1}{r_>^{l+1}} - \frac{r_>}{b^{2l+1}} \right) P_l(\cos\theta)
+	\end{equation*}
+	where $r_<(r_>)$ is the smaller (larger) of $r$ and $a$.
+	Using the fact that $P_{2n+1}(0)=0$ and $P_{2n}(0)=(-1)^n \frac{(2n-1)!!}{(2n)!!}$:
+	\begin{equation*}
+		\Phi(\vec{x}) = \frac{Q}{4\pi\epsilon_0 a} \sum_{n=0}^{\infty} \frac{(-1)^n (2n-1)!!}{(2n)!!} \left( \frac{r_<^{2n}}{r_>^{2n+1}} - \frac{r_<^{2n} r_>^{2n}}{b^{4n+1}} \right) P_{2n}(\cos\theta)
+	\end{equation*}
+	
+	\textcircled{3} We consider another example, a hollow grounded sphere with a uniform line charge of total charge $Q$ located on the $z$ axis. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure9}
+		\caption{}
+		\label{fig:figure9}
+	\end{figure}
+	
+	The volume-charge density:
+	\begin{equation*}
+		\rho(\vec{x}') = \frac{Q}{2b} \frac{1}{2\pi r' \sin\theta'} [\delta(\cos\theta'-1) + \delta(\cos\theta'+1)]
+	\end{equation*}
+	Thus we have
+	\begin{equation*}
+		\Phi(\vec{x}) = \frac{Q}{8\pi\epsilon_0 b} \sum_{l=0}^\infty [P_l(1)+P_l(-1)] P_l(\cos\theta) \int_0^b \frac{1}{r_>^{l+1}} \left( r_<^l - \frac{r_>^{2l+1}}{b^{2l+1}} \right) dr'
+	\end{equation*}
+	The integral can be broken up into $0 \le r' \le r$ and $r \le r' \le b$.
+	We thus find:
+	\begin{equation*}
+		\int_0^b = \frac{r^l}{r^{l+1}} \int_0^r dr' + r^l \int_r^b \frac{1}{(r')^{l+1}} dr' - \frac{r^l}{b^{2l+1}} \int_0^b (r')^l dr'
+	\end{equation*}
+	\begin{equation*}
+		= \frac{2l+1}{l(l+1)} \left[ 1 - \left(\frac{r}{b}\right)^l \right]
+	\end{equation*}
+	For $l=0$, $\int_0^b = \lim_{l\to 0} \frac{d/dl [1-(r/b)^l]}{d/dl [l(l+1)]} = \lim_{l\to 0} \frac{-(r/b)^l \ln(r/b)}{2l+1} = \ln(b/r)$.
+	Using the fact that $P_l(1)=1, P_l(-1)=(-1)^l$, we obtain
+	\begin{equation*}
+		\Phi(\vec{x}) = \frac{Q}{4\pi\epsilon_0 b} \left\{ \ln(b/r) + \sum_{j=1}^{\infty} \frac{4j+1}{2j(2j+1)} \left[ 1-\left(\frac{r}{b}\right)^{2j} \right] P_{2j}(\cos\theta) \right\}
+	\end{equation*}
+	which diverges for $\cos\theta = \pm 1$ along the z axis.
+	By differentiation of $\Phi(\vec{x})$, we obtain the surface-charge density on the grounded sphere
+	\begin{equation*}
+		\sigma(\theta) = \epsilon_0 \frac{\partial \Phi}{\partial r} \Big|_{r=b} = \frac{Q}{4\pi b^2} \left[ 1 + \sum_{j=1}^{\infty} \frac{4j+1}{2j+1} P_{2j}(\cos\theta) \right]
+	\end{equation*}
+	
+	\section*{3.11 Expansion of Green Functions in Cylindrical Coordinates}
+	\textcircled{1} The equation for the Green function
+	\begin{equation*}
+		\nabla'^2 G(\vec{x}, \vec{x}') = -\frac{\delta(\rho-\rho')}{\rho'} \delta(\phi-\phi') \delta(z-z')
+	\end{equation*}
+	In terms of orthonormal functions
+	\begin{align*}
+		\delta(z-z') &= \frac{1}{2\pi} \int_{-\infty}^\infty dk \, e^{ik(z-z')} = \frac{1}{\pi} \int_0^\infty dk \, \cos[k(z-z')] \\
+		\delta(\phi-\phi') &= \frac{1}{2\pi} \sum_{m=-\infty}^\infty e^{im(\phi-\phi')}
+	\end{align*}
+	In similar fashion
+	\begin{equation*}
+		G(\vec{x}, \vec{x}') = \frac{1}{2\pi^2} \sum_{m=-\infty}^\infty \int_0^\infty dk \, e^{im(\phi-\phi')} \cos[k(z-z')] g_m(k, \rho, \rho')
+	\end{equation*}
+	The substitution leads to the equation for the radial Green function $g_m(k,\rho,\rho')$
+	\begin{equation*}
+		\frac{1}{\rho} \frac{d}{d\rho} \left(\rho \frac{dg_m}{d\rho}\right) - \left(k^2+\frac{m^2}{\rho^2}\right) g_m = -\frac{4\pi}{\rho} \delta(\rho-\rho')
+	\end{equation*}
+	For $\rho \ne \rho'$, $\to$ modified Bessel functions, $I_m(k\rho)$ and $K_m(k\rho)$.
+	Suppose some linear combination of $I_m$ and $K_m$ which satisfies the correct boundary conditions for $\rho < \rho'$ and that $\psi_2(k\rho)$ is another linearly independent combination for $\rho > \rho'$.
+	By symmetry of Green function in $\rho$ and $\rho'$,
+	\begin{equation*}
+		g_m(k,\rho,\rho') = \psi_1(k\rho_<) \psi_2(k\rho_>)
+	\end{equation*}
+	whose normalization is determined by the discontinuity in slope
+	\begin{equation*}
+		\left. \frac{dg_m}{d\rho} \right|_{+} - \left. \frac{dg_m}{d\rho} \right|_{-} = -\frac{4\pi}{\rho'}
+	\end{equation*}
+	where it means evaluated at $\rho = \rho' \pm \epsilon$.
+	
+	where primes mean differentiation with respect to the argument, and $W[\psi_1, \psi_2]$ is the Wronskian.
+	\section*{3.1.2 Eigenfunction Expansions for Green Functions}
+	
+	We consider an elliptic differential equation
+	\[
+	\nabla^2 \Psi(\vec{x}) + [f(\vec{x}) + \lambda] \Psi(\vec{x}) = 0
+	\]
+	where $\lambda_n$ and $\Psi_n(\vec{x})$ are eigenvalues and eigenfunctions.
+	\[
+	\nabla^2 \Psi_n(\vec{x}) + [f(\vec{x}) + \lambda_n] \Psi_n(\vec{x}) = 0
+	\]
+	Similarly, we have the orthogonality condition:
+	\[
+	\int \Psi_m^*(\vec{x}) \Psi_n(\vec{x}) d^3x = \delta_{mn}
+	\]
+	We now find the Green function for the equation:
+	\[
+	\nabla_x^2 G(\vec{x}, \vec{x}') + [f(\vec{x}) + \lambda] G(\vec{x}, \vec{x}') = -4\pi\delta(\vec{x} - \vec{x}')
+	\]
+	where we expand $G(\vec{x}, \vec{x}')$ in terms of the eigenfunctions $\Psi_n$:
+	\[
+	G(\vec{x}, \vec{x}') = \sum_n a_n(\vec{x}') \Psi_n(\vec{x})
+	\]
+	\[
+	\implies \sum_n a_n(\vec{x}') (\lambda - \lambda_n) \Psi_n(\vec{x}) = -4\pi\delta(\vec{x} - \vec{x}')
+	\]
+	From this, we find the coefficients $a_n(\vec{x}')$:
+	\[
+	a_n(\vec{x}') = \frac{4\pi \Psi_n^*(\vec{x}')}{\lambda_n - \lambda}
+	\]
+	Thus, the Green function is given by the expansion:
+	\[
+	G(\vec{x}, \vec{x}') = 4\pi \sum_n \frac{\Psi_n^*(\vec{x}') \Psi_n(\vec{x})}{\lambda_n - \lambda}
+	\]
+	Specially, we place $f(\vec{x})=0$, $\lambda=0$.
+	\[
+	(\nabla^2 + k^2) \Psi(\vec{x}) = 0
+	\]
+	with the continuum of eigenvalues, $k^2$ and the eigenfunctions $\Psi_{\vec{k}}(\vec{x}) = \frac{1}{(2\pi)^{3/2}} e^{i\vec{k}\cdot\vec{x}}$, which have the delta function normalization
+	\[
+	\int \Psi_{\vec{k}}^*(\vec{x}) \Psi_{\vec{k}'}(\vec{x}) d^3x = \delta(\vec{k}-\vec{k}')
+	\]
+	Then, the free space Green function has the form
+	\[
+	\frac{1}{|\vec{x} - \vec{x}'|} = \frac{1}{2\pi^2} \int d^3k \frac{e^{i\vec{k}\cdot(\vec{x}-\vec{x}')}}{k^2}
+	\]
+	
+	We then consider the Green function for a Dirichlet problem inside a rectangular box defined by the six planes, $x=0, y=0, z=0, x=a, y=b, z=c$.
+	In terms of eigenfunctions of the wave equation:
+	\[
+	(\nabla^2 + k_{lmn}^2)\Psi_{lmn}(x,y,z) = 0
+	\]
+	where:
+	\[
+	\Psi_{lmn}(x,y,z) = \sqrt{\frac{8}{abc}} \sin\left(\frac{l\pi x}{a}\right) \sin\left(\frac{m\pi y}{b}\right) \sin\left(\frac{n\pi z}{c}\right)
+	\]
+	and:
+	\[
+	k_{lmn}^2 = \pi^2 \left(\frac{l^2}{a^2} + \frac{m^2}{b^2} + \frac{n^2}{c^2}\right)
+	\]
+	The expansion of the Green function:
+	\[
+	G(\vec{x}, \vec{x}') = \frac{32\pi}{abc} \sum_{l,m,n=1}^{\infty} \frac{\sin(\frac{l\pi x}{a})\sin(\frac{l\pi x'}{a})\sin(\frac{m\pi y}{b})\sin(\frac{m\pi y'}{b})}{\frac{l^2}{a^2} + \frac{m^2}{b^2} + \frac{n^2}{c^2}}
+	\]
+	As $(x,y) \to (\rho, \phi)$ and $(z)$,
+	\[
+	G(\vec{x}, \vec{x}') = \frac{16\pi}{ab} \sum_{l,m=1}^{\infty} \sin\left(\frac{l\pi x}{a}\right)\sin\left(\frac{l\pi x'}{a}\right)\sin\left(\frac{m\pi y}{b}\right)\sin\left(\frac{m\pi y'}{b}\right) \times \frac{\sinh(k_{lm} z_<) \sinh[k_{lm}(c-z_>)]}{k_{lm} \sinh(k_{lm} c)}
+	\]
+	where $k_{lm}^2 = \pi^2(l^2/a^2 + m^2/b^2)$.
+	\[
+	\implies \sum_{n=1}^{\infty} \frac{\sin(\frac{n\pi z}{c}) \sin(\frac{n\pi z'}{c})}{k_{lm}^2 + (\frac{n\pi}{c})^2} = \frac{c}{2} \frac{\sinh(k_{lm} z_<) \sinh[k_{lm}(c-z_>)]}{k_{lm} \sinh(k_{lm} c)}
+	\]
+	The equation for $g_m(k, \rho, \rho')$ can be written in the Sturm-Liouville type.
+	\[
+	\frac{d}{d\rho}\left[ P(\rho) \frac{dy}{d\rho} \right] + g(\rho)y = 0
+	\]
+	To normalize the $\Psi_k$, we have $W[\Psi_a(x), \Psi_b(x)] = -4\pi/k$.
+	If there are no boundary surfaces, $g_m(k, \rho, \rho')$ must be finite at $\rho=0$ and vanish at $\rho \to \infty$.
+	Consequently, $\Psi_a(k\rho) = A \cdot I_m(k\rho)$ and $\Psi_b(k\rho) = K_m(k\rho)$ where $A$ is determined by $W$. We find $W[I_m(x), K_m(x)] = -1/x$, so that $A=4\pi$.
+	Thus,
+	\begin{align*}
+		\frac{1}{|\vec{x} - \vec{x}'|} &= \frac{2}{\pi} \sum_{m=-\infty}^{\infty} \int_0^\infty dk \, e^{im(\phi - \phi')} \cos[k(z-z')] I_m(k\rho_<)K_m(k\rho_>) \\
+		&= \frac{4}{\pi} \int_0^\infty dk \, \cos[k(z-z')] \left\{ \frac{1}{2} I_0(k\rho_<)K_0(k\rho_>) + \sum_{m=1}^{\infty} \cos[m(\phi-\phi')] I_m(k\rho_<)K_m(k\rho_>) \right\}
+	\end{align*}
+	Let $z' \to 0$, only the $m=0$ term survives, we obtain
+	\[
+	\frac{1}{\sqrt{\rho^2+z^2}} = \frac{2}{\pi} \int_0^\infty \cos(kz) K_0(k\rho) dk
+	\]
+	Replace $\rho^2$ by $R^2 = \rho^2+\rho'^2-2\rho\rho'\cos(\phi-\phi')$, we have
+	\[
+	K_0(k\sqrt{\rho^2+\rho'^2-2\rho\rho'\cos(\phi-\phi')}) = I_0(k\rho_<)K_0(k\rho_>) + 2\sum_{m=1}^{\infty} \cos[m(\phi-\phi')] I_m(k\rho_<)K_m(k\rho_>)
+	\]
+	We take the limit $k\to 0$,
+	\[
+	\ln\left(\rho^2+\rho'^2-2\rho\rho'\cos(\phi-\phi')\right) = 2\ln(\rho_>) + \sum_{m=1}^{\infty} \frac{2}{m} \left(\frac{\rho_<}{\rho_>}\right)^m \cos[m(\phi-\phi')]
+	\]
+	
+	\section*{3.1.3 Mixed Boundary Conditions; Conducting Plane with a Circular Hole}
+	
+	We consider the problem of an infinitely thin, grounded conducting plane with a circular hole of radius $a$ cut in it and with the electric field far from the hole being normal to the plane.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure10}
+		\caption{}
+		\label{fig:figure10}
+	\end{figure}
+	
+	We write the potential as $\Phi = \begin{cases} -E_0 z + \Phi^{(1)} \\ -E_1 z + \Phi^{(1)} \end{cases}$ since the electric field is far from the hole. The charge density is on the plane $z=0$.
+	\[
+	\Phi^{(1)}(x,y,z) = \frac{1}{4\pi\epsilon_0} \int \frac{\sigma^{(1)}(x',y')dx'dy'}{\sqrt{(x-x')^2 + (y-y')^2+z^2}}
+	\]
+	which is even in $z$, so that $E_x^{(1)}$ and $E_y^{(1)}$ are even in $z$ and $E_z^{(1)}$ is odd. Since the total $z$ component of electric field must be continuous across $z=0$ in the hole, we have (for $\rho<a$)
+	\[
+	-E_0 + E_z^{(1)}|_{z=0^+} = -E_1 + E_z^{(1)}|_{z=0^-}
+	\]
+	and since $E_z^{(1)}|_{z=0^+} = -E_z^{(1)}|_{z=0^-} = \frac{1}{2}(E_0-E_1)$, if $(x,y)$ inside ($0\le\rho<a$), we have the problem:
+	\[
+	\left. \frac{\partial \Phi^{(1)}}{\partial z} \right|_{z=0^+} = -\frac{1}{2}(E_0-E_1), \quad 0 \le \rho < a
+	\]
+	\[
+	\Phi^{(1)}|_{z=0} = 0, \quad a \le \rho < \infty
+	\]
+	By azimuthal symmetry, in terms of cylindrical coordinates:
+	\[
+	\Phi^{(1)}(\rho,z) = \int_0^\infty dk \, A(k) e^{-k|z|} J_0(k\rho)
+	\]
+	We assume that $A(k)$ can be expanded around $k=0$
+	\[
+	A(k) = \sum_{l=0}^\infty \frac{k^l}{l!} \frac{d^l A}{dk^l}(0)
+	\]
+	\[
+	\implies \Phi^{(1)}(\rho,z) = \sum_{l=0}^\infty \frac{1}{l!} \left(\frac{d^l A}{dk^l}\right)_0 B_l(\rho,z)
+	\]
+	where
+	\begin{align*}
+		B_l(\rho,z) &= \frac{1}{l!} \int_0^\infty dk \, k^l e^{-k|z|} J_0(k\rho) \\
+		&= \frac{1}{l!} \left(-\frac{\partial}{\partial |z|}\right)^l \int_0^\infty dk \, e^{-k|z|} J_0(k\rho) \\
+		&= \left(-\frac{\partial}{\partial |z|}\right)^l \left( \frac{1}{\sqrt{\rho^2+z^2}} \right) \\
+		&= \frac{P_l(\cos\theta)}{r^{l+1}}
+	\end{align*}
+	where $\cos\theta = z/r$ and $r=\sqrt{\rho^2+z^2}$.
+	Thus,
+	\[
+	\Phi^{(1)} = \sum_{l=0}^\infty \frac{d^l A}{dk^l}(0) \frac{P_l(\cos\theta)}{r^{l+1}}
+	\]
+	where $A(0)$ is the total charge.
+	For the mixed boundary value problem:
+	\[
+	\int_0^\infty dk \, k A(k) J_0(k\rho) = \frac{1}{2}(E_0 - E_1), \quad 0 \le \rho \le a
+	\]
+	\[
+	\int_0^\infty dk \, A(k) J_0(k\rho) = 0, \quad a < \rho < \infty
+	\]
+	We consider Weber's formulas:
+	\[
+	\int_0^\infty dy \, g(y) J_n(yx) = x^n, \quad 0 \le x < 1
+	\]
+	\[
+	\int_0^\infty dy \, g(y) J_n(yx) = 0, \quad 1 \le x < \infty
+	\]
+	\[
+	\implies g(y) = \frac{\Gamma(n+1)}{\sqrt{\pi}\Gamma(n+\frac{1}{2})} j_n(y) = \sqrt{\frac{\pi}{2y}} J_{n+1/2}(y)
+	\]
+	We have $n=0, x=\rho/a, y=ka$, thus
+	\[
+	A(k) = \frac{(E_0-E_1)a^2}{\pi} j_1(ka) = \frac{(E_0-E_1)a^2}{\pi} \left[ \frac{\sin(ka)}{(ka)^2} - \frac{\cos(ka)}{ka} \right]
+	\]
+	which means:
+	\[
+	\Phi^{(1)} \to \frac{(E_0-E_1)a^2}{3\pi} \frac{|z|}{r^3}
+	\]
+	which falls off with $1/r^2$, and has the effective electric dipole moment:
+	\[
+	p_z = \frac{4}{3}\pi \epsilon_0 (E_0-E_1)a^3, \quad z \ge 0
+	\]
+	In the neighborhood of the opening
+	\[
+	\Phi^{(1)}(\rho,z) = \frac{(E_0-E_1)a}{\pi} \int_0^\infty dk \, j_1(ka) e^{-k|z|} J_0(k\rho) = \frac{(E_0-E_1)a}{\pi} \left[ \sqrt{\frac{R-x}{2}} - \frac{|z|}{a} \tan^{-1}\left(\sqrt{\frac{R-x}{2}}\right) \right]
+	\]
+	where $x=\frac{1}{a^2}(\rho^2+z^2-a^2)$, $R=\sqrt{x^2+4z^2/a^2}$.
+	
+	The added potential on the axis $(\rho=0)$:
+	\[
+	\Phi^{(1)}(0,z) = \frac{(E_0-E_1)a}{\pi} \left[ 1 - \frac{|z|}{a}\tan^{-1}\left(\frac{a}{|z|}\right) \right]
+	\]
+	which reduces to $\frac{(E_0-E_1)a^3}{3\pi} \frac{1}{|z|^2}$ for $|z|\gg a$ and $r \approx |z|$.
+	
+	In the plane of opening ($z=0$):
+	\[
+	\Phi^{(1)}(\rho,0) = \frac{(E_0-E_1)}{\pi} \sqrt{a^2-\rho^2}, \quad 0 \le \rho < a
+	\]
+	The tangential electric field in the opening is a radial field:
+	\[
+	E'_{tan}(\rho,0) = \frac{(E_0-E_1)}{\pi} \frac{\rho}{\sqrt{a^2-\rho^2}}
+	\]
+	and
+	\[
+	E_z(\rho,0) = -\frac{1}{2}(E_0+E_1)
+	\]
+	Near the circular hole for the full potential, the equipotential contours when $E_1=0$. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure11}
+		\caption{}
+		\label{fig:figure11}
+	\end{figure}
+	
+	
+	
+	
+\end{document}
