@@ -1,0 +1,752 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+\geometry{a4paper, margin=1in}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\title{Rigid Body Mechanics and Tensors}
+\author{}
+\date{}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{The Rigid Body Equations of Motion}
+	
+	\subsection{Angular Momentum and Kinetic Energy of Motion about a Point}
+	
+
+	We consider two position vectors $\vec{R}_1$, $\vec{R}_2$ and a difference vector $\vec{R} = \vec{R}_2 - \vec{R}_1$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure1}
+		\caption{}
+		\label{fig:figure1}
+	\end{figure}
+	
+	The rate of change of $\vec{R}_2$ relative to the space axes is given by:
+	\[
+	\left(\frac{d\vec{R}_2}{dt}\right)_s = \left(\frac{d\vec{R}_1}{dt}\right)_s + \left(\frac{d\vec{R}}{dt}\right)_s = \left(\frac{d\vec{R}_1}{dt}\right)_s + \omega \times \vec{R}
+	\]
+	where the term $\left(\frac{d\vec{R}}{dt}\right)_s$ is relative to the fixed-space axes.
+	
+	Relative to the body axes:
+	\[
+	\left(\frac{d\vec{R}}{dt}\right)_s = \left(\frac{d\vec{R}}{dt}\right)_b + \omega \times \vec{R}
+	\]
+	If $\vec{R}$ is fixed in the body, then $\left(\frac{d\vec{R}}{dt}\right)_b = 0$.
+	
+	When a rigid body moves with one fixed point, the angular momentum $\vec{L}$ is:
+	\[
+	\vec{L} = \sum_i m_i (\vec{r}_i \times \vec{v}_i)
+	\]
+	where $\vec{v}_i = \omega \times \vec{r}_i$.
+	
+	Hence:
+	\begin{align*}
+		\vec{L} &= \sum_i m_i [\vec{r}_i \times (\omega \times \vec{r}_i)] \\
+		&= \sum_i m_i [\omega r_i^2 - \vec{r}_i (\vec{r}_i \cdot \omega)]
+	\end{align*}
+	
+	Expand the x-component:
+	\[
+	L_x = \omega_x \sum_i m_i (y_i^2 + z_i^2) - \omega_y \sum_i m_i x_i y_i - \omega_z \sum_i m_i x_i z_i
+	\]
+	
+	Similarly, we can write the components of the angular momentum vector as:
+	\begin{align*}
+		L_x &= I_{xx} \omega_x + I_{xy} \omega_y + I_{xz} \omega_z \\
+		L_y &= I_{yx} \omega_x + I_{yy} \omega_y + I_{yz} \omega_z \\
+		L_z &= I_{zx} \omega_x + I_{zy} \omega_y + I_{zz} \omega_z
+	\end{align*}
+	where $I_{xx}$, etc. are the moment of inertia coefficients or products of inertia.
+	\begin{align*}
+		I_{xx} &= \sum_i m_i (r_i^2 - x_i^2) = \sum_i m_i (y_i^2 + z_i^2) \\
+		I_{xy} &= -\sum_i m_i x_i y_i
+	\end{align*}
+	
+	By a volume integration:
+	\[
+	I_{xx} = \int_V \rho(\vec{r}) (r^2 - x^2) dV
+	\]
+	or
+	\[
+	I_{jk} = \int_V \rho(\vec{r}) (r^2 \delta_{jk} - x_j x_k) dV
+	\]
+	
+	In sum:
+	\[
+	\vec{L} = \mathbf{I} \omega
+	\]
+	
+	\subsection{Tensors}
+	
+	\subsubsection{Definition in Cartesian Space}
+	In Cartesian three-dimensional space, a tensor $\mathbf{T}$ of the $N$th rank may be defined as a quantity having $3^N$ components $T_{ijk...}$ that transform under an orthogonal transformation of coordinates.
+	\[
+	T'_{ijk...} (x') = \sum_{l,m,n,...} a_{il} a_{jm} a_{kn} \dots T_{lmn...} (x)
+	\]
+	By definition:
+	\begin{itemize}
+		\item a tensor of zero rank is a scalar.
+		\item a tensor of first rank is a vector: $T'_i = \sum_j a_{ij} T_j$.
+		\item a tensor of second rank: $T'_{ij} = \sum_{k,l} a_{ik} a_{jl} T_{kl}$.
+	\end{itemize}
+	
+	\subsubsection{Transformation Rules}
+	Under a linear change of coordinate:
+	\[
+	\mathbf{T'} = \mathbf{A} \mathbf{T} \mathbf{A}^{-1}
+	\]
+	For an orthogonal transformation, $\mathbf{A}^{-1} = \mathbf{A}^T$:
+	\[
+	\mathbf{T'} = \mathbf{A} \mathbf{T} \mathbf{A}^T
+	\]
+	or in component form:
+	\[
+	T'_{ij} = \sum_{k,l} a_{ik} a_{jl} T_{kl}
+	\]
+	
+	\subsubsection{Constructing Tensors}
+	We can construct a tensor of second rank from two vectors $\vec{A}$ and $\vec{B}$:
+	\[
+	\mathbf{T} = \vec{A} \vec{B}^T \quad \text{or} \quad T_{ij} = A_i B_j
+	\]
+	For example:
+	\[
+	\mathbf{T} =
+	\begin{pmatrix}
+		T_{xx} & T_{xy} \\
+		T_{yx} & T_{yy}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		A_x B_x & A_x B_y \\
+		A_y B_x & A_y B_y
+	\end{pmatrix}
+	\]
+	By definition, the transformation is:
+	\begin{align*}
+		T'_{ij} &= \sum_{k,l=1}^3 a_{ik} a_{jl} T_{kl} = \sum_{k,l} a_{ik} a_{jl} (A_k B_l) \\
+		&= (\sum_k a_{ik} A_k) (\sum_l a_{jl} B_l) = A'_i B'_j
+	\end{align*}
+	
+	\subsubsection{Tensor Operations}
+	The dot product on the right of a tensor $\mathbf{T}$ with a vector $\vec{C}$ is defined as the vector $\vec{D}$ by:
+	\[
+	\vec{D} = \mathbf{T} \cdot \vec{C} \quad \text{where} \quad D_i = \sum_{j=1}^3 T_{ij} C_j = T_{ij} C_j
+	\]
+	On the left with a vector $\vec{F}$:
+	\[
+	\vec{E} = \vec{F} \cdot \mathbf{T} \quad \text{where} \quad E_j = \sum_{i=1}^3 F_i T_{ij} = F_i T_{ij}
+	\]
+	A scalar being constructed by a double dot product:
+	\[
+	S = \vec{F} \cdot \mathbf{T} \cdot \vec{C} \quad \text{where} \quad S = \sum_{i,j=1}^3 F_i T_{ij} C_j = F_i T_{ij} C_j
+	\]
+	If $T_{ij} = A_i B_j$, then:
+	\[
+	\mathbf{T} \cdot \vec{C} = \vec{A} (\vec{B} \cdot \vec{C}) = (\vec{B} \cdot \vec{C}) \vec{A}
+	\]
+	and
+	\[
+	\vec{F} \cdot \mathbf{T} = (\vec{F} \cdot \vec{A}) \vec{B}^T = (\vec{A} \cdot \vec{F}) \vec{B}^T
+	\]
+	% Appending to the previous LaTeX file.
+	
+	\section{The Inertia Tensor and the Moment of Inertia}
+	
+	\subsection{Kinetic Energy of Rotation}
+	The kinetic energy of motion about a point is:
+	\begin{align*}
+		T &= \frac{1}{2} \sum_i m_i v_i^2 \\
+		&= \frac{1}{2} \sum_i m_i (\vec{\omega} \times \vec{r}_i) \cdot (\vec{\omega} \times \vec{r}_i) \\
+		&= \frac{1}{2} \sum_i m_i \vec{\omega} \cdot [\vec{r}_i \times (\vec{\omega} \times \vec{r}_i)] \\
+		&= \frac{1}{2} \vec{\omega} \cdot \left( \sum_i m_i [\vec{r}_i \times (\vec{\omega} \times \vec{r}_i)] \right) \\
+		&= \frac{1}{2} \vec{\omega} \cdot \vec{L}
+	\end{align*}
+	Since $\vec{L} = \mathbf{I} \vec{\omega}$, where $\mathbf{I}$ is the inertia tensor, the kinetic energy can be written as:
+	\[
+	T = \frac{1}{2} \vec{\omega} \cdot (\mathbf{I} \vec{\omega})
+	\]
+	
+	
+	The kinetic energy $T_{rotation}$ is a bilinear form in the components of $\vec{\omega}$. Using index notation:
+	\[
+	T_{rotation} = \frac{1}{2} \sum_i m_i (\vec{\omega} \times \vec{r}_i)^2 = \frac{1}{2} \sum_{\alpha, \beta} \omega_\alpha \omega_\beta \left( \sum_i m_i (\delta_{\alpha\beta} r_i^2 - r_{i\alpha} r_{i\beta}) \right)
+	\]
+	It can be written as:
+	\[
+	T_{rotation} = \frac{1}{2} \sum_{\alpha, \beta} I_{\alpha\beta} \omega_\alpha \omega_\beta
+	\]
+	where $I_{\alpha\beta}$ is the moment of inertia tensor:
+	\[
+	I_{\alpha\beta} = \sum_i m_i (\delta_{\alpha\beta} r_i^2 - r_{i\alpha} r_{i\beta})
+	\]
+	For a continuous body, this becomes a volume integral:
+	\[
+	I_{\alpha\beta} = \int_V \rho(\vec{r}) (\delta_{\alpha\beta} r^2 - r_\alpha r_\beta) dV
+	\]
+	
+	\subsection{Moment of Inertia about an Axis}
+	Let $\vec{n}$ be a unit vector along the axis of rotation, so $\vec{\omega} = \omega \vec{n}$. Then the kinetic energy is:
+	\[
+	T = \frac{1}{2} \omega^2 (\vec{n} \cdot \mathbf{I} \cdot \vec{n}) = \frac{1}{2} I \omega^2
+	\]
+	where $I$ is a scalar, the moment of inertia about the axis of rotation defined by $\vec{n}$:
+	\[
+	I = \vec{n} \cdot \mathbf{I} \cdot \vec{n} = \sum_i m_i [r_i^2 - (\vec{r}_i \cdot \vec{n})^2]
+	\]
+	It can also be written as:
+	\begin{align*}
+		I &= \sum_i m_i (\vec{r}_i \times \vec{n})^2 \\
+		&= \frac{m_i (\vec{\omega} \times \vec{r}_i) \cdot (\vec{\omega} \times \vec{r}_i)}{\omega^2} \\
+		&= \frac{2T}{\omega^2}
+	\end{align*}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure2}
+		\caption{}
+		\label{fig:figure2}
+	\end{figure}
+
+	\subsection{Parallel Axis Theorem}
+	We have the relation $\vec{r}_i = \vec{R} + \vec{r'}_i$, where $\vec{R}$ is the vector from the origin $O$ to the center of mass, and $\vec{r'}_i$ is the position vector of the particle $i$ relative to the center of mass.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure3}
+		\caption{}
+		\label{fig:figure3}
+	\end{figure}
+	
+	Therefore, the moment of inertia about an axis through the origin is:
+	\begin{align*}
+		I_a &= \sum_i m_i (\vec{r}_i \times \vec{n})^2 = \sum_i m_i [(\vec{R} + \vec{r'}_i) \times \vec{n}]^2 \\
+		&= \sum_i m_i [(\vec{R} \times \vec{n}) + (\vec{r'}_i \times \vec{n})]^2 \\
+		&= \sum_i m_i (\vec{R} \times \vec{n})^2 + \sum_i m_i (\vec{r'}_i \times \vec{n})^2 + 2 \sum_i m_i (\vec{R} \times \vec{n}) \cdot (\vec{r'}_i \times \vec{n})
+	\end{align*}
+	Since $\sum_i m_i \vec{r'}_i = 0$ by the definition of the center of mass, the last term vanishes.
+	\[
+	\sum_i m_i (\vec{R} \times \vec{n}) \cdot (\vec{r'}_i \times \vec{n}) = (\vec{R} \times \vec{n}) \cdot \left( \left(\sum_i m_i \vec{r'}_i \right) \times \vec{n} \right) = 0
+	\]
+	Hence,
+	\[
+	I_a = I_0 + M(\vec{R} \times \vec{n})^2 = I_0 + MR^2\sin^2\theta
+	\]
+	where $I_0 = \sum_i m_i (\vec{r'}_i \times \vec{n})^2$ is the moment of inertia about a parallel axis through the center of mass, $M$ is the total mass, and $\theta$ is the angle between $\vec{R}$ and $\vec{n}$.
+	
+	\subsection{Inertial Ellipsoid}
+	We define a vector $\vec{n} = \alpha \vec{i} + \beta \vec{j} + \gamma \vec{k}$. The moment of inertia $I = \vec{n} \cdot \mathbf{I} \cdot \vec{n}$ can be expanded as:
+	\[
+	I = I_{xx}\alpha^2 + I_{yy}\beta^2 + I_{zz}\gamma^2 + 2I_{xy}\alpha\beta + 2I_{yz}\beta\gamma + 2I_{zx}\gamma\alpha
+	\]
+	We define a point $\vec{p}$ on the line of $\vec{n}$ such that $\vec{p} = \frac{\vec{n}}{\sqrt{I}}$.
+	Then $n_i = p_i \sqrt{I}$, so $\alpha=p_x\sqrt{I}$, $\beta=p_y\sqrt{I}$, etc.
+	Substituting this into the equation for $I$ gives the equation for the inertial ellipsoid:
+	\[
+	1 = I_{xx}p_x^2 + I_{yy}p_y^2 + I_{zz}p_z^2 + 2I_{xy}p_x p_y + 2I_{yz}p_y p_z + 2I_{zx}p_z p_x
+	\]
+	This can be transformed into a simpler form by choosing the principal axes.
+	
+	\section{Eigenvalues of the Inertia Tensor and Principal Axis Transformation}
+	
+	By definition, we have $I_{xy} = I_{yx}$, etc. This means the inertia tensor will in general have nine components, but only six of them will be independent (three along the diagonal plus three of the off-diagonal elements).
+	
+	The components of $\vec{L}$ are $L_i = \sum_j I_{ij} \omega_j$, and the kinetic energy is $T = \frac{1}{2} \vec{\omega} \cdot \vec{L} = \frac{1}{2} \sum_{i,j} I_{ij} \omega_i \omega_j$.
+	
+	For a vector $\vec{V} = V_x\vec{i} + V_y\vec{j} + V_z\vec{k}$ whose magnitude is $\sqrt{V_x^2 + V_y^2 + V_z^2}$, we consider a transformation $\mathbf{I}_D = \mathbf{R} \mathbf{I} \mathbf{R}^T$.
+	We choose a coordinate system (the principal axes $x', y', z'$) such that the inertia tensor is diagonal:
+	\[
+	\mathbf{I}_D =
+	\begin{pmatrix}
+		I_1 & 0 & 0 \\
+		0 & I_2 & 0 \\
+		0 & 0 & I_3
+	\end{pmatrix}
+	\]
+	where $I_1, I_2, I_3$ are the eigenvalues of $\mathbf{I}$, called the principal moments of inertia. In this basis, the equation for the inertial ellipsoid becomes:
+	\[
+	1 = I_1 p_x'^2 + I_2 p_y'^2 + I_3 p_z'^2
+	\]
+	For the transformation defined by Euler angles, $\mathbf{I} = \mathbf{S} \mathbf{I}_0 \mathbf{S}^{-1}$.
+	To find the eigenvalues, we solve the characteristic equation $\det(\mathbf{I} - \lambda \mathbf{1}) = 0$:
+	\[
+	\begin{vmatrix}
+		I_{xx} - \lambda & I_{xy} & I_{xz} \\
+		I_{yx} & I_{yy} - \lambda & I_{yz} \\
+		I_{zx} & I_{zy} & I_{zz} - \lambda
+	\end{vmatrix} = 0
+	\]
+	
+	As an example, we consider a homogeneous cube of density $\rho$, mass $M$, and side $a$. For a coordinate system with its origin at one corner and axes along the edges, the inertia tensor is:
+	\[
+	\mathbf{I} = \frac{Ma^2}{12}
+	\begin{pmatrix}
+		8 & -3 & -3 \\
+		-3 & 8 & -3 \\
+		-3 & -3 & 8
+	\end{pmatrix}
+	= Ma^2
+	\begin{pmatrix}
+		2/3 & -1/4 & -1/4 \\
+		-1/4 & 2/3 & -1/4 \\
+		-1/4 & -1/4 & 2/3
+	\end{pmatrix}
+	\]
+	*(Note: The second matrix form with $b=Ma^2$ from the provided image has been transcribed. The first form with a factor of $Ma^2/12$ is the standard result for this setup.)*
+	
+	\subsection{Radius of Gyration}
+	We also define the radius of gyration $k_0$, defined by:
+	\[
+	I = M k_0^2
+	\]
+	where $I$ is the moment of inertia about a given axis and $M$ is the total mass.
+	
+	\section{Solving Rigid Body Problems and the Euler Equations of Motion}
+	
+	\subsection{General Formulation}
+	We can write the kinetic energy of a rigid body as the sum of its translational and rotational kinetic energy:
+	$$
+	T = \frac{1}{2} M v^2 + \frac{1}{2} I \omega^2
+	$$
+	For holonomic conservative systems, the Lagrangian $L(q, \dot{q})$ can be separated into two parts:
+	$$
+	L(q, \dot{q}) = L_c(q_c, \dot{q}_c) + L_b(q_b, \dot{q}_b)
+	$$
+	where $L_c$ is the part involving the generalized coordinates of the center of mass, and $L_b$ is the part relating to the orientation of the body about the center of mass.
+	
+	For the rotational motion of a rigid body, we have the Euler Angles. Whether the rotation is about a fixed point or the center of mass, we have the fundamental equation relating the external torque $\vec{N}$ to the rate of change of the angular momentum vector $\vec{L}$:
+	$$
+	\left( \frac{d\vec{L}}{dt} \right)_s = \vec{N}
+	$$
+	The subscript 's' denotes the derivative in a fixed (space) reference frame. Using the transformation to a rotating (body) frame, this can be written as:
+	$$
+	\left( \frac{d\vec{L}}{dt} \right)_s = \left( \frac{d\vec{L}}{dt} \right)_b + \vec{\omega} \times \vec{L}
+	$$
+	Thus, Euler's equation of motion in the body frame is:
+	$$
+	\frac{d\vec{L}}{dt} + \vec{\omega} \times \vec{L} = \vec{N}
+	$$
+	Or, using index notation with the Levi-Civita symbol $\epsilon_{ijk}$:
+	$$
+	\frac{dL_i}{dt} + \epsilon_{ijk} \omega_j L_k = N_i
+	$$
+	In the principal axis frame of the body, the components of angular momentum are related to the angular velocity components by the principal moments of inertia $I_1, I_2, I_3$:
+	$$
+	L_i = I_i \omega_i \quad (\text{no summation over } i)
+	$$
+	Substituting this into the equation of motion, we obtain Euler's equations in component form:
+	$$
+	I_i \frac{d\omega_i}{dt} + \epsilon_{ijk} \omega_j (I_k \omega_k) = N_i
+	$$
+	The expansions for $i=1,2,3$ are:
+	$$
+	\begin{cases}
+		I_1 \dot{\omega}_1 - \omega_2 \omega_3 (I_2 - I_3) = N_1 \\
+		I_2 \dot{\omega}_2 - \omega_3 \omega_1 (I_3 - I_1) = N_2 \\
+		I_3 \dot{\omega}_3 - \omega_1 \omega_2 (I_1 - I_2) = N_3
+	\end{cases}
+	$$
+	
+	\subsection{Torque-Free Motion of a Rigid Body}
+	In the absence of any net torques ($\vec{N} = 0$), Euler's equations of motion are reduced to:
+	$$
+	\begin{cases}
+		I_1 \dot{\omega}_1 = \omega_2 \omega_3 (I_2 - I_3) \\
+		I_2 \dot{\omega}_2 = \omega_3 \omega_1 (I_3 - I_1) \\
+		I_3 \dot{\omega}_3 = \omega_1 \omega_2 (I_1 - I_2)
+	\end{cases}
+	$$
+	From these equations, we can see that if the components of $\vec{\omega}$ are to be constant (i.e., $\dot{\omega}_i=0$), then the right-hand side of all three equations must be zero. This requires $\vec{\omega}$ to be directed along only one of the principal axes.
+	
+	\subsection{Geometric Interpretation: Poinsot's Construction}
+	We consider a coordinate system oriented along the principal axes of the body. Let a vector $\vec{P}$ be defined along the instantaneous axis of rotation:
+	$$
+	\vec{P} = \frac{\vec{\omega}}{\omega}
+	$$
+	We define a function $F(\vec{P})$:
+	$$
+	F(P) = \vec{P} \cdot \mathbf{I} \cdot \vec{P} = \sum_i P_i^2 I_i
+	$$
+	The surfaces of constant $F$ are ellipsoids. Specially, when $F=1$, we get the \textit{inertia ellipsoid}:
+	$$
+	\sum_i P_i^2 I_i = 1
+	$$
+	By definition, the gradient of $F$ is given by $\nabla_p F = 2 \mathbf{I} \cdot \vec{P}$. We can also show that:
+	$$
+	\nabla_p F = \frac{2\vec{L}}{\sqrt{2T}}
+	$$
+	where $T$ is the rotational kinetic energy. We have two conserved quantities in torque-free motion:
+	\begin{enumerate}
+		\item \textbf{Kinetic Energy:} $T = \frac{1}{2} \sum_i I_i \omega_i^2 = \text{constant}$.
+		\item \textbf{Angular Momentum:} $\vec{L} = \text{constant}$ in the space frame.
+	\end{enumerate}
+	The equation $\vec{P} \cdot \vec{L} = \sqrt{2T}$ defines a fixed plane in the space frame, known as the \textit{invariable plane}.
+	The point of contact between the inertia ellipsoid and the invariable plane traces a curve on the ellipsoid called the \textit{polhode}, while the curve traced on the invariable plane is the \textit{herpolhode}.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure4}
+		\caption{}
+		\label{fig:figure4}
+	\end{figure}
+	
+	\subsection{Binet's Construction}
+	The conservation of kinetic energy $T$ can be expressed in terms of the angular momentum vector $\vec{L}$ (since $L_i = I_i \omega_i$):
+	$$
+	T = \sum_{i=1,2,3} \frac{L_i^2}{2I_i} = \text{constant}
+	$$
+	This equation describes an ellipsoid in angular momentum space, referred to as the Binet ellipsoid. We can adopt the convention $I_3 \le I_2 \le I_1$. The equation for the ellipsoid is:
+	$$
+	\sum_i \frac{L_i^2}{2I_i T} = 1
+	$$
+	The conservation of the magnitude of angular momentum, $L^2 = |\vec{L}|^2$, gives:
+	$$
+	\sum_i L_i^2 = L^2 = \text{constant}
+	$$
+	This equation describes a sphere in angular momentum space. These two surfaces, the energy ellipsoid and the momentum sphere, intersect. The path of the tip of the angular momentum vector $\vec{L}$ in the body frame is the curve of intersection.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure5}
+		\caption{}
+		\label{fig:figure5}
+	\end{figure}
+	
+	\subsection{Torque-Free Motion of a Symmetric Top}
+	By symmetry, we choose the symmetry axis as the principal axis 3, so that $I_1 = I_2$. Euler's equations then reduce to:
+	$$
+	\begin{cases}
+		I_1 \dot{\omega}_1 = (I_1 - I_3) \omega_2 \omega_3 \\
+		I_1 \dot{\omega}_2 = (I_3 - I_1) \omega_3 \omega_1 \\
+		I_3 \dot{\omega}_3 = 0
+	\end{cases}
+	$$
+	From the third equation, we immediately see that $\omega_3$ is a constant.
+	$$
+	\dot{\omega}_3 = 0 \implies \omega_3 = \text{constant}
+	$$
+	The first two equations become:
+	$$
+	\dot{\omega}_1 = -\Omega \omega_2, \quad \dot{\omega}_2 = \Omega \omega_1
+	$$
+	where $\Omega$ is the precession frequency, defined as:
+	$$
+	\Omega = \frac{I_3 - I_1}{I_1} \omega_3
+	$$
+	This system of equations describes simple harmonic motion, with the solution:
+	$$
+	\omega_1(t) = A \cos(\Omega t), \quad \omega_2(t) = A \sin(\Omega t)
+	$$
+	This implies that the vector component $(\omega_1, \omega_2)$ has a constant magnitude $A = \sqrt{\omega_1^2 + \omega_2^2}$ and rotates uniformly about the body's z-axis (axis 3) with the angular frequency $\Omega$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure6}
+		\caption{}
+		\label{fig:figure6}
+	\end{figure}
+	
+	In terms of the constant amplitude $A$ and constant component $\omega_3$, the kinetic energy and squared angular momentum are:
+	$$
+	T = \frac{1}{2} I_1 A^2 + \frac{1}{2} I_3 \omega_3^2
+	$$
+	$$
+	L^2 = I_1^2 A^2 + I_3^2 \omega_3^2
+	$$
+	
+	\section*{5.7 The Heavy Symmetrical Top with one Point Fixed}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure7}
+		\caption{}
+		\label{fig:figure7}
+	\end{figure}
+	
+	We have three Euler's angles:
+	\begin{itemize}
+		\item $\theta$ gives the inclination of the $z$ axis from the vertical.
+		\item $\phi$ measures the azimuth of the top about the vertical.
+		\item $\psi$ is the rotation angle of the top about its own $z$ axis.
+	\end{itemize}
+	
+	$$
+	\begin{cases}
+		\dot{\psi} = \text{rotation/spinning of the top about its own figure axis, } z \\
+		\dot{\phi} = \text{precession/rotation of the figure axis } z \text{ about the vertical axis } z' \\
+		\dot{\theta} = \text{nutation/bobbing up and down of the } z \text{ figure axis relative to the vertical space axis } z'
+	\end{cases}
+	$$
+	
+	We have $\dot{\psi} \gg \dot{\theta} \gg \dot{\phi}$, and $I_1 = I_2 \neq I_3$.
+	
+	Euler's equations become:
+	\begin{align*}
+		I_1 \dot{\omega}_1 + \omega_2 \omega_3 (I_3 - I_1) &= N_1 \\
+		I_2 \dot{\omega}_2 + \omega_3 \omega_1 (I_1 - I_3) &= N_2 \\
+		I_3 \dot{\omega}_3 &= N_3
+	\end{align*}
+	
+	We consider initially, $N_3 = N_2 = 0$, $N_1 \neq 0$, $\omega_1 = \omega_2 = 0$, $\omega_3 \neq 0$. The $\omega_3$ is constant.
+	
+	By symmetry, the kinetic energy:
+	$$ T = \frac{1}{2} I_1 (\omega_1^2 + \omega_2^2) + \frac{1}{2} I_3 \omega_3^2 $$
+	In terms of Euler's angles
+	$$ T = \frac{1}{2} I_1 (\dot{\theta}^2 + \dot{\phi}^2 \sin^2\theta) + \frac{1}{2} I_3 (\dot{\psi} + \dot{\phi} \cos\theta)^2 $$
+	In a constant gravitational field the potential energy is the same as if the body were concentrated at the center of mass.
+	$$ V = -m\vec{g} \cdot \vec{r_G} = -mgL\cos\theta $$
+	Thus,
+	$$ L = \frac{1}{2}I_1(\dot{\theta}^2 + \dot{\phi}^2\sin^2\theta) + \frac{1}{2}I_3(\dot{\psi} + \dot{\phi}\cos\theta)^2 - Mgl\cos\theta $$
+	Note that $\phi$ and $\psi$ are cyclic coordinates.
+	The corresponding generalized momenta:
+	\begin{align*}
+		p_\psi &= \frac{\partial L}{\partial \dot{\psi}} = I_3(\dot{\psi} + \dot{\phi}\cos\theta) = I_3 \omega_3 := I_1 a \\
+		p_\phi &= \frac{\partial L}{\partial \dot{\phi}} = (I_1\sin^2\theta + I_3\cos^2\theta)\dot{\phi} + I_3\dot{\psi}\cos\theta = I_1 b
+	\end{align*}
+	where a, b are constants.
+	
+	The system is conservative, E is constant in time.
+	$$ E = T+V = \frac{1}{2} I_1(\dot{\theta}^2 + \dot{\phi}^2\sin^2\theta) + \frac{1}{2}I_3\omega_3^2 + Mgl\cos\theta $$
+	where $I_3\omega_3 = I_1a - I_3\dot{\phi}\cos\theta$.
+	$$
+	\begin{cases}
+		I_1\dot{\phi}\sin^2\theta + I_1a\cos\theta = I_1b \\
+		\dot{\phi} = \frac{b-a\cos\theta}{\sin^2\theta} \\
+		\dot{\psi} = \frac{I_1a}{I_3} - \dot{\phi}\cos\theta = \frac{I_1a}{I_3} - \frac{b-a\cos\theta}{\sin^2\theta}\cos\theta
+	\end{cases}
+	$$
+	Thus, $E' = E - \frac{1}{2}I_3\omega_3^2 = \frac{1}{2}I_1\dot{\theta}^2 + \frac{I_1(b-a\cos\theta)^2}{2\sin^2\theta} + Mgl\cos\theta$ is a constant of the motion.
+	
+	And the effective potential is given by
+	$$ V'(\theta) = Mgl\cos\theta + \frac{I_1}{2}\left(\frac{b-a\cos\theta}{\sin\theta}\right)^2 $$
+	We define four normalized constants
+	$$ \alpha = \frac{2E'}{I_1}, \quad \beta = \frac{2Mgl}{I_1}, \quad a = \frac{p_\psi}{I_1}, \quad b = \frac{p_\phi}{I_1} $$
+	$$ \implies \alpha = \dot{\theta}^2 + \frac{(b-a\cos\theta)^2}{\sin^2\theta} + \beta\cos\theta $$
+	Using $u = \cos\theta$, it'll be written as
+	$$ \dot{u}^2 = (1-u^2)(\alpha - \beta u) - (b-au)^2 $$
+	$$ t = \int_{u(0)}^{u(t)} \frac{du}{\sqrt{(1-u^2)(\alpha - \beta u) - (b-au)^2}} $$
+	
+	\subsection*{Point 2}
+	We designate the function
+	$$ f(u) = \beta u^3 - (\alpha+a^2)u^2 + (2ab-\beta)u + (\alpha-b^2) $$
+	where the roots are $u_1, u_2, u_3$ such that $u_1 < u_2 < u_3$. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure8}
+		\caption{}
+		\label{fig:figure8}
+	\end{figure}
+	
+	The curve is the locus of the figure axis whose shape is determined by the value of the root of $b-au \implies u' = \frac{b}{a}$.
+	
+	For $u'$ lying between $u_1$ and $u_2$, the locus exhibits loops. (b)
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure9}
+		\caption{}
+		\label{fig:figure9}
+	\end{figure}
+	
+	For $u'=u_2$, the locus is tangent to the bounding circles such that $\dot{\phi}$ is in the same direction at both $\theta_1$ and $\theta_2$.
+	
+	For $u'=u_3$ or $u'=u_1$, (c, c') $\dot{\phi}$ and $\dot{\theta}$ vanish, the locus have cusps touching the circle.
+	
+	\subsection*{Point 3}
+	For nutation: $E' = Mgl\cos\theta_0$, $c \gg a \implies \dot{u}=0$.
+	$$ f(u) = (u_0-u)[\beta(1-u^2) - \alpha^2(u_0-u)] $$
+	The root of $f(u)$, u, satisfies
+	$$ (1-u_0^2) - \beta^2(u_0-u) = 0 $$
+	Denoting $u_0-u$ by $x$ and $u_0 - x_1$ by $x_1$.
+	$$ \implies x_1^2 + px_1 - q = 0 $$
+	where $p = a^2 - 2\cos\theta_0$, $q = \sin^2\theta_0$.
+	We assume that $\frac{1}{2}I_3\omega_3^2 \gg 2Mgl$ which implies that $p \gg q$.
+	$$ \frac{a^2}{B} = \left(\frac{I_3}{I_1}\right) \frac{I_3\omega_3^2}{2Mgl} $$
+	and the root is then $x_1 = \frac{q}{p}$.
+	
+	\subsection*{Point 4}
+	Neglecting $2\cos\theta_0$, $x_1 = \frac{\beta\sin^2\theta_0}{a^2} = \frac{I_1}{I_3} \frac{2Mgl}{I_3\omega_3^2}\sin^2\theta_0$.
+	
+	For the fast top, $1-u^2$ can be replaced by $\sin^2\theta_0$.
+	$$ \implies f(u) = x^2 = a^2x(x_1-x) $$
+	By changing variable to $y = x-\frac{x_1}{2}$
+	$$ \implies \dot{y}^2 = a^2(\frac{x_1^2}{4}-y^2) \implies \ddot{y} = -a^2y $$
+	In the condition $x=0$ at $t=0$, the solution $x=\frac{x_1}{2}(1-\cos at)$.
+	
+	The angular frequency of nutation of the figure axis between $\theta_0$ and $\theta_1$ is $a = \frac{I_3}{I_1}\omega_3$ which increases the faster the top is spun initially.
+	
+	Finally, $\dot{\phi} = \frac{a(u_0-u)}{\sin^2\theta_0} \approx \frac{ax}{\sin^2\theta_0} = \frac{B}{2a}(1-\cos at)$.
+	
+	The average of which is $\bar{\dot{\phi}} = \frac{B}{2a} = \frac{Mgl}{I_3\omega_3}$.
+	
+	\subsection*{Point 5}
+	We consider a case where $\theta$ remains constant at $\theta_0$, $\implies \dot{\theta_1}=\ddot{\theta_1}=0$. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure10}
+		\caption{}
+		\label{fig:figure10}
+	\end{figure}
+	
+	$f(u) = u^2 = 0$. $\frac{df}{du} = 0$. $u=u_0$. with $\dot{u}=0$.
+	$$ \implies f(\alpha - \beta u_0) = \frac{(b-au_0)^2}{1-u_0^2} $$
+	$$ \frac{B}{2} = a(b-au_0) - \frac{u_0(\alpha - \beta u_0)}{1-u_0^2} = \frac{u_0(a - \beta u_0)}{1-u_0} $$
+	$$ \implies \frac{B}{2} = a\dot{\phi} - \dot{\phi}^2\cos\theta_0 $$
+	In terms of $\omega_3$ or $\psi, \dot{\phi}$
+	$$ Mgl = \dot{\phi}(I_3\omega_3 - I_1\dot{\phi}\cos\theta_0) $$
+	or
+	$$ Mgl = \dot{\phi}(I_3(\dot{\psi} - \dot{\phi}) - (I_1-I_3)\dot{\phi}\cos\theta_0) $$
+	whose discriminant must be positive:
+	$$ I_3^2\omega_3^2 > 4Mgl I_1\cos\theta_0 $$
+	$$ \theta_0 > \frac{\pi}{2} : \omega_3 \text{ leads to uniform precession} $$
+	$$ \theta_0 < \frac{\pi}{2} : \omega_3 > \omega_{3_{min}} = \frac{2}{I_3}\sqrt{MglI_1\cos\theta_0} $$
+	$$
+	\begin{cases}
+		\dot{\phi} \approx \frac{B}{2a} = \frac{MgI}{I_3\omega_3} \quad (\text{slow}) \\
+		\dot{\psi} \approx \frac{I_3\omega_3}{I_1\cos\theta_0} \quad (\text{fast})
+	\end{cases}
+	$$
+	
+	\subsection*{Point 6}
+	At time $t=0$.
+	$E' = E - \frac{1}{2}I_3\omega_3^2 = Mgl$.
+	By definitions of $\alpha$ and $\beta \implies \alpha = \beta$.
+	Therefore $\dot{u}^2 = (1-u^2)\beta(1-u) - a^2(1-u)^2$
+	or $\dot{u}^2 = (1-u)^2[\beta(1+u)-a^2]$.
+	where $u=1$ is a double root and the third root is $u_3 = \frac{a^2}{\beta}-1$. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure11}
+		\caption{}
+		\label{fig:figure11}
+	\end{figure}
+	
+	If $a^2/\beta > 2$ (fast) $\implies u_3 > 1$.
+	If $a^2/\beta < 2$ (slow) $\implies u_3 < 1$.
+	Specially, $\frac{a^2}{\beta} = \left(\frac{I_3}{I_1}\right)^2 \frac{I_1\omega_3^2}{2Mgl} = 2$
+	or $\omega^2 = \frac{4MglI_1}{I_3^2}$.
+	\section*{5.8 Precession of the Equinoxes and of Satellite Orbits}
+	
+	\subsection*{Mutual Gravitational Potential}
+	The mutual gravitational potential between two bodies is given by:
+	\[ V = - \frac{G m_1 M}{r_1} - \frac{G m_2 m_1}{| \vec{r_1} - \vec{r_2} |} \]
+	\[ V = - \frac{G M m}{r} \frac{1}{\sqrt{1 + (r'/r)^2 - 2(r'/r)\cos\psi}} \]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure12}
+		\caption{}
+		\label{fig:figure12}
+	\end{figure}
+	
+	By the generating function for Legendre polynomials:
+	\[ V = - \frac{G M m}{r} \sum_{n=0}^{\infty} (\frac{r'}{r})^n P_n(\cos\psi) \]
+	where $r$ is the distance from the origin to $M$, and
+	\[ P_0(x) = 1, \quad P_1(x) = x, \quad P_2(x) = \frac{1}{2}(3x^2 - 1) \]
+	
+	For a continuous spherical body with only a radial variation of density, only the first term survives.
+	For a body with spherical symmetry and $\rho(\vec{r}')$,
+	\[ \iiint d^3 r' \rho(\vec{r}') (\frac{r'}{r})^n P_n(\cos\psi) \]
+	Using spherical polar coordinates, with the polar axis along $\vec{r}$, this becomes:
+	\[ 2\pi \int r'^2 dr' \rho(r') (\frac{r'}{r})^n \int_{-1}^{+1} d(\cos\psi) P_n(\cos\psi) \]
+	which vanish except at $n=0$.
+	Since $n=1$:
+	\[ - \frac{G M}{r^2} m r' \cos\psi_i = - \frac{G M}{r^2} \vec{r} \cdot m_i \vec{r_i} \]
+	which is zero by the choice of the center of mass.
+	For $n=2$, it can be written as:
+	\[ - \frac{G M}{2r^3} m_i r_i^2 (1 - 3\cos^2\psi_i) \]
+	By tensor manipulation:
+	\[ V = - \frac{G M m}{r} + \frac{G M}{2r^3} (3I_{rr} - \mathrm{Tr}\boldsymbol{I}) \]
+	where $I_{rr}$ is the moment of inertia about $\vec{r}$ and $\boldsymbol{I}$ is the moment of inertia tensor.
+	
+	From the diagonal representation:
+	\[ V = - \frac{G m M}{r} + \frac{G M}{2r^3} [3(I_1\alpha^2 + I_2\beta^2 + I_3\gamma^2) - (I_1 + I_2 + I_3)] \]
+	which is the MacCullagh's formula. We take the axis of symmetry to be the third principal axis, so that $I_1 = I_2$.
+	If $\alpha, \beta, \gamma$ are the direction cosines of $\vec{r}$ relative to the principal axes,
+	\[ I_{rr} = I_1(\alpha^2 + \beta^2) + I_3\gamma^2 = I_1 + (I_3 - I_1)\gamma^2 \]
+	Thus,
+	\[ V = - \frac{G M m}{r} + \frac{G M(I_3 - I_1)}{2r^3}(3\gamma^2 - 1) \]
+	\[ = - \frac{G M m}{r} + \frac{G M(I_3 - I_1)}{r^3} P_2(\gamma) \]
+	whose terms that could give rise to the torques is
+	\[ V_2 = \frac{G M(I_3 - I_1)}{r^3} P_2(\gamma) \]
+	For the example of Earth's precession, $\gamma$ is the direction cosine between the figure axis of Earth and the radius vector from Earth's center to the Sun or Moon. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure13}
+		\caption{}
+		\label{fig:figure13}
+	\end{figure}
+	
+	We have $\gamma = \sin\theta \cos\psi$. Hence:
+	\[ V_2 = \frac{G M(I_3 - I_1)}{2r^3} (3\sin^2\theta \cos^2\psi - 1) \]
+	The average of which is
+	\[ \bar{V_2} = \frac{G M(I_3 - I_1)}{2r^3} (\frac{3}{2}\sin^2\theta - 1) = \frac{G M(I_3 - I_1)}{2r^3} (\frac{3}{2} - \frac{3}{2}\cos^2\theta) \]
+	\[ = - \frac{G M(I_3 - I_1)}{2r^3} P_2(\cos\theta) \]
+	
+	\subsection*{The Lagrangian}
+	The Lagrangian is
+	\[ L = \frac{1}{2} I_1 (\dot{\theta}^2 + \dot{\phi}^2 \sin^2\theta) + \frac{1}{2} I_3 (\dot{\psi} + \dot{\phi}\cos\theta)^2 - V(\cos\theta) \]
+	We only assume uniform precession, i.e., $\ddot{\theta}, \dot{\theta}$ are zero. Thus:
+	\[ \frac{\partial L}{\partial \dot{\phi}} = I_1 \dot{\phi} \sin^2\theta - I_3(\dot{\psi} + \dot{\phi}\cos\theta)\cos\theta - \frac{\partial V}{\partial \dot{\phi}} = 0 \]
+	or
+	\[ I_3 \omega_3 \dot{\phi} - I_1 \dot{\phi}^2 \cos\theta = \frac{\partial V}{\partial (\cos\theta)} \]
+	For slow precession, $\dot{\phi} \ll \omega_s$. $\dot{\phi}^2$ can be neglected.
+	\[ \Rightarrow \dot{\phi} = \frac{1}{I_3 \omega_3} \frac{\partial V}{\partial (\cos\theta)} \]
+	\[ = \frac{-3 G M}{2 \omega_3 r^3} \frac{I_3 - I_1}{I_3} \cos\theta \]
+	For the case of the precession due to the Sun, we take the semi-major axis of Earth's orbit and using Kepler's law:
+	\[ \omega_0^2 = (\frac{2\pi}{T})^2 = \frac{G M}{r^3} \]
+	\[ \Rightarrow \frac{\dot{\phi}}{\omega_0} = - \frac{3}{2} \frac{\omega_0}{\omega_3} \frac{I_3 - I_1}{I_3} \cos\theta \]
+	$\dot{\phi}$ can be written as:
+	\[ \dot{\phi} = \frac{T}{2\pi r^2} \frac{\partial V}{\partial (\cos\theta)} \]
+	\[ = - \frac{T}{2\pi} \frac{3}{2} \frac{G(I_3 - I_1)}{r^5} \cos\theta \]
+	
+	\section*{5.9 Precession of Systems of Charges in a Magnetic Field}
+	
+	\subsection*{Magnetic Moment and Torque}
+	The magnetic moment of a system of moving charges is
+	\[ \vec{M} = \frac{1}{2} \sum_i q_i (\vec{r_i} \times \vec{v_i}) \to \frac{1}{2} \int dV \rho_e(\vec{r}) (\vec{r} \times \vec{v}) \]
+	The angular moment is
+	\[ \vec{L} = \sum_i m_i (\vec{r_i} \times \vec{v_i}) \to \int dV \rho_m(\vec{r}) (\vec{r} \times \vec{v}) \]
+	\[ \Rightarrow \vec{M} = \gamma \vec{L} \quad \text{where the gyromagnetic ratio is } \gamma = \frac{q}{2m} \]
+	The potential:
+	\[ V = - (\vec{M} \cdot \vec{B}) \]
+	The torque:
+	\[ \vec{N} = \vec{M} \times \vec{B} \]
+	Thus:
+	\[ \frac{d\vec{L}}{dt} = \vec{L} \times \gamma\vec{B} \]
+	For the classical gyromagnetic ratio the precession angular velocity is
+	\[ \vec{\omega_l} = - \frac{q}{2m} \vec{B} \quad \text{known as the Larmor frequency} \]
+	
+	\subsection*{Lagrangian Formulation}
+	For a system
+	\[ L = \frac{1}{2} m_i v_i^2 + \frac{q}{m} m_i \vec{v_i} \cdot \vec{A}(\vec{r_i}) - V(|\vec{r_i} - \vec{r_j}|) \]
+	where
+	\[ \vec{A} = \frac{1}{2} \vec{B} \times \vec{r} \]
+	In terms of $\vec{B}$,
+	\[ L = \frac{1}{2} m_i v_i^2 + \frac{q B}{2m} (\vec{r_i} \times m_i \vec{v_i}) \cdot \hat{k} - V(|\vec{r_i} - \vec{r_j}|) \]
+	The interaction with the magnetic field:
+	\[ \frac{q B}{2m} \hat{k} \cdot \vec{L} = \vec{M} \cdot \vec{B} = - \vec{\omega_l} \cdot (\vec{r_i} \times m_i \vec{v_i}) \]
+	The velocities relative to the new axes has the relation
+	\[ \vec{v_i} = \vec{v_i}' + \vec{\omega_l} \times \vec{r_i} \]
+	
+	The two terms in the Lagrangian affected by the transformation are:
+	\[ \frac{m_i}{2} v_i^2 = \frac{m_i}{2} v_i'^2 + m_i \vec{v_i}' \cdot (\vec{\omega_l} \times \vec{r_i}) + \frac{m_i}{2} (\vec{\omega_l} \cdot \vec{r_i}) \cdot (\vec{\omega_l} \times \vec{r_i}) \]
+	\[ - \vec{\omega_l} \cdot \vec{r_i} \times m_i \vec{v_i}' = - \vec{\omega_l} \cdot (\vec{r_i} \times m_i \vec{v_i}') - \vec{\omega_l} \cdot (\vec{r_i} \times m_i (\vec{\omega_l} \times \vec{r_i})) \]
+	where
+	\[ - \frac{m_i}{2} (\vec{\omega_l} \times \vec{r_i}) \cdot (\vec{\omega_l} \times \vec{r_i}) = - \frac{1}{2} \omega_l \cdot \boldsymbol{I} \cdot \omega_l = - \frac{1}{2} I_{l} \omega_l^2 \]
+	where $I_l$ denotes the moment of inertia about $\vec{\omega_l}$. Thus,
+	\[ L = \frac{1}{2} m_i v_i'^2 - V(|\vec{r_i}' - \vec{r_j}'|) - \frac{1}{2} I_{l} \omega_l^2 \]
+
+\end{document}

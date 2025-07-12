@@ -1,0 +1,498 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+	
+	\section*{III The Central Force Problem}
+	
+	\subsection*{3.1 Reduction to the equivalent one-body problem}
+	
+	Consider a monogenic system of two mass points $m_1$ and $m_2$.
+
+    \begin{figure}[h]
+      	\centering
+    	\includegraphics[width=0.7\linewidth]{figure1}
+    	\caption{}
+    	\label{fig:figure1}
+    \end{figure}
+	
+	Forces are all due to an interaction potential $U$ depending on $\vec{r} = \vec{r}_1 - \vec{r}_2$, which is the vector between the two particles.
+	
+	We choose $\vec{R}$ as the radius vector of the center of mass. The system has 6 degrees of freedom.
+	
+	The Lagrangian is $L = T(\vec{R}, \vec{r}) - U(\vec{r}_1 - \vec{r}_2)$.
+	
+	Where $T = \frac{1}{2}(m_1+m_2)\dot{\vec{R}}^2 + T'$ with $T' = \frac{1}{2}m_1\dot{\vec{r}}_1'^2 + \frac{1}{2}m_2\dot{\vec{r}}_2'^2$ which is the kinetic energy of motion about the center of mass.
+	
+	Here $\vec{r}_1'$ and $\vec{r}_2'$ are the radii vectors of two particles relative to the center of mass and are related to $\vec{r}$ by
+	$$ \vec{r}_1' = -\frac{m_2}{m_1+m_2}\vec{r} \quad, \quad \vec{r}_2' = \frac{m_1}{m_1+m_2}\vec{r} $$
+	Anyway, we obtain
+	$$ L = \frac{m_1+m_2}{2}\dot{\vec{R}}^2 + \frac{1}{2}\frac{m_1m_2}{m_1+m_2}|\dot{\vec{r}}|^2 - U(\vec{r}_1, \vec{r}_2, \dots) $$
+	We define the reduced mass as
+	$$ \mu = \frac{m_1m_2}{m_1+m_2} $$
+	
+	\subsection*{3.2 The equations of motion and first integrals}
+	
+	(1) We now restrict ourselves to conservative central forces and problems that are spherically symmetric.
+	
+	The total angular momentum vector $\vec{L} = \vec{r} \times \vec{p}$ is conserved, thus $\vec{r}$ is always perpendicular to the fixed position of $\vec{L}$ in space.
+	
+	We now express in plane polar coordinates; the Lagrangian
+	$$ L = T - V = \frac{m}{2}(\dot{r}^2 + r^2\dot{\theta}^2) - V(r) $$
+	where $\theta$ is a cyclic coordinate, whose corresponding canonical momentum is the angular momentum of the system
+	$$ p_{\theta} = \frac{\partial L}{\partial \dot{\theta}} = mr^2\dot{\theta} $$
+	$$ \Rightarrow \dot{p}_{\theta} = \frac{d}{dt}(mr^2\dot{\theta}) = 0 $$
+	with the immediate integral
+	$$ mr^2\dot{\theta} = l \quad \text{as a constant magnitude of the angular momentum.} $$
+	Also, we obtain $\frac{d}{dt}(\frac{1}{2}r^2\dot{\theta})=0$
+	$$ ( \text{Tip:} \frac{dp_{\theta}}{dt} = \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{\theta}}\right) = \frac{\partial L}{\partial \theta} = 0 \text{ for a cyclic } \theta ) $$
+	where $\frac{1}{2}r^2\dot{\theta}$ is the areal velocity.
+	
+	The differential area swept out in time $dt$ being
+	$$ dA = \frac{1}{2}r(rd\theta) $$
+	Hence, $\frac{dA}{dt} = \frac{1}{2}r^2\frac{d\theta}{dt}$
+	
+  \begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figure2}
+	\caption{}
+	\label{fig:figure2}
+    \end{figure}
+
+	Here we have the proof of the Kepler's second law of planetary motion.
+	
+	(2) For the coordinate $r$, the Lagrange equation is
+	$$ \frac{d}{dt}(m\dot{r}) - mr\dot{\theta}^2 + \frac{\partial V}{\partial r} = 0 $$
+	where we designate the force along $\vec{r}$ as $-\frac{\partial V}{\partial r}$.
+	So $m\ddot{r} - mr\dot{\theta}^2 = f(r)$.
+	
+	Using $mr^2\dot{\theta}=l$ to eliminate $\dot{\theta}$, we have
+	$$ m\ddot{r} - \frac{l^2}{mr^3} = f(r) $$
+	We consider the conservation of energy
+	$$ E = \frac{m}{2}(\dot{r}^2 + r^2\dot{\theta}^2) + V(r) $$
+	$$ m\ddot{r} = -\frac{d}{dr}\left(V + \frac{l^2}{2mr^2}\right) $$
+	and $m\ddot{r} = \frac{d}{dt}(\frac{1}{2}m\dot{r}^2)$.
+	
+	Using $\frac{d}{dt}g(r) = \frac{dg}{dr}\dot{r}$, we have:
+	$$ \frac{d}{dt}(\frac{1}{2}m\dot{r}^2) = -\frac{d}{dr}\left(V + \frac{l^2}{2mr^2}\right)\dot{r} $$
+	or
+	$$ \frac{d}{dt}\left(\frac{1}{2}m\dot{r}^2 + \frac{l^2}{2mr^2} + V\right) = 0 $$
+	which is equivalent to $E = \text{constant}$.
+	
+	(Tip: $\frac{l^2}{2mr^2} = \frac{1}{2m}m^2r^4\frac{\dot{\theta}^2}{r^2} = \frac{mr^2\dot{\theta}^2}{2}$)
+	
+	Solving for $\dot{r}$, we have
+	$$ \dot{r} = \sqrt{\frac{2}{m}\left(E - V - \frac{l^2}{2mr^2}\right)} \quad \text{or} \quad dt = \frac{dr}{\sqrt{\frac{2}{m}\left(E - V - \frac{l^2}{2mr^2}\right)}} $$
+	At time $t=0$, let $r$ have the initial value $r_0$.
+	$$ \Rightarrow t = \int_{r_0}^{r} \frac{dr}{\sqrt{\frac{2}{m}\left(E - V - \frac{l^2}{2mr^2}\right)}} $$
+	
+    \section*{3.3 The equivalent one-dimensional problem and classification of orbits}
+    
+    (1) The magnitude $v$ follows the conservation of energy
+    \[ E = \frac{1}{2}mv^2 + V(r) \]
+    \[ \Rightarrow v = \sqrt{\frac{2}{m}(E - V(r))} \]
+    And the particle is subject to a force
+    \[ f' = f + \frac{l^2}{mr^3} \]
+    where the second term is the centrifugal force.
+    The particle also has the energy which is fictitious
+    \[ V' = V + \frac{l^2}{2mr^2} \]
+    Note that:
+    \[ f' = -\frac{\partial V'}{\partial r} = f(r) + \frac{l^2}{mr^3} \]
+    Thus the energy conservation theorem
+    \[ E = V' + \frac{1}{2}m\dot{r}^2 \]
+    
+    (2) We consider an example of an attractive inverse-square law of force.
+    \[ f = -\frac{k}{r^2} \Rightarrow V = -\frac{k}{r} \]
+    \[ V' = -\frac{k}{r} + \frac{l^2}{2mr^2} \]
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=0.7\linewidth]{figure3}
+    	\caption{}
+    	\label{fig:figure3}
+    \end{figure}
+    
+    (3) Also, for $mr^2\dot{\theta} = l$.
+    \[ \Rightarrow d\theta = \frac{ldt}{mr^2} \]
+    \[ \Rightarrow \theta = l\int\frac{dt}{mr^2(t)} + \theta_0 \]
+    
+    \section*{3.4 The Virial Theorem}
+    (1) Consider a system of mass points with position vectors $\vec{r}_i$ and applied forces $\vec{F}_i$.
+    The equations of motion: $\dot{\vec{p}}_i = \vec{F}_i$.
+    The quantity:
+    \[ G = \sum_i \vec{p}_i \cdot \vec{r}_i \]
+    \[ \frac{dG}{dt} = \sum_i \dot{\vec{p}}_i \cdot \vec{r}_i + \sum_i \vec{p}_i \cdot \dot{\vec{r}}_i \]
+    where the second term:
+    \[ \sum_i \vec{p}_i \cdot \dot{\vec{r}}_i = \sum_i m_i \dot{\vec{r}}_i \cdot \dot{\vec{r}}_i = \sum_i m_i v_i^2 = 2T \]
+    the first term
+    \[ \sum_i \dot{\vec{p}}_i \cdot \vec{r}_i = \sum_i \vec{F}_i \cdot \vec{r}_i \]
+    Thus:
+    \[ \frac{d}{dt} \sum_i \vec{p}_i \cdot \vec{r}_i = 2T + \sum_i \vec{F}_i \cdot \vec{r}_i \]
+    The time average over $\tau$:
+    \[ \frac{1}{\tau}\int_0^\tau \frac{dG}{dt} dt = \bar{\frac{dG}{dt}} = \bar{2T} + \sum_i \bar{\vec{F}_i \cdot \vec{r}_i} = \frac{1}{\tau}[G(\tau) - G(0)] \]
+    Whether the motion is periodic, for $\tau$ sufficiently long, $G(\tau) - G(0) = 0$.
+    \[ \Rightarrow \bar{T} = -\frac{1}{2}\sum_i \bar{\vec{F}_i \cdot \vec{r}_i} \text{ which is the virial theorem} \]
+    
+    (2) We consider a gas consisting of N atoms confined within a container of volume V.
+    By the equipartition theorem of kinetic energy, the average kinetic energy is given by $\frac{3}{2}k_BT$, where $k_B$ is the Boltzmann constant.
+    Thus:
+    \[ \bar{T} = \frac{3}{2}Nk_BT \]
+    On the other hand, $\vec{F}_i$ include both the forces of interaction and the forces of constraint on the system. As for perfect gas, we only consider the forces due to the collisions with the walls.
+    \[ d\vec{F}_i = -p\hat{n}dA \]
+    where P is the pressure.
+    or
+    \[ \frac{1}{2}\sum_i \overline{\vec{F}_i \cdot \vec{r}_i} = -\frac{1}{2}\int p\hat{n} \cdot \vec{r} dA \]
+    By Gauss's theorem
+    \[ \int \vec{r} \cdot \hat{n} dA = \int \nabla \cdot \vec{r} dV = 3V \]
+    Hence the virial theorem for perfect gas is
+    \[ \frac{3}{2}Nk_BT = \frac{3}{2}PV \text{: which is the ideal gas law} \]
+    
+    (3) For conservative forces
+    \[ \bar{T} = \frac{1}{2} \sum_i \overline{\nabla V \cdot \vec{r}_i} \]
+    For a single particle
+    \[ \bar{T} = \frac{1}{2} \overline{\frac{\partial V}{\partial r} r} \]
+    If $V = ar^{n+1}$
+    \[ \Rightarrow \frac{\partial V}{\partial r} r = (n+1) V \]
+    Then, we obtain
+    \[ \bar{T} = \frac{n+1}{2}\bar{V} \]
+    One special example is when n=-2
+    \[ \bar{T} = -\frac{1}{2}\bar{V} \]
+    
+    \section*{3.5 The Differential Equation for the Orbit, and Integrable Power-Law Potentials.}
+    (1) As stated before: $ldt = mr^2d\theta$.
+    \[ \Rightarrow \frac{d}{dt} = \frac{l}{mr^2}\frac{d}{d\theta} \]
+    which can be used to convert the equation of motion into a differential equation for the orbit.
+    \[ \Rightarrow \frac{l}{r} \frac{d}{d\theta}(\frac{l}{mr^2}\frac{dr}{d\theta}) - \frac{l^2}{mr^3} = f(r) \]
+    substitute $u = \frac{1}{r}$
+    \[ \frac{d^2u}{d\theta^2} + u = -\frac{m}{l^2u^2}V(\frac{1}{u}) \]
+    (Tip: $\frac{d}{du} = \frac{1}{u^2}\frac{d}{dr}$)
+    The equation is such that the orbit is symmetric about two adjacent turning points.
+    Further: $u=u(\theta)$, $(\frac{du}{d\theta})_0 = 0$ for $\theta=0$ will be unaffected whether we use $\theta$ or $-\theta$.
+    $\Rightarrow$ The orbit is invariant under reflection about the apsidal vectors.
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=0.7\linewidth]{figure4}
+    	\caption{}
+    	\label{fig:figure4}
+    \end{figure}
+    
+    (2)
+    \[ d\theta = \frac{ldr}{mr^2\sqrt{\frac{2}{m}(E-V) - \frac{l^2}{2mr^2}}} \]
+    \[ \theta = \int_r^0 \frac{ldr}{r^2\sqrt{2mE - 2mV - \frac{l^2}{r^2}}} + \theta_0 \]
+    $u = \frac{1}{r}$
+    \[ \theta = \theta_0 - \int_{u_0}^u \frac{ldu}{\sqrt{2mE - 2mV - l^2u^2}} \]
+    Assume that $V = \alpha r^{n+1}$
+    \[ \theta = \theta_0 - \int_{u_0}^u \frac{du}{\sqrt{\frac{2mE}{l^2} - \frac{2m\alpha}{l^2}u^{-(n+1)} - u^2}} \]
+    i) Specially, for n=1 (linear force),
+    \[ \theta = \theta_0 - \int_{u_0}^u \frac{du}{\sqrt{\frac{2mE}{l^2} - \frac{2m\alpha}{l^2}u^{-2} - u^2}} \]
+    Substitute $u^2=x$, $du = \frac{dx}{2\sqrt{x}}$
+    \[ \theta = \theta_0 - \frac{1}{2}\int_{x_0}^x \frac{dx}{\sqrt{\frac{2mE}{l^2}x - \frac{2m\alpha}{l^2} - x^2}} \]
+    The same for $n=1, -2, -3$.
+    2) For $n=5, 3, 0, -4, -5, -7$ we have the elliptic functions.
+    
+	\section*{3.6 Conditions for Closed Orbits (Bertrand's Theorem)}
+	
+	For closed orbits, the equivalent potential \(V'(r)\) must have a minimum or maximum at the orbit radius \(r_0\), with the total energy being \(E = V'(r_0)\).
+	For a circular orbit, this requires that the force is attractive and satisfies:
+	\[
+	f(r_0) = -\frac{L^2}{m r_0^3}
+	\]
+	The total energy for this orbit is:
+	\[
+	E = V(r_0) + \frac{L^2}{2 m r_0^2} \quad \text{(which ensures that } \dot{r} = 0)
+	\]
+	
+	\bigskip
+	
+	To make the orbit \textbf{stable}, the second derivative of \(V'(r)\) at \(r_0\) must be positive (i.e., the potential is concave up).
+	\[
+	\frac{\partial^2 V'}{\partial r^2}\bigg|_{r=r_0} = -\frac{\partial f}{\partial r}\bigg|_{r=r_0} + \frac{3L^2}{m r_0^4} > 0
+	\]
+	This leads to the stability conditions:
+	\begin{align*}
+		\frac{\partial f}{\partial r}\bigg|_{r=r_0} &< -\frac{3 f(r_0)}{r_0} \\
+		\text{or} \quad \frac{d \ln f}{d \ln r}\bigg|_{r=r_0} &> -3
+	\end{align*}
+	
+	\bigskip
+	
+	If we consider a power-law force \(f = -k r^n\) (with \(k > 0\)), the stability condition becomes:
+	\[
+	-k n r^{n-1} < 3k r^{n-1} \quad \Rightarrow \quad n > -3
+	\]
+	This means that any power-law attractive potential that varies more slowly than \(1/r^2\) can produce stable circular orbits.
+	
+	\bigskip
+	
+	For an orbit to be closed, small perturbations must also result in a closed path. This restricts the possible force laws. For a perturbed orbit, the condition for closure is related to \(\beta^2\), where:
+	\[
+	\beta^2 = 3 + \frac{r}{f} \frac{df}{dr}\bigg|_{r=r_0}
+	\]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure5}
+		\caption{}
+		\label{fig:figure5}
+	\end{figure}
+	
+	Bertrand's Theorem shows that only two force laws produce closed orbits for all bounded energies:
+	\begin{itemize}
+		\item \(\beta^2 = 1 \Rightarrow\) The \textbf{inverse-square law} (\(f \propto 1/r^2\))
+		\item \(\beta^2 = 4 \Rightarrow\) \textbf{Hooke's law} (\(f \propto r\))
+	\end{itemize}
+	
+	\hrulefill
+	
+	\section*{3.7 The Kepler Problem: Inverse-Square Law of Force}
+	
+	\subsection*{Derivation of the Orbit Equation}
+	
+	For an inverse-square law of force:
+	\[
+	f = -\frac{k}{r^2}, \quad V = -\frac{k}{r}
+	\]
+	The integral for the orbit's angle \(\theta\), with \(u=1/r\), is:
+	\[
+	\theta = \theta' - \int \frac{du}{\sqrt{\frac{2mE}{L^2} + \frac{2mk}{L^2}u - u^2}}
+	\]
+	Using the standard integral form \(\int \frac{dx}{\sqrt{\alpha + \beta x + \gamma x^2}} = \frac{1}{\sqrt{-\gamma}} \arccos\left(-\frac{\beta + 2\gamma x}{\sqrt{\beta^2-4\alpha\gamma}}\right)\), we identify:
+	\[
+	\alpha = \frac{2mE}{L^2}, \quad \beta = \frac{2mk}{L^2}, \quad \gamma = -1
+	\]
+	Solving the integral and rearranging gives the equation of the orbit:
+	\[
+	\frac{1}{r} = \frac{mk}{L^2} \left(1 + \sqrt{1 + \frac{2EL^2}{mk^2}} \cos(\theta - \theta')\right)
+	\]
+	
+	\subsection*{Classification of Orbits}
+	The general equation for a conic section is \(\frac{1}{r} = C[1 + e \cos(\theta - \theta')]\), where \(e\) is the \textbf{eccentricity}. By comparing this to the orbit equation, we find the eccentricity is:
+	\[
+	e = \sqrt{1 + \frac{2EL^2}{mk^2}}
+	\]
+	The shape of the orbit is determined by the energy \(E\) and eccentricity \(e\):
+	\begin{itemize}
+		\item \(E > 0 \implies e > 1\): \textbf{Hyperbola}
+		\item \(E = 0 \implies e = 1\): \textbf{Parabola}
+		\item \(E < 0 \implies e < 1\): \textbf{Ellipse}
+		\item \(E = -\frac{mk^2}{2L^2} \implies e = 0\): \textbf{Circle}
+	\end{itemize}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure6}
+		\caption{}
+		\label{fig:figure6}
+	\end{figure}
+	
+	\subsection*{Properties of Orbits}
+	
+	\textbf{Virial Theorem:} For an inverse-square force, the virial theorem relates the total energy \(E\) to the potential energy \(V\) for a stable orbit. For a circular orbit of radius \(r_0\):
+	\[
+	E = \frac{V}{2} \quad \Rightarrow \quad E = -\frac{k}{2r_0}
+	\]
+	\textbf{Circular Motion:} The condition for a circular orbit is found by equating the central force to the required centripetal force, which gives the radius:
+	\[
+	\frac{k}{r_0^2} = \frac{L^2}{m r_0^3} \quad \Rightarrow \quad r_0 = \frac{L^2}{mk}
+	\]
+	This leads to the specific energy required for a circular orbit:
+	\[
+	E = -\frac{mk^2}{2L^2}
+	\]
+	\textbf{Apsidal Distances:} The minimum and maximum radial distances (\(r_1\) and \(r_2\)) are the points where the radial velocity is zero. They are the roots of the radial energy equation:
+	\[
+	E - \frac{L^2}{2mr^2} + \frac{k}{r} = 0
+	\]
+	\textbf{Elliptical Orbits:} The semi-major axis \(a\) and eccentricity \(e\) can be expressed as:
+	\[
+	a = \frac{k}{2|E|} \quad \text{and} \quad e = \sqrt{1 - \frac{L^2}{mka}}
+	\]
+	The orbit equation in terms of \(a\) and \(e\) is:
+	\[
+	r = \frac{a(1-e^2)}{1+e \cos(\theta)}
+	\]
+	\textbf{Velocity Vector:} The velocity vector \(\vec{v}_{||}\) of the particle along its elliptical path has radial and tangential components:
+	\[
+	\vec{v}_{||} = v_r \hat{r} + v_{\theta} \hat{\theta}
+	\]
+	where \(v_r = |\dot{r}| = \frac{p_r}{m}\) and \(v_{\theta} = r\dot{\theta} = \frac{L}{mr}\).
+	
+	\hrulefill
+	
+	\section*{3.8 The Motion in Time in the Kepler Problem}
+	
+	\begin{enumerate}
+		\item For an inverse-square force, the time taken to travel from the perihelion distance $r_0$ to a distance $r$ is given by the integral:
+		\[
+		t = \sqrt{\frac{m}{2}} \int_{r_0}^{r} \frac{r \, dr}{\sqrt{Er^2 + kr - \frac{L^2}{2m}}}
+		\]
+		In terms of the parameters $a, e, k$:
+		\[
+		t = \sqrt{\frac{m}{2k}} \int_{r_0}^{r} \frac{r \, dr}{\sqrt{r - \frac{r^2}{2a} - \frac{a(1-e^2)}{2}}}
+		\]
+		where $r_0$ is the perihelion distance.
+		
+		Similarly, using the conservation of angular momentum, $dt = \frac{mr^2}{L} d\theta$, which leads to:
+		\[
+		t = \frac{L^3}{mk^2} \int_0^\theta \frac{d\theta}{[1+e\cos\theta]^2}
+		\]
+		
+		\item We now consider the parabolic motion ($e=1$). By using the identity $1+\cos\theta = 2\cos^2\frac{\theta}{2}$ and setting $\theta'$ to zero, the time integral becomes:
+		\[
+		t = \frac{L^3}{4mk^2} \int_0^\theta \sec^4\frac{\theta}{2} \, d\theta
+		\]
+		By a change of variable to $x = \tan\frac{\theta}{2}$, leading to $dx = \frac{1}{2}\sec^2\frac{\theta}{2}d\theta$ and $1+x^2 = \sec^2\frac{\theta}{2}$:
+		\[
+		t = \frac{L^3}{2mk^2} \int_0^{\tan\frac{\theta}{2}} (1+x^2) \, dx = \frac{L^3}{2mk^2} \left(\tan\frac{\theta}{2} + \frac{1}{3}\tan^3\frac{\theta}{2}\right)
+		\]
+		In this equation, $-\pi < \theta < \pi$. For $t \to \infty$, the particle approaches infinity at $\theta = \pm\pi$, and $t=0$ corresponds to $\theta=0$, where the particle is at perihelion.
+		
+		\item We introduce an eccentric anomaly $\psi$, defined by:
+		\[
+		r = a(1-e\cos\psi), \quad 0 < \psi < 2\pi
+		\]
+		In terms of $\psi$, the time integral is:
+		\[
+		t = \sqrt{\frac{ma^2}{k}} \int_0^\psi (1-e\cos\psi) \, d\psi
+		\]
+		If this is carried out over the full range of $\psi$ of $2\pi$, the period is $T = 2\pi a \sqrt{\frac{ma}{k}}$.
+		
+		In another fashion, from the conservation of angular momentum, using areal velocity:
+		\[
+		\frac{dA}{dt} = \frac{1}{2}r^2\dot{\theta} = \frac{L}{2m}
+		\]
+		Integrating over a full period gives $\int_0^T dA = A = \frac{LT}{2m}$, where $A=\pi ab$ is the area of the ellipse. The semi-minor axis is $b=a\sqrt{1-e^2} = a\sqrt{\frac{L^2}{mak}}$. The period is therefore:
+		\[
+		T = \frac{2m}{L} \pi a^2 \sqrt{\frac{L^2}{mak}} = 2\pi a^{3/2} \sqrt{\frac{m}{k}}
+		\]
+		The square of the period is proportional to the cube of the major axis $\implies$ Kepler's Third Law.
+		
+		\item For a two-body system, we have the reduced mass $\mu = \frac{m_1 m_2}{m_1+m_2}$. Thus, the gravitational attractive force is $F = -G\frac{m_1 m_2}{r^2}$ where $k = G m_1 m_2$ is a constant. Under these conditions, the period is:
+		\[
+		T = \frac{2\pi a^{3/2}}{\sqrt{G(m_1+m_2)}} \approx \frac{2\pi a^{3/2}}{\sqrt{Gm_s}}
+		\]
+		where we neglect the mass of the planet.
+	\end{enumerate}
+	
+	\section*{3.9 The Laplace-Runge-Lenz Vector}
+	\begin{enumerate}
+		\item By Newton's second law: $\dot{\vec{p}} = f(r) \frac{\vec{r}}{r}$.
+		\[
+		\dot{\vec{p}} \times \vec{L} = \frac{m}{r} f(r) [\vec{r} \times (\vec{r} \times \dot{\vec{r}})] = \frac{m}{r} f(r) [(\vec{r} \cdot \dot{\vec{r}})\vec{r} - r^2 \dot{\vec{r}}]
+		\]
+		Note that $r\dot{r} = \vec{r} \cdot \dot{\vec{r}}$ and $\frac{d}{dt}\left(\frac{\vec{r}}{r}\right) = \frac{\dot{\vec{r}}}{r} - \frac{\vec{r}\dot{r}}{r^2}$.
+		\[
+		\frac{d}{dt}(\vec{p} \times \vec{L}) = -m f(r) r^2 \frac{d}{dt}\left(\frac{\vec{r}}{r}\right)
+		\]
+		For an inverse-square force law, $f = -k/r^2$, $V=-k/r$.
+		\[
+		\frac{d}{dt}(\vec{p} \times \vec{L}) = \frac{d}{dt}\left(mk\frac{\vec{r}}{r}\right)
+		\]
+		We define a conserved vector, which is called the Runge-Lenz vector:
+		\[
+		\vec{A} = \vec{p} \times \vec{L} - mk\frac{\vec{r}}{r}
+		\]
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{figure7}
+			\caption{}
+			\label{fig:figure7}
+		\end{figure}
+		
+		We can easily see that $\vec{A} \cdot \vec{L} = 0$ since $\vec{L}$ is perpendicular to $\vec{p} \times \vec{L}$ and $\vec{p} \times \vec{L}$ is perpendicular to $\vec{L}$, and $\vec{A}$ belongs to the plane of the orbit.
+		
+		Now consider the dot product of $\vec{A}$ with $\vec{r}$:
+		\[
+		\vec{A} \cdot \vec{r} = Ar\cos\theta = \vec{r} \cdot (\vec{p} \times \vec{L}) - mkr
+		\]
+		Using the vector identity $\vec{A} \cdot (\vec{B} \times \vec{C}) = (\vec{A} \times \vec{B}) \cdot \vec{C}$, we have $\vec{r} \cdot (\vec{p} \times \vec{L}) = (\vec{r} \times \vec{p}) \cdot \vec{L} = \vec{L} \cdot \vec{L} = L^2$.
+		So, $Ar\cos\theta = L^2 - mkr$. Rearranging this gives the orbit equation:
+		\[
+		\frac{1}{r} = \frac{mk}{L^2}\left(1 + \frac{A}{mk}\cos\theta\right)
+		\]
+		Compared with the standard conic section equation $\frac{1}{r} = C(1+\epsilon\cos(\theta-\theta'))$ and $\epsilon = \sqrt{1+\frac{2EL^2}{mk^2}}$, we have:
+		\[
+		A = mk\epsilon \quad \text{or} \quad A^2 = m^2k^2\epsilon^2 = m^2k^2 + 2mEL^2
+		\]
+	\end{enumerate}
+	
+	\section*{3.10 Scattering in a Central Force Field}
+	\begin{enumerate}
+		\item The incident beam is characterized by specifying its intensity/flux density $I$, which is the number of particles crossing a unit area normal to the beam in unit time. The cross-section for scattering in a given direction is defined by:
+		\[
+		\sigma(\Omega)d\Omega = \frac{\text{number of particles scattered into solid angle } d\Omega \text{ per unit time}}{\text{incident intensity}}
+		\]
+		By symmetry, $d\Omega = 2\pi\sin\Theta d\Theta$, where $\Theta$ is the angle between the scattered and incident directions. 
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{figure8}
+			\caption{}
+			\label{fig:figure8}
+		\end{figure}
+		
+		We have $L=mvs = s\sqrt{2mE}$, where $s$ is the perpendicular distance between the center of force and the incident velocity.
+		
+		Between $s$ and $s+ds$, the number of particles scattered into $d\Omega$ is equal to the number of incident particles lying between $s$ and $s+ds$.
+		\[
+		2\pi I |s\,ds| = 2\pi \sigma(\Theta) I \sin\Theta |d\Theta|
+		\]
+		We consider a function $s=s(\Theta, E)$. 
+		\[
+		\sigma(\Theta) = \frac{s}{\sin\Theta}\left|\frac{ds}{d\Theta}\right| \quad \text{and} \quad \Theta = |\pi-2\Psi|
+		\]
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{figure9}
+			\caption{}
+			\label{fig:figure9}
+		\end{figure}
+		
+		where $\Psi$ is the angle between the direction of the incoming asymptote and the periapsis direction. By setting $r=r_m$ when $\theta=\Psi$ and $\theta=\pi$ when $r \to \infty$:
+		\[
+		\Psi = \int_{r_m}^{\infty} \frac{dr}{r^2\sqrt{\frac{2mE}{L^2} + \frac{2mV(r)}{L^2} - \frac{1}{r^2}}} \quad \text{and} \quad L=s\sqrt{2mE}
+		\]
+		This implies:
+		\[
+		\Psi(\Theta) = \pi - 2\int_{r_m}^{\infty} \frac{s \, dr}{r^2 \sqrt{1 - \frac{V(r)}{E} - \frac{s^2}{r^2}}}
+		\]
+		Changing $r$ to $u=s/r$:
+		\[
+		\Psi(s) = \pi - 2\int_0^{u_m} \frac{s \, du}{\sqrt{1 - \frac{V(s/u)}{E} - u^2}}
+		\]
+		
+		\item The scattering force field is produced by $-Ze$ acting on the incident particles charged $-Z'e$. Thus, the force is $f = \frac{ZZ'e^2}{r^2}$. The orbit is a hyperbola with the eccentricity:
+		\[
+		\epsilon = \sqrt{1+\frac{2EL^2}{m(ZZ'e^2)^2}} = \sqrt{1+\left(\frac{2Es}{ZZ'e^2}\right)^2}
+		\]
+		We choose $\theta'$ to be $\pi$ and periapsis corresponds to $\theta=0$ and the orbit equation becomes:
+		\[
+		\frac{1}{r} = \frac{mZZ'e^2}{L^2}(E\cos\theta-1) \quad \text{(Mistake in notes, should be } \epsilon \cos\theta - 1)
+		\]
+		Let's correct it to: $\frac{1}{r} = \frac{mZZ'e^2}{L^2}(\epsilon\cos\theta - 1)$. As $r \to \infty$, $\epsilon\cos\Psi-1 = 0$.
+		We have $\cos\Psi = \frac{1}{\epsilon}$. Hence $\cot^2\Psi = \epsilon^2 - 1$.
+		\[
+		\cot^2\frac{\Theta}{2} = \cot^2\Psi = \epsilon^2 - 1 = \left(\frac{2Es}{ZZ'e^2}\right)^2 \quad \text{and} \quad \cot\frac{\Theta}{2} = \frac{2Es}{ZZ'e^2}
+		\]
+		We thus obtain $s = \frac{ZZ'e^2}{2E}\cot\frac{\Theta}{2}$ and
+		\[
+		\sigma(\Theta) = \frac{1}{4}\left(\frac{ZZ'e^2}{2E}\right)^2\csc^4\frac{\Theta}{2}
+		\]
+		which gives the Rutherford formula for the scattering of $\alpha$ particles by atomic nuclei.
+		
+		\item The total scattering cross-section $\sigma_T$ is defined by:
+		\[
+		\sigma_T = \int \sigma(\Omega) d\Omega = 2\pi \int_0^\pi \sigma(\Theta) \sin\Theta \, d\Theta
+		\]
+		\textit{(etc. page 110)}
+	\end{enumerate}
+	
+\end{document}

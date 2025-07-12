@@ -1,0 +1,444 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\begin{document}
+	
+	\section*{Chapter VI: The Kinematics of Rigid Body Motion}
+	
+	\subsection*{4.1 The Independent Coordinates of a Rigid Body}
+	\begin{enumerate}
+		\item For a rigid body with $N$ particles, the degrees of freedom are reduced by the constraints $r_{ij} = c_{ij}$.
+		
+		To fix a rigid body, we just need to specify any three non-collinear points, thus the degrees of freedom can't be more than 9, and with $r_{12} = c_{12}$, $r_{23} = c_{23}$, $r_{13} = c_{13}$, they're reduced to 6. 
+		
+        \begin{figure}[h]
+        	\centering
+         	\includegraphics[width=0.7\linewidth]{figure1}
+	        \caption{}
+        	\label{fig:figure1}
+        \end{figure}
+        
+		\item For two Cartesian coordinates, the direction cosines are defined by
+		\[
+		\begin{cases}
+			\cos\theta_{11} = \cos(\mathbf{i'}, \mathbf{i}) = \mathbf{i'} \cdot \mathbf{i} \\
+			\cos\theta_{12} = \cos(\mathbf{i'}, \mathbf{j}) = \mathbf{i'} \cdot \mathbf{j} \\
+			\cos\theta_{21} = \cos(\mathbf{j'}, \mathbf{i}) = \mathbf{j'} \cdot \mathbf{i}, \text{etc.}
+		\end{cases}
+		\]
+		In terms of the unit vectors of the unprimed system, the unit vector in the primed system can be expressed
+		\begin{align*}
+			\mathbf{i'} &= \cos\theta_{11}\mathbf{i} + \cos\theta_{12}\mathbf{j} + \cos\theta_{13}\mathbf{k} \\
+			\mathbf{j'} &= \cos\theta_{21}\mathbf{i} + \cos\theta_{22}\mathbf{j} + \cos\theta_{23}\mathbf{k} \\
+			\mathbf{k'} &= \cos\theta_{31}\mathbf{i} + \cos\theta_{32}\mathbf{j} + \cos\theta_{33}\mathbf{k}
+		\end{align*}
+		Thus, we can write
+		\[
+		\mathbf{r} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k} = x'\mathbf{i'} + y'\mathbf{j'} + z'\mathbf{k'}
+		\]
+		where $x' = (\mathbf{i'} \cdot \mathbf{r})$, $y' = (\mathbf{j'} \cdot \mathbf{r})$, $z' = (\mathbf{k'} \cdot \mathbf{r})$. Note that $\mathbf{i'} \cdot \mathbf{j'} = \mathbf{j'} \cdot \mathbf{k'} = \mathbf{k'} \cdot \mathbf{i'} = 0$ and $\mathbf{i'} \cdot \mathbf{i'} = \mathbf{j'} \cdot \mathbf{j'} = \mathbf{k'} \cdot \mathbf{k'} = 1$.
+	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{figure2}
+			\caption{}
+			\label{fig:figure2}
+		\end{figure}
+		
+		We can use the Kronecker symbol
+		\[
+		\sum_{l=1}^{3} \cos\theta_{li'} \cos\theta_{lj'} = \delta_{ij}
+		\]
+	\end{enumerate}
+	
+	\subsection*{4.2 Orthogonal Transformations}
+	\begin{enumerate}
+		\item As showed before, for $x \to x_1, y \to x_2, z \to x_3$, we write $a_{ij} = \cos\theta_{ij}$, thus
+		\begin{align*}
+			x'_1 &= a_{11}x_1 + a_{12}x_2 + a_{13}x_3 \\
+			x'_2 &= a_{21}x_1 + a_{22}x_2 + a_{23}x_3 \\
+			x'_3 &= a_{31}x_1 + a_{32}x_2 + a_{33}x_3
+		\end{align*}
+		We use the summation convention introduced by Einstein
+		\[
+		x'_i = \sum_{j} a_{ij}x_j, \quad i=1,2,3
+		\]
+		and $\sum_i x'_i x'_i$ can be written as $x'_i x'_i$.
+		
+		Thus,
+		\[
+		x'_i x'_i = x_j x_j = a_{ij} a_{ik} x_j x_k
+		\]
+		\[
+		\Rightarrow a_{ij} a_{ik} = \delta_{jk}, \quad j,k=1,2,3
+		\]
+		which is the orthogonal condition.
+		
+		The matrix of transformation is
+		\[
+		A = 
+		\begin{pmatrix}
+			a_{11} & a_{12} & a_{13} \\
+			a_{21} & a_{22} & a_{23} \\
+			a_{31} & a_{32} & a_{33}
+		\end{pmatrix}
+		\]
+		such that $\mathbf{x'} = A\mathbf{x}$.
+	\end{enumerate}
+	
+	\subsection*{4.3 Formal Properties of the Transformation Matrix}
+	\begin{enumerate}
+		\item We consider two successive transformations
+		\[
+		\mathbf{x'} = B\mathbf{x} \quad \text{and} \quad \mathbf{x''} = A\mathbf{x'}
+		\]
+		or
+		\[
+		x'_k = b_{kj}x_j \quad \text{and} \quad x''_i = a_{ik}x'_k
+		\]
+		Thus, we have
+		\[
+		x''_i = a_{ik}b_{kj}x_j \Rightarrow x''_i = c_{ij}x_j
+		\]
+		where $C=AB$ where $c_{ij} = a_{ik}b_{kj}$.
+		
+		or $C=BA$ is defined by $d_{ij} = b_{ik}a_{kj}$.
+		
+		\item
+		\[
+		x = 
+		\begin{bmatrix}
+			x_1 \\
+			x_2 \\
+			x_3
+		\end{bmatrix}, \quad
+		x' = 
+		\begin{bmatrix}
+			x'_1 \\
+			x'_2 \\
+			x'_3
+		\end{bmatrix}
+		\]
+		\[
+		(Ax)_i = a_{ij}x_j = x'_i \Rightarrow x' = Ax
+		\]
+		
+		\item $(AB)C = A(BC)$
+		
+		\item $C = A+B \Rightarrow c_{ij} = a_{ij} + b_{ij}$
+		
+		\item For $A^{-1}$ where $x_i = a_{ij}x'_j$
+		\[
+		\Rightarrow a_{ki}a_{ij} = \delta_{kj} \quad \text{and} \quad AA^{-1} = 
+		\begin{bmatrix}
+			1 & & \\
+			& \ddots & \\
+			& & 1
+		\end{bmatrix}
+		\]
+		where $x=Ix$.
+		
+		\item Let's consider $a_{kl}a_{ki}a_{ij}$ or $c_{lj} a_{ij}$ with $c_{li} = a_{kl}a_{ki}$ or $a_{ki}d_{kj}$ with $d_{kj}=a_{ki}a_{ij}$.
+		
+		$a_{kl}\delta_{kj} = a_{lj}$
+		
+		\item $A \to A^{-1}: a'_{ij} = a_{ji}$. For orthogonal matrices, $A^{-1} = \tilde{A}$ where $\tilde{A}$ is the transposed matrix, and thus we have
+		\[
+		a_{ki}a_{ji} = \delta_{kj} \Rightarrow A\tilde{A}=I
+		\]
+		
+		\item $A_{ij}x_j = x_j(A)_{ji} \Rightarrow Ax=x\tilde{A}$
+		
+		\item If $A_{ij} = A_{ji}$, the matrix is symmetric.
+		
+		If $A_{ij} = -A_{ji}$, the matrix is antisymmetric.
+		
+		\item $|AB|=|A||B|$
+		
+		$A\tilde{A}=I \Rightarrow |A||\tilde{A}| = |A|^2 = 1$
+		
+		$|A^{-1}||A|=1$
+	\end{enumerate}
+	
+	\subsection*{4.4 The Euler Angles}
+	We consider a transformation
+	\[
+	xyz \xrightarrow[\text{about } z]{\text{rotate by } \phi \text{ counterclockwise}} \xi\eta\zeta \xrightarrow[\text{about } \xi]{\text{rotate by } \theta \text{ counterclockwise}} \xi'\eta'\zeta'
+	\]
+	\[
+	\xrightarrow[\text{about } \zeta']{\text{rotate by } \psi \text{ counterclockwise}} x'y'z'
+	\]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure3}
+		\caption{}
+		\label{fig:figure3}
+	\end{figure}
+	
+	
+	We have
+	\[
+	\begin{cases}
+		\text{\textcircled{1}} \quad \xi = Dx \\
+		\text{\textcircled{2}} \quad \xi' = C\xi \\
+		\text{\textcircled{3}} \quad x' = B\xi'
+	\end{cases}
+	\quad \text{where } \xi \text{ and } x \text{ are column matrices}
+	\]
+	Hence, $A=BCD$ where
+	\[
+	B = 
+	\begin{bmatrix}
+		\cos\psi & \sin\psi & 0 \\
+		-\sin\psi & \cos\psi & 0 \\
+		0 & 0 & 1
+	\end{bmatrix}
+	\]
+	\[
+	C = 
+	\begin{bmatrix}
+		1 & 0 & 0 \\
+		0 & \cos\theta & \sin\theta \\
+		0 & -\sin\theta & \cos\theta
+	\end{bmatrix}
+	\]
+	\[
+	D = 
+	\begin{bmatrix}
+		\cos\phi & \sin\phi & 0 \\
+		-\sin\phi & \cos\phi & 0 \\
+		0 & 0 & 1
+	\end{bmatrix}
+	\]
+	
+	\subsection*{4.5 The Cayley-Klein Parameters and Related Quantities}
+	We consider four parameters $\alpha, \beta, \gamma, \delta$ with the constraints that $\beta = -\gamma^*$ and $\delta = \alpha^*$.
+	
+	The transformation matrix
+	\[
+	A = 
+	\begin{bmatrix}
+		\frac{1}{2}(\alpha^2 - \gamma^2 + \delta^2 - \beta^2) & \frac{i}{2}(\gamma^2 - \alpha^2 + \delta^2 - \beta^2) & \gamma\delta - \alpha\beta \\
+		\frac{1}{2}(\alpha^2 + \gamma^2 - \beta^2 - \delta^2) & \frac{1}{2}(\alpha^2 + \gamma^2 + \beta^2 + \delta^2) & -i(\alpha\beta + \gamma\delta) \\
+		\beta\delta - \alpha\gamma & i(\alpha\gamma + \beta\delta) & \alpha\delta + \beta\gamma
+	\end{bmatrix}
+	\]
+	And we choose the Euler parameters $e_0, e_1, e_2, e_3$ where $\sum_{i=0}^{3} e_i^2 = 1$ and
+	\begin{align*}
+		\alpha &= e_0 + ie_3 \\
+		\beta &= e_2 + ie_1
+	\end{align*}
+	
+	\subsection*{4.6 Euler's Theorem on the Motion of a Rigid Body}
+	\begin{enumerate}
+		\item \textbf{Euler's Theorem:} The general displacement of a rigid body with one point fixed is a rotation about some axis.
+		\[
+		\Rightarrow R' = AR = R \lambda
+		\]
+		where $\lambda$ is a complex constant where we have the eigenvalue equations
+		\[
+		(A-\lambda I)R=0 \Rightarrow |A-\lambda I| = 
+		\begin{vmatrix}
+			a_{11}-\lambda & a_{12} & a_{13} \\
+			a_{21} & a_{22}-\lambda & a_{23} \\
+			a_{31} & a_{32} & a_{33}-\lambda
+		\end{vmatrix} = 0
+		\]
+		which is the characteristic equation.
+		
+		The eigenvalue equation can also be written:
+		\[
+		\sum_j a_{ij}x_{jk} = \lambda_k x_{ik} = \sum_j x_{ij} \delta_{jk} \lambda_k
+		\]
+	\end{enumerate}
+	\subsection*{4.6 Euler's Theorem (Continued)}
+	We designate the matrix by
+	\[
+	\Lambda = 
+	\begin{bmatrix}
+		\lambda_1 & 0 & 0 \\
+		0 & \lambda_2 & 0 \\
+		0 & 0 & \lambda_3
+	\end{bmatrix}
+	\]
+	Hence: $AX = X\Lambda \Rightarrow X^{-1}AX = \Lambda$.
+	\begin{enumerate}
+		\setcounter{enumi}{1}
+		\item Consider the expression $(A-I)\tilde{A} = I - \tilde{A}$ (orthogonal matrices).
+		\[
+		\Rightarrow |A-I||\tilde{A}| = |I-\tilde{A}| = |I-A|
+		\]
+		Since $|-B| = (-1)^n |B|$, we have $|I-A| = 0$.
+		
+		\item \textbf{Chasles' Theorem:} The most general displacement of a rigid body is a translation plus a rotation.
+	\end{enumerate}
+	
+	\subsection*{4.7 Finite Rotations}
+	\begin{enumerate}
+		\item For $\vec{r} = \vec{OP}$, $\vec{r'} = \vec{OQ}$, $\vec{ON} = \vec{n}(\vec{n} \cdot \vec{r})$, $\vec{NP} = \vec{r} - \vec{n}(\vec{n} \cdot \vec{r})$.
+		\[
+		\vec{NQ} = \vec{r} \times \vec{n}, \quad \vec{r'} = \vec{ON} + \vec{NV} + \vec{VQ}
+		\]
+		\[
+		\Rightarrow \vec{r'} = \vec{r}\cos\Phi + \vec{n}(\vec{n} \cdot \vec{r})(1-\cos\Phi) + (\vec{r} \times \vec{n})\sin\Phi
+		\]
+		which is the rotation formula.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{figure4}
+			\caption{}
+			\label{fig:figure4}
+		\end{figure}
+		
+	\end{enumerate}
+	
+	\subsection*{4.8 Infinitesimal Rotations}
+	\begin{enumerate}
+		\item From $\vec{x}$ to $\vec{x'}$, we consider
+		\[
+		x'_i = x_i + \epsilon_{i1}x_1 + \epsilon_{i2}x_2 + \epsilon_{i3}x_3 \Rightarrow x'_i = (\delta_{ij} + \epsilon_{ij})x_j
+		\]
+		where $\epsilon_{11}, \epsilon_{12}$ are infinitesimals.
+		\[
+		\Rightarrow x' = (I+\epsilon)x
+		\]
+		In fact, $(I+\epsilon_1)(I+\epsilon_2) = I+\epsilon_1+\epsilon_2$ where $\epsilon_1\epsilon_2$ is neglected.
+		
+		$A = I+\epsilon$ and $A^{-1} = I-\epsilon$ since $AA^{-1}=I$.
+		
+		Further, as for orthogonality, $\tilde{A} = I + \tilde{\epsilon} = A^{-1} = I-\epsilon \Rightarrow \tilde{\epsilon} = -\epsilon$.
+		
+		\item For Euler infinitesimal rotation:
+		\[
+		A = 
+		\begin{bmatrix}
+			1 & d\phi & 0 \\
+			-d\phi & 1 & d\theta \\
+			0 & -d\theta & 1
+		\end{bmatrix}
+		\text{ and }
+		d\Omega = \hat{i}d\theta + \hat{k}(d\phi+d\psi)
+		\]
+		\[
+		\epsilon =
+		\begin{bmatrix}
+			0 & d\Omega_3 & -d\Omega_2 \\
+			-d\Omega_3 & 0 & d\Omega_1 \\
+			d\Omega_2 & -d\Omega_1 & 0
+		\end{bmatrix}
+		\]
+		we write the form: $\vec{r'} - \vec{r} = d\vec{r} = \epsilon\vec{r}$
+		\[
+		\Rightarrow
+		\begin{cases}
+			dx_1 = x_2 d\Omega_3 - x_3 d\Omega_2 \\
+			dx_2 = x_3 d\Omega_1 - x_1 d\Omega_3 \\
+			dx_3 = x_1 d\Omega_2 - x_2 d\Omega_1
+		\end{cases}
+		\implies d\vec{r} = \vec{r} \times d\vec{\Omega}
+		\]
+		
+		\item In another fashion: $\vec{r'} - \vec{r} = d\vec{r} = \vec{r} \times \vec{n}d\Phi$ where $d\vec{\Omega} = \vec{n}d\Phi$.
+		
+		The magnitude is: $dr = r\sin\theta d\Phi$.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{figure5}
+			\caption{}
+			\label{fig:figure5}
+		\end{figure}
+		
+		
+	\end{enumerate}
+	
+	\subsection*{4.9 Rate of Change of a Vector}
+	\begin{enumerate}
+		\item For a general vector $\vec{G}$, we have
+		\[
+		(d\vec{G})_{\text{space}} = (d\vec{G})_{\text{body}} + (d\vec{G})_{\text{rot}}
+		\]
+		where $(d\vec{G})_{\text{rot}} = d\vec{\Omega} \times \vec{G}$.
+		\[
+		\left(\frac{d\vec{G}}{dt}\right)_{\text{space}} = \left(\frac{d\vec{G}}{dt}\right)_{\text{body}} + \vec{\omega} \times \vec{G}
+		\]
+		where $\vec{\omega}dt = d\vec{\Omega}$ and $\vec{\omega}$ is along the instantaneous axis of rotation.
+		
+		We have $dG_i = a_{ji}dG'_j + da_{ji}G'_j$.
+		
+		where $a_{ji}G'_j = dG_i$ and $d a_{ji} = (\tilde{\epsilon})_{ij} = -\epsilon_{ij}$.
+		
+		By antisymmetry of $\epsilon$, $-\epsilon_{ij} = -\epsilon_{ijk}d\Omega_k = \epsilon_{ikj}d\Omega_k$.
+		\[
+		\Rightarrow dG_i = dG'_i + \epsilon_{ikj} d\Omega_k G_j
+		\]
+		\[
+		dG_i = dG'_i + (d\vec{\Omega} \times \vec{G})_i
+		\]
+		
+		\item We consider the transformation $A=BCD$.
+		
+		where $\omega_\phi = \dot{\phi}$, $\omega_\theta=\dot{\theta}$, $\omega_\psi=\dot{\psi}$.
+		\[
+		\Rightarrow 
+		\begin{cases}
+			(\omega_\phi)x' = \dot{\phi}\sin\theta\sin\psi, \quad (\omega_\phi)y' = \dot{\phi}\sin\theta\cos\psi, \quad (\omega_\phi)z' = \dot{\phi}\cos\theta \\
+			(\omega_\theta)x' = \dot{\theta}\cos\psi, \quad (\omega_\theta)y' = -\dot{\theta}\sin\psi, \quad (\omega_\theta)z' = 0 \\
+			(\omega_\psi)z' = \dot{\psi}
+		\end{cases}
+		\]
+		\[
+		\Rightarrow
+		\begin{cases}
+			\omega_{x'} = (\omega_\phi)x' + (\omega_\theta)x' \\
+			\omega_{y'} = (\omega_\phi)y' + (\omega_\theta)y' \\
+			\omega_{z'} = (\omega_\phi)z' + (\omega_\psi)z'
+		\end{cases}
+		\]
+	\end{enumerate}
+	
+	\subsection*{4.10 The Coriolis Effect}
+	\begin{enumerate}
+		\item We have $\vec{v}_s = \vec{v}_r + \vec{\omega} \times \vec{r}$ where $\vec{v}_s, \vec{v}_r$ are the velocities of the particle relative to the space and rotating set of axes.
+		\[
+		\Rightarrow \left(\frac{d\vec{v}_s}{dt}\right)_s = \vec{a}_s = \left(\frac{d}{dt}(\vec{v}_r + \vec{\omega}\times\vec{r})\right)_s + \vec{\omega} \times \vec{v}_s
+		\]
+		\[
+		= \vec{a}_r + 2(\vec{\omega}\times\vec{v}_r) + \vec{\omega}\times(\vec{\omega}\times\vec{r})
+		\]
+		The equation of motion $\vec{F} = m\vec{a}_s$.
+		\[
+		\Rightarrow \vec{F} - 2m(\vec{\omega}\times\vec{v}_r) - m\vec{\omega}\times(\vec{\omega}\times\vec{r}) = m\vec{a}_r = \vec{F}_{\text{eff}}
+		\]
+		where $-2m(\vec{\omega}\times\vec{v}_r)$ is the Coriolis effect and $-m\vec{\omega}\times(\vec{\omega}\times\vec{r})$ $\{m\omega^2 r \sin\theta\}$ is the centrifugal force.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{figure6}
+			\caption{}
+			\label{fig:figure6}
+		\end{figure}
+		
+		
+		\item Example: the equation of motion:
+		\[
+		m\frac{d^2x}{dt^2} = -2m(\vec{\omega}\times\vec{v}_r)_x = -2m\omega v_z \sin\theta
+		\]
+		where $v_z = -gt$, $t = \sqrt{2z/g}$.
+		
+		The deflection caused by Coriolis effect on $v_z$ is
+		\[
+		x = \frac{\omega g}{3} t^3 \sin\theta = \frac{\omega}{3}\sqrt{\frac{8z^3}{g}} \sin\theta
+		\]
+		Normally, for the equator $(\theta = \pi/2)$ and $z=100$m,
+		\[
+		x \approx 2.2 \text{ cm}
+		\]
+	\end{enumerate}
+\end{document}

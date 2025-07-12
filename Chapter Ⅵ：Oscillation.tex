@@ -1,0 +1,440 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage[a4paper, margin=1in]{geometry}
+
+\begin{document}
+	
+	\section*{VI: Oscillations}
+	
+	\subsection*{6.1 Formulation of the Problem}
+	
+	\begin{enumerate}
+		\item We consider conservative systems where potential energy, $V$, is a function of position only. The system is in equilibrium when the generalized forces are zero:
+		\[
+		Q_i = -\left(\frac{\partial V}{\partial q_i}\right)_0 = 0
+		\]
+		A stable equilibrium results if a small disturbance of the system from the equilibrium position results only in small, bounded motion. An unstable equilibrium position, if disturbed by an infinitesimal amount, eventually produces unbounded motion.
+		
+		\item The deviations of the generalized coordinates from equilibrium will be denoted by $\eta_i$:
+		\[
+		q_i = q_{i0} + \eta_i
+		\]
+		We expand $V$ in a Taylor series:
+		\begin{align*}
+			V(q_1, \dots, q_{3n}) = V(q_{01}, \dots, q_{0n}) &+ \sum_i \left(\frac{\partial V}{\partial q_i}\right)_0 \eta_i \\
+			&+ \frac{1}{2} \sum_{i,j} \left(\frac{\partial^2 V}{\partial q_i \partial q_j}\right)_0 \eta_i \eta_j + \cdots
+		\end{align*}
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{figure1}
+			\caption{}
+			\label{fig:figure1}
+		\end{figure}
+		
+		By the equilibrium condition, the term linear in $\eta_i$ vanishes, and we are left with the quadratic terms as the first approximation to $V$.
+		\[
+		V = \frac{1}{2} \sum_{i,j} V_{ij} \eta_i \eta_j
+		\]
+		By symmetry, the coefficients $V_{ij} = \left(\frac{\partial^2 V}{\partial q_i \partial q_j}\right)_0$ are symmetric:
+		\[
+		V_{ij} = V_{ji}
+		\]
+		
+		\item For the kinetic energy:
+		\[
+		T = \frac{1}{2} \sum_{i,j} m_{ij} \dot{q}_i \dot{q}_j = \frac{1}{2} \sum_{i,j} m_{ij} \dot{\eta}_i \dot{\eta}_j
+		\]
+		where $m_{ij}$ are in general functions of the $q_k$.
+		\[
+		m_{ij}(q_1, \dots, q_{3n}) = m_{ij}(q_{01}, \dots, q_{0n}) + \sum_k \left(\frac{\partial m_{ij}}{\partial q_k}\right)_0 \eta_k + \cdots
+		\]
+		We denote the constant values of the $m_{ij}$ functions by $T_{ij}$. Therefore,
+		\[
+		T = \frac{1}{2} \sum_{i,j} T_{ij} \dot{\eta}_i \dot{\eta}_j \quad \text{where} \quad T_{ij} = T_{ji}
+		\]
+		Thus, the Lagrangian is:
+		\[
+		L = T - V = \frac{1}{2} \sum_{i,j} (T_{ij} \dot{\eta}_i \dot{\eta}_j - V_{ij} \eta_i \eta_j)
+		\]
+		The equations of motion are:
+		\[
+		\sum_j (T_{ij} \ddot{\eta}_j + V_{ij} \eta_j) = 0
+		\]
+		With no cross terms, the Lagrangian simplifies to:
+		\[
+		L = \frac{1}{2} \sum_j (T_j \dot{\eta}_j^2 - V_j \eta_j^2)
+		\]
+		This leads to uncoupled equations:
+		\[
+		T_j \ddot{\eta}_j + V_j \eta_j = 0
+		\]
+	\end{enumerate}
+	
+	\subsection*{6.2 The Eigenvalue Equation and the Principal Axis Transformation}
+	\begin{enumerate}
+		\item We try an oscillatory solution of the form:
+		\[
+		\eta_j = a_j e^{-i\omega t}
+		\]
+		which will have a nontrivial solution only if the determinant of the coefficients vanishes:
+		\[
+		| \mathbf{V} - \omega^2 \mathbf{T} | = 0
+		\]
+		For a two-dimensional system, this is:
+		\[
+		\begin{vmatrix}
+			V_{11} - \omega^2 T_{11} & V_{12} - \omega^2 T_{12} \\
+			V_{21} - \omega^2 T_{21} & V_{22} - \omega^2 T_{22}
+		\end{vmatrix} = 0
+		\]
+		The equations may be written in matrix form. Let $\lambda = \omega^2$ and $\mathbf{a}$ be a column vector of the amplitudes $a_j$:
+		\[
+		\mathbf{V}\mathbf{a} = \lambda \mathbf{T}\mathbf{a}
+		\]
+		The transposed complex conjugate equation (where $\mathbf{a}^\dagger$ is the adjoint vector) is:
+		\[
+		\mathbf{a}^\dagger \mathbf{V} = \lambda^* \mathbf{a}^\dagger \mathbf{T}
+		\]
+		Left-multiplying the first equation by $\mathbf{a}^\dagger$, we get:
+		\[
+		\mathbf{a}^\dagger \mathbf{V} \mathbf{a} = \lambda \mathbf{a}^\dagger \mathbf{T} \mathbf{a}
+		\]
+		This leads to:
+		\[
+		0 = (\lambda - \lambda^*) \mathbf{a}^\dagger \mathbf{T} \mathbf{a}
+		\]
+		When $\mathbf{a}^\dagger \mathbf{T} \mathbf{a} > 0$, it becomes $\lambda = \lambda^*$, which means $\lambda$ is real. We can separate $\mathbf{a}$ into its real and imaginary components, $\mathbf{a} = \mathbf{a}_R + i\mathbf{a}_I$. Then:
+		\[
+		\mathbf{a}^\dagger \mathbf{T} \mathbf{a} = (\mathbf{a}_R^T - i\mathbf{a}_I^T) \mathbf{T} (\mathbf{a}_R + i\mathbf{a}_I) = \mathbf{a}_R^T \mathbf{T} \mathbf{a}_R + \mathbf{a}_I^T \mathbf{T} \mathbf{a}_I
+		\]
+		where the imaginary term vanishes.
+		
+		\item In terms of a column matrix $\boldsymbol{\eta}$, the kinetic energy is $T = \frac{1}{2} \dot{\boldsymbol{\eta}}^T \mathbf{T} \dot{\boldsymbol{\eta}}$. The eigenvalues $\lambda$ are real and given by the Rayleigh quotient:
+		\[
+		\lambda = \frac{\mathbf{a}^T \mathbf{V} \mathbf{a}}{\mathbf{a}^T \mathbf{T} \mathbf{a}}
+		\]
+		By the equations given, and in view of the reality of the eigenvalues and eigenvectors, we have for each eigenvector $\mathbf{a}_k$:
+		\[
+		\mathbf{V} \mathbf{a}_k = \lambda_k \mathbf{T} \mathbf{a}_k
+		\]
+		If all the roots of the secular equation are distinct, the eigenvectors are orthogonal with respect to $\mathbf{T}$:
+		\[
+		\mathbf{a}_l^T \mathbf{T} \mathbf{a}_k = 0, \quad l \neq k
+		\]
+		We can further require that they are normalized such that:
+		\[
+		\mathbf{a}_k^T \mathbf{T} \mathbf{a}_k = 1
+		\]
+		This uniquely fixes the one arbitrary component of each of the $n$ eigenvectors. If $\mathbf{A}$ is the matrix whose columns are the eigenvectors $\mathbf{a}_k$, these conditions can be written as:
+		\[
+		\mathbf{A}^T \mathbf{T} \mathbf{A} = \mathbf{I}
+		\]
+		If $\lambda_l = \lambda_k$, we have the case of degeneracy. We introduce the congruence transformation of a matrix $\mathbf{C}$:
+		\[
+		\mathbf{C}' = \mathbf{A}^T \mathbf{C} \mathbf{A}
+		\]
+		The set of eigenvalue equations can be written as $\mathbf{V}\mathbf{A} = \mathbf{T}\mathbf{A}\mathbf{\Lambda}$, where $\mathbf{\Lambda}$ is a diagonal matrix with elements $\lambda_k \delta_{kl}$.
+		\[
+		\Rightarrow \quad \mathbf{A}^T \mathbf{V} \mathbf{A} = \mathbf{A}^T \mathbf{T} \mathbf{A} \mathbf{\Lambda}
+		\]
+		Using the normalization condition, this yields:
+		\[
+		\mathbf{A}^T \mathbf{V} \mathbf{A} = \mathbf{\Lambda}
+		\]
+		
+		\item As an example, we consider a particle of mass $m$ with two degrees of freedom $(x_1, x_2)$. We use Cartesian coordinates so that $T_{ij} = m\delta_{ij}$, which results in $\mathbf{A}^T\mathbf{A}=\mathbf{I}$ (for $m=1$) and $\mathbf{A}^T\mathbf{V}\mathbf{A} = \mathbf{\Lambda}$ (diagonal). The Lagrangian is:
+		\[
+		L = \frac{m}{2}(\dot{x}_1^2 + \dot{x}_2^2) - \frac{1}{2}(V_{11}x_1^2 + 2V_{12}x_1x_2 + V_{22}x_2^2)
+		\]
+		The secular equation is $|\mathbf{V} - \lambda\mathbf{I}| = 0$ (absorbing $m$ into $\lambda$ for simplicity):
+		\[
+		\begin{vmatrix}
+			V_{11} - \lambda & V_{12} \\
+			V_{21} & V_{22} - \lambda
+		\end{vmatrix} = 0
+		\]
+		This gives the eigenvalues:
+		\[
+		\lambda_{1,2} = \frac{1}{2}(V_{11} + V_{22}) \pm \frac{1}{2}\sqrt{(V_{11} - V_{22})^2 + 4V_{12}^2}
+		\]
+		\textbf{Case 1:} $V_{11} > V_{22} > 0$ and $|V_{12}|$ is small. We write the small quantity $\delta = \frac{V_{12}^2}{V_{11} - V_{22}}$. The eigenvalues are, to first order in $\delta$:
+		\begin{align*}
+			\lambda_1 &= V_{11} + \delta \\
+			\lambda_2 &= V_{22} - \delta
+		\end{align*}
+		whose eigenvectors are, to lowest order:
+		\[
+		\mathbf{a}_1 = \begin{pmatrix} 1 \\ \frac{V_{12}}{V_{11}-V_{22}} \end{pmatrix}, \quad \mathbf{a}_2 = \begin{pmatrix} -\frac{V_{12}}{V_{11}-V_{22}} \\ 1 \end{pmatrix}
+		\]
+		\textbf{Case 2:} $V_{12}^2 \gg (V_{11}-V_{22})^2$. Let $\epsilon = \frac{V_{11}-V_{22}}{V_{12}}$. To first order in $\epsilon$, the eigenvalues are:
+		\begin{align*}
+			\lambda_1 &\cong \frac{1}{2}(V_{11}+V_{22}) + V_{12} + \frac{1}{4}(V_{11}-V_{22})\epsilon \\
+			\lambda_2 &\cong \frac{1}{2}(V_{11}+V_{22}) - V_{12} - \frac{1}{4}(V_{11}-V_{22})\epsilon
+		\end{align*}
+		whose eigenvectors are, to lowest order in $\epsilon$, given by the columns of the matrix $\mathbf{A}$:
+		\[
+		\mathbf{A} = \begin{pmatrix}
+			\frac{1}{\sqrt{2}}(1 - \frac{1}{4}\epsilon) & \frac{1}{\sqrt{2}}(1 + \frac{1}{4}\epsilon) \\[1em]
+			\frac{1}{\sqrt{2}}(1 + \frac{1}{4}\epsilon) & -\frac{1}{\sqrt{2}}(1 - \frac{1}{4}\epsilon)
+		\end{pmatrix}
+		\]
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{figure2}
+			\caption{}
+			\label{fig:figure2}
+		\end{figure}
+	\end{enumerate}
+	\section{Frequencies of Free Vibration and Normal Coordinates}
+	
+	The solutions of the secular equation, $|V - \omega^2 T| = 0$, are designated as $\omega_1^2, \omega_2^2, \dots, \omega_n^2$, which are the frequencies of free vibration.
+	
+	The general solution for the displacement coordinates $\eta_j$ is a superposition of all the normal modes. The motion in a given mode $k$ is described by $a_{jk} e^{-i\omega_k t}$. The general solution can be written in real form as:
+	\[
+	\eta_j(t) = \sum_k A_k \cos(\omega_k t + \delta_k)
+	\]
+	or using complex notation:
+	\[
+	\eta_j(t) = \text{Re} \left[ \sum_k C_k a_{jk} e^{-i\omega_k t} \right]
+	\]
+	where $a_{jk}$ are the components of the real, normalized eigenvectors.
+	
+	At $t=0$, the initial displacements and velocities are:
+	\begin{align*}
+		\eta_j(0) &= \text{Re} \left[ \sum_k C_k a_{jk} \right] = \sum_k a_{jk} \text{Re}(C_k) \\
+		\dot{\eta}_j(0) &= \text{Re} \left[ \sum_k (-i\omega_k) C_k a_{jk} \right] = \sum_k a_{jk} \omega_k \text{Im}(C_k)
+	\end{align*}
+	The coefficients can be found by using the orthogonality relations of the eigenvectors. For column vectors $a_k$, the relations are $\tr{a_k} T a_l = \delta_{kl}$ and $\tr{a_k} V a_l = \omega_k^2 \delta_{kl}$.
+	
+	\subsection*{Normal Coordinates}
+	We define a new set of coordinates $\xi_j$, called normal coordinates, through the linear transformation defined by the eigenvectors:
+	\[
+	\eta_j = \sum_k a_{jk} \xi_k \quad \text{or in matrix form} \quad \eta = A \xi
+	\]
+	where $A$ is the matrix whose columns are the eigenvectors $a_k$.
+	
+	The potential energy in these new coordinates is:
+	\[
+	V = \frac{1}{2} \tr{\eta} V \eta = \frac{1}{2} \tr{(A\xi)} V (A\xi) = \frac{1}{2} \tr{\xi} (\tr{A} V A) \xi
+	\]
+	The matrix $\tr{A}VA$ is diagonal, with the eigenvalues $\omega_k^2$ as its diagonal elements. Thus:
+	\[
+	V = \frac{1}{2} \sum_k \omega_k^2 \xi_k^2
+	\]
+	The kinetic energy is:
+	\[
+	T = \frac{1}{2} \tr{\dot{\eta}} T \dot{\eta} = \frac{1}{2} \tr{(\dot{A\xi})} T (A\dot{\xi}) = \frac{1}{2} \tr{\dot{\xi}} (\tr{A} T A) \dot{\xi}
+	\]
+	The orthogonality condition for the eigenvectors is $\tr{A}TA = I$ (the identity matrix). So the kinetic energy simplifies to:
+	\[
+	T = \frac{1}{2} \sum_k \dot{\xi}_k^2
+	\]
+	The Lagrangian $L = T-V$ in terms of normal coordinates is:
+	\[
+	L = \frac{1}{2} \sum_k (\dot{\xi}_k^2 - \omega_k^2 \xi_k^2)
+	\]
+	The Lagrangian is a sum of independent terms, one for each normal coordinate. The Euler-Lagrange equation for each $\xi_k$ gives:
+	\[
+	\ddot{\xi}_k + \omega_k^2 \xi_k = 0
+	\]
+	This is the equation for a simple harmonic oscillator, with the solution:
+	\[
+	\xi_k(t) = C_k e^{-i\omega_k t}
+	\]
+	Each normal coordinate $\xi_k$ is a simply periodic function involving only one of the resonant frequencies. The set $\{\xi_k\}$ are the normal coordinates of the system.
+	
+	\section{Example: Free Vibrations of a Linear Triatomic Molecule}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure3}
+		\caption{}
+		\label{fig:figure3}
+	\end{figure}
+	
+	We consider a linear molecule with masses $m$, $M$, and $m$ connected by springs of constant $k$. The equilibrium distance between adjacent masses is $b$.
+	
+	The potential energy is given by:
+	\[
+	V = \frac{k}{2} [(x_2-x_1)-b]^2 + \frac{k}{2} [(x_3-x_2)-b]^2
+	\]
+	We introduce displacement coordinates $\eta_j = x_j - x_{0j}$ from the equilibrium positions $x_{0j}$. At equilibrium, $x_{02}-x_{01}=b$ and $x_{03}-x_{02}=b$.
+	In terms of these coordinates, the potential energy is:
+	\[
+	V = \frac{k}{2} [(\eta_2 - \eta_1)^2 + (\eta_3 - \eta_2)^2] = \frac{k}{2} (\eta_1^2 + 2\eta_2^2 + \eta_3^2 - 2\eta_1\eta_2 - 2\eta_2\eta_3)
+	\]
+	The potential energy matrix $V$ is therefore:
+	\[
+	V = k
+	\begin{pmatrix}
+		1 & -1 & 0 \\
+		-1 & 2 & -1 \\
+		0 & -1 & 1
+	\end{pmatrix}
+	\]
+	The kinetic energy is $T = \frac{1}{2} m\dot{\eta}_1^2 + \frac{1}{2} M\dot{\eta}_2^2 + \frac{1}{2} m\dot{\eta}_3^2$. The kinetic energy matrix $T$ is diagonal:
+	\[
+	T =
+	\begin{pmatrix}
+		m & 0 & 0 \\
+		0 & M & 0 \\
+		0 & 0 & m
+	\end{pmatrix}
+	\]
+	The secular equation $|V - \omega^2 T|=0$ is:
+	\[
+	\begin{vmatrix}
+		k-\omega^2 m & -k & 0 \\
+		-k & 2k-\omega^2 M & -k \\
+		0 & -k & k-\omega^2 m
+	\end{vmatrix}
+	= 0
+	\]
+	Solving this determinant yields a cubic equation for $\omega^2$:
+	\[
+	(k-\omega^2 m) [(2k-\omega^2 M)(k-\omega^2 m) - k^2] - k^2(\omega^2 m - k) = 0
+	\]
+	\[
+	(k-\omega^2 m) \left[ (2k-\omega^2 M)(k-\omega^2 m) - 2k^2 \right] = 0
+	\]
+	Which leads to the solutions for the normal mode frequencies:
+	\begin{align*}
+		\omega_1^2 &= 0 \quad (\text{Translational mode}) \\
+		\omega_2^2 &= \frac{k}{m} \quad (\text{Asymmetric stretch mode}) \\
+		\omega_3^2 &= \frac{k}{m} \left( 1 + \frac{2m}{M} \right) \quad (\text{Symmetric stretch mode})
+	\end{align*}
+	
+	\subsection*{Eigenvectors and Normal Coordinates}
+	The components $a_{ij}$ of the eigenvectors are determined by $(V - \omega_j^2 T)a_j = 0$ along with the normalization condition $\tr{a_j} T a_j = 1$.
+	
+	\paragraph{Mode 1 ($\omega_1^2 = 0$):} This corresponds to pure translation of the molecule. The components are equal, $a_{11}=a_{21}=a_{31}$. Normalization $m(a_{11}^2 + a_{31}^2) + M a_{21}^2 = 1$ gives:
+	\[
+	a_{11} = \frac{1}{\sqrt{2m+M}}, \quad a_{21} = \frac{1}{\sqrt{2m+M}}, \quad a_{31} = \frac{1}{\sqrt{2m+M}}
+	\]
+	
+	\paragraph{Mode 2 ($\omega_2^2 = k/m$):} In this mode, the center atom is at rest, while the two outer atoms vibrate exactly out of phase. The eigenvector components are:
+	\[
+	a_{12} = \frac{1}{\sqrt{2m}}, \quad a_{22} = 0, \quad a_{32} = \frac{-1}{\sqrt{2m}}
+	\]
+	
+	\paragraph{Mode 3 ($\omega_3^2 = k/m(1+2m/M)$):} This is the "breathing" mode where the outer atoms move in phase with each other, but out of phase with the center atom. The components are:
+	\[
+	a_{13} = \frac{1}{\sqrt{2m(1+2m/M)}}, \quad a_{23} = \frac{-2m/M}{\sqrt{2m(1+2m/M)}}, \quad a_{33} = \frac{1}{\sqrt{2m(1+2m/M)}}
+	\]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure4}
+		\caption{}
+		\label{fig:figure4}
+	\end{figure}
+	
+	The normal coordinates may be found by inverting the transformation, $\xi = \tr{A} T \eta$:
+	\begin{align*}
+		\xi_1 &= \frac{1}{\sqrt{2m+M}} (m\eta_1 + M\eta_2 + m\eta_3) \quad (\text{proportional to center of mass position}) \\
+		\xi_2 &= \sqrt{\frac{m}{2}} (\eta_1 - \eta_3) \\
+		\xi_3 &= \sqrt{\frac{mM}{2(M+2m)}} \left( \eta_1 + \eta_3 - \frac{2}{m} \eta_2 \right) \quad (\text{Note: simplified form})
+	\end{align*}
+	In the actual molecule, there will also be normal modes of vibration perpendicular to the axis (bending modes).
+	\section*{6.5 Forced Vibrations and the Effect of Dissipative Forces}
+	
+	\subsection*{1. Forced Undamped Vibrations}
+	If $F_j$ is the generalized force corresponding to the coordinate $\eta_j$, then the generalized force $Q_i$ for the normal coordinate $\xi_i$ is:
+	$$
+	Q_i = a_{ji} F_j
+	$$
+	The equations of motion in normal coordinates become:
+	$$
+	\ddot{\xi}_i + \omega_i^2 \xi_i = Q_i
+	$$
+	For a sinusoidal driving force, $Q_i$ can be written as:
+	$$
+	Q_i = Q_{0i} \cos(\omega t + \delta_i)
+	$$
+	Thus, the equation of motion is:
+	$$
+	\ddot{\xi}_i + \omega_i^2 \xi_i = Q_{0i} \cos(\omega t + \delta_i)
+	$$
+	The particular solution has the form $\xi_i = B_i \cos(\omega t + \delta_i)$, where substituting into the equation gives the amplitude $B_i$:
+	$$
+	B_i = \frac{Q_{0i}}{\omega_i^2 - \omega^2}
+	$$
+	The complete motion for the original coordinates $\eta_j$ is then found by transforming back:
+	$$
+	\eta_j = a_{ji} \xi_i = a_{ji} \frac{Q_{0i}}{\omega_i^2 - \omega^2} \cos(\omega t + \delta_i)
+	$$
+	The closer the driving frequency $\omega$ approaches any natural frequency $\omega_i$, the stronger the phenomenon of \textbf{resonance}.
+	
+	\subsection*{2. Damped Vibrations and Rayleigh's Dissipation Function}
+	We now consider dissipative forces. Let $\mathcal{F}$ be Rayleigh's dissipation function, which is a homogeneous quadratic function of the velocities:
+	$$
+	\mathcal{F} = \frac{1}{2} F_{ij} \dot{\eta}_i \dot{\eta}_j
+	$$
+	By symmetry, the coefficients of the dissipation tensor are symmetric, $F_{ij} = F_{ji}$. The complete set of Lagrange's equations of motion for free damped vibrations is:
+	$$
+	T_{ij}\ddot{\eta}_j + F_{ij}\dot{\eta}_j + V_{ij}\eta_j = 0
+	$$
+	When such simultaneous diagonalization of the kinetic energy ($T$), potential energy ($V$), and dissipation ($\mathcal{F}$) tensors is feasible, the equations of motion are decoupled in the normal coordinates, with the form:
+	$$
+	\ddot{\xi}_i + \mathcal{F}_i \dot{\xi}_i + \omega_i^2 \xi_i = 0 \quad (\text{no summation})
+	$$
+	where $\mathcal{F}_i$ are the nonnegative coefficients in the diagonalized form of $\mathcal{F}$. Seeking a solution of the form $\xi_i = C_i e^{-i\omega'_i t}$, we find the characteristic equation for the complex frequency $\omega'_i$:
+	$$
+	-(\omega'_i)^2 - i\omega'_i \mathcal{F}_i + \omega_i^2 = 0
+	$$
+	This quadratic equation has two solutions for $\omega'_i$:
+	$$
+	\omega'_i = \pm \sqrt{\omega_i^2 - \frac{\mathcal{F}_i^2}{4}} - \frac{i\mathcal{F}_i}{2}
+	$$
+	If the dissipation is small, the frequency of oscillation reduces from the friction-free value, and the complete motion is then simply an exponential damping of the free modes of vibration:
+	$$
+	\xi_i = C_i e^{-\mathcal{F}_i t/2} e^{-i \left( \sqrt{\omega_i^2 - \mathcal{F}_i^2/4} \right) t}
+	$$
+	For the general coupled system, suppose we seek a solution of the form $\eta_j = C a_j e^{-i\omega t}$. This leads to a set of simultaneous linear equations:
+	$$
+	V_{ij}a_j - i\omega F_{ij}a_j - \omega^2 T_{ij}a_j = 0
+	$$
+	To write this as a polynomial in $\gamma = -i\omega$, we have:
+	$$
+	(V_{ij} + \gamma F_{ij} + \gamma^2 T_{ij}) a_j = 0
+	$$
+	In matrix form, this is written as:
+	$$
+	\mathbf{V a} + \gamma \mathbf{F a} + \gamma^2 \mathbf{T a} = 0
+	$$
+	
+	\subsection*{3. Forced Damped Oscillations}
+	We finally consider forced sinusoidal oscillations in the presence of dissipative forces. The driving force is taken to be complex:
+	$$
+	F_j = F_{0j} e^{-i\omega t}
+	$$
+	The equations of motion are:
+	$$
+	V_{ij}\eta_j + F_{ij}\dot{\eta}_j + T_{ij}\ddot{\eta}_j = F_{0j} e^{-i\omega t}
+	$$
+	We seek a particular (steady-state) solution of the form $\eta_j = A_j e^{-i\omega t}$. Substituting this into the equation of motion, we obtain a set of inhomogeneous linear equations for the complex amplitudes $A_j$:
+	$$
+	(V_{ij} - i\omega F_{ij} - \omega^2 T_{ij}) A_j - F_{0j} = 0
+	$$
+	From Cramer's rule, the solution for each amplitude $A_j$ is given by the ratio of two determinants:
+	$$
+	A_j = \frac{D_j(\omega)}{D(\omega)}
+	$$
+	where $D(\omega)$ is the determinant of the coefficients of $A_j$:
+	$$
+	D(\omega) = \det(\mathbf{V} - i\omega \mathbf{F} - \omega^2 \mathbf{T})
+	$$
+	and $D_j(\omega)$ is the determinant of the same matrix, but with the $j$-th column replaced by the vector of driving forces $F_{0j}$.
+	
+	Since the matrices $\mathbf{V}$, $\mathbf{F}$, and $\mathbf{T}$ are real and symmetric, it can be shown that if $\omega_k$ is a complex root of $D(\omega) = 0$, then $-\omega_k^*$ is also a root. This allows $D(\omega)$ to be written in a factored form involving its complex roots. The magnitude squared of the determinant, which is related to the power absorption, can be found by rationalizing the expression:
+	$$
+	D^*(\omega) D(\omega)
+	$$
+	
+	\section*{6.6 Beyond Small Oscillations: The Damped Driven Pendulum and the Josephson Junction}
+
+\end{document}
