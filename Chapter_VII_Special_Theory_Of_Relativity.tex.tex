@@ -1,0 +1,768 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{braket}
+\usepackage{physics}
+\usepackage{bm}
+
+\begin{document}
+	
+	\section*{VII The Classical Mechanics of the Special Theory of Relativity}
+	
+	\subsection*{7.1 Basic Postulates of the Special Theory}
+	\begin{enumerate}
+		\item The laws of physics are the same to all inertial observers.
+		\item The speed of light is the same to all inertial observers.
+	\end{enumerate}
+	
+	In the spacetime which satisfies the two postulates, the square of the distance $\Delta s^2$ between A and B
+	\[ (\Delta s)^2 = c^2(\text{time interval})^2 - (\text{space interval})^2 \]
+	We refer to a point in spacetime as an event.
+	
+	If
+	\begin{itemize}
+		\item[$(ds)^2 > 0$] the interval is timelike
+		\item[$(ds)^2 < 0$] the interval is spacelike
+		\item[$(ds)^2 = 0$] the interval is null/lightlike
+	\end{itemize}
+	
+	If, to all inertial observers, objects that travel on timelike paths move less than the speed of light, they're called tardyons.
+	If objects travel on spacelike paths and move faster than the speed of light, they're called tachyons.
+	
+	In the limit of small displacement, in a Cartesian coordinate system,
+	\[ (ds)^2 = (cdt)^2 - (dx^2 + dy^2 + dz^2) \]
+	
+	The intervals between two events of spacetime in S and S' satisfy
+	\[ ds'^2 = ds^2 \]
+	which is called the square of the invariant spacetime interval.
+	
+	We call the time interval measured by a clock at rest with respect to a body the \textbf{proper time} of that body's frame, while the other inertial observer uses a time that is often called \textbf{laboratory time}.
+	
+	S' with $(t', x', y', z')$ is moving at a velocity $\vec{v}$ with respect to S with $(t, x, y, z)$.
+	So:
+	\[ c^2(d\tau)^2 = c^2(dt)^2 - v^2(dt)^2 = c^2(dt)^2(1 - \frac{v^2}{c^2}) \]
+	or
+	\[ dt = \frac{d\tau}{\sqrt{1 - v^2/c^2}} \]
+	Since $dt > d\tau$, the effect on $dt$ is time dilation.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure1}
+		\caption{}
+		\label{fig:figure1}
+	\end{figure}
+	
+	For event A at time $t_A$ and event B at time $t_B$. A is located at $x=y=z=0$.
+	
+	If $(ds_{AB})^2 > 0$, then all inertial observers will agree on the time order of the events.
+	If $t_B$ is less than $t_A$ in one inertial frame, then $t_B$ is less than $t_A$ in all inertial frames. The region is the \textbf{past}.
+	If for event C, $t_C$ is greater than $t_A$ for all inertial observers, the region is the \textbf{future}.
+	
+	If $(ds_{AD})^2 < 0$, there exist a set of inertial frames in which the relative order of $t_A$ and $t_D$ can be reversed or even made equal. The region can be referred as the \textbf{elsewhere} or the \textbf{past-future}.
+	Separating the past-future and the elsewhere is the \textbf{null} or \textbf{light cone} where $ds^2=0$.
+	
+	\subsection*{7.2 Lorentz Transformations}
+	We consider parallel Cartesian coordinate systems, S, S', whose origins coincide at $t=t'=0$, and whose relative velocity is $v$ along the $x$-axis as measured by S.
+	We define: $\beta = \frac{v}{c}$, $\gamma = \frac{1}{\sqrt{1-\beta^2}}$.
+	We have the two sets of coordinates:
+	\[ ct' = \frac{ct - \beta x}{\sqrt{1-\beta^2}} = \gamma(ct - \beta x) \]
+	
+	Tip: $\Delta t' = \frac{\Delta t}{\sqrt{1-v^2/c^2}} \implies t' = \gamma \Delta t$. We assume that
+	\[
+	\begin{cases}
+		t' = At + Bx \\
+		x' = Ct + Dx
+	\end{cases}
+	\text{for S' to S}
+	\]
+	
+	\[ x' = ct' \implies Ct + DC = CA + BC^2 \implies
+	\begin{cases}
+		A = \gamma \\
+		B = -\frac{\gamma v}{c^2}
+	\end{cases}
+	\]
+	\[ x' = \frac{x-\beta c t}{\sqrt{1-\beta^2}} = \gamma(x-\beta c t) \]
+	\[ y' = y, \quad z' = z \]
+	
+	We only consider transformations for which $t' \to t, x' \to x$ as $\beta \to 0$.
+	
+	As matrices:
+	\[
+	\begin{pmatrix} ct' \\ x' \\ y' \\ z' \end{pmatrix}
+	=
+	\begin{pmatrix}
+		\gamma & -\gamma\beta & 0 & 0 \\
+		-\gamma\beta & \gamma & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & 1
+	\end{pmatrix}
+	\begin{pmatrix} ct \\ x \\ y \\ z \end{pmatrix}
+	\]
+	
+	In the limit $\beta \ll 1$, we have the Galilean transformations.
+	
+	We use the notation $(\vec{r}, ct) \equiv (x,y,z,ct)$. For the case where $\vec{v}$ is not parallel to an axis:
+	\begin{align*}
+		ct' &= \gamma(ct - \vec{\beta} \cdot \vec{r}) \\
+		\vec{r}' &= \vec{r} + \frac{(\vec{\beta} \cdot \vec{r})}{\beta^2}\vec{\beta}(\gamma-1) - \gamma\vec{\beta}ct
+	\end{align*}
+	
+	Thus, as matrix, we have $\vec{x}' = L\vec{x}$ where
+	\[
+	L =
+	\begin{pmatrix}
+		\gamma & -\gamma\beta_x & -\gamma\beta_y & -\gamma\beta_z \\
+		-\gamma\beta_x & 1+\frac{(\gamma-1)\beta_x^2}{\beta^2} & \frac{(\gamma-1)\beta_x\beta_y}{\beta^2} & \frac{(\gamma-1)\beta_x\beta_z}{\beta^2} \\
+		-\gamma\beta_y & \frac{(\gamma-1)\beta_y\beta_x}{\beta^2} & 1+\frac{(\gamma-1)\beta_y^2}{\beta^2} & \frac{(\gamma-1)\beta_y\beta_z}{\beta^2} \\
+		-\gamma\beta_z & \frac{(\gamma-1)\beta_z\beta_x}{\beta^2} & \frac{(\gamma-1)\beta_z\beta_y}{\beta^2} & 1+\frac{(\gamma-1)\beta_z^2}{\beta^2}
+	\end{pmatrix}
+	\]
+	
+	For a more general form:
+	\[ \vec{x}' = L\vec{x} + \vec{a} \]
+	where $L$ is a rotation of spacetime and $\vec{a}$ is a spacetime translation, which is the Poincaré transformation.
+	
+	\subsection*{7.3 Velocity Addition and Thomas Precession}
+	Any homogeneous Lorentz transformation, L, can be written as:
+	\[ L = R L_0 = L_0' R' \]
+	where R is a rotation matrix and $L_0$ is called a restricted or proper Lorentz transformation, corresponds to a pure boost.
+	Since R is not symmetric and $L_0$ is symmetric, L will have no symmetry, thus $R L_0 \neq L_0 R$.
+	\[ \implies R L_0 = L_0' R' \]
+	\subsection*{Continuation of 7.3}
+	For any L, we have an inverse transformation $L^{-1}$ such that $L L^{-1} = L^{-1} L = I$ where I is the diagonal unit 4x4 matrix with elements $\delta_{\alpha\beta}$.
+	
+	\begin{enumerate}
+		\item We consider $S_1, S_2, S_3$, with x axes aligned. Let $S_2$ be moving at a velocity $v$ along the common x-direction with respect to $S_1$, and let $S_3$ be moving at a velocity $v'$ along the common x-direction with respect to $S_2$.
+		
+		From $S_1$ to $S_3$,
+		\[ L_{1 \to 3} = 
+		\begin{pmatrix}
+			\gamma' & -\gamma'\beta' & 0 & 0 \\
+			-\gamma'\beta' & \gamma' & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1
+		\end{pmatrix}
+		\begin{pmatrix}
+			\gamma & -\gamma\beta & 0 & 0 \\
+			-\gamma\beta & \gamma & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1
+		\end{pmatrix}
+		\]
+		where we define $\beta$ and $\gamma$ for $v$, and $\beta'$ and $\gamma'$ for $v'$.
+		
+		Let $\beta''$ be the speed of $S_3$ relative to $S_1$, and $\gamma''$ the associated factor.
+		\[ L_{1 \to 3} = 
+		\begin{pmatrix}
+			\gamma'' & -\gamma''\beta'' & 0 & 0 \\
+			-\gamma''\beta'' & \gamma'' & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1
+		\end{pmatrix}
+		\]
+		where
+		\[ \gamma'' = \gamma\gamma'(1+\beta\beta') \]
+		\[ \beta'' = \frac{\beta+\beta'}{1+\beta\beta'} \]
+		Thus, we have the \textbf{Thomas precession rotation}.
+		
+		\item We consider $S_1, S_2, S_3$ with $S_2$ moving at a velocity $\vec{v}$ with respect to $S_1$, and $S_3$ moving at a velocity $\vec{v}'$ with respect to $S_2$. We arrange that $\vec{\beta}$ is along the x-axis of $S_1$ and $\vec{\beta}'$ lies in the x'y' plane of $S_2$.
+		Let L represent the transformation from $S_1$ to $S_2$ and L' the transformation from $S_2$ to $S_3$ with $\gamma$ and $\gamma'$ associated with $\vec{\beta}$ and $\vec{\beta}'$.
+		\[ L = 
+		\begin{pmatrix}
+			\gamma & -\gamma\beta & 0 & 0 \\
+			-\gamma\beta & \gamma & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1
+		\end{pmatrix}
+		\text{ and }
+		L' = 
+		\begin{pmatrix}
+			\gamma' & -\gamma'\beta'_x & -\gamma'\beta'_y & 0 \\
+			-\gamma'\beta'_x & 1+\frac{(\gamma'-1)\beta_x'^2}{\beta'^2} & \frac{(\gamma'-1)\beta'_x\beta'_y}{\beta'^2} & 0 \\
+			-\gamma'\beta'_y & \frac{(\gamma'-1)\beta'_y\beta'_x}{\beta'^2} & 1+\frac{(\gamma'-1)\beta_y'^2}{\beta'^2} & 0 \\
+			0 & 0 & 0 & 1
+		\end{pmatrix}
+		\]
+		We assume that the components of $\vec{\beta}'$ are small.
+		\[ L'' = L'L = 
+		\begin{pmatrix}
+			\gamma\gamma' & -\gamma\gamma'\beta & -\gamma'\beta'_y & 0 \\
+			-\gamma\beta & \gamma\beta & \gamma\beta'_y & 0 \\
+			-\gamma'\beta'_y & \gamma\beta'\beta_y' & \gamma' & 0 \\
+			0 & 0 & 0 & 1
+		\end{pmatrix}
+		\]
+		which is not symmetric. We shall write the velocity of $S_3$ as observed from $S_1$ as $\vec{\beta}''$. Since the off-diagonal elements corresponding to the z-axis are zero, this rotation is about an axis perpendicular to the xy plane. The boost from $S_1$ to $S_3$ is denoted by $\vec{\beta}''$, and we assume $\vec{\beta}'$ is small compared to $\vec{\beta}$ and $\gamma' \approx 1$.
+		
+		Then, to first order, the non-vanishing components of $\vec{\beta}''$ are:
+		\[ \beta_x'' = \beta, \quad \beta_y'' = \frac{\beta_y'}{\gamma}, \quad \beta''^2 = \beta^2, \quad \gamma'' = \gamma \]
+		and
+		\[ L'' \approx 
+		\begin{pmatrix}
+			\gamma & -\gamma\beta & -\beta_y' & 0 \\
+			-\gamma\beta & \gamma & \gamma^{-1}\beta_y' & 0 \\
+			-\gamma\beta_y' & \gamma\beta_y'\beta & 1 & 0 \\
+			0 & 0 & 0 & 1
+		\end{pmatrix}
+		\]
+		A pure Lorentz transformation from $S_3$ to $S_1$, $L_{3\to1}$, would correspond to a large boost of $-\beta_x''$ and a small boost in the y'' axis of $-\beta_y''$.
+		\[ L_{3\to1} = 
+		\begin{pmatrix}
+			\gamma'' & \gamma''\beta_x'' & \gamma''\beta_y'' & 0 \\
+			\gamma''\beta_x'' & 1+\frac{(\gamma''-1)\beta_x''^2}{\beta''^2} & \frac{(\gamma''-1)\beta_x''\beta_y''}{\beta''^2} & 0 \\
+			\gamma''\beta_y'' & \frac{(\gamma''-1)\beta_y''\beta_x''}{\beta''^2} & 1 & 0 \\
+			0 & 0 & 0 & 1
+		\end{pmatrix}
+		\]
+		In terms of $\vec{\beta}'$, the rotation matrix is
+		\[ R = L'' L_{3\to1} = 
+		\begin{pmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & 1 & -(\gamma-1)\frac{\beta_y'}{\beta} & 0 \\
+			0 & (\gamma-1)\frac{\beta_y'}{\beta} & 1 & 0 \\
+			0 & 0 & 0 & 1
+		\end{pmatrix}
+		\]
+		which implies $S_3$ is rotated with respect to $S_1$ about the z-axis through an infinitesimal angle
+		\[ \Delta\Omega = (\gamma-1)\frac{\beta_y'}{\beta} = \frac{\gamma^2\beta}{c}(\frac{\gamma-1}{\gamma\beta^2}) \]
+		
+		\item Suppose $S_1$ is a laboratory system, while $S_2, S_3$ are two of the instantaneous rest systems a time $\Delta t$ apart in the particle's motion.
+		By $\Delta\Omega$, we can see a change in the velocity $\Delta\vec{v}$, which has only a y-component since the initial x-axis has been chosen along the direction of $\vec{v} = \vec{\beta}c$.
+		The infinitesimal rotation in this time can be written as
+		\[ \Delta\vec{\Omega} = -(\gamma-1)\frac{\vec{v} \times \Delta\vec{v}}{v^2} \]
+		Observed from the Laboratory system, the direction attached to the particle, precesses with:
+		\[ \vec{\omega} = \frac{d\vec{\Omega}}{dt} = -(\gamma-1)\frac{\vec{v} \times \vec{a}}{v^2} \]
+		where $\vec{a}'$ is the particle's acceleration seen from $S_1$.
+		When $v$ is small enough that $\gamma \approx 1 + \frac{1}{2}\beta^2$
+		\[ \vec{\omega} = -\frac{1}{2c^2}(\vec{a} \times \vec{v}) \]
+		which is the \textbf{Thomas precession frequency}.
+	\end{enumerate}
+    \section*{7.4 Vectors and the Metric Tensor}
+    In terms of the parameter $\lambda$ which is a measure of the length along the curve from A to B
+    $$ V_{AB} = \left(\frac{dP}{d\lambda}\right)_{\lambda=0} = P_B - P_A $$
+    where $P$ is an arbitrary one-dimensional curve in 4-dimensional spacetime.
+    
+    The components of the 4-vector which is a tangent vector to the curve are $v^0, v^1, v^2, v^3$. For curves that are timelike, the proper time $\tau$ in the laboratory coordinates are: $x^0 = ct(\tau)$, $x^1 = X(\tau)$, $x^2 = Y(\tau)$, $x^3 = Z(\tau)$, and the tangent to the curve is the four-velocity $u$.
+    Hence, $u^0 = \frac{dx^0}{d\tau} = \gamma c$, $u^i = \frac{dx^i}{d\tau} = \gamma v_i$ where $v_i = dx^i/dt$ is the normal three-velocity with $v^2 = (v^1)^2 + (v^2)^2 + (v^3)^2$.
+    
+    We consider a set of vectors of 4-velocities for the particle termed a vector field: $e_0, e_1, e_2, e_3$ which constitute a coordinates basis.
+    The position of a point on the curve $P(\tau)$ can be written as $P(\tau) = x^\mu(\tau) e_\mu$.
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=1.0\linewidth]{figure2}
+    	\caption{}
+    	\label{fig:figure2}
+    \end{figure}
+    
+    The 4-velocity $u = \frac{dP}{d\tau} = \frac{dx^\mu}{d\tau} e_\mu = u^\mu e_\mu$.
+    The magnitude of which is a scalar whose values can vary to $\lambda$. This set of magnitudes is an example of a scalar field.
+    The conversion of a vector field to a scalar field is an example of mapping.
+    The metric tensor $g$ can be defined by:
+    $$ g(u, v) = g(v, u) = u \cdot v $$
+    which is the scalar product
+    $$ \Rightarrow g_{\mu\nu} = g(e_\mu, e_\nu) = e_\mu \cdot e_\nu $$
+    Example: we consider a two-dimensional Minkowski space with coordinate $ct$ and $x$ and a vector $v=(a,b)$, then $g(v,v) = a^2 - b^2$ and $g_{00}=1, g_{11}=-1$.
+    
+    We consider small displacements vectors between two points: $d\vec{s} = dx^\alpha e_\alpha$.
+    For Minkowski coordinates,
+    $$ (\Delta s)^2 = d\vec{s} \cdot d\vec{s} = \Delta x^\alpha e_\alpha \cdot \Delta x^\beta e_\beta = g_{\alpha\beta} \Delta x^\alpha \Delta x^\beta $$
+    $$ = (c\Delta t)^2 - (\Delta x)^2 - (\Delta y)^2 - (\Delta z)^2 $$
+    $$ ds^2 = g_{\alpha\beta} dx^\alpha dx^\beta $$
+    
+    Using the metric sign $ g = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix} $.
+    $$ u \cdot v = u^\alpha v^\beta g_{\alpha\beta} = u^0 v^0 - u^1 v^1 - u^2 v^2 - u^3 v^3 $$
+    $$ u \cdot u = c^2 \quad \text{is the square of the magnitude of the four-velocity} $$
+    The 4-momentum can be defined by: $P = m u$.
+    So the length squared of it is: $P \cdot P = m^2 c^2$.
+    Or: $P \cdot P = m^2 c^2 = m^2 c^2 \gamma^2 - m^2 v^2 \gamma^2 = \frac{E^2}{c^2} - \vec{p}^2$ where $\vec{p}$ is the length of the 3-momentum.
+    We obtain $E^2 = m^2 c^4 + \vec{p}^2 c^2$.
+    
+    The relativistic kinetic energy $T$ is defined as:
+    $$ T = E - mc^2 = mc^2(\gamma - 1) = \sqrt{(m c^2)^2 + \vec{p}^2 c^2} - m c^2 $$
+    For $|\vec{p}| \ll m c$, a power series expansion gives
+    $$ T \approx \frac{1}{2} m v^2 + O(v^4) $$
+    
+    \section*{7.5 1-Forms and Tensors}
+    If the vector is thought of as a directed line, the 1-form is a set of numbered surfaces though which the vector passes.
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=1.0\linewidth]{figure3}
+    	\caption{}
+    	\label{fig:figure3}
+    \end{figure}
+    
+    If $\eta$ is a 1-form and $v$ is some vector the quantity denoted by $\langle \eta, v \rangle$ is a number that tells how many surfaces of $\eta$ are pierced by $v$.
+    Such that $\langle v g, v \rangle = v \cdot v$ is the scalar contraction or the square of the magnitude of $v$.
+    
+    The gradient is a 1-form, if we consider $P$ with $\lambda$, where $x=0$ at $P_0$.
+    $$ \partial_\lambda f = \frac{d}{d\lambda} f(P(\lambda)) = \frac{df}{dx^\alpha} \frac{dx^\alpha}{d\lambda} = v^\alpha \partial_\alpha f $$
+    So: $\partial_\alpha = \partial e_\alpha = \frac{\partial}{\partial x^\alpha}$.
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=1.0\linewidth]{figure4}
+    	\caption{}
+    	\label{fig:figure4}
+    \end{figure}
+    
+    The gradient of the coordinates is defined as $\omega^\alpha = dx^\alpha$.
+    $\omega^\alpha$ provides a set of basis 1-forms since $\langle \omega^\alpha, e_\beta \rangle = \delta^\alpha_\beta$.
+    And any 1-form $\eta$ can be written as $\eta = \eta_\alpha \omega^\alpha$ where $\langle \eta, e_\alpha \rangle = \eta_\alpha$.
+    For any vector $v$: $\langle \eta, v \rangle = \eta_\alpha v^\alpha$.
+    
+    We define the inverse metric by:
+    $$ g^{\alpha\beta} g_{\beta\gamma} = \delta^\alpha_\gamma \quad \text{or} \quad g^{-1}g=gg^{-1}=I $$
+    Thus: $u_d = g_{d\beta} u^\beta$, $u^\alpha = g^{\alpha\beta} u_\beta$.
+    Therefore, $u \cdot v = g(u, v) = g_{\alpha\beta} u^\alpha v^\beta = u_\beta v^\beta = u_\alpha v^\alpha = u^\alpha v_\alpha$.
+    
+    We consider the vector $u$ with components $(a,b)$ the vector $v$ with $(c,d)$.
+    \begin{align*}
+    	g_{\alpha\beta} u^\alpha v^\beta &= (1)(a)(c) + (-1)(b)(d) = ac-bd \\
+    	u^\alpha v_\alpha &= ac-bd \\
+    	u_\alpha v^\alpha &= ac-bd
+    \end{align*}
+    
+    For a vector $V = V^1 e_1 + V^2 e_2$, where $\{e_1, e_2\}$ with $e_1 \cdot e_1 = 1, e_2 \cdot e_2 = -1, e_1 \cdot e_2 = e_2 \cdot e_1 = 0$.
+    Thus:
+    \begin{align*}
+    	V \cdot V &= \sum_{i,j=1}^2 V^i V^j e_i \cdot e_j = (V^1)^2 e_1 \cdot e_1 + V^1 V^2 e_1 \cdot e_2 + V^2 V^1 e_2 \cdot e_1 + (V^2)^2 e_2 \cdot e_2 \\
+    	&= \sum_{i=1}^2 (V^i)^2 e_i \cdot e_i = (V^1)^2 - (V^2)^2
+    \end{align*}
+    We define the dual space with $\omega^1, \omega^2$ which have the properties:
+    \begin{gather*}
+    	\langle \omega^1, e_1 \rangle = 1, \quad \langle \omega^2, e_2 \rangle = 1 \\
+    	\langle \omega^1, e_2 \rangle = \langle \omega^2, e_1 \rangle = e_1 \cdot \omega^1 = \omega^1 e_1 = 0 \\
+    \end{gather*}
+    So that $e_i$ is orthonormal to $\omega_i$.
+    The 1-form $v$ corresponding to $V$ can be written as
+    $$ v = V_1 \omega^1 + V_2 \omega^2 $$
+    Whose (magnitude)$^2 = v \cdot v = V \cdot V = V_1 V^1 + V_2 V^2$.
+    The scalar product of two vectors $V$ and $U$ in terms of 1-forms $v$ and $u$:
+    Scalar product $V \cdot U = u \cdot V = U \cdot v = V \cdot u = V_\mu U^\mu = V^\mu U_\mu = V_1 U^1 + V_2 U^2$.
+    
+    Example: in a four-dimensional Minkowski space, the 1-form $v_\alpha$ with the vector $V_\beta$ is
+    $$ v_0 = V^0, \quad v_1 = -V^1, \quad v_2 = -V^2, \quad v_3 = -V^3 $$
+    So the squared length of $V$ is:
+    $$ V^0 v_0 + V^1 v_1 + V^2 v_2 + V^3 v_3 = V^0 V^0 - V^1 V^1 - V^2 V^2 - V^3 V^3 $$
+    
+    We let $x^0, x^1, x^2, x^3$ be the coordinates in a frame $S$ and $x^{\alpha'} = x^{\alpha'}(x^0, x^1, x^2, x^3)$ be the transformed coordinates in the frame $s'$. The Lorentz transformation can be written as
+    $$ x^{\alpha'} = L^{\alpha'}_{\ \beta} x^\beta \quad \text{and} \quad x^\alpha = L^\alpha_{\ \beta'} x^{\beta'} $$
+    where $L^\alpha_{\ \beta'}$ is the inverse transformation of $L^{\alpha'}_{\ \beta}$.
+    The basis vectors transform as
+    $$ e_{\alpha'} = L^\beta_{\ \alpha'} e_\beta \quad \text{and} \quad e_\alpha = L^{\beta'}_{\ \alpha} e_{\beta'} $$
+    Any vector transforms as $v = v^\alpha e_\alpha = v^{\beta'} e_{\beta'}$, so
+    $$ \langle v, \eta \rangle = v^\alpha \eta_\alpha = v^{\alpha'} \eta_{\alpha'} $$
+    This means that 1-forms transform as
+    $$ \eta_{\alpha'} = \eta_\beta (L^{-1})^\beta_{\ \alpha'} \quad \text{and we have} $$
+    $$ \omega^{\alpha'} = L^{\alpha'}_{\ \beta} \omega^\beta \quad \text{and} \quad \omega^\alpha = L^\alpha_{\ \beta'} \omega^{\beta'} $$
+    It follows that
+    $$ v^{\alpha'} = L^{\alpha'}_{\ \beta} v^\beta \quad \text{and} \quad v^\alpha = L^\alpha_{\ \beta'} v^{\beta'} $$
+    $$ \eta_{\alpha'} = L^\beta_{\ \alpha'} \eta_\beta \quad \text{and} \quad \eta_\alpha = L^{\beta'}_{\ \alpha} \eta_{\beta'} $$
+    
+    For a tensor of rank $\binom{2}{3}, S$
+    $$ S(\sigma, \omega, \lambda; v, u, e_\gamma) = \sigma_\alpha \lambda_\beta \omega_\epsilon v^\delta u^\gamma e_\gamma S^{\alpha\beta\epsilon}_{\ \ \ \ \ \delta\gamma} $$
+    $$ = S^{\alpha\beta}_{\ \ \ \ \gamma\delta\epsilon} v^\gamma \sigma_\alpha \lambda_\beta $$
+    where $S^{\alpha\beta\gamma}_{\ \ \ \ \delta\epsilon}$ are the components of $S$.
+    We obtain the transformation law for them
+    $$ S^{\alpha'\beta'}_{\ \ \ \ \ \gamma'} = S^{\alpha\beta}_{\ \ \ \ \gamma} L^{\alpha'}_{\ \alpha} L^{\beta'}_{\ \beta} L^\gamma_{\ \gamma'} $$
+    The metric tensor can convert indices from vector to 1-form or 1-form to vector:
+    $$ S^{\alpha\beta}_{\ \ \ \ \ \gamma} = g_{\gamma\epsilon} S^{\alpha\beta\epsilon} $$
+    \section*{7.6 Forces in the Special Theory; Electromagnetism}
+    
+    \subsection*{}
+    The generalized force from four-velocity
+    $$ F^\mu = \frac{d(m_0 u^\mu)}{d\tau} $$
+    
+    The vector and scalar electromagnetic potentials form a four-vector: $A^\mu = (\phi/c, \vec{A})$
+    
+    If the potentials satisfy the Lorentz condition.
+    $$ \Box A = \nabla \cdot A = \frac{\partial A^\mu}{\partial x^\mu} = \nabla \cdot \vec{A} + \mu_0 \epsilon_0 \frac{\partial \phi}{\partial t} = 0 $$
+    where $\mu_0 \epsilon_0 = \frac{1}{c^2}$ and
+    $$ \Box^2 \vec{A} = \nabla^2 \vec{A} = \frac{1}{c^2} \frac{\partial^2 \vec{A}}{\partial t^2} - \nabla^2 \vec{A} = \mu_0 \vec{j} $$
+    for the space and time component
+    $$ \Box^2 \phi = \nabla^2 \phi = \frac{1}{c^2} \frac{\partial^2 \phi}{\partial t^2} - \nabla^2 \phi = \frac{\rho}{\epsilon_0} $$
+    
+    The Lorentz force, in terms of $\phi, \vec{A}$:
+    $$ \vec{F} = q \left\{ -\nabla \phi + \frac{\partial \vec{A}}{\partial t} + l \left[ \vec{v} \times (\nabla \times \vec{A}) \right] \right\} $$
+    
+    We generalize the Lorentz force law to:
+    $$ \frac{dp_\mu}{d\tau} = q \left( u^\nu \frac{\partial A_\nu}{\partial x^\mu} - \frac{dA_\mu}{d\tau} \right) $$
+    
+    For the three-momentum, $\vec{p}$, and three-velocity $\vec{v}$
+    $$ \frac{d\vec{p}}{dt} = q(\vec{E} + \vec{v} \times \vec{B}) $$
+    
+    We define a tensor $F$, named Faraday tensor, whose components will be the electromagnetic field tensor and with $u$ the 4-velocity
+    $$ \frac{dP}{dT} = q F(u) $$
+    In component notation:
+    $$ \frac{dp^\mu}{d\tau} = q F^\mu_{\ \nu} u^\nu $$
+    
+    We consider a two-dimensional with a vector $u$, whose components are $(a,b)$ and a 1-form $\sigma$ with components $(c,d)$, then we examine a tensor $W$ of rank $\binom{1}{1}$
+    $$ W(\sigma, u) = W^\alpha_\beta \sigma_\alpha u^\beta = W^0_0 c a + W^1_0 c b + W^0_1 d a + W^1_1 d b $$
+    
+    In a Minkowski space with pseudo-Cartesian coordinates, the components of the tensor $W$ of rank $\binom{1}{1}$ can be converted to a corresponding tensor of rank $\binom{0}{2}$ using $\{g_{00}=1, g_{11}=-1, g_{12}=-1, g_{33}=-1\}$ to give the following relations:
+    $$ W_{00} = g_{0\alpha} W^\alpha_0, \quad W_{01} = g_{0\alpha} W^\alpha_1 $$
+    $$ W_{10} = g_{1\alpha} W^\alpha_0, \quad W_{11} = g_{1\alpha} W^\alpha_1 $$
+    
+    We can construct a second-rank tensor called tensor product, $T = u \otimes v$.
+    $$ (u \otimes v)(\sigma, \lambda) = \langle \sigma, u \rangle \langle \lambda, v \rangle $$
+    The components of the tensor product are:
+    $$ T^{\alpha \beta} = u^\alpha v^\beta $$
+    or
+    $$ (T^{\alpha \beta}) = \begin{pmatrix} ac & ad \\ bc & bd \end{pmatrix} $$
+    where $(a,b)$, $(c,d)$ are components of $u,v$.
+    
+    For a higher-rank tensor, the gradient $\nabla$:
+    $$ \nabla = i \frac{\partial}{\partial x} + j \frac{\partial}{\partial y} + k \frac{\partial}{\partial z} $$
+    or
+    $$ \partial_\nu = e_\nu \frac{\partial}{\partial x^\nu} + e_z \frac{\partial}{\partial x^2} + e_3 \frac{\partial}{\partial x^3} $$
+    
+    As an example, let $S$ be a $\binom{0}{3}$ rank tensor, then: $\nabla S(u,v,w, \xi)$ with $u,v,w$ fixed.
+    $$ \nabla S(u,v,w, \xi) = \partial_\delta (S_{\alpha \beta \gamma} u^\alpha v^\beta w^\gamma) = \frac{\partial S_{\alpha \beta \gamma}}{\partial x^\delta} \xi^\delta u^\alpha v^\beta w^\gamma $$
+    We can rewrite that:
+    $$ \partial_\delta (S_{\alpha \beta \gamma}) = S_{\alpha \beta \gamma, \delta} \xi^\delta $$
+    where $\xi^\delta$ define the direction of the gradient.
+    
+    We consider a 4-index tensor whose components are $R_{\alpha \beta \mu \nu}$. We can form a two-index tensor by inserting a basis 1-form into the first slot of the tensor definition, and the related basis vector in the third slot.
+    $$ R(e_\alpha, u, w, v) = \lambda(u,v) $$
+    or
+    $$ M_{\mu \nu} u^\mu v^\nu = R_{\alpha \beta \mu \nu} u^\mu v^\nu \implies M_{\mu \nu} = R_{\alpha \beta \mu \nu} $$
+    In three-dimensional Cartesian space, the divergence of $V$ is the quantity: $\nabla \cdot V = \frac{\partial V_x}{\partial x} + \frac{\partial V_y}{\partial y} + \frac{\partial V_z}{\partial z}$ while the 4-divergence is $\partial_\mu V^\mu$.
+    $$ \Box_\mu = \nabla_\mu = w^\mu \frac{1}{\partial x^\mu} $$
+    with $w^\mu$ the 1-form basic components. For example:
+    $$ \frac{\partial J^\mu}{\partial x^\mu} = \Box \cdot J = \nabla \cdot J = \frac{\partial (\rho c)}{\partial c t} + \nabla \cdot j = \frac{\partial \rho}{\partial t} + \nabla \cdot j = 0 $$
+    
+    The d'Alembertian $\nabla^2 / \Box^2$ is
+    $$ \Box^2 = \nabla \cdot \nabla = g^{\mu \nu} \frac{\partial}{\partial x^\mu} \frac{\partial}{\partial x^\nu} = \frac{1}{c^2} \frac{\partial^2}{\partial t^2} - (\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}) $$
+    For spacetime tensors, $S$:
+    $$ \Box S(u,v) = \nabla \cdot S(u,v) = \nabla \cdot S(u,v, e_\alpha, u, e_\alpha) = S^\alpha_{\ \beta \gamma, \alpha} u^\beta v^\gamma $$
+    In component form:
+    $$ \nabla_\alpha S^\alpha_{\ \beta \gamma} = S^\alpha_{\ \beta \gamma, \alpha} $$
+    
+    We now define the wedge product / bivector / biform
+    $$ u \wedge v = u \otimes v - v \otimes u $$
+    In component form:
+    $$ (u \wedge v)^{\alpha \beta} = u^\alpha v^\beta - v^\alpha u^\beta $$
+    We consider $u = u^1 e_1 + u^2 e_2$, $v = v^1 e_1 + v^2 e_2$, we thus obtain $W = u \wedge v$ given by
+    $$ W = \begin{pmatrix} u^1 v^1 - v^1 u^1 & u^1 v^2 - v^1 u^2 \\ u^2 v^1 - v^2 u^1 & u^2 v^2 - v^2 u^2 \end{pmatrix} = \begin{pmatrix} 0 & u^1 v^2 - v^1 u^2 \\ u^2 v^1 - v^2 u^1 & 0 \end{pmatrix} $$
+    
+    This produces Maxwell's equations:
+    $$ c F^{\alpha \beta} = \begin{pmatrix} 0 & E_x & E_y & E_z \\ -E_x & 0 & cB_z & -cB_y \\ -E_y & -cB_z & 0 & cB_x \\ -E_z & cB_y & -cB_x & 0 \end{pmatrix} $$
+    In Minkowski space, by the metric tensor
+    $$ c F_{\alpha \beta} = \begin{pmatrix} 0 & -E_x & -E_y & -E_z \\ E_x & 0 & cB_z & -cB_y \\ E_y & -cB_z & 0 & cB_x \\ E_z & cB_y & -cB_x & 0 \end{pmatrix} $$
+    $$ c F^\alpha_{\ \beta} = \begin{pmatrix} 0 & E_x & E_y & E_z \\ E_x & 0 & -cB_z & cB_y \\ E_y & cB_z & 0 & -cB_x \\ E_z & -cB_y & cB_x & 0 \end{pmatrix} $$
+    
+    Using the tensor / wedge product
+    $$ F = F_{\alpha \beta} dx^\alpha \otimes dx^\beta = \frac{1}{2} F_{\alpha \beta} dx^\alpha \wedge dx^\beta $$
+    which shows the antisymmetry.
+    
+    We can write Maxwell's equation in their normal component form using geometric notation
+    $$ \nabla F = 0 \quad \text{and} \quad \nabla \cdot F = J $$
+    where $J$ is the 4-current density with $(P_c, \vec{j})$ and $\vec{j}$ the three-current density.
+    These equations produce
+    $$ \nabla \cdot \vec{B} = 0, \quad \frac{\partial \vec{B}}{\partial t} + \nabla \times \vec{E} = 0 $$
+    $$ \nabla \cdot \vec{E} = \rho / \epsilon_0, \quad \frac{1}{c^2} \frac{\partial \vec{E}}{\partial t} - \nabla \times \vec{B} = -\mu_0 \vec{j} $$
+    
+    The proper generalization of Newton's second law,
+    $$ \frac{dp^\mu}{d\tau} = K^\mu $$
+    where $K^\mu$ is a 4-vector force known as the Minkowski force.
+    
+    Example: the electromagnetic force is given by
+    $$ K_\mu = -q \left( \frac{\partial (u^\nu A_\nu)}{\partial x^\mu} - \frac{d A_\mu}{d\tau} \right) $$
+    The ordinary force $F_i$ and the spatial component $K_i$ are related by $F_i = K_i \sqrt{1- \beta^2} = \frac{dp_i}{dt}$.
+    
+    \section*{7.7 Relativistic Kinematics of Collisions and Many-Particle Systems}
+    
+    We consider the center-of-momentum frame (C-O-M) where the components of the spatial momentum of the initial particles add to zero. We define E and $\vec{P}$:
+    $$ E = \sum E_i, \quad \vec{P} = \sum \vec{p}_i $$
+    From $p \cdot p = E^2/c^2 - P^2$
+    $$ p \cdot p = \left( \sum m_i \gamma_i \right)^2 c^2 - \left( \sum m_i \gamma_i \vec{v}_i \right)^2 > 0 $$
+    
+    As an example, we consider $(m_1, p_1)$ in the x-direction which suffers a head-on collision with $m_2$ at rest in the experimenter's frame.
+    The initial 4-momentum:
+    $$ p^\mu = [(m_1 \gamma_1 + m_2)c, m_1 \gamma_1 v_1^1, 0, 0] $$
+    The length squared of which is
+    $$ p^\mu p_\mu = (m_1^2 + m_2^2 + 2m_1 \gamma_1 m_2)c^2 $$
+    In the C-O-M system, the total momentum is
+    $$ [ (m_1 \gamma_1' + m_2 \gamma_2')c, 0, 0, 0 ] $$
+    The space part of it vanishes.
+    $$ m_1 \gamma_1' \vec{v}_1' c + m_2 \gamma_2' \vec{v}_2' c = 0 $$
+    where $\vec{v}_1', \vec{v}_2'$ are the velocities of $m_1, m_2$ in C-O-M.
+    \section*{Relativistic Kinematics}
+    
+    \subsection*{Two-Particle Reactions}
+    The boost $\vec{\beta}'$ needed to go from the laboratory to the C-O-M frame is $\vec{\beta_s}' = -\vec{\beta}'$.
+    The total squared momentum in the C-O-M frame:
+    $$ P^{\mu'} P_{\mu'} = m_1^2 c^2 \gamma'^2 - m_1^2 v'^2 \gamma'^2 = m_1^2 c^2 $$
+    We thus can solve for the boost velocity $\beta'$. In the two real roots, only the case of $\beta' < 1$ is physically meaningful.
+    
+    We consider a reaction initiated by two particles that produces another set of particles with $m_r$, $r=3,4,5...$ In the C-O-M system, the transformed total momentum is:
+    $$ P^{\mu'} = (E'/c, 0, 0, 0) \quad \text{with} \quad M = E'/c^2 $$
+    The square of $P^{\mu}$ is invariant in all Lorentz systems and conserved in the reaction.
+    $$ P_\mu P^\mu = P'_{\mu'} P'^{\mu'} = \frac{E'^2}{c^2} = M^2 c^2 $$
+    For the initial particles $P_\mu P^\mu = (P_{1\mu} + P_{2\mu})(P_1^\mu + P_2^\mu)$.
+    The energy in the C-O-M system is given by:
+    $$ E'^2 = M^2 c^4 = (m_1^2 + m_2^2)c^4 + 2(E_1 E_2 - c^2 \vec{P_1} \cdot \vec{P_2}) $$
+    We suppose the particle 2 was initially stationary in the laboratory system: $\vec{P_2}=0$ and $E_2 = m_2 c^2$.
+    $$ E'^2 = M^2 c^4 = (m_1^2 + m_2^2)c^4 + 2 m_2 c^2 E_1 $$
+    
+    \subsection*{ Threshold Energy}
+    We denote $P^{\mu'}$, which is the total four-momentum in the C-O-M system.
+    $$ P'_{\mu'} P'^{\mu'} = c^2 \left(\sum m_r\right)^2 $$
+    which, by conservation of momentum, must be the same.
+    For a stationary target, the incident kinetic energy at threshold is:
+    $$ T_1 = \frac{(\sum m_r)^2 - (m_1+m_2)^2}{2m_2} c^2 $$
+    We define the Q-value of the reaction as $Q = \left[\sum m_r - (m_1+m_2)\right]c^2$.
+    Thus:
+    $$ T_1 = \frac{Q^2 + 2Q(m_1+m_2)c^2}{2m_2c^2} $$
+    By the historic production of an antiproton $\bar{P}$ by the reaction involving a proton $P$.
+    $$ p+n \rightarrow p+n+p+\bar{p} $$
+    where $n$ is a nucleon. We select $Q=2m_p c^2$ and thus $T_1 = 6m_p c^2 \approx 5.6 \text{ GeV}$.
+    
+    \subsection*{ Photomeson Production}
+    We consider photomeson production:
+    $$ \gamma + p \rightarrow \Sigma^0 + K^+ $$
+    where $\gamma$ is an incoming photon (a zero-mass particle).
+    $$ Q = (m_{\Sigma^0} + m_{K^+} - m_p)c^2 = 749 \text{ MeV} $$
+    and the threshold energy for the photon is
+    $$ T_\gamma = E_\gamma = \frac{Q^2 + 2Q m_p c^2}{2 m_p c^2} = 1.05 \text{ GeV} $$
+    
+    \subsection*{Center-of-Momentum System}
+    The C-O-M system is the rest system for the total momentum M with $P^{0'} = Mc$. In any other system, the zeroth component of the 4-vector is $P^0 = M c \gamma$.
+    In the laboratory system,
+    $$ P^0 = \frac{1}{c}(E_1+E_2) = \frac{1}{c}(E_1+m_2c^2) $$
+    where the last term holds only for a stationary target particle. Hence, the C-O-M system moves relative to the laboratory system such that
+    $$ \gamma = \frac{E_1+m_2c^2}{Mc^2} $$
+    At threshold all the reaction products are at rest in the C-O-M system so that $M = \sum m_r$, therefore
+    $$ \gamma = \frac{T_1 + (m_1+m_2)c^2}{(\sum m_r) c^2} \quad (\text{threshold}) $$
+    The kinetic energy of the $s$-th reaction product in the laboratory system is
+    $$ T_s = m_s c^2 (\gamma_s - 1) $$
+    The Lorentz transformation from the Laboratory to the C-O-M system is defined by $\gamma$:
+    $$ \gamma = \frac{E_1+m_2 c^2}{\sqrt{2m_2 c^2 E_1 + (m_1^2+m_2^2)c^4}} = \frac{T_1+(m_1+m_2)c^2}{\sqrt{2m_2c^2 T_1 + (m_1+m_2)^2 c^4}} $$
+    In the C-O-M system, the spatial part of the total momentum four-vector is zero. In any other system, the spatial part is $M c \beta \gamma$.
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=1.0\linewidth]{figure5}
+    	\caption{}
+    	\label{fig:figure5}
+    \end{figure}
+    
+    \section*{Scattering}
+    In the laboratory system, the spatial part is $\vec{P}_1$.
+    $$ \vec{\beta} = \frac{\vec{P}_1 c}{E_1+m_2c^2} = \frac{\vec{P}_1 c}{T_1+(m_1+m_2)c^2} $$
+    which, along the z-axis, gives $\beta_x=\beta_y=0$.
+    The components of $P_1^{\mu'}$ in the C-O-M system are:
+    \begin{align*}
+    	p'_{1z} &= \gamma (p_{1z} - \beta E_1/c) \\
+    	\frac{E_1'}{c} = p_1^{0'} &= \gamma\left(\frac{E_1}{c} - \beta p_{1z}\right)
+    \end{align*}
+    After the collision, the scattered particle's momentum $\vec{p_3}'$ is no longer along the z-axis, but its magnitude is the same as that of $\vec{p_1}'$. We define $\Theta$ as the angle between $\vec{p_3}'$ and the incident direction, then:
+    $$ p'_{3x} = p'_1 \sin\Theta, \quad p'_{3z} = p'_1 \cos\Theta, \quad p_3^{0'} = p_1^{0'} = E_1'/c $$
+    The transformation back to the laboratory system is with relative velocity $-\vec{\beta}$.
+    \begin{align*}
+    	p_{3x} &= p'_{3x} = p'_1 \sin\Theta \\
+    	p_{3z} &= \gamma(p'_{3z} + \beta p_3^{0'}) = \gamma(p'_1 \cos\Theta + \beta E_1'/c) \\
+    	E_3/c = p_3^0 &= \gamma(p_3^{0'} + \beta p'_{3z}) = \gamma(E_1'/c + \beta p'_1 \cos\Theta)
+    \end{align*}
+    The energy of the scattered particle, $E_3$, can be related to the scattering angle. Let's consider the case of Compton Scattering where $m_1=0$. Let $P = E_{initial}/(m_2 c^2)$. Then the ratio of final to initial kinetic energy is:
+    $$ \frac{T_3}{T_1} = \frac{2P(1+E_1/T_1)}{(1+P)^2 + 2PE_1} (1-\cos\Theta) $$
+    where the variable definitions might be specific to the context of the problem.
+    
+    If $P=1$, the relativistic corrections cancel completely and $E_3$ has the minimum after scattering:
+    $$ (E_3)_{\min} = E_1 \frac{(1-P)^2}{(1+P)^2+2PE_1} $$
+    In the non-relativistic limit, the minimum fractional energy after scattering is
+    $$ \frac{(E_3)_{\min}}{E_1} = \left(\frac{1-P}{1+P}\right)^2, \quad E_1 \ll 1 $$
+    In the ultra-relativistic region, when $PE_1 \gg 1$, the minimum kinetic energy after scattering is
+    $$ (T_3)_{\min} = \frac{(m_2-m_1)^2 c^2}{2m_2}, \quad PE_1 \gg 1 $$
+    We obtain the relation between the scattering angles in the C-O-M ($\Theta$) and laboratory ($\vartheta$) systems by noting that:
+    $$ \tan\vartheta = \frac{p_{3x}}{p_{3z}} = \frac{p'_1 \sin\Theta}{\gamma(p'_1 \cos\Theta + \beta E_1'/c)} = \frac{\sin\Theta}{\gamma(\cos\Theta + \beta/\beta'_1)} $$
+    where $\beta'_1 = p'_1 c / E'_1$ is the velocity of particle 1 in the C-O-M frame.
+    The term $\beta/\beta'_1$ can be expressed as:
+    $$ \frac{\beta}{\beta'_1} = \frac{\beta p_1 c}{E_1 - \beta p_1 c} $$
+    By the relations:
+    $$ E_1 - \beta p_1 c = \frac{m_1(m_1+m_2)c^2 + m_1c^2 T_1}{(m_1+m_2)c^2 + T_1} $$
+    we have
+    $$ \tan\vartheta = \frac{\sin\Theta}{\gamma\left[\cos\Theta + f(P,E_1)\right]} $$
+    where $f(P,E_1)$ represents the ratio of velocities $\beta/\beta'_1$.
+    
+    \section*{7.8 Relativistic Angular Momentum}
+    
+    For a single particle, we define an antisymmetric tensor of rank $\binom{2}{0}$ in Minkowski space:
+    $$ m = x \wedge p $$
+    whose elements would be
+    $$ m^{\mu\nu} = x^\mu p^\nu - x^\nu p^\mu $$
+    The derivative with respect to the proper time
+    $$ \frac{dm}{d\tau} = u \wedge p + x \wedge K, = x \wedge K $$
+    where $u \wedge p$ vanishes by the antisymmetry of the wedge product and $K$ is the Minkowski force.
+    In component notation:
+    $$ \frac{dm^{\mu\nu}}{d\tau} = x^\mu K^\nu - x^\nu K^\mu $$
+    We define the relativistic generalization of the torque
+    $$ N = x \wedge K $$
+    whose components are
+    $$ N^{\mu\nu} = x^\mu K^\nu - x^\nu K^\mu $$
+    Thus:
+    $$ \frac{dm}{d\tau} = N $$
+    whose components are
+    $$ \frac{dm^{\mu\nu}}{d\tau} = N^{\mu\nu} $$
+    
+    For a system, a total angular momentum 4-tensor can be defined as:
+    $$ M = \sum m_s \quad \text{or} \quad M^{\mu\nu} = \sum_s m_s^{\mu\nu} $$
+    With respect to some other reference event $\vec{a}$, the total momentum is
+    $$ M(a) = \sum_s (x_s - a) \wedge p_s = M(0) - a \wedge p $$
+    By definition in some particular Lorentz frame, the components of $M^{\mu\nu}$
+    $$ M^{ij} = \sum (x_s^i p_s^j - x_s^j p_s^i) = c \sum (t_s^i p_s^j - x_s^j \frac{E_s}{c^2}) $$
+    and
+    $$ M^{0j} = - M^{j0} $$
+    In the C-O-M frame, the total linear momentum $P = \sum p_s$ vanishes, and:
+    $$ M^{0j} = -c \sum x_s^j \frac{E_s}{c^2} $$
+    If the system is such that total angular momentum is conserved along with other components
+    $$ \sum x_s^j E_s = \text{constant} $$
+    Conservation of total linear momentum means that $E = \sum E_s$ is also conserved.
+    We thus define a spatial point $R_j$
+    $$ R_j = \frac{\sum x_s^j E_s}{\sum E_s} $$
+    
+    \section*{7.9 The Lagrangian Formulation of Relativistic Mechanics}
+    
+    We consider a function $L$ to obtain the Euler-Lagrange equations
+    $$ \delta I = \delta \int_{t_1}^{t_2} L dt = 0 $$
+    The relativistic Lagrangian:
+    $$ L = -m c^2 \sqrt{1 - \beta^2} - V $$
+    where $\beta=v/c$ with $v$ the speed of the particle in the Lorentz frame.
+    From
+    $$ \frac{d}{dt} \left( \frac{\partial L}{\partial v^i} \right) - \frac{\partial L}{\partial x^i} = 0 $$
+    where
+    $$ \frac{\partial L}{\partial v^i} = \frac{m v^i}{\sqrt{1-\beta^2}} = p^i $$
+    Then:
+    $$ \frac{d}{dt} \frac{m v^i}{\sqrt{1-\beta^2}} = -\frac{\partial V}{\partial x^i} = F^i $$
+    The canonical momenta $P$ is defined by
+    $$ P_i = \frac{\partial L}{\partial \dot{q}^i} $$
+    If $L$ does not contain time explicitly, we obtain
+    $$ h = \dot{q}^i P_i - L $$
+    $$ = \frac{m v_i v^i}{\sqrt{1-\beta^2}} + mc^2 \sqrt{1-\beta^2} + V $$
+    is the total energy
+    $$ h = T + V + mc^2 = E' $$
+    
+    We consider a single particle of charge $q$ in an electromagnetic field is
+    $$ L = -mc^2 \sqrt{1-\beta^2} - q\phi + q\vec{A} \cdot \vec{v} $$
+    Note that $P \neq mu$.
+    We can write
+    $$ p^i = mu^i + qA^i $$
+    
+    \subsection*{1) Motion under a constant force; hyperbolic motion}
+    We take $x$ axis as the direction of the constant force.
+    $$ L = -mc^2 \sqrt{1-\beta^2} - max $$
+    where $\beta = \dot{x}/c$ and $a$ is the constant magnitude of the force per unit mass.
+    The equation of motion:
+    $$ \frac{d}{dt} \left( \frac{B}{\sqrt{1-\beta^2}} \right) = \frac{a}{c} $$
+    which leads to
+    $$ \frac{B}{\sqrt{c^2 + (at+\alpha)^2}} = \frac{at+\alpha}{\sqrt{c^2 + (at+\alpha)^2}} \quad \text{or} \quad \frac{B}{\sqrt{1-\beta^2}} = \frac{at+\alpha}{c} $$
+    where $\alpha$ is a constant of integration.
+    $$ x - x_0 = c \int_0^t \frac{(at'+\alpha)dt'}{\sqrt{c^2 + (at'+\alpha)^2}} $$
+    $$ = \frac{c}{a} [ \sqrt{c^2+(at+\alpha)^2} - \sqrt{c^2+\alpha^2} ] $$
+    If the particle starts at rest from $x_0=0$ and $u=0, \alpha=0$, then
+    $$ (x+\frac{c^2}{a})^2 - c^2t^2 = \frac{c^4}{a^2} $$
+    which is the hyperbola in the $x,t$ plane.
+    
+    \subsection*{2) The relativistic one-dimensional harmonic oscillator}
+    With $V(x) = \frac{k}{2}x^2$.
+    Since $L$ is not explicitly a function of $t$ and $V$ is independent of velocity, $E$ is constant.
+    We obtain $\frac{1}{c^2}(\frac{dx}{dt})^2 = 1 - \frac{m^2c^4}{(E-V)^2}$.
+    Then the period of the oscillator motion
+    $$ T = \frac{4}{c} \int_0^b \frac{dx}{\sqrt{1 - \frac{m^2c^4}{(E-V)^2}}} $$
+    We now rewrite the energy as
+    $$ E = mc^2(1+E) $$
+    so that
+    $$ \frac{E-V}{mc^2} = 1+E-kx+\frac{k}{mc^2}x^2 $$
+    where $k=\frac{K}{2mc^2}$.
+    Thus:
+    $$ T \approx \frac{4}{c} \int_0^b \frac{dx}{\sqrt{2k(b^2-x^2)}} [1 - \frac{3}{4}c^2(b^2-x^2)] $$
+    with $x = b \sin\phi$.
+    $$ T \approx \frac{2\pi}{c\sqrt{2k}} (1-\frac{3}{8}kb^2) = 2\pi\sqrt{\frac{m}{K}} (1-\frac{3}{16}\frac{kb^2}{mc^2}) $$
+    Then:
+    $$ \frac{\Delta\nu}{\nu_0} = -\frac{\Delta\tau}{T_0} \approx \frac{3}{16}\frac{kb^2}{mc^2} = \frac{3}{8} \frac{E}{mc^2} $$
+    
+    \subsection*{3) Motion of a charged particle in a constant magnetic field}
+    With the scalar potential $\phi=0$ and $\vec{A}$ appropriate to a constant magnetic field, the Lorentz force
+    $$ \vec{F} = q(\vec{v} \times \vec{B}) $$
+    Hence, the equation of motion
+    $$ \frac{d\vec{p}}{dt} = q(\vec{v} \times \vec{B}) = \frac{q}{m\gamma}(\vec{p} \times \vec{B}) $$
+    Clearly, $\vec{F} \cdot \vec{v} = 0$, so E must be a constant.
+    The vector $\vec{p}$ is precessing around the direction of the magnetic field with a frequency
+    $$ \Omega = \frac{qB}{m\gamma} $$
+    The magnitude of the linear momentum in the plane
+    $$ p = m\gamma r \Omega $$
+    The particle rotates with the radius
+    $$ r = \frac{p}{qB} $$
+    which depends on $p/q (=Br)$, which is called magnetic rigidity.
+    \section*{7.10 Covariant Lagrangian Formulations}
+    
+    \subsection*{(1)}
+    We consider a system of only one particle. We choose the proper time $\tau$ as the invariant parameter. But the various components of the generalized velocity $u^\nu$ obey the relation:
+    $$ u \cdot u = u^\nu u_\nu = c^2 $$
+    which shows they are not independent.
+    
+    Thus, we assume the choice of some Lorentz-invariant quantity $\theta$ with no further specification than that it be a monotonic function of the progress of the world point along the particle's world line. Then:
+    $$ x'^\nu = \frac{dx^\nu}{d\theta} $$
+    A suitably covariant Hamilton's principle appears as:
+    $$ \delta I = \delta \int_{\theta_1}^{\theta_2} \Lambda(x^\mu, x'^\mu) \, d\theta $$
+    where $\Lambda$ must be a world scalar and $(x^\mu, x'^\mu)$ means a function of all or any of these.
+    
+    The Euler-Lagrange equations corresponding are:
+    $$ \frac{d}{d\theta} \left(\frac{\partial \Lambda}{\partial x'^\mu}\right) - \frac{\partial \Lambda}{\partial x^\mu} = 0 $$
+    
+    \subsection*{(2)}
+    One way of seeking $\Lambda$ is to transform the action integral from the usual integral over $t$ to one over $\theta$ and to treat the time $t$ appearing explicitly in the Lagrangian as an additional generalized coordinate.
+    
+    Since $\theta$ must be a function of $t$ in Lorentz frame (monotonic), we have:
+    $$ \frac{dx^0}{dt} = \frac{dx^0}{d\theta} \frac{d\theta}{dt} \quad \implies \quad c = x'^0 \frac{d\theta}{dt} $$
+    Hence:
+    $$ I = \int_{t_1}^{t_2} L(x^j, \dot{x}^j, t) \, dt = \int_{\theta_1}^{\theta_2} L\left(x^j, c\frac{x'^j}{x'^0}\right) \frac{x'^0}{c} \, d\theta $$
+    A suitable $\Lambda$ is given by:
+    $$ \Lambda(x^\mu, x'^\mu) = \frac{x'^0}{c} L\left(x^\mu, c\frac{x'^\mu}{x'^0}\right) $$
+    which is a homogeneous function of the generalized velocities $x'^\mu$ in the first degree.
+    $$ \Lambda(x^\mu, a x'^\mu) = a \Lambda(x^\mu, x'^\mu) $$
+    By Euler's theorem on homogeneous functions, if $\Lambda$ is homogeneous to first degree in $x'^\mu$:
+    $$ \Lambda = x'^\mu \frac{\partial \Lambda}{\partial x'^\mu} $$
+    And $\Lambda$ identically satisfies the relation:
+    $$ \left[ \frac{d}{d\theta}\left(\frac{\partial \Lambda}{\partial x'^\mu}\right) - \frac{\partial \Lambda}{\partial x^\mu} \right] x'^\mu = 0 $$
+    
+    The Lagrangian for the free particle is:
+    $$ L = -mc^2 \sqrt{1 - \frac{\dot{\vec{x}} \cdot \dot{\vec{x}}}{c^2}} $$
+    By the transformation, a possible covariant Lagrangian is then:
+    $$ \Lambda = -mc\sqrt{x'_\mu x'^\mu} $$
+    With the Euler-Lagrange equations:
+    $$ \frac{d}{d\theta} \left( \frac{mc x'_\mu}{\sqrt{x'_\nu x'^\nu}} \right) = 0 $$
+    where $\theta$ must be a monotonic function of the proper time $\tau$ so that derivatives with respect to $\theta$ are in terms of $\tau$.
+    $$ x'_\mu = \frac{dx_\mu}{d\theta} = \frac{d\tau}{d\theta} u_\mu $$
+    The Lagrangian equations are:
+    $$ \frac{d}{d\tau} \left( \frac{m c u_\mu}{\sqrt{u_\nu u^\nu}} \right) = \frac{d(mu_\mu)}{d\tau} = 0 $$
+    
+    In terms of $\tau$, the covariant Lagrange equations are:
+    $$ \frac{d}{d\tau} \left(\frac{\partial \Lambda}{\partial u^\nu}\right) - \frac{\partial \Lambda}{\partial x^\nu} = 0 $$
+    All that is required is that $\Lambda$ be a world scalar that leads to the correct equations of motion. For example, for a free particle, $\Lambda$ would be:
+    $$ \Lambda = \frac{1}{2} m u_\nu u^\nu $$
+    
+    \subsection*{(3)}
+    A Lagrangian for a particle in an electromagnetic field is:
+    $$ \Lambda(x^\mu, u^\mu) = \frac{1}{2} m u_\mu u^\mu + \frac{q}{c} u_\mu A^\mu(x^\lambda) $$
+    The corresponding Lagrange equations yield the equation of motion:
+    $$ \frac{d}{d\tau}(m u^\nu) = -\frac{q}{c}\frac{dA^\nu}{d\tau} + \frac{\partial}{\partial x_\nu} \left(\frac{q}{c} u^\mu A_\mu\right) $$
+    
+    Note that the mechanical momentum four-vector $P^\mu$ differs from the canonical momentum $p^\mu$.
+    $$ p^\mu = g^{\mu\nu} \frac{\partial \Lambda}{\partial u^\nu} = m u^\mu + \frac{q}{c} A^\mu = P^\mu + \frac{q}{c} A^\mu $$
+    The canonical momentum $p^0$ conjugate to $x^0$ is:
+    $$ p^0 = \frac{E}{c} + \frac{q}{c}\phi = \frac{1}{c} \mathcal{E} $$
+    where $E$ is the mechanical energy and $\mathcal{E}$ is the total energy of the particle $E+q\phi$.
+    
+    The canonical momenta conjugate to $\vec{x}$ form the components of a spatial Cartesian vector $\vec{p}$ related to $\vec{P}$ by:
+    $$ \vec{p} = \vec{P} + \frac{q}{c}\vec{A} $$
+    and the energy relation is:
+    $$ \mathcal{E}^2 = c^2\left(\vec{p} - \frac{q}{c}\vec{A}\right)^2 + m^2c^4 $$
+    
+\end{document}

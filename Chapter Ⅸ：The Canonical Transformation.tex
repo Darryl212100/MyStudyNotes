@@ -1,0 +1,800 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{braket}
+\usepackage{physics}
+\usepackage{bm}
+\title{\textbf{Canonical Transformations}}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\newpage
+	
+	\section{The Equations of Canonical Transformation}
+	
+	\subsection{Motivation}
+	We consider the situation where the Hamiltonian is a constant of the motion and all coordinates $q_i$ are cyclic. The conjugate momenta are constants:
+	$$
+	P_i = \alpha_i
+	$$
+	and the Hamiltonian is a function of these constants:
+	$$
+	H = H(\alpha_1, \dots, \alpha_n)
+	$$
+	Then Hamilton's equations for the coordinates $q_i$ are:
+	$$
+	\dot{q}_i = \frac{\partial H}{\partial \alpha_i} = \omega_i
+	$$
+	where $\omega_i$ are functions of the constants $\alpha_j$. The solutions are straightforwardly found by integration:
+	$$
+	q_i = \omega_i t + \beta_i
+	$$
+	where $\beta_i$ are constants of integration. The goal of canonical transformations is to find a set of new coordinates $(Q_i, P_i)$ from the old ones $(q_i, p_i)$ such that the new Hamiltonian has this simple, cyclic form.
+	
+	\subsection{The Fundamental Principle}
+	The transformation from the old canonical variables $(q, p)$ to the new ones $(Q, P)$ is called a canonical transformation if there exists a new Hamiltonian $K(Q, P, t)$ such that the motion of the system is governed by Hamilton's equations in the new variables:
+	$$
+	\dot{Q}_i = \frac{\partial K}{\partial P_i}, \quad \dot{P}_i = -\frac{\partial K}{\partial Q_i}
+	$$
+	Both sets of variables must satisfy their respective versions of Hamilton's principle:
+	$$
+	\delta \int_{t_1}^{t_2} \left( \sum_i p_i \dot{q}_i - H(q, p, t) \right) dt = 0
+	$$
+	$$
+	\delta \int_{t_1}^{t_2} \left( \sum_i P_i \dot{Q}_i - K(Q, P, t) \right) dt = 0
+	$$
+	Since the variations at the endpoints are zero, the two integrands can differ at most by the total time derivative of an arbitrary function $F$, called the \textbf{generating function}.
+	$$
+	\lambda \left( \sum_i p_i \dot{q}_i - H \right) = \sum_i P_i \dot{Q}_i - K + \frac{dF}{dt}
+	$$
+	where $F$ is any function of the phase space coordinates with continuous second derivatives, and $\lambda$ is a scale factor independent of the canonical coordinates and time.
+	
+	\subsection{Scale Transformations}
+	This formulation allows for scale transformations. For instance, suppose we transform $(q_i, p_i)$ to $(Q_i, P_i)$ by:
+	$$
+	Q_i = \mu q_i, \quad P_i = \nu p_i
+	$$
+	The transformed Hamiltonian is $K(Q, P) = \mu \nu H(q, p)$, and the integrands are related by:
+	$$
+	\mu \nu (p_i \dot{q}_i - H) = P_i \dot{Q}_i - K'
+	$$
+	Here, the scale factor is $\lambda = \mu\nu$.
+	\begin{itemize}
+		\item If $\lambda=1$, the transformation is called a \textbf{canonical transformation}.
+		\item If $\lambda \neq 1$, it is an \textbf{extended canonical transformation}.
+	\end{itemize}
+	For the remainder of this text, we will consider $\lambda=1$, so the fundamental equation is:
+	$$
+	\sum_i p_i \dot{q}_i - H = \sum_i P_i \dot{Q}_i - K + \frac{dF}{dt}
+	$$
+	
+	\section{Generating Functions}
+	The generating function $F$ can be a function of different combinations of old and new variables. We explore two common types.
+	
+	\subsection{Type 1: $F = F_1(q, Q, t)$}
+	We first define $F$ to be a function of the old coordinates $q$, the new coordinates $Q$, and time $t$. The total time derivative of $F_1$ is:
+	$$
+	\frac{dF_1}{dt} = \frac{\partial F_1}{\partial t} + \sum_i \frac{\partial F_1}{\partial q_i} \dot{q}_i + \sum_i \frac{\partial F_1}{\partial Q_i} \dot{Q}_i
+	$$
+	Substituting this into our fundamental equation:
+	$$
+	\sum_i p_i \dot{q}_i - H = \sum_i P_i \dot{Q}_i - K + \frac{\partial F_1}{\partial t} + \sum_i \frac{\partial F_1}{\partial q_i} \dot{q}_i + \sum_i \frac{\partial F_1}{\partial Q_i} \dot{Q}_i
+	$$
+	Rearranging the terms, we get:
+	$$
+	\sum_i \left( p_i - \frac{\partial F_1}{\partial q_i} \right) \dot{q}_i - \sum_i \left( P_i + \frac{\partial F_1}{\partial Q_i} \right) \dot{Q}_i - \left( H - K + \frac{\partial F_1}{\partial t} \right) = 0
+	$$
+	Since the velocities $\dot{q}_i$ and $\dot{Q}_i$ are independent, their coefficients must vanish separately. This gives us the transformation equations:
+	$$
+	p_i = \frac{\partial F_1(q, Q, t)}{\partial q_i}
+	$$
+	$$
+	P_i = -\frac{\partial F_1(q, Q, t)}{\partial Q_i}
+	$$
+	And the relation between the Hamiltonians:
+	$$
+	K = H + \frac{\partial F_1}{\partial t}
+	$$
+	
+	\subsection{Type 2: $F = F_2(q, P, t)$}
+	We can change the independent variables of the generating function using a Legendre transformation. Let's define a new generating function $F_2$ such that $F = F_2(q, P, t) - \sum_i Q_i P_i$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure1}
+		\caption{}
+		\label{fig:figure1}
+	\end{figure}
+	
+	This leads to the following set of transformation equations:
+	$$
+	p_i = \frac{\partial F_2(q, P, t)}{\partial q_i}
+	$$
+	$$
+	Q_i = \frac{\partial F_2(q, P, t)}{\partial P_i}
+	$$
+	And the Hamiltonians are related by:
+	$$
+	K = H + \frac{\partial F_2}{\partial t}
+	$$
+	
+	\section{Examples of Canonical Transformations}
+	Let's consider some examples using the $F_2$ generating function.
+	
+	\subsection{Identity Transformation}
+	Consider a simple generating function $F_2 = \sum_i q_i P_i$. The transformation equations are:
+	$$
+	p_i = \frac{\partial F_2}{\partial q_i} = P_i
+	$$
+	$$
+	Q_i = \frac{\partial F_2}{\partial P_i} = q_i
+	$$
+	Since $F_2$ is not an explicit function of time, $\frac{\partial F_2}{\partial t} = 0$, so $K=H$.
+	This generating function simply returns the original coordinates and momenta, thus generating the \textbf{identity transformation}.
+	
+	\subsection{Point Transformations}
+	More generally, consider $F_2 = \sum_i f_i(q_1, \dots, q_n, t) P_i$. The new coordinates are:
+	$$
+	Q_i = \frac{\partial F_2}{\partial P_i} = f_i(q_1, \dots, q_n, t)
+	$$
+	This represents a general point transformation where the new coordinates are functions of the old coordinates.
+	
+	\subsection{Linear Transformations}
+	We consider an even more general form:
+	$$
+	F_2 = \sum_i f_i(q, t) P_i + g(q, t)
+	$$
+	The transformation equations for the momenta are (summing over index $i$):
+	$$
+	p_j = \frac{\partial F_2}{\partial q_j} = \sum_i \frac{\partial f_i}{\partial q_j} P_i + \frac{\partial g}{\partial q_j}
+	$$
+	In matrix notation, this becomes:
+	$$
+	\mathbf{p} = \left(\frac{\partial \mathbf{f}}{\partial \mathbf{q}}\right)^T \mathbf{P} + \frac{\partial g}{\partial \mathbf{q}}
+	$$
+	In two dimensions, this is written as:
+	$$
+	\begin{bmatrix} p_1 \\ p_2 \end{bmatrix}
+	=
+	\begin{bmatrix}
+		\frac{\partial f_1}{\partial q_1} & \frac{\partial f_2}{\partial q_1} \\
+		\frac{\partial f_1}{\partial q_2} & \frac{\partial f_2}{\partial q_2}
+	\end{bmatrix}
+	\begin{bmatrix} P_1 \\ P_2 \end{bmatrix}
+	+
+	\begin{bmatrix} \frac{\partial g}{\partial q_1} \\ \frac{\partial g}{\partial q_2} \end{bmatrix}
+	$$
+	We can solve for the new momenta $\mathbf{P}$:
+	$$
+	\mathbf{P} = \left[ \left(\frac{\partial \mathbf{f}}{\partial \mathbf{q}}\right)^T \right]^{-1} \left( \mathbf{p} - \frac{\partial g}{\partial \mathbf{q}} \right)
+	$$
+	In two dimensions:
+	$$
+	\begin{bmatrix} P_1 \\ P_2 \end{bmatrix}
+	=
+	\begin{bmatrix}
+		\frac{\partial f_1}{\partial q_1} & \frac{\partial f_2}{\partial q_1} \\
+		\frac{\partial f_1}{\partial q_2} & \frac{\partial f_2}{\partial q_2}
+	\end{bmatrix}^{-1}
+	\left(
+	\begin{bmatrix} p_1 \\ p_2 \end{bmatrix}
+	-
+	\begin{bmatrix} \frac{\partial g}{\partial q_1} \\ \frac{\partial g}{\partial q_2} \end{bmatrix}
+	\right)
+	$$
+	\section*{9.3 The Harmonic Oscillator}
+	
+	We consider a canonical transformation to solve the problem of the simple oscillator in one dimension. The force constant is $k$. The Hamiltonian is
+	\[ H = \frac{p^2}{2m} + \frac{kq^2}{2} \]
+	With $k/m = \omega^2$ we can write
+	\[ H = \frac{1}{2m}(p^2 + m^2\omega^2q^2) \]
+	We find a canonical transformation
+	\[ p = f(P)\cos{Q} \]
+	\[ q = \frac{f(P)}{m\omega}\sin{Q} \]
+	so
+	\[ H = \frac{f^2(P)}{2m}(\cos^2{Q} + \sin^2{Q}) = \frac{f^2(P)}{2m} \]
+	so that $Q$ is cyclic.
+	
+	We use $F_1 = \frac{m\omega q^2}{2} \cot{Q}$.
+	Then
+	\[ p = \frac{\partial F_1}{\partial q} = m\omega q \cot{Q} \]
+	\[ P = -\frac{\partial F_1}{\partial Q} = \frac{m\omega q^2}{2\sin^2{Q}} \]
+	We then thus have
+	\[ q = \sqrt{\frac{2P}{m\omega}}\sin{Q} \]
+	\[ p = \sqrt{2Pm\omega}\cos{Q} \]
+	We see that
+	\[ f(P) = \sqrt{2m\omega P} \]
+	It follows that
+	\[ H = \omega P \]
+	and
+	\[ P = \frac{E}{\omega} \]
+	The equation of motion for $Q$ reduces to
+	\[ \dot{Q} = \frac{\partial H}{\partial P} = \omega \]
+	with the solution
+	\[ Q = \omega t + \alpha \]
+	where $\alpha$ is a constant of integration.
+	\[ \Rightarrow \begin{cases} q = \sqrt{\frac{2E}{m\omega^2}}\sin(\omega t + \alpha) \\ p = \sqrt{2mE}\cos(\omega t + \alpha) \end{cases} \]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure2}
+		\caption{}
+		\label{fig:figure2}
+	\end{figure}
+	
+	It is an ellipse with the semi-major axes
+	\[ a = \sqrt{\frac{2E}{m\omega^2}}, \quad b = \sqrt{2mE} \]
+	And the area
+	\[ A = \pi ab = \frac{2\pi E}{\omega}. \]
+	
+	\subsection*{Generating Function of Type 4}
+	We now consider $F_4 = q_k Q_k$, which leads to
+	\[ p_i = \frac{\partial F_4}{\partial q_i} = Q_i \]
+	\[ P_i = -\frac{\partial F_4}{\partial Q_i} = -q_i \]
+	
+	For a system of two degrees of freedom the transformation are
+	\[ Q_1 = q_2, \quad P_1 = p_1 \]
+	\[ Q_2 = p_2, \quad P_2 = -q_2 \]
+	which is generated by the function:
+	\[ F = q_2 p_1 + q_2 Q_2. \]
+	
+	\section*{9.4 The Symplectic Approach to Canonical Transformation}
+	We consider the transformation without time
+	\[ Q_i = Q_i(q, p) \]
+	\[ P_i = P_i(q, p) \]
+	Then
+	\begin{align*}
+		\dot{Q_i} &= \frac{\partial Q_i}{\partial q_j}\dot{q_j} + \frac{\partial Q_i}{\partial p_j}\dot{p_j} \\
+		&= \frac{\partial Q_i}{\partial q_j}\frac{\partial H}{\partial p_j} - \frac{\partial Q_i}{\partial p_j}\frac{\partial H}{\partial q_j}
+	\end{align*}
+	The inverse of the transformation
+	\[ q_j = q_j(Q, P) \]
+	\[ p_j = p_j(Q, P) \]
+	enables us to consider $H(Q, P, t)$ as a function of $Q$ and $P$.
+	\[ \frac{\partial H}{\partial P_i} = \frac{\partial H}{\partial q_j}\frac{\partial q_j}{\partial P_i} + \frac{\partial H}{\partial p_j}\frac{\partial p_j}{\partial P_i} \]
+	When
+	\[ \left(\frac{\partial Q_i}{\partial q_j}\right)_{q,p} = \left(\frac{\partial p_j}{\partial P_i}\right)_{Q,P} \quad \textcircled{1} \]
+	\[ \left(\frac{\partial Q_i}{\partial p_j}\right)_{q,p} = -\left(\frac{\partial q_j}{\partial P_i}\right)_{Q,P} \]
+	the transformation is canonical.
+	There is
+	\[ \dot{Q_i} = \frac{\partial H}{\partial P_i} \]
+	Also we can obtain
+	\[ \left(\frac{\partial P_i}{\partial p_j}\right)_{q,p} = -\left(\frac{\partial q_j}{\partial Q_i}\right)_{Q,P} \quad \textcircled{2} \]
+	\[ \left(\frac{\partial P_i}{\partial q_j}\right)_{q,p} = -\left(\frac{\partial p_j}{\partial Q_i}\right)_{Q,P} \]
+	\textcircled{1} \& \textcircled{2} are the direct conditions.
+	
+	In matrix notation:
+	\[ \dot{\eta} = J \frac{\partial H}{\partial \eta} \]
+	where $J$ is the antisymmetric matrix and $\eta$ is a column matrix with $2n$ elements, $q_i, p_i$.
+	For restricted canonical transformation
+	\[ \zeta = S(\eta) \]
+	The time derivative
+	\[ \dot{\zeta_i} = \frac{\partial \zeta_i}{\partial \eta_j}\dot{\eta_j}, \quad i,j = 1, \dots, 2n \]
+	In matrix notation
+	\[ \dot{\zeta} = M\dot{\eta} \]
+	where $M$ is the Jacobian matrix with $M_{ij} = \frac{\partial \zeta_i}{\partial \eta_j}$.
+	Then by $\dot{\eta} = J\frac{\partial H}{\partial \eta}$, we can have
+	\[ \frac{\partial H}{\partial \zeta_i} = \frac{\partial H}{\partial \eta_j}\frac{\partial \eta_j}{\partial \zeta_i} \quad \text{or} \quad \frac{\partial H}{\partial \eta} = \tilde{M}\frac{\partial H}{\partial \zeta} \]
+	Combined these equations:
+	\[ \dot{\zeta} = M J \tilde{M} \frac{\partial H}{\partial \zeta} \]
+	If $M J \tilde{M} = \lambda J$, we can say the transformation is canonical.
+	\subsection*{2.}
+	We consider the generating function $F = F_2(q, P, t) + \delta F(q, P, t)$. The column vectors are
+	\[ \eta = \begin{pmatrix} q \\ p \end{pmatrix} \quad \text{and} \quad \dot{\eta} = \begin{pmatrix} \dot{q} \\ \dot{p} \end{pmatrix} \]
+	The transformation $S$ is $\eta' = M \eta$.
+	\[ \begin{pmatrix} q' \\ p' \end{pmatrix} = \begin{pmatrix} 1 & \delta t \\ 0 & 1 \end{pmatrix} \begin{pmatrix} q \\ p \end{pmatrix} \]
+	Hamilton's equations for $\dot{\eta} = S\frac{\partial H}{\partial \eta}$ are:
+	\[ \begin{pmatrix} \dot{q} \\ \dot{p} \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} \frac{\partial H}{\partial q} \\ \frac{\partial H}{\partial p} \end{pmatrix} = \begin{pmatrix} \frac{\partial H}{\partial p} \\ -\frac{\partial H}{\partial q} \end{pmatrix} \]
+	where $\dot{q} = \frac{\partial H}{\partial p}$, $\dot{p} = -\frac{\partial H}{\partial q}$.
+	
+	\subsection*{3.}
+	We consider a canonical transformation of the form $S = S(q, p, t)$.
+	If the transformation is canonical, $y \to Y(y, t)$ and $y(t_0) \to Y(t)$.
+	The so is $y \to Y(y, \epsilon)$ and $S(q, \epsilon) \to S(\epsilon)$.
+	
+	We introduce the infinitesimal canonical transformation (I.C.T) where we only retain the first-order terms.
+	The transformation equations are
+	\begin{align*}
+		Q_i &= q_i + \delta q_i \\
+		P_i &= p_i + \delta p_i
+	\end{align*}
+	$\implies S = \delta S$
+	
+	A proper generating function would be $F_2 = q_i P_i + \epsilon G(q, P, t)$, when $\epsilon$ is some infinitesimal parameter and $G$ is any differentiable function of its $2n+1$ arguments.
+	The transformation equations for the momenta
+	\[ p_i = \frac{\partial F_2}{\partial q_i} = P_i + \epsilon \frac{\partial G}{\partial q_i} \]
+	or
+	\[ \delta p_i = P_i - p_i = -\epsilon \frac{\partial G}{\partial q_i} \]
+	Similarly we also have:
+	\[ Q_i = \frac{\partial F_2}{\partial P_i} = q_i + \epsilon \frac{\partial G}{\partial P_i} \quad \text{or} \quad \delta q_i = \epsilon \frac{\partial G}{\partial P_i} \]
+	
+	As an example from $t_0$ to $t_0+dt$:
+	\[ \delta q = \dot{q} dt \implies \dot{q} = \frac{\partial G}{\partial p} \]
+	
+	The Jacobian for an infinitesimal transformation:
+	\[ M = \frac{\partial(Q, P)}{\partial(q, p)} \text{ or } M = \begin{pmatrix} \frac{\partial Q}{\partial q} & \frac{\partial Q}{\partial p} \\ \frac{\partial P}{\partial q} & \frac{\partial P}{\partial p} \end{pmatrix} \]
+	Whose elements are
+	\[ M = I + \epsilon J \text{ or } M = \begin{pmatrix} 1 + \epsilon \frac{\partial^2 G}{\partial q \partial p} & \epsilon \frac{\partial^2 G}{\partial p^2} \\ -\epsilon \frac{\partial^2 G}{\partial q^2} & 1 - \epsilon \frac{\partial^2 G}{\partial p \partial q} \end{pmatrix} \]
+	The transpose of $M$ is $M^T$ and the symplectic condition becomes
+	\[ M^T J M = J \]
+	\[ (I + \epsilon J^T) J (I + \epsilon J) \approx J + \epsilon (J^T J + J J) = J \]
+	Thus, the symplectic condition would be
+	\[ J^T J + J J = 0 \]
+	This means that the symplectic condition holds for any I.C.T.
+	\section*{9.5 Poisson Brackets And Other Canonical Invariants}
+	
+	\subsection*{Definition of Poisson Bracket}
+	We define the Poisson bracket of $u, v$ with respect to the canonical variables $(q,p)$ as
+	\[ [u,v]_{q,p} = \sum_i \left( \frac{\partial u}{\partial q_i} \frac{\partial v}{\partial p_i} - \frac{\partial u}{\partial p_i} \frac{\partial v}{\partial q_i} \right) \]
+	through which we can see that $q$ is coupled with $p$ and $p$ with $-q$.
+	
+	In matrix form:
+	\[ [u,v] = \left(\frac{\partial u}{\partial \xi}\right)^T J \left(\frac{\partial v}{\partial \xi}\right) \]
+	By definition, we see that
+	\[ [q_j, q_k] = 0, \quad [p_j, p_k] = 0, \quad [q_j, p_k] = \delta_{jk} \]
+	We introduce a square matrix Poisson bracket whose elements are $[\xi_j, \xi_k]$.
+	\[ \implies [J]_{jk} = [\xi_j, \xi_k] \]
+	\[ \implies [\xi, \xi] = J \]
+	If $q \to Q$ is canonical we have
+	\[ [Q,P] = \frac{\partial(Q,P)}{\partial(q,p)} = M J M^T \]
+	Hence $[Q,P] = J$. We see that the fundamental Poisson brackets are invariant under canonical transformation. Since $[Q,P]=J$.
+	
+	\subsection*{Lagrange Brackets and Properties}
+	We now consider two functions $u, v$ with respect to the $j$ set of coordinates. We have the relation:
+	\[ \tilde{M} = \frac{\partial \xi}{\partial \zeta} \quad \text{and} \quad M = \frac{\partial \zeta}{\partial \xi} \]
+	Hence $[u,v]_{\xi} = \left( \frac{\partial u}{\partial \zeta} \right)^T \tilde{M} J \tilde{M}^T \left( \frac{\partial v}{\partial \zeta} \right)$.
+	If the transformation is canonical, $[u,v]_{\zeta} = \frac{\partial u}{\partial \zeta_r} J_{rs} \frac{\partial v}{\partial \zeta_s}$.
+	Then all Poisson brackets are canonical invariants.
+	
+	We have some properties:
+	\begin{enumerate}
+		\item $[u,u] = 0$ (antisymmetry)
+		\item $[u, c] = 0$
+		\item $[u+v, w] = [u,w] + [v,w]$ (linearity)
+		\item $[uv, w] = u[v,w] + [u,w]v$
+		\item $[u, [v,w]] + [v, [w,u]] + [w, [u,v]] = 0$ (Jacobi identity)
+	\end{enumerate}
+	\textbf{Proof:} We denote partial derivatives of $u,v,w$ by corresponding canonical variable.
+	(Functions with continuous second derivatives)
+	\[ \sum_k \left( \frac{\partial u}{\partial \xi_k} \frac{\partial [v,w]}{\partial \eta_k} - \frac{\partial [v,w]}{\partial \xi_k} \frac{\partial u}{\partial \eta_k} \right) \]
+	Then $[u,v] = u_j J_{jk} v_k$, where $J_{ij}$ is the element.
+	Thus: $[[u,v],w] = (u_{ij} J_{jk} v_k + u_j J_{jk} v_{ki}) J_{il} w_l$.
+	Since $J_{ji} + J_{ij} = 0$ and $w_{kl} = w_{lk}$,
+	we thus prove the Jacobi identity.
+	
+	\subsection*{Further Properties and Transformations}
+	The Lagrange bracket of $u$ and $v$ with respect to the $(\mathbf{q}, \mathbf{p})$ variables is defined as
+	\[ \{u,v\}_{q,p} = \sum_i \left( \frac{\partial q_i}{\partial u} \frac{\partial p_i}{\partial v} - \frac{\partial p_i}{\partial u} \frac{\partial q_i}{\partial v} \right) \]
+	or
+	\[ \{u,v\} = \left( \frac{\partial \xi}{\partial u} \right)^T J^{-1} \left( \frac{\partial \xi}{\partial v} \right) \]
+	And the fundamental Lagrange brackets
+	\[ \{q_j, q_k\} = 0, \quad \{p_j, p_k\} = 0, \quad \{q_j, p_k\} = \delta_{jk} \]
+	or $\{ \xi_i, \xi_j \} = J$.
+	Then these have the character: $\{u,v\}[u,v]=1$.
+	
+	We consider the transformations from one phase space with coordinates $\xi_j$ to another with $\zeta_j$ in $2n$ dimensional.
+	The volume element:
+	\[ dV = dq_1 dq_2 \dots dq_n dp_1 \dots dp_n \]
+	\[ dV_\zeta = dQ_1 \dots dQ_n dP_1 \dots dP_n \]
+	They are connected by the value of Jacobian determinant $|M|$.
+	\[ dV_\zeta = |M| dV_\xi \]
+	For example, for $s=1$: $(\mathbf{q}, \mathbf{p}) \to (\mathbf{Q}, \mathbf{P})$.
+	\[ dQ dP = \left| \frac{\partial(Q,P)}{\partial(q,p)} \right| dq dp = |[Q,P]| dq dp \]
+	
+	The volume of an arbitrary region in phase space is a canonical invariant.
+	\[ J_V = \int \dots \int dV_\xi \]
+	By symplectic condition $MJM^T=J$, we obtain $|M| = \pm 1$.
+	
+	For systems with many degrees of freedom, we suppose the first of the equations of transformation $Q=Q(q,p)$, $P=P(q,p)$ is invertible, say $q = q(Q,P)$.
+	Substitution in the second equation yields, say $p=p(Q,P)$.
+	We expect the transformation is generated by $F_1$.
+	\[ p = \frac{\partial F_1(q,Q)}{\partial q}, \quad P = -\frac{\partial F_1(q,Q)}{\partial Q} \]
+	Then $\frac{\partial p}{\partial Q} = -\frac{\partial P}{\partial q}$.
+	Conversely, if this equation is valid, there must exist $F_1$ such that $p$ and $P$ are given.
+	If $Q=Q(q,p)$, $\phi = \phi(q,p)$, the condition for the transformation to be canonical is
+	\[ [Q,\phi]_{q,p} = 1 \]
+	In the same spirit, we write that $p=p(q,Q)$ and since $P=P(q,Q)$,
+	\[ [q,p]_{Q,P} = \left(\frac{\partial q}{\partial Q}\frac{\partial p}{\partial P} - \frac{\partial q}{\partial P}\frac{\partial p}{\partial Q}\right)_{q,Q} = 1 \]
+	Hence $\left. \frac{\partial p}{\partial Q} \right|_q = - \left( \frac{\partial q}{\partial Q} \right)_p^{-1} = -\left. \frac{\partial P}{\partial q} \right|_Q$.
+	\[ -\frac{\partial p}{\partial Q} = \frac{\partial P}{\partial q} \]
+	\section*{9.6 Equations of Motion. Infinitesimal Canonical Transformations, and Conservation Theorems in the Poisson Bracket Formulation.}
+	
+	\subsection*{1}
+	For the function $u(q, p, t)$
+	\begin{equation*}
+		\frac{du}{dt} = \sum_i \left( \frac{\partial u}{\partial q_i}\dot{q_i} + \frac{\partial u}{\partial p_i}\dot{p_i} \right) + \frac{\partial u}{\partial t}
+	\end{equation*}
+	\begin{equation*}
+		= \sum_i \left( \frac{\partial u}{\partial q_i}\frac{\partial H}{\partial p_i} - \frac{\partial u}{\partial p_i}\frac{\partial H}{\partial q_i} \right) + \frac{\partial u}{\partial t}
+	\end{equation*}
+	\begin{equation*}
+		= [u, H] + \frac{\partial u}{\partial t}
+	\end{equation*}
+	or
+	\begin{equation*}
+		\frac{du}{dt} = \sum_j \frac{\partial u}{\partial \eta_j} \dot{\eta_j} + \frac{\partial u}{\partial t} = [u, H] + \frac{\partial u}{\partial t}
+	\end{equation*}
+	And we obtain the Hamilton's equations
+	\begin{equation*}
+		\dot{q_i} = [q_i, H], \quad \dot{p_i} = [p_i, H]
+	\end{equation*}
+	or
+	\begin{equation*}
+		\dot{\eta}_j = [\eta_j, H]
+	\end{equation*}
+	If $u$ is a constant of the motion
+	\begin{equation*}
+		[H, u] = -\frac{\partial u}{\partial t}
+	\end{equation*}
+	By Jacobian Identity
+	\begin{equation*}
+		[H, [u, v]] = 0 \quad \text{if u,v are constants of motion}
+	\end{equation*}
+	That is $[u, v]$ is always a constant in time.
+	
+	\subsection*{2}
+	We consider an I.C.T. (Infinitesimal Canonical Transformation)
+	\begin{equation*}
+		\zeta = \eta + \delta\eta
+	\end{equation*}
+	In terms of the generator G
+	\begin{equation*}
+		\delta\eta = \epsilon \frac{\partial G}{\partial \eta}
+	\end{equation*}
+	By definition: $[y, u] = \frac{\partial u}{\partial y}$. If we set $u=G$, we see the I.C.T can be written as
+	\begin{equation*}
+		\delta y = \epsilon [y, G]
+	\end{equation*}
+	We let $\epsilon = dt$.
+	\begin{equation*}
+		\delta y = dt [y, H] = \dot{y} dt = dy
+	\end{equation*}
+	We can say that the Hamiltonian is the generator of the system motion with time.
+	
+	\subsection*{3 }
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure3}
+		\caption{}
+		\label{fig:figure3}
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure4}
+		\caption{}
+		\label{fig:figure4}
+	\end{figure}
+	
+	We denote a change in the value of a function about an active I.C.T.
+	\begin{equation*}
+		\delta u = u(B) - u(A)
+	\end{equation*}
+	where A and B will be infinitesimally close. Or:
+	\begin{equation*}
+		\delta u = u(\eta + \delta\eta) - u(\eta)
+	\end{equation*}
+	Expanding in a Taylor series and retaining the first order
+	\begin{equation*}
+		\delta u = \frac{\partial u}{\partial y} \delta y = \epsilon \frac{\partial u}{\partial y} \frac{\partial G}{\partial y} = \epsilon [u, G]
+	\end{equation*}
+	\begin{equation*}
+		\delta u = \epsilon [u, G]
+	\end{equation*}
+	
+	\subsection*{4}
+	When the canonical transformation depends upon the time
+	\begin{equation*}
+		H \rightarrow K
+	\end{equation*}
+	The difference is: 
+	\begin{equation*}
+		\delta H = H(B) - K(A)
+	\end{equation*}
+	The function itself doesn't change under the transformation
+	\begin{equation*}
+		u(A') = u(A)
+	\end{equation*}
+	K and H are related by
+	\begin{equation*}
+		K = H + \frac{\partial f}{\partial t}
+	\end{equation*}
+	Let the generator be G, as a function of time
+	\begin{equation*}
+		K(A') = H(A') + \epsilon \frac{\partial G}{\partial t} = H(A) + \epsilon[H, G] + \epsilon \frac{\partial G}{\partial t}
+	\end{equation*}
+	\begin{equation*}
+		\delta H = H(B) - H(A) - \epsilon \frac{\partial G}{\partial t} = \epsilon[H, G] - \epsilon \frac{\partial G}{\partial t}
+	\end{equation*}
+	with G as u.
+	\begin{equation*}
+		\delta H = -\epsilon \frac{dG}{dt}
+	\end{equation*}
+	It indicates that the constants of the motion are the generating functions of those I.C.T.s that leave the Hamiltonian invariant.
+	
+	\subsection*{5}
+	Consider a transformation generated by the generalized momentum conjugate to $q_i$:
+	\begin{equation*}
+		G(q, P) = p_i
+	\end{equation*}
+	The ICT is:
+	\begin{equation*}
+		\delta q_j = \epsilon \delta_{ij}, \quad \delta p_i = 0
+	\end{equation*}
+	That is if a coordinate is cyclic, its conjugate momentum is a constant of motion.
+	If the generating function of an I.C.T. is
+	\begin{equation*}
+		G_1 = (v_j \eta_j)_L = v_j p_j
+	\end{equation*}
+	The equations of transformation are
+	\begin{equation*}
+		\delta \eta_k = \epsilon [ \eta_k, G_1 ] = \epsilon \frac{\partial G_1}{\partial \eta_k} = \epsilon J_{ks} \frac{\partial G_1}{\partial \eta_s} = \epsilon J_{ks} v_s = \epsilon S_{kl} v_l
+	\end{equation*}
+	
+	\subsection*{6}
+	We consider an infinitesimal rotation along the z-axis. The changes in the particle coordinates
+	\begin{equation*}
+		\delta x = -y d\theta, \quad \delta y = x d\theta, \quad \delta z = 0
+	\end{equation*}
+	The momenta conjugate to the coordinates
+	\begin{equation*}
+		\delta p_x = -p_y d\theta, \quad \delta p_y = p_x d\theta, \quad \delta p_z = 0
+	\end{equation*}
+	The corresponding generating function
+	\begin{equation*}
+		G = x p_y - y p_x
+	\end{equation*}
+	with $d\theta$ as $\epsilon$. We note that:
+	\begin{equation*}
+		\delta x = \epsilon \frac{\partial G}{\partial p_x} = -y d\theta, \quad \delta p_x = -\epsilon \frac{\partial G}{\partial x} = -p_y d\theta
+	\end{equation*}
+	\begin{equation*}
+		\delta y = \epsilon \frac{\partial G}{\partial p_y} = x d\theta, \quad \delta p_y = -\epsilon \frac{\partial G}{\partial y} = p_x d\theta
+	\end{equation*}
+	It has the physical significance that G is the z-component of the total angular momentum.
+	\begin{equation*}
+		G = L_z = (\vec{r} \times \vec{p})_z = \vec{L} \cdot \vec{n}
+	\end{equation*}
+	where $\vec{n}$ is the unit vector along the rotation.
+	
+	\subsection*{7}
+	We consider a continuous function along the trajectory (with the initial $u_0 = u(0)$).
+	The infinitesimal change of u on the trajectory
+	\begin{equation*}
+		\delta u = d\theta [u, G]
+	\end{equation*}
+	\begin{equation*}
+		\frac{du}{d\alpha} = [u, G]
+	\end{equation*}
+	By the Taylor series
+	\begin{equation*}
+		u(\alpha) = u_0 + \alpha \frac{du}{d\alpha}|_0 + \dots
+	\end{equation*}
+	we have
+	\begin{equation*}
+		\frac{du}{d\alpha}|_0 = [u, G]_0 \quad \text{and} \quad \frac{d\eta}{d\alpha} = [\eta, G]
+	\end{equation*}
+	\section*{9.7 The Angular Momentum Poisson Bracket Relations}
+	
+	We consider a vector function $\vec{F}$ of the system configuration. The change in $F$ under an infinitesimal canonical transformation generated by $G$ is given by
+	$$
+	\delta F_i = d\alpha [F_i, G]
+	$$
+	With $G = \vec{L} \cdot \hat{n}$, the generator of rotations, we have
+	$$
+	\delta \vec{F} = d\theta [\vec{F}, \vec{L} \cdot \hat{n}]
+	$$
+	The change in $\vec{F}$ under an infinitesimal rotation about an axis $\hat{n}$ is
+	$$
+	d\vec{F} = d\alpha (\hat{n} \times \vec{F})
+	$$
+	For a system $\vec{F}$, the change under an I.C.T. generated by $\vec{L} \cdot \hat{n}$ is
+	$$
+	\delta \vec{F} = d\theta [\vec{F}, \vec{L} \cdot \hat{n}] = d\alpha (\hat{n} \times \vec{F})
+	$$
+	$$
+	\Rightarrow [\vec{F}, \vec{L} \cdot \hat{n}] = \hat{n} \times \vec{F}
+	$$
+	In Cartesian coordinates, if the $\hat{n}$ is along the $z$-axis, so that $L_z = x p_y - y p_x$:
+	$$
+	\begin{cases}
+		[p_x, x p_y - y p_x] = -p_y \\
+		[p_y, x p_y - y p_x] = p_x \\
+		[p_z, x p_y - y p_x] = 0
+	\end{cases}
+	$$
+	For an arbitrary $\hat{n}$, the k-th component is
+	$$
+	[F_i, L_j] = \epsilon_{ijk} F_k
+	$$
+	In particular, if we let $\vec{F} = \vec{L}$, we get the angular momentum algebra:
+	$$
+	\Rightarrow [L_i, L_j] = \epsilon_{ijk} L_k
+	$$
+	or, for components in cyclic order ($l, m, n$):
+	$$
+	[L_l, L_m] = L_n
+	$$
+	
+	\vspace{1cm}
+	
+	For the product of two system vectors $\vec{F}$, $\vec{G}$:
+	$$
+	[\vec{F} \cdot \vec{G}, \vec{L} \cdot \hat{n}] = \vec{F} \cdot [\vec{G}, \vec{L} \cdot \hat{n}] + \vec{G} \cdot [\vec{F}, \vec{L} \cdot \hat{n}]
+	$$
+	$$
+	= \vec{F} \cdot (\hat{n} \times \vec{G}) + \vec{G} \cdot (\hat{n} \times \vec{F})
+	$$
+	Using the scalar triple product identity $\vec{A} \cdot (\vec{B} \times \vec{C}) = -\vec{B} \cdot (\vec{A} \times \vec{C})$:
+	$$
+	= \vec{F} \cdot (\hat{n} \times \vec{G}) - \vec{F} \cdot (\hat{n} \times \vec{G}) = 0
+	$$
+	Taking $\vec{F} = \vec{G} = \vec{L}$:
+	$$
+	[\vec{L} \cdot \vec{L}, \hat{n} \cdot \vec{L}] = [L^2, \vec{L} \cdot \hat{n}] = 0
+	$$
+	From the general relation for a vector, we also have for momentum $\vec{p}$:
+	$$
+	[p_i, \vec{L} \cdot \hat{n}] = (\hat{n} \times \vec{p})_i
+	$$
+	$$
+	[p_i, L_j] = \epsilon_{ijk} p_k
+	$$
+	If $p_z, L_x, L_y$ are all constants of motion (i.e., their Poisson brackets with the Hamiltonian are zero), then
+	$$
+	[p_z, L_x] = p_y
+	$$
+	$$
+	[p_z, L_y] = -p_x
+	$$
+	This implies that $p_x$ and $p_y$ are also conserved, and therefore $\vec{L}$ and $\vec{p}$ are conserved.
+	
+	If $p_x, p_y, L_z$ are constants of motion:
+	$$
+	[p_x, p_y] = 0
+	$$
+	$$
+	[p_x, L_z] = p_y
+	$$
+	$$
+	[p_y, L_z] = -p_x
+	$$
+%	
+%	\section*{9.8 Symmetry Groups of Mechanical Systems}
+%	
+%	A Lie algebra satisfies the condition on the Poisson bracket:
+%	$$
+%	[u_i, u_j] = \sum_k C_{ij}^k u_k
+%	$$
+%	The elements $Q(\alpha)$ of the associated Lie Group are given by
+%	$$
+%	Q(\alpha) = \exp\left[\frac{1}{2} \sum_i \alpha_i \sigma_i\right]
+%	$$
+%	We have the Pauli matrices:
+%	$$
+%	\sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \quad \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+%	$$
+%	They satisfy the commutation relation:
+%	$$
+%	[\sigma_i, \sigma_j] = 2i\epsilon_{ijk} \sigma_k \quad (i,j,k \text{ in cyclic order})
+%	$$
+%	and
+%	$$
+%	\sigma_i^2 = I
+%	$$
+%	The structure constants are thus $C_{ij}^k = 2i \epsilon_{ijk}$.
+%	
+%	For a rotation in the y-z plane (i.e., about the x-axis):
+%	$$
+%	Q(\theta) = \exp\left[\frac{i\theta}{2} \sigma_x\right] = I \cos\frac{\theta}{2} + i\sigma_x \sin\frac{\theta}{2} = \begin{pmatrix} \cos\frac{\theta}{2} & i\sin\frac{\theta}{2} \\ i\sin\frac{\theta}{2} & \cos\frac{\theta}{2} \end{pmatrix}
+%	$$
+%	Vectors are represented by traceless matrices:
+%	$$
+%	V(x,y,z) = \begin{pmatrix} V_z & V_x - iV_y \\ V_x + iV_y & -V_z \end{pmatrix}
+%	$$
+%	and a rotation is performed by the similarity transformation:
+%	$$
+%	V(x',y',z') = Q(\theta) V(x,y,z) Q^{\dagger}(\theta)
+%	$$
+%	
+%	\section*{Examples}
+%	
+%	\subsection*{Case 1: Finite Rotation}
+%	We consider the generator to be $G=L_z$. Let $X, Y$ be the coordinates.
+%	$$
+%	[X, L_z] = -Y, \quad [Y, L_z] = X
+%	$$
+%	We use lowercase letters to denote the initial coordinates $(x,y)$ at $\theta=0$. The Taylor series expansion for $X(\theta)$ is
+%	$$
+%	X(\theta) = X(0) + \theta [X, L_z]_0 + \frac{\theta^2}{2!} [[X, L_z], L_z]_0 + \frac{\theta^3}{3!} [[[X, L_z], L_z], L_z]_0 + \dots
+%	$$
+%	The brackets evaluated at $\theta=0$ are:
+%	$$
+%	[X, L_z]_0 = -y
+%	$$
+%	$$
+%	[[X, L_z], L_z]_0 = [-Y, L_z]_0 = -[Y, L_z]_0 = -x
+%	$$
+%	$$
+%	[[[X, L_z], L_z], L_z]_0 = [-x, L_z]_0 = -[X, L_z]_0 = -(-y) = y
+%	$$
+%	$$
+%	[[[[X, L_z], L_z], L_z], L_z]_0 = [y, L_z]_0 = [Y, L_z]_0 = x
+%	$$
+%	Substituting these into the series gives:
+%	$$
+%	X(\theta) = x - y\frac{\theta}{1!} - x\frac{\theta^2}{2!} + y\frac{\theta^3}{3!} + x\frac{\theta^4}{4!} - \dots
+%	$$
+%	Grouping terms with $x$ and $y$:
+%	$$
+%	X(\theta) = x\left(1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \dots\right) - y\left(\theta - \frac{\theta^3}{3!} + \dots\right)
+%	$$
+%	$$
+%	\Rightarrow X(\theta) = x \cos\theta - y \sin\theta
+%	$$
+%	
+%	\subsection*{Case 2: Time Evolution}
+%	We let the generator be the Hamiltonian, $G=H$, and the parameter be time $t$. The equation of motion for an observable $u$ is
+%	$$
+%	\frac{du}{dt} = [u, H]
+%	$$
+%	The solution can be written as an expansion:
+%	$$
+%	u(t) = u_0 + t[u,H]_0 + \frac{t^2}{2!}[[u,H],H]_0 + \dots
+%	$$
+%	Consider a particle under constant force (e.g., gravity), with $H = \frac{p^2}{2m} - Fx$, and we want to find $x(t)$.
+%	$$
+%	[x, H] = \left[x, \frac{p^2}{2m}\right] = \frac{p}{m}
+%	$$
+%	$$
+%	[[x,H], H] = \left[\frac{p}{m}, H\right] = \frac{1}{m}[p, -Fx] = -\frac{F}{m}[p,x] = \frac{F}{m} = a
+%	$$
+%	Since $a$ is a constant, all higher-order brackets are zero:
+%	$$
+%	[[[x,H], H], H] = [a, H] = 0
+%	$$
+%	The series for $x(t)$ terminates:
+%	$$
+%	x(t) = x_0 + t\left(\frac{p_0}{m}\right) + \frac{t^2}{2!}(a)
+%	$$
+%	$$
+%	\Rightarrow x(t) = x_0 + v_0 t + \frac{1}{2}at^2
+%	$$
+	\section*{9.9 Liouville's Theorem}
+	
+	The total time derivation of $D$ can be written as
+	\[
+	\frac{dD}{dt} = [D, H] + \frac{\partial D}{\partial t}
+	\]
+	We then consider an infinitesimal volume in phase space that has a motion (L.Fig 9, page 420).
+	
+	Since the number of systems in the infinitesimal region $dN$ and the volume $dV$ are constants, we have
+	\[
+	0 = \frac{dN}{dV} \text{ must be constant, that is}
+	\]
+	\[
+	\frac{dD}{dt} = 0 \quad \text{or} \quad \frac{\partial D}{\partial t} = -[D, H]
+	\]
+	Plus by continuous equation
+	\[
+	\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec{v}) = 0
+	\]
+	where $\vec{v} = (\dot{q}, \dot{p})$ is the velocity of phase space.
+	\[
+	\nabla \cdot (\rho \vec{v}) = \sum_{i=1}^{N} \left( \frac{\partial (\rho \dot{q_i})}{\partial q_i} + \frac{\partial (\rho \dot{p_i})}{\partial p_i} \right)
+	\]
+	With Hamilton's equations:
+	\[
+	\dot{q_i} = \frac{\partial H}{\partial p_i}, \quad \dot{p_i} = -\frac{\partial H}{\partial q_i}
+	\]
+	The continuity equation becomes
+	\[
+	\Rightarrow \frac{\partial \rho}{\partial t} + [\rho, H] = 0
+	\]
+	
+\end{document}
