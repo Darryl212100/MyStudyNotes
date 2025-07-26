@@ -1,0 +1,810 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{braket}
+\usepackage{physics}
+\geometry{a4paper, margin=1in}
+\author{}
+\title{V. Magnetostatics, Faraday's Law, Quasi-Static Fields}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\section*{5.1 Introduction and Definitions}
+	
+	\paragraph{1}
+	We define the flux density as:
+	\begin{equation*}
+		\mathbf{N} = \boldsymbol{\mu} \times \mathbf{B}
+	\end{equation*}
+	where $\mathbf{N}$ is the mechanical torque and $\boldsymbol{\mu}$ is the magnetic moment of the dipole.
+	
+	A current corresponds to charges in motion and is described by a current density $\mathbf{J}$ measured in units of positive charge crossing unit area per unit time, and same for direction. Conservation of charge demands that at any point in space be related to the current density in that neighborhood by a continuity equation:
+	\begin{equation*}
+		\frac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{J} = 0
+	\end{equation*}
+	$\Rightarrow$ a decrease in charge inside a small volume with time must correspond to a flow of charge out through the surface of the small volume.
+	
+	For steady-state magnetic phenomena, there are no change in the net charge density anywhere. Hence, we obtain:
+	\begin{equation*}
+		\nabla \cdot \mathbf{J} = 0
+	\end{equation*}
+	
+	\section*{5.2 Biot and Savart Law}
+	
+	\paragraph{1}
+	By experiment, we obtain the relation:
+	If $d\mathbf{l}$ is an element of length (pointing in the direction of current flow) of a filamentary wire that carries a current $I$ and $\mathbf{r}$ is the coordinate vector from the element of length to an observation point $P$. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure1}
+		\caption{}
+		\label{fig:figure1}
+	\end{figure}
+	
+	The elemental flux density $d\mathbf{B}$ at $P$ is given by:
+	\begin{equation*}
+		d\mathbf{B} = kI \frac{d\mathbf{l} \times \mathbf{r}}{|\mathbf{r}|^3}
+	\end{equation*}
+	By viewing the current as charge in motion so that: $I\,d\mathbf{l} = q\mathbf{v}$. Thus:
+	\begin{equation*}
+		\mathbf{B} = kq \frac{\mathbf{v} \times \mathbf{r}}{|\mathbf{r}|^3}
+	\end{equation*}
+	for a charge in motion. We introduce the speed of light, $c$ by $k = 1/c^2$ in SI units. We see that $k = \mu_0 / 4\pi = 10^{-7} \text{ N/A}^2 \text{ or H/m}$.
+	
+	\paragraph{2}
+	We linearly superpose the basic magnetic flux elements by integration. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure2}
+		\caption{}
+		\label{fig:figure2}
+	\end{figure}
+	
+	The magnitude of $\mathbf{B}$ is given by:
+	\begin{equation*}
+		|\mathbf{B}| = \frac{\mu_0}{4\pi} IR \int_{-\infty}^{\infty} \frac{dL}{(R^2+L^2)^{3/2}} = \frac{\mu_0 I}{2\pi R}
+	\end{equation*}
+	where $R$ is the distance from the observation point to the wire. Thus, we obtain the Biot and Savart Law.
+	
+	\paragraph{3}
+	By Ampere's experiments, the elemental force acting on the current element $I_1 d\mathbf{l}_1$ by the magnetic induction $\mathbf{B}_2$ is:
+	\begin{equation*}
+		d\mathbf{F}_1 = I_1 (d\mathbf{l}_1 \times \mathbf{B}_2)
+	\end{equation*}
+	If the external $\mathbf{B}$ is due to a closed current loop \#2 with current $I_2$, the the total force which a closed loop \#1, which current $I_1$, in experience is
+	\begin{equation*}
+		\mathbf{F}_{12} = \frac{\mu_0}{4\pi} I_1 I_2 \oint \oint \frac{d\mathbf{l}_1 \times (d\mathbf{l}_2 \times \mathbf{r}_{12})}{|\mathbf{r}_{12}|^3}
+	\end{equation*}
+	where $\mathbf{r}_{12}$ is the vector distance from $d\mathbf{l}_2$ to $d\mathbf{l}_1$. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure3}
+		\caption{}
+		\label{fig:figure3}
+	\end{figure}
+	
+	By symmetry in $d\mathbf{l}_1$ and $d\mathbf{l}_2$, thus:
+	\begin{equation*}
+		\frac{d\mathbf{l}_1 \times (d\mathbf{l}_2 \times \mathbf{r}_{12})}{|\mathbf{r}_{12}|^3} = -(d\mathbf{l}_1 \cdot d\mathbf{l}_2) \frac{\mathbf{r}_{12}}{|\mathbf{r}_{12}|^3} + d\mathbf{l}_2 \left( \frac{d\mathbf{l}_1 \cdot \mathbf{r}_{12}}{|\mathbf{r}_{12}|^3} \right)
+	\end{equation*}
+	The second term gives no contribution if the paths are closed or extend to infinity. Then Ampere's law of force between loops:
+	\begin{equation*}
+		\mathbf{F}_{12} = -\frac{\mu_0}{4\pi} I_1 I_2 \oint \oint (d\mathbf{l}_1 \cdot d\mathbf{l}_2) \frac{\mathbf{r}_{12}}{|\mathbf{r}_{12}|^3}
+	\end{equation*}
+	Each of two long, parallel, straight wires a distance $d$ apart, carrying currents $I_1, I_2$, experiences a force per unit length directed perpendicularly toward the other wire:
+	\begin{equation*}
+		\frac{dF}{dL} = \frac{\mu_0}{2\pi} \frac{I_1 I_2}{d}
+	\end{equation*}
+	The force is attractive/repulsive if the currents flow in the same/opposite directions.
+	\section*{5.3 Differential Equations of Magnetostatics and Ampère's Law}
+	
+	\paragraph{1}
+	In terms of $\mathbf{J}(\mathbf{x'})$, the magnetic induction is
+	\begin{equation*}
+		\mathbf{B}(\mathbf{x}) = \frac{\mu_0}{4\pi} \int \mathbf{J}(\mathbf{x'}) \times \frac{\mathbf{x}-\mathbf{x'}}{|\mathbf{x}-\mathbf{x'}|^3} d^3x'
+	\end{equation*}
+	which is the magnetic analog of electric field in terms of charge density
+	\begin{equation*}
+		\mathbf{E}(\mathbf{x}) = \frac{1}{4\pi\epsilon_0} \int \rho(\mathbf{x'}) \frac{\mathbf{x}-\mathbf{x'}}{|\mathbf{x}-\mathbf{x'}|^3} d^3x'
+	\end{equation*}
+	By
+	\begin{equation*}
+		\frac{\mathbf{x}-\mathbf{x'}}{|\mathbf{x}-\mathbf{x'}|^3} = -\nabla \frac{1}{|\mathbf{x}-\mathbf{x'}|}
+	\end{equation*}
+	we have:
+	\begin{equation*}
+		\mathbf{B}(\mathbf{x}) = \frac{\mu_0}{4\pi} \int \mathbf{J}(\mathbf{x'}) \times \nabla \left(\frac{1}{|\mathbf{x}-\mathbf{x'}|}\right) d^3x'
+	\end{equation*}
+	Thus, the divergence of $\mathbf{B}$ vanishes:
+	\begin{equation*}
+		\nabla \cdot \mathbf{B} = 0 \quad (\because \nabla \cdot (\nabla \times \mathbf{F}) = 0)
+	\end{equation*}
+	By analogy, the curl of $\mathbf{B}$:
+	\begin{equation*}
+		\nabla \times \mathbf{B} = \frac{\mu_0}{4\pi} \int \nabla \times \left( \mathbf{J}(\mathbf{x'}) \times \frac{\mathbf{x}-\mathbf{x'}}{|\mathbf{x}-\mathbf{x'}|^3} \right) d^3x'
+	\end{equation*}
+	With the identity $\nabla \times (\nabla \times \mathbf{A}) = \nabla(\nabla \cdot \mathbf{A}) - \nabla^2 \mathbf{A}$ for arbitrary $\mathbf{A}$.
+	
+	We have:
+	\begin{equation*}
+		\nabla \times \mathbf{B} = \frac{\mu_0}{4\pi} \left\{ \int \mathbf{J}(\mathbf{x'}) \nabla^2 \left(\frac{1}{|\mathbf{x}-\mathbf{x'}|}\right) d^3x' - \int (\mathbf{J}(\mathbf{x'}) \cdot \nabla) \nabla \left(\frac{1}{|\mathbf{x}-\mathbf{x'}|}\right) d^3x' \right\}
+	\end{equation*}
+	We use
+	\begin{equation*}
+		\nabla \left(\frac{1}{|\mathbf{x}-\mathbf{x'}|}\right) = -\nabla' \left(\frac{1}{|\mathbf{x}-\mathbf{x'}|}\right)
+	\end{equation*}
+	and
+	\begin{equation*}
+		\nabla^2 \left(\frac{1}{|\mathbf{x}-\mathbf{x'}|}\right) = -4\pi \delta(\mathbf{x}-\mathbf{x'})
+	\end{equation*}
+	\begin{equation*}
+		\Rightarrow \nabla \times \mathbf{B} = -\frac{\mu_0}{4\pi} \int \mathbf{J}(\mathbf{x'}) \cdot \nabla' \left(\frac{1}{|\mathbf{x}-\mathbf{x'}|}\right) d^3x' + \mu_0 \mathbf{J}(\mathbf{x})
+	\end{equation*}
+	Integration by parts:
+	\begin{equation*}
+		\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \frac{\mu_0}{4\pi} \int \nabla' \cdot \mathbf{J}(\mathbf{x'}) \frac{1}{|\mathbf{x}-\mathbf{x'}|} d^3x'
+	\end{equation*}
+	For steady-state magnetic phenomena $\nabla \cdot \mathbf{J} = 0$. We obtain
+	\begin{equation*}
+		\nabla \times \mathbf{B} = \mu_0 \mathbf{J}
+	\end{equation*}
+	corresponding to $\nabla \cdot \mathbf{E} = \rho/\epsilon_0$.
+	
+	\paragraph{2}
+	By applying Stokes's theorem to the integral of the normal component of $\nabla \times \mathbf{B} = \mu_0 \mathbf{J}$ over an open surface $S$ bounded by a closed curve $C$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure4}
+		\caption{}
+		\label{fig:figure4}
+	\end{figure}
+	
+	\begin{equation*}
+		\int_S (\nabla \times \mathbf{B}) \cdot \hat{\mathbf{n}} \, da = \mu_0 \int_S \mathbf{J} \cdot \hat{\mathbf{n}} \, da
+	\end{equation*}
+	\begin{equation*}
+		\oint_C \mathbf{B} \cdot d\mathbf{l} = \mu_0 \int_S \mathbf{J} \cdot \hat{\mathbf{n}} \, da = \mu_0 I
+	\end{equation*}
+	which is the Ampère's Law.
+	
+	\section*{5.4 Vector Potential}
+	
+	We already have
+	\begin{align*}
+		\nabla \times \mathbf{B} &= \mu_0 \mathbf{J} \\
+		\nabla \cdot \mathbf{B} &= 0
+	\end{align*}
+	which permit the $\mathbf{B}$ is the gradient of a magnetic scalar potential, $\mathbf{B} = -\nabla \Phi_M$.
+	
+	We assume $\nabla \cdot \mathbf{B} = 0$ everywhere, $\mathbf{B}$ must be the curl of some vector field $\mathbf{A}(\mathbf{x})$, called the vector potential.
+	\begin{equation*}
+		\mathbf{B}(\mathbf{x}) = \nabla \times \mathbf{A}(\mathbf{x})
+	\end{equation*}
+	\begin{equation*}
+		\mathbf{A}(\mathbf{x}) = \frac{\mu_0}{4\pi} \int \frac{\mathbf{J}(\mathbf{x'})}{|\mathbf{x}-\mathbf{x'}|} d^3x' + \nabla \Psi(\mathbf{x})
+	\end{equation*}
+	where $\Psi$ is an arbitrary scalar function. We can transform according to $\mathbf{A} \rightarrow \mathbf{A} + \nabla \Psi$, which is the gauge transformation.
+	We thus find:
+	\begin{equation*}
+		\nabla \times (\nabla \times \mathbf{A}) = \mu_0 \mathbf{J}
+	\end{equation*}
+	\begin{equation*}
+		\nabla(\nabla \cdot \mathbf{A}) - \nabla^2 \mathbf{A} = \mu_0 \mathbf{J}
+	\end{equation*}
+	
+	We make the choice of gauge $\nabla \cdot \mathbf{A} = 0$.
+	Then we have the Poisson equation:
+	\begin{equation*}
+		\nabla^2 \mathbf{A} = -\mu_0 \mathbf{J}
+	\end{equation*}
+	The solution for $\mathbf{A}$ in unbounded space is with $\Psi = \text{constant}$, such that $\nabla^2 \Psi = 0$.
+	\begin{equation*}
+		\mathbf{A}(\mathbf{x}) = \int \frac{\mu_0}{4\pi} \frac{\mathbf{J}(\mathbf{x'})}{|\mathbf{x}-\mathbf{x'}|} d^3x'
+	\end{equation*}
+	
+	
+	\section*{5.5 Vector, Potential and Magnetic Induction for a Circular Current Loop}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure5}
+		\caption{}
+		\label{fig:figure5}
+	\end{figure}
+	
+	We consider the problem of a circular loop of radius $a$, lying in the $xy$-plane, centered at the origin, and carrying a current $I$.
+	The current density $\vec{J}$ has only a component in the $\phi$ direction.
+	\[
+	J_\phi = I \sin\theta' \delta(\cos\theta') \delta(r'-a)
+	\]
+	Thus: $\vec{J} = -J_\phi \sin\phi' \vec{i} + J_\phi \cos\phi' \vec{j}$.
+	By the cylindrically symmetric geometry, the $x$ component of the current doesn't contribute. Thus
+	\[
+	A_\phi(r, \theta) = \frac{\mu_0 I}{4\pi} \int_0^{2\pi} \frac{a \cos\phi' d\phi'}{|\vec{x}-\vec{x}'|}
+	\]
+	where $|\vec{x}-\vec{x}'| = [r^2+a^2-2ra\sin\theta\cos\phi']^{1/2}$.
+	\[
+	A_\phi(r, \theta) = \frac{\mu_0 I a}{4\pi} \int_0^{2\pi} \frac{\cos\phi' d\phi'}{[a^2+r^2-2ar\sin\theta\cos\phi']^{1/2}}
+	\]
+	\[
+	= \frac{\mu_0}{4\pi} \frac{4Ia}{[a^2+r^2+2ar\sin\theta]^{1/2}} \left[ \frac{(2-k^2)K(k)-2E(k)}{k^2} \right]
+	\]
+	where $k^2 = \frac{4ar\sin\theta}{a^2+r^2+2ar\sin\theta}$ and $K, E$ are two complete elliptic integrals.
+	
+	The components of magnetic induction are
+	\[
+	\begin{cases}
+		B_r = \frac{1}{r\sin\theta} \frac{\partial}{\partial\theta} (\sin\theta A_\phi) \\
+		B_\theta = -\frac{1}{r} \frac{\partial}{\partial r} (r A_\phi) \\
+		B_\phi = 0
+	\end{cases}
+	\]
+	For $a \gg r$, or $r \gg a$, we can expand in powers of $a \sin\theta/r$ or $r \sin\theta/a$.
+	\[
+	A_\phi(r, \theta) = \frac{\mu_0 I a^2 \sin\theta}{4(a^2+r^2)^{3/2}} \left[ 1 + \frac{15}{8} \frac{a^2 r^2 \sin^2\theta}{(a^2+r^2)^2} + \dots \right]
+	\]
+	The corresponding field components are
+	\[
+	B_r = \frac{\mu_0 I a^2 \cos\theta}{2(a^2+r^2)^{3/2}} \left[ 1 + \frac{15}{4} \frac{a^2 r^2 \sin^2\theta}{(a^2+r^2)^2} + \dots \right]
+	\]
+	\[
+	B_\theta = -\frac{\mu_0 I a^2 \sin\theta}{4(a^2+r^2)^{5/2}} \left[ 2a^2 - r^2 + \frac{15a^2 r^2 \sin^2\theta}{8} \frac{(4a^2-r^2)}{(a^2+r^2)^2} + \dots \right]
+	\]
+	For fields far from the loop $r \gg a$:
+	\[
+	\begin{cases}
+		B_r \approx \frac{\mu_0}{4\pi} \frac{(I \pi a^2) 2\cos\theta}{r^3} \\
+		B_\theta \approx \frac{\mu_0}{4\pi} \frac{(I \pi a^2) \sin\theta}{r^3}
+	\end{cases}
+	\]
+	We define the magnetic dipole moment of the loop
+	\[
+	m = \pi I a^2
+	\]
+	In terms of expansion for $|\vec{x} - \vec{x}'|^{-1}$
+	\[
+	A_\phi = \frac{\mu_0 I}{c} \text{Re} \sum_{l,m} \frac{Y_{lm}(\theta, \phi)}{2l+1} \int Y_{lm}^*(\theta', \phi') \delta(\cos\theta')\delta(r'-a) e^{i\phi'} \frac{r_<^l}{r_>^{l+1}} r'^2 dr' d\Omega'
+	\]
+	The presence of $e^{i\phi'}$ means that only $m=1$ contributes to the sum. Hence
+	\[
+	A_\phi = 2\pi \frac{\mu_0 I a}{c} \sum_{l=1}^{\infty} \frac{Y_{l,1}(\theta, \phi)}{2l+1} \left[ Y_{l,1}^*(\frac{\pi}{2}, 0) \right] \frac{r_<^l}{r_>^{l+1}}
+	\]
+	where $r_< (r_>)$ is the smaller (larger) of $a$ and $r$.
+	
+	The square-bracketed quantity:
+	\[
+	[\dots] = \sqrt{\frac{2l+1}{4\pi l(l+1)}} P_l^1(0)
+	\]
+	\[
+	[\dots] =
+	\begin{cases}
+		0 & \text{for } l \text{ even} \\
+		\sqrt{\frac{2l+1}{4\pi l(l+1)}} (-1)^{l/2+1/2} \frac{(l)!!}{(l-1)!!} & \text{for } l \text{ odd, } l=2n+1
+	\end{cases}
+	\]
+	Then we can write $A_\phi$ as:
+	\[
+	A_\phi = -\frac{\mu_0 I a}{c} \sum_{n=0}^{\infty} (-1)^n \frac{(2n-1)!!}{2^n (n+1)!} \frac{r_<^ {2n+1}}{r_>^{2n+2}} P_{2n+1}^1(\cos\theta)
+	\]
+	We have $\frac{d}{dx}[\sqrt{1-x^2} P_l^1(x)] = l(l+1)P_l(x)$. Then we find:
+	\[
+	B_r = \frac{\mu_0 I a}{2c} \sum_{n=0}^\infty (-1)^n \frac{(2n+1)!!}{2^n n!} \frac{r_<^{2n+1}}{r_>^{2n+3}} P_{2n+2}(\cos\theta)
+	\]
+	\[
+	B_\theta = -\frac{\mu_0 I a^2}{4c} \sum_{n=0}^\infty (-1)^n \frac{(2n+1)!!}{2^n(n+1)!} \frac{1}{r_>^{2n+3}} \left[ \frac{1}{r^2} (\frac{r_<}{a})^{2n} \right] P_{2n+1}^1(\cos\theta)
+	\]
+	The upper line holds for $r<a$, the lower line for $r>a$.
+	For $r \gg a$, only the $n=0$ term survives.
+	
+	\section*{5.6 Magnetic Fields of a Localized Current Distribution}
+	
+	\subsection*{Magnetic Moment}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure6}
+		\caption{}
+		\label{fig:figure6}
+	\end{figure}
+	
+	Assuming $|\vec{x}| \gg |\vec{x}'|$, we can expand
+	\[
+	\frac{1}{|\vec{x}-\vec{x}'|} = \frac{1}{|\vec{x}|} - \frac{\vec{x} \cdot \vec{x}'}{|\vec{x}|^3} + \dots
+	\]
+	The component of the vector potential
+	\[
+	A_i(\vec{x}) = \frac{\mu_0}{4\pi} \left[ \frac{1}{|\vec{x}|} \int J_i(\vec{x}') d^3x' + \frac{\vec{x}}{|\vec{x}|^3} \cdot \int \vec{x}' J_i(\vec{x}') d^3x' + \dots \right]
+	\]
+	If $\vec{J}(\vec{x}')$ is localized but not necessarily divergenceless, we have
+	\[
+	\int (f \vec{J} \cdot \nabla'g + g\vec{J} \cdot \nabla'f + fg \nabla' \cdot \vec{J}) d^3x' = 0
+	\]
+	With $f=1$, $g=x_i'$, $\nabla \cdot \vec{J}=0$, we obtain
+	\[
+	\int J_i(\vec{x}') d^3x' = 0
+	\]
+	With $f=x_i'$, $g=x_j'$, $\nabla \cdot \vec{J}=0$, we obtain
+	\[
+	\int (x_i' J_j + x_j' J_i) d^3x' = 0
+	\]
+	Hence $\int x_i' J_j d^3x' = \frac{1}{2} \int (x_i' J_j - x_j' J_i) d^3x'$
+	\[
+	= -\frac{1}{2} \sum_k \epsilon_{ijk} \int [\vec{x}' \times \vec{J}(\vec{x}')]_k d^3x'
+	\]
+	We define the magnetic moment density / magnetization
+	\[
+	\vec{M}(\vec{x}) = \frac{1}{2} [\vec{x} \times \vec{J}(\vec{x})]
+	\]
+	and its integral as the magnetic moment
+	\[
+	\vec{m} = \frac{1}{2} \int \vec{x}' \times \vec{J}(\vec{x}') d^3x'
+	\]
+	Hence
+	\[
+	\vec{A}(\vec{x}) = \frac{\mu_0}{4\pi} \frac{\vec{m} \times \vec{x}}{|\vec{x}|^3}
+	\]
+	By evaluating the curl of $\vec{A}(\vec{x})$, we have the magnetic induction
+	\[
+	\vec{B}(\vec{x}) = \frac{\mu_0}{4\pi} \left[ \frac{3\vec{n}(\vec{n}\cdot\vec{m})-\vec{m}}{|\vec{x}|^3} \right]
+	\]
+	where $\vec{n}$ is a unit vector along the direction of $\vec{x}$.
+	In terms of $d\vec{l}$ and the current $I$ that flows in a closed circuit:
+	\[
+	\vec{m} = \frac{I}{2} \oint \vec{x} \times d\vec{l}
+	\]
+	
+	\subsection*{From another perspective}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure7}
+		\caption{}
+		\label{fig:figure7}
+	\end{figure}
+	
+	
+	For a plane loop, the magnetic moment is perpendicular to the plane. Since $\frac{1}{2} \oint \vec{x} \times d\vec{l} = \int da$, where $da$ is the triangular element of the area.
+	Hence, $|\vec{m}| = I(\text{Area})$.
+	
+	For a number of particles with $q_i$ and $m_i$ in motion with $\vec{v}_i$, the current density is
+	\[
+	\vec{J} = \sum_i q_i \vec{v}_i \delta(\vec{x}-\vec{x}_i)
+	\]
+	where $\vec{x}_i$ is the position of the $i$th particle.
+	Thus
+	\[
+	\vec{m} = \frac{1}{2} \sum_i q_i (\vec{x}_i \times \vec{v}_i)
+	\]
+	If all the particles have the same ratio $q_i/m_i = e/M$, then
+	\[
+	\vec{m} = \frac{e}{2M} \sum_i L_i = \frac{e}{2M} \vec{L}
+	\]
+	where $\vec{L}$ is the total orbital angular momentum and $\vec{L}_i = m_i(\vec{x}_i \times \vec{v}_i)$.
+	
+	We consider a sphere of radius $R$ contains all of the current, and the other where the current is completely external to the volume:
+	\[
+	\int_{V \subset R} \vec{B}(\vec{x}) d^3x = \int_{V \subset R} \nabla \times \vec{A} d^3x
+	\]
+	\[
+	= \oint_{S} d\vec{a} \times \vec{A} = R^2 \int d\Omega \; \vec{n} \times \vec{A}
+	\]
+	where $\vec{n}$ is the outwardly directed normal.
+	Substitute $\vec{A}$, we obtain
+	\begin{align*}
+		\int_{V \subset R} \vec{B} d^3x &= -\frac{\mu_0}{4\pi} R^2 \int d^3x' \int d\Omega (\vec{n} \times ((\vec{x}' \times \vec{J}) \times \vec{n})) \frac{1}{|\vec{x}-\vec{x}'|} \\
+		&= \frac{\mu_0}{4\pi} \frac{1}{3} \int d^3x' (\vec{x}' \times \vec{J}) \times \int d\Omega \frac{1}{|\vec{x}-\vec{x}'|}
+	\end{align*}
+	where $(r_<, r_>)$ are smaller and larger of $r, R$.
+	If all the $\vec{J}$ is contained within the sphere $r_c=r'$ and $r_>=R$, then
+	\[
+	\int_{V \subset R} \vec{B} d^3x = \frac{2}{3}\mu_0 \vec{m}
+	\]
+	For all the current external to the sphere:
+	\[
+	\int_{V \subset R} \vec{B} d^3x = \frac{4\pi}{3} R^3 \vec{B}(0)
+	\]
+	We may rewrite the $\vec{B}$:
+	\[
+	\vec{B}(\vec{x}) = \frac{\mu_0}{4\pi} \left[ \frac{3\vec{n}(\vec{n}\cdot\vec{m})-\vec{m}}{r^3} + \frac{8\pi}{3} \vec{m} \delta(\vec{x}) \right]
+	\]
+	
+	\section*{5.7 Force and Torque on and Energy of a Localized Current Distribution in an External Magnetic Induction}
+	We can expand $\vec{B}$ around an origin
+	\[
+	B_k(\vec{x}) = B_k(0) + \vec{x} \cdot \nabla B_k(0) + \dots
+	\]
+	The $i$th component of the force:
+	\[
+	F_i = \sum_{j,k} \epsilon_{ijk} \left[ B_k(0) \int J_j(\vec{x}') d^3x' + \int J_j(\vec{x}')(\vec{x}' \cdot \nabla B_k(0)) d^3x' \right]
+	\]
+	where $\epsilon_{ijk}=1$ for $i,j,k=1,2,3$ and any cyclic permutation, $\epsilon_{ijk}=-1$ for others.
+	For steady currents, the integral of $\vec{J}$ vanishes and we replace $\nabla B_k(0)$ with $\nabla B_k(\vec{x})$.
+	\[
+	F_i = \sum_{j,k} \epsilon_{ijk} (m_j \times \nabla)_j B_k(\vec{x})
+	\]
+	\[
+	\vec{F} = (\vec{m} \times \nabla) \times \vec{B} = \nabla(\vec{m}\cdot\vec{B}) - \vec{m}(\nabla \cdot \vec{B})
+	\]
+	Since $\nabla \cdot \vec{B} = 0$, we obtain
+	\[
+	\vec{F} = \nabla(\vec{m}\cdot\vec{B})
+	\]
+	We substitute the expansion of $\vec{B}$ in $\vec{N}$
+	\[
+	\vec{N} = \int [\vec{x}' \times \vec{J}(\vec{x}')] \times \vec{B}(0) d^3x'
+	\]
+	\[
+	= \int [(\vec{x}' \cdot \vec{B}) \vec{J} - (\vec{x}' \cdot \vec{J}) \vec{B}] d^3x'
+	\]
+	The second term vanishes for a localized steady-state current.
+	Thus:
+	$$ \vec{N} = \vec{m}_s \times \vec{B}(0) $$
+	From the potential energy of a permanent magnetic moment / dipole in an external magnetic field, we can obtain the force and the torque.
+	If we interpret the force as the negative gradient of a potential energy $U$, we find
+	$$ U = -\vec{m} \cdot \vec{B} $$
+	
+	\section*{5.8 Macroscopic Equations, Boundary Conditions on B, H}
+	The average of the equation $\nabla \cdot \vec{B}_{micro} = 0$ leads to
+	$$ \nabla \cdot \vec{B} = 0 $$
+	An average macroscopic magnetization,
+	$$ \vec{M}(\vec{x}) = \sum_i N_i \langle \vec{m}_i \rangle $$
+	where $N_i$ is the average number per unit volume of molecules of type $i$ and $\langle \vec{m}_i \rangle$ is the average molecular moment in a small volume at the point $\vec{x}$.
+	The vector potential from a small volume $\Delta V$ at the point $\vec{x}'$ due to $\vec{J}(\vec{x}')$ from the flow of free charge in the medium
+	$$ \Delta \vec{A}(\vec{x}) = \frac{\mu_0}{4\pi} \left[ \frac{\vec{J}(\vec{x}') \Delta V}{|\vec{x}-\vec{x}'|} + \frac{\vec{M}(\vec{x}') \times (\vec{x}-\vec{x}')}{|\vec{x}-\vec{x}'|^3} \Delta V \right] $$
+	Let $\Delta V$ become $d^3x'$,
+	$$ \vec{A}(\vec{x}) = \frac{\mu_0}{4\pi} \int \left[ \frac{\vec{J}(\vec{x}')}{|\vec{x}-\vec{x}'|} + \frac{\vec{M}(\vec{x}') \times (\vec{x}-\vec{x}')}{|\vec{x}-\vec{x}'|^3} \right] d^3x' $$
+	The second term can be written as
+	$$ \int \frac{\vec{M}(\vec{x}') \times (\vec{x}-\vec{x}')}{|\vec{x}-\vec{x}'|^3} d^3x' = \int \vec{M}(\vec{x}') \times \nabla' \left( \frac{1}{|\vec{x}-\vec{x}'|} \right) d^3x' $$
+	If $\vec{M}(\vec{x}')$ is well behaved and localized the surface integral vanishes
+	$$ \vec{A}(\vec{x}) = \frac{\mu_0}{4\pi} \int \frac{[\vec{J}(\vec{x}') + \nabla' \times \vec{M}(\vec{x}')]}{|\vec{x}-\vec{x}'|} d^3x' $$
+	which contributes an effective current density
+	$$ \vec{J}_M = \nabla \times \vec{M} $$
+	We also see that $\nabla \times \vec{B}_{micro} = \mu_0 \vec{J}_{micro}$.
+	Thus:
+	$$ \nabla \times \vec{B} = \mu_0 [\vec{J} + \nabla \times \vec{M}] $$
+	We define the magnetic field:
+	$$ \vec{H} = \frac{1}{\mu_0} \vec{B} - \vec{M} $$
+	Then
+	$$ \left\{ \begin{array}{l} \nabla \times \vec{H} = \vec{J} \\ \nabla \cdot \vec{B} = 0 \end{array} \right. \text{ which is analogous to } \left\{ \begin{array}{l} \nabla \cdot \vec{D} = \rho \\ \nabla \times \vec{E} = 0 \end{array} \right. $$
+	For isotropic diamagnetic and paramagnetic substances, the simple linear relation:
+	$$ \vec{B} = \mu \vec{H} $$
+	where $\mu$ is the magnetic permeability.
+	For the ferromagnetic substances,
+	$$ \vec{B} = \vec{F}(\vec{H}) $$
+	which is nonlinear.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure8}
+		\caption{}
+		\label{fig:figure8}
+	\end{figure}
+	
+	
+	Then we obtain the phenomenon of hysteresis which implies $\vec{B}$ is not a single-valued function of $\vec{H}$.
+	
+	For the boundary conditions:
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure9}
+		\caption{}
+		\label{fig:figure9}
+	\end{figure}
+	
+	
+	we have
+	$$ B_2 \cdot \hat{n} = B_1 \cdot \hat{n}, \quad B_2 \times \hat{n} = \mu_2 B_1 \times \hat{n} $$
+	or
+	$$ H_2 \cdot \hat{n} = \frac{\mu_1}{\mu_2} H_1 \cdot \hat{n}, \quad H_2 \times \hat{n} = H_1 \times \hat{n} $$
+	If $\mu_2 >> \mu_1$, the normal component of $\vec{H}_2$ is longer than that of $\vec{H}_1$.
+	
+	\section*{5.9 Methods of Solving Boundary-Value Problems in Magnetostatics}
+	We have $\nabla \cdot \vec{B} = 0$, $\nabla \times \vec{H} = \vec{J}$.
+	We have three ways to solve the boundary problem.
+	
+	\subsection*{Generally Applicable Method of the Vector Potential}
+	We introduce $\vec{B} = \nabla \times \vec{A}$ and $\vec{H} = \vec{H}[\vec{B}]$.
+	Thus: $\nabla \times \vec{H}[\nabla \times \vec{A}] = \vec{J}$.
+	We consider linear media with $\vec{B} = \mu \vec{H}$.
+	$$ \nabla \times (\frac{1}{\mu} \nabla \times \vec{A}) = \vec{J} $$
+	If $\mu$ is constant,
+	$$ \nabla(\nabla \cdot \vec{A}) - \nabla^2 \vec{A} = \mu \vec{J} $$
+	With the choice of the Coulomb gauge $(\nabla \cdot \vec{A} = 0)$
+	$$ \nabla^2 \vec{A} = -\mu \vec{J} $$
+	
+	\subsection*{$\vec{J}=0$, Magnetic Scalar Potential}
+	If the current density vanishes: $\nabla \times \vec{H} = 0$, which implies that we introduce a magnetic scalar potential $\Phi_M$ such that $\vec{H} = -\nabla \Phi_M$ (as $\vec{E} = -\nabla \Phi$). We obtain from $\nabla \cdot \vec{B} = 0$:
+	$$ \nabla \cdot (\mu \vec{H}) = 0 $$
+	For linear relation $B = \mu H$
+	$$ \nabla \cdot (\mu \nabla \Phi_M) = 0 $$
+	If $\mu$ is piecewise constant, we thus have
+	$$ \nabla^2 \Phi_M = 0 \quad (\text{or } \vec{B} = -\nabla \Phi_M \text{ with } \nabla^2 \Phi_M = 0) $$
+	
+	\subsection*{Hard Ferromagnets ($\vec{M}$ given and $\vec{J}=0$)}
+	\subsubsection*{a) Scalar Potential}
+	Since $\vec{J}=0$, we thus have:
+	$$ \nabla \cdot \vec{B} = \mu_0 \nabla \cdot (\vec{H} + \vec{M}) = 0 \quad \text{with} \quad \vec{H} = -\nabla \Phi_M $$
+	Then: $\nabla^2 \Phi_M = \rho_M$ with the effective magnetic-charge density $\rho_M = -\nabla \cdot \vec{M}$.
+	If there are no boundary surfaces,
+	$$ \Phi_M(\vec{x}) = -\frac{1}{4\pi} \int \frac{\nabla' \cdot \vec{M}(\vec{x}')}{|\vec{x}-\vec{x}'|} d^3x' $$
+	If $\vec{M}$ is localized and well behaved
+	$$ \Phi_M(\vec{x}) = \frac{1}{4\pi} \int \vec{M}(\vec{x}') \cdot \nabla' \left( \frac{1}{|\vec{x}-\vec{x}'|} \right) d^3x' $$
+	Then $\nabla'(\frac{1}{|\vec{x}-\vec{x}'|}) = -\nabla(\frac{1}{|\vec{x}-\vec{x}'|})$ may be used.
+	$$ \Phi_M(\vec{x}) \approx -\frac{1}{4\pi} \nabla \cdot \left( \int \frac{\vec{M}(\vec{x}')}{|\vec{x}-\vec{x}'|} d^3x' \right) $$
+	$$ = -\frac{1}{4\pi} \frac{\vec{m} \cdot \vec{x}}{|\vec{x}|^3} \quad \text{where} \quad \int \vec{M}(\vec{x}) d^3x = \vec{m} $$
+	We now consider $\vec{M}(\vec{x}')$ inside $V$ and assume it to be zero at the surface $S$.
+	We then apply the divergence theorem to $\rho_M$.
+	In a Gaussian pillbox, we have the effective magnetic surface-charge density
+	$$ \sigma_M = \hat{n} \cdot \vec{M} $$
+	where $\hat{n}$ is the outwardly directed normal.
+	Then
+	$$ \Phi_M(\vec{x}) = -\frac{1}{4\pi} \int_V \frac{\nabla' \cdot \vec{M}(\vec{x}')}{|\vec{x}-\vec{x}'|} d^3x' + \frac{1}{4\pi} \oint_S \frac{\hat{n}' \cdot \vec{M}(\vec{x}')}{|\vec{x}-\vec{x}'|} da' $$
+	Specially, for uniform magnetization throughout the volume $V$, the first term vanishes.
+	
+	\subsubsection*{b) Vector potential}
+	We choose to write $\vec{B} = \nabla \times \vec{A}$ to satisfy $\nabla \cdot \vec{B} = 0$.
+	Then: $\nabla \times \vec{H} = \nabla \times (\vec{B}/\mu_0 - \vec{M}) = 0$.
+	Then we obtain the Poisson equation
+	$$ \nabla^2 \vec{A} = -\mu_0 \vec{J}_M $$
+	where $\vec{J}_M$ is the effective magnetic current density.
+	The solution:
+	$$ \vec{A}(\vec{x}) = \frac{\mu_0}{4\pi} \int \frac{\nabla' \times \vec{M}(\vec{x}')}{|\vec{x}-\vec{x}'|} d^3x' $$
+	For $\vec{M}'$ falling to zero at surface bound the volume, the generalization is:
+	$$ \vec{A}(\vec{x}) = \frac{\mu_0}{4\pi} \int_V \frac{\nabla' \times \vec{M}(\vec{x}')}{|\vec{x}-\vec{x}'|} d^3x' + \frac{\mu_0}{4\pi} \oint_S \frac{\vec{M}(\vec{x}') \times \hat{n}'}{|\vec{x}-\vec{x}'|} da' $$
+	
+	\section*{5.10 Uniformly Magnetized Sphere}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure10}
+		\caption{}
+		\label{fig:figure10}
+	\end{figure}
+	
+	
+	We consider the problem of a sphere of radius $a$ with a uniform, permanent magnetization $\vec{M}$ of magnitude $M_0$ and parallel to the z-axis.
+	We consider $\vec{M} = M_0 \hat{e}_z$ and $\sigma_M = \hat{n} \cdot \vec{M} = M_0 \cos\theta$.
+	The solution is
+	$$ \Phi_M(r, \theta) = \frac{M_0 a^2}{4\pi} \int d\Omega' \frac{\cos\theta'}{|\vec{x}-\vec{x}'|} $$
+	With the expansion, only the $L=1$ term survives
+	$$ \Phi_{ext}(r, \theta) = \frac{1}{3} M_0 a^3 \frac{r_<^1}{r_>^{2}} \cos\theta $$
+	where $(r_<, r_>)$ are smaller and larger of $(r, a)$.
+	Inside the sphere $r_<=r$, $r_>=a$.
+	$$ \Phi_M = \frac{1}{3} M_0 r \cos\theta = \frac{1}{3} M_0 z $$
+	$$ \vec{H}_{in} = -\frac{1}{3}\vec{M}, \quad \vec{B}_{in} = \frac{2}{3}\mu_0 \vec{M} $$
+	We note $\vec{B}_{in}$ is parallel to $\vec{M}$ and $\vec{H}_{in}$ is antiparallel.
+	Outside the sphere, $r_<=a$, $r_>=r$.
+	$$ \Phi_M = \frac{1}{3} M_0 \frac{a^3}{r^2} \cos\theta $$
+	$$ \vec{m} = \frac{4}{3}\pi a^3 \vec{M} $$
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure11}
+		\caption{}
+		\label{fig:figure11}
+	\end{figure}
+	
+	The lines of $\vec{B}$ are continuous closed paths but those of $\vec{H}$ terminate on the surface because of $\sigma_M$.
+	With $\vec{M} = M_0 \hat{e}_z$ inside the sphere,
+	$$ \Phi_M(r, \theta) = - \oint \frac{M_0}{4\pi} \frac{\partial}{\partial n'} \int \frac{r'^2 dr' d\Omega'}{|\vec{x}-\vec{x}'|} $$
+	Only the $l=0$ term survives the angular integration and the integral is a function only of $r$.
+	With $\frac{\partial r}{\partial z} = \cos\theta$, we have
+	$$ \Phi_M(r, \theta) = - M_0 \cos\theta \frac{\partial}{\partial r} \int_0^a \frac{a}{r_>} r'^2 dr' $$
+	Because $\vec{M}$ is uniform inside the sphere, the volume current density $\vec{J}_M$ vanishes.
+	With $\vec{M} = M_0 \hat{e}_z$: we have
+	$$ \vec{M} \times \hat{n}' = M_0 \sin\theta' \hat{e}_\phi = M_0 \sin\theta' (-\sin\phi' \hat{e}_x + \cos\phi' \hat{e}_y) $$
+	By the azimuthal symmetry $(\phi=0)$, only $y$ component of $\vec{M} \times \hat{n}'$ survives integration over the azimuth.
+	$$ A_\phi(\vec{x}) = \frac{-\mu_0}{4\pi} M_0 a^2 \int d\Omega' \frac{\sin\theta' \cos\phi'}{|\vec{x}-\vec{x}'|} $$
+	where $\vec{x}$ has coordinates $(r, \theta, \phi)$ and $\sin\theta' \cos\phi' = -\sqrt{\frac{8\pi}{3}} Re[Y_{1,1}(\theta', \phi')]$.
+	And the expansion for $\frac{1}{|\vec{x}-\vec{x}'|}$, only the $l=1, m=1$ term survives, consequently.
+	$$ A_\phi(r) = \frac{\mu_0}{3} M_0 a^2 (\frac{r_<}{r_>}) \sin\theta $$
+	where $r_<(r_>)$ is the smaller (larger) of $r$ and $a$.
+	
+	\section*{5.11 Magnetized Sphere in an External Field}
+	\subsection*{Permanent Magnets}
+	For linearity: $\vec{B}_{in} = \mu_0 \vec{H}_{in}$.
+	We find throughout all space
+	$$ \left\{ \begin{array}{l} \vec{B}_{in} = \vec{B}_0 + \frac{2}{3}\mu_0 \vec{M} \\ \vec{H}_{in} = \vec{H}_0 - \frac{1}{3}\vec{M} \end{array} \right. $$
+	We consider the sphere a paramagnetic/diamagnetic substance of permeability $\mu$.
+	We use $\vec{B}_{in} = \mu \vec{H}_{in}$.
+	Thus: $\vec{M} = \frac{3}{\mu_0}(\frac{\mu-\mu_0}{\mu+2\mu_0})\vec{B}_0$.
+	Or: $\vec{B}_{in} + 2\mu_0 \vec{H}_{in} = 3\vec{B}_0$ (specific to sphere).
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure12}
+		\caption{}
+		\label{fig:figure12}
+	\end{figure}
+	
+	\section*{5.12 Magnetic Shielding, Spherical Shell of Permeable Material in a Uniform Field}
+	We suppose $\vec{B}_0 = \mu_0 \vec{H}_0$ in a region of empty space and a permeable body is placed in the region.
+	If the body is hollow, we expect the field in the cavity to be smaller than the external field, vanishing in the limit $\mu \to \infty$. $\implies$ magnetic shielding.
+	As an example 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure13}
+		\caption{}
+		\label{fig:figure13}
+	\end{figure}
+	
+	Since there are no currents present, $\vec{H}=-\nabla \Phi_M$.
+	With $\vec{B}=\mu \vec{H}$, we have $\nabla \cdot \vec{B}=0$, since $\nabla \cdot \vec{H}=0$.
+	Thus, $\Phi_M$ satisfies the Laplace equation everywhere.
+	For $r>b$, the potential must be of the form
+	$$ \Phi_M = -H_0 r \cos\theta + \sum_{l=0}^{\infty} \frac{\alpha_l}{r^{l+1}} P_l(\cos\theta) $$
+	At large distance: $\vec{H} = \vec{H}_0$.
+	For the inner regions, the potential must be
+	$a<r<b$: $\Phi_M = \sum_{l=0}^{\infty} (\beta_l r^l + \gamma_l r^{-l-1}) P_l(\cos\theta)$
+	$r<a$: $\Phi_M = \sum_{l=0}^{\infty} \delta_l r^l P_l(\cos\theta)$
+	
+	The boundary conditions are $r=a$ and $r=b$, that $H_\theta$ and $B_r$ be continuous.
+	In terms of $\Phi_M$, the conditions become
+	$$ \frac{\partial \Phi_M}{\partial \theta} (b_+) = \frac{\partial \Phi_M}{\partial \theta} (b_-) \quad \frac{\partial \Phi_M}{\partial \theta} (a_+) = \frac{\partial \Phi_M}{\partial \theta} (a_-) $$
+	$$ \mu_0 \frac{\partial \Phi_M}{\partial r} (b_+) = \mu \frac{\partial \Phi_M}{\partial r} (b_-) \quad \mu \frac{\partial \Phi_M}{\partial r} (a_+) = \mu_0 \frac{\partial \Phi_M}{\partial r} (a_-) $$
+	Only $l=1$ term survives.
+	$$ \alpha_1 = b^3 \beta_1 - \gamma_1 = b^3 H_0 $$
+	$$ 2\alpha_1 \mu + \mu' b^3 \beta_1 - 2\mu' \gamma_1 = -b^3 H_0 $$
+	$$ a^3 \beta_1 + \gamma_1 - a^3 \delta_1 = 0 $$
+	$$ \mu a^3 \beta_1 - 2\mu' \gamma_1 - \mu a^3 \delta_1 = 0 $$
+	We have $\mu' = \mu / \mu_0$, the solutions are
+	$$ \alpha_1 = \left[ \frac{(2\mu'+1)(\mu'-1)}{(2\mu'+1)(\mu'+2) - 2(a/b)^3(\mu'-1)^2} \right] (b^3 - a^3) H_0 $$
+	$$ \delta_1 = - \left[ \frac{9\mu'}{(2\mu'+1)(\mu'+2) - 2(a/b)^3(\mu'-1)^2} \right] H_0 $$
+	
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure14}
+		\caption{}
+		\label{fig:figure14}
+	\end{figure}
+	
+	Inside the cavity, there is a uniform magnetic field parallel to $\vec{H}_0$ and equal in magnitude to $-\delta_1$.
+	For $\mu \gg \mu_0$,
+	$$ \left\{ \begin{array}{l} \alpha_1 \to b^3 H_0 \\ -\delta_1 \to \frac{9\mu_0}{2\mu(1-a^3/b^3)} H_0 \end{array} \right. $$
+	
+	\section*{5.13 Effect of a Circular Hole in a Perfectly Conducting Plane with an Asymptotically Uniform Tangential Magnetic Field on One Side}
+	We consider a perfectly conducting plane at $z=0$ with a hole of radius $a$ centered at origin. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure15}
+		\caption{}
+		\label{fig:figure15}
+	\end{figure}
+	
+	The potential:
+	$$ \Phi_M(x) = \begin{cases} -H_0 y + \Phi^{(1)} & \text{for } z>0 \\ -\Phi^{(1)} & \text{for } z<0 \end{cases} $$
+	where $H_x^{(1)}$ and $H_y^{(1)}$ are odd in $z$ while $H_z^{(1)}$ and $\Phi^{(1)}$ are even in $z$.
+	The added potential can be written in cylindrical coordinates as:
+	$$ \Phi^{(1)}(\vec{x}) = \int_0^\infty dk A(k) e^{-k|z|} J_1(k\rho) \sin\phi $$
+	Only $m=1$ term survives for cylindrically symmetric and the asymptotic field due to the hole varies as $y=\rho\sin\phi$.
+	From the boundary conditions on normal $B_z$ and tangential $\vec{H}$, the boundary conditions on $\Phi_M$ are
+	$$ \begin{cases} \Phi_M \text{ continuous across } z=0 \text{ for } 0 \le \rho < a \\ \frac{\partial \Phi_M}{\partial z} = 0 \text{ at } z=0 \text{ for } a < \rho < \infty \end{cases} $$
+	This implies that
+	$$ \int_0^\infty dk A(k) J_1(k\rho) = H_0 \rho / 2 \quad \text{for } 0 \le \rho < a $$
+	$$ \int_0^\infty dk k A(k) J_1(k\rho) = 0 \quad \text{for } a < \rho < \infty $$
+	We have:
+	$$ \int_0^\infty dy \ g(y) J_{\nu+1}(yx) = x^\nu, \quad 0 \le x < 1 $$
+	$$ \int_0^\infty dy \ y g(y) J_{\nu}(yx) = 0, \quad 1 < x < \infty $$
+	with solutions
+	$$ g(y) = \frac{2\Gamma(\nu+1)}{\sqrt{\pi}\Gamma(\nu+\frac{1}{2})} j_{\nu+1}(y) = \sqrt{\frac{\pi y}{2}} \frac{J_{\nu+1/2}(y)}{(\nu+1)!} $$
+	Thus $g = 2A(k)/H_0 a^2$, $n=1$, $x=\rho/a$, and $y=ka$.
+	Hence $A(k) = \frac{2H_0 a^2}{\pi k} j_1(ka)$.
+	$$ \Phi^{(1)}(\vec{x}) = \frac{2H_0 a^2}{\pi} \int_0^\infty \frac{dk}{k} j_1(ka) e^{-k|z|} J_1(k\rho) \sin\phi $$
+	The asymptotic form: $\Phi^{(1)}(\vec{x}) \to \frac{2H_0 a^3}{3\pi} \frac{y}{r^3}$, which is the potential of a dipole aligned in the $y$ direction (the direction of $\vec{H}_0$).
+	The hole equivalent to a magnetic dipole with moment: $\vec{m} = \mp \frac{4}{3\pi} a^3 H_0 \hat{z}$ where $\vec{H}_0$ is the tangential magnetic field on the $z=0^+$ side of the plane in the absence of the hole.
+	
+	In the hole $(z=0, 0 \le \rho < a)$,
+	$$ \vec{H}_{tan} = \frac{1}{2}\vec{H}_0 $$
+	$$ H_z(\rho, 0) = \frac{2}{\pi} H_0 \frac{\rho}{\sqrt{a^2-\rho^2}} \sin\phi $$
+	\section*{5.15 Faraday's Law of Induction}
+	\subsection*{(1)}
+	Faraday observed that a transient current is induced if:
+	\begin{enumerate}
+		\item[(a)] the steady current flowing in an adjacent circuit is turned on or off.
+		\item[(b)] the adjacent circuit with a steady current flowing is moved relative to the first circuit.
+		\item[(c)] a permanent magnet is thrust into or out of the circuit.
+	\end{enumerate}
+	
+	\vspace{1em}
+	The changing flux induces an electric field around the circuit, the line integral of which is the electromotive force $\mathcal{E}$. 
+	
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure18}
+		\caption{}
+		\label{fig:figure18}
+	\end{figure}
+	
+	The magnetic flux is:
+	$$ \Phi = \int_S \vec{B} \cdot \hat{n} \, da $$
+	
+	The electromotive force around is:
+	$$ \mathcal{E} = \oint_C \vec{E'} \cdot d\vec{l} $$
+	where $\vec{E'}$ is the electric field at $d\vec{l}$.
+	$$ \Rightarrow \mathcal{E} = -k \frac{d\Phi}{dt} $$
+	In SI units, $k=1$. For Gaussian units, $k=c^{-1}$.
+	
+	\vspace{1em}
+	By the Galilean transformation $\vec{r'} = \vec{r} - \vec{v}t$, $t'=t$, the current is induced whether it is moved while the (in a secondary circuit) primary circuit through which current is flowing is stationary, or its held fixed while the primary circuit is moved in the same relative manner.
+	
+	\subsection*{(2)}
+	We obtain:
+	$$ \oint_C \vec{E'} \cdot d\vec{l} = -k \frac{d}{dt} \int_S \vec{B} \cdot \hat{n} \, da $$
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure19}
+		\caption{}
+		\label{fig:figure19}
+	\end{figure}
+	If the circuit C is moving with a velocity $\vec{v}$ in some direction. We obtain that the total time derivative of flux through the moving circuit is:
+	$$ \frac{d}{dt} \int_S \vec{B} \cdot \hat{n} \, da = \int_S \frac{\partial\vec{B}}{\partial t} \cdot \hat{n} \, da + \oint_C (\vec{B} \times \vec{v}) \cdot d\vec{l} $$
+	$$ \oint_C [\vec{E'} - k(\vec{v} \times \vec{B})] \cdot d\vec{l} = -k \int_S \frac{\partial\vec{B}}{\partial t} \cdot \hat{n} \, da $$
+	Or we think of the circuit C and surface S as instantaneously at a certain position in space.
+	$$ \oint_C \vec{E} \cdot d\vec{l} = -k \int_S \frac{\partial\vec{B}}{\partial t} \cdot \hat{n} \, da $$
+	where $\vec{E}$ is the new electric field. The moving coordinate system has the $\vec{E''}$.
+	$$ \vec{E'} = \vec{E} + k(\vec{v} \times \vec{B}) $$
+	By Stoke's theorem, we can have:
+	$$ \int_S (\nabla \times \vec{E} + k \frac{\partial\vec{B}}{\partial t}) \cdot \hat{n} \, da = 0 $$
+	Since C and S are arbitrary, the integrand vanishes. Thus the Faraday's Law is:
+	$$ \nabla \times \vec{E} + \frac{\partial\vec{B}}{\partial t} = 0 $$
+	
+	\newpage
+	
+	\section*{5.16 Energy in the Magnetic Field}
+	\subsection*{(1)}
+	We consider a single circuit with a constant current I. To keep the current constant, the sources of current must do work. We note that: $\frac{dE}{dt} = \vec{J} \cdot \vec{F}$. The added field $\vec{E'}$ on each conduction electron of $q$ and $\vec{v}$ gives rise to a change in energy per unit time of $q\vec{v} \cdot \vec{E'}$ per electron. Summing over all the electrons in the circuit, we have:
+	$$ \frac{dW}{dt} = -I \mathcal{E} = I \frac{d\Phi}{dt} $$
+	where the negative sign follows Lenz's law. If the flux change through a circuit carrying a current I is $\delta\Phi$, the work done by the source is:
+	$$ \delta W = I \delta\Phi $$
+	We suppose the buildup process occurs at an infinitesimal rate so that $\nabla \cdot \vec{J} = 0$. Then the current distribution can be broken up into a network of elementary current loops. The area following a closed path C, $\Delta a$ and spanned by a surface S with normal $\hat{n}$ 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{figure20}
+		\caption{}
+		\label{fig:figure20}
+	\end{figure}
+	
+	The increment of work done against the induced emf in terms of the change in magnetic induction through the loop:
+	$$ \Delta(\delta W) = J \Delta a \int_S \hat{n} \cdot \delta\vec{B} \, da $$
+	where the extra $\Delta$ appears because we are considering only one elemental circuit. We express $\vec{B}$ in terms of $\vec{A}$:
+	$$ \Delta(\delta W) = J \Delta a \int_S (\nabla \times \delta\vec{A}) \cdot \hat{n} \, da $$
+	By Stokes' theorem:
+	$$ \Delta(\delta W) = J \Delta a \oint_C \delta\vec{A} \cdot d\vec{l} $$
+	Since $d\vec{l}$ is parallel to $\vec{J}$, so $\oint \delta\vec{A} \cdot d\vec{l} = J d^3x$. Hence:
+	$$ \delta W = \int \delta\vec{A} \cdot \vec{J} \, d^3x $$
+	By Ampère's Law: $\nabla \times \vec{H} = \vec{J}$. Then:
+	$$ \delta W = \int \delta\vec{A} \cdot (\nabla \times \vec{H}) \, d^3x $$
+	Using the vector identity $\vec{A} \cdot (\nabla \times \vec{H}) = \vec{H} \cdot (\nabla \times \vec{A}) - \nabla \cdot (\vec{A} \times \vec{H})$:
+	$$ \delta W = \int [\vec{H} \cdot (\nabla \times \delta\vec{A}) - \nabla \cdot (\vec{H} \times \delta\vec{A})] \, d^3x $$
+	If the field distribution is localized, the second term (a surface integral by the divergence theorem) vanishes.
+	$$ \delta W = \int \vec{H} \cdot \delta\vec{B} \, d^3x $$
+	We assume $\vec{H} \cdot \delta\vec{B} = \delta(\frac{1}{2} \vec{H} \cdot \vec{B})$. Then the total magnetic energy will be:
+	$$ W = \frac{1}{2} \int \vec{H} \cdot \vec{B} \, d^3x $$
+	Similarly, if there is a linear relation between $\vec{J}$ and $\vec{A}$:
+	$$ W = \frac{1}{2} \int \vec{J} \cdot \vec{A} \, d^3x $$
+	
+	\subsection*{(2)}
+	We consider an object of permeability $\mu$, in a magnetic field whose current sources are fixed. The role of $\vec{E}$ is taken by $\vec{B}$, that of $\vec{D}$ by $\vec{H}$. The original medium was $\mu_0$ and $\vec{B_0}$. After the object is in place, the fields are $\vec{B}, \vec{H}$. The change in energy is:
+	$$ W = \frac{1}{2} \int_{V_1} (\vec{B} \cdot \vec{H} - \vec{B_0} \cdot \vec{H_0}) \, d^3x $$
+	$$ = \frac{1}{2} \int_{V_1} (\mu - \mu_0) \vec{H} \cdot \vec{H_0} \, d^3x = \frac{1}{2} \int_{V_1} (\frac{1}{\mu_0} - \frac{1}{\mu}) \vec{B} \cdot \vec{B_0} \, d^3x $$
+	If the object is in free space ($\mu_0=1$):
+	$$ W = \frac{1}{2} \int_{V_1} \vec{M} \cdot \vec{B_0} \, d^3x $$
+	We consider a generalized displacement $\xi$. The force acting on the object is:
+	$$ \vec{F_\xi} = \left( \frac{\partial W}{\partial \xi} \right)_J $$
+	for fixed source currents.
+\end{document}

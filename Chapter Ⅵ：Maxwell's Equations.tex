@@ -1,0 +1,809 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{braket}
+\usepackage{physics}
+\geometry{a4paper, margin=1in}
+\begin{document}
+	
+	\section*{VI Maxwell Equations, Macroscopic Electromagnetism, Conservation Laws}
+	
+	\subsection*{6.1 Maxwell's Displacement Current, Maxwell Equations}
+	
+	The fundamental equations of electromagnetism are given by:
+	\begin{itemize}
+		\item Coulomb's Law: $$ \nabla \cdot \vec{D} = \rho $$
+		\item Ampere's Law: $$ \nabla \times \vec{H} = \vec{J} $$
+		\item Faraday's Law: $$ \nabla \times \vec{E} + \frac{\partial \vec{B}}{\partial t} = 0 $$
+		\item Absence of free magnetic poles: $$ \nabla \cdot \vec{B} = 0 $$
+	\end{itemize}
+	
+	Take the divergence of the Ampere's Law:
+	$$ \nabla \cdot \vec{J} = \nabla \cdot (\nabla \times \vec{H}) = 0 $$
+	This is valid for steady-state problems.
+	
+	By the continuity equation:
+	$$ \nabla \cdot \vec{J} = -\frac{\partial \rho}{\partial t} $$
+	
+	By using Coulomb's Law:
+	$$ \nabla \cdot \vec{J} + \frac{\partial \rho}{\partial t} = \nabla \cdot (\vec{J} + \frac{\partial \vec{D}}{\partial t}) = 0 $$
+	Thus the generalization $\vec{J} \rightarrow \vec{J} + \frac{\partial \vec{D}}{\partial t}$. For time-dependent fields, the Ampere's Law is:
+	$$ \nabla \times \vec{H} = \vec{J} + \frac{\partial \vec{D}}{\partial t} $$
+	where the added term is the displacement current.
+	
+	\subsection*{6.2 Vector and Scalar Potentials}
+	
+	We define $\vec{B}$, since $\nabla \cdot \vec{B} = 0$, as
+	$$ \vec{B} = \nabla \times \vec{A} $$
+	Thus, Faraday's law can be written as:
+	$$ \nabla \times (\vec{E} + \frac{\partial \vec{A}}{\partial t}) = 0 $$
+	Thus,
+	$$ \vec{E} + \frac{\partial \vec{A}}{\partial t} = -\nabla \Phi $$
+	or
+	$$ \vec{E} = -\nabla \Phi - \frac{\partial \vec{A}}{\partial t} $$
+	Hence the vacuum form of the Maxwell equations can be written in terms of the potentials as:
+	$$ \nabla^2 \Phi + \frac{\partial}{\partial t}(\nabla \cdot \vec{A}) = -\rho / \varepsilon_0 $$
+	$$ \nabla^2 \vec{A} - \frac{1}{c^2} \frac{\partial^2 \vec{A}}{\partial t^2} - \nabla(\nabla \cdot \vec{A} + \frac{1}{c^2} \frac{\partial \Phi}{\partial t}) = -\mu_0 \vec{J} $$
+	The vector potential is arbitrary to the extent that the gradient of some scalar function $\Lambda$ can be added.
+	$$ \vec{A} \rightarrow \vec{A}' = \vec{A} + \nabla \Lambda $$
+	Then:
+	$$ \Phi \rightarrow \Phi' = \Phi - \frac{\partial \Lambda}{\partial t} $$
+	We can choose a set of potentials $(\vec{A}, \Phi)$ to satisfy the Lorenz condition:
+	$$ \nabla \cdot \vec{A}' + \frac{1}{c^2} \frac{\partial \Phi'}{\partial t} = 0 $$
+	So we obtain two inhomogeneous wave equations:
+	$$ \nabla^2 \Phi - \frac{1}{c^2} \frac{\partial^2 \Phi}{\partial t^2} = -\rho / \varepsilon_0 $$
+	$$ \nabla^2 \vec{A} - \frac{1}{c^2} \frac{\partial^2 \vec{A}}{\partial t^2} = -\mu_0 \vec{J} $$
+	
+	\subsection*{6.3 Gauge transformations, Lorenz Gauge, Coulomb Gauge}
+	
+	The transformation $\vec{A} \rightarrow \vec{A}', \Phi \rightarrow \Phi'$ is a gauge transformation.
+	The Lorenz condition is:
+	$$ \nabla \cdot \vec{A}' + \frac{1}{c^2} \frac{\partial \Phi'}{\partial t} = 0 = \nabla \cdot \vec{A} + \frac{1}{c^2} \frac{\partial \Phi}{\partial t} + \nabla^2 \Lambda - \frac{1}{c^2} \frac{\partial^2 \Lambda}{\partial t^2} $$
+	Thus $\Lambda$ satisfies:
+	$$ \nabla^2 \Lambda - \frac{1}{c^2} \frac{\partial^2 \Lambda}{\partial t^2} = -(\nabla \cdot \vec{A} + \frac{1}{c^2} \frac{\partial \Phi}{\partial t}) $$
+	so that $\vec{A}', \Phi'$ can satisfy the wave equations and Lorenz condition.
+	
+	The restricted gauge transformation:
+	$$ \vec{A}' \rightarrow \vec{A} + \nabla \Lambda $$
+	$$ \Phi' \rightarrow \Phi - \frac{\partial \Lambda}{\partial t} $$
+	where
+	$$ \nabla^2 \Lambda - \frac{1}{c^2} \frac{\partial^2 \Lambda}{\partial t^2} = 0 $$
+	All potentials in the restricted class are said to belong to the Lorenz gauge.
+	
+	Coulomb, radiation, transverse gauge is such that
+	$$ \nabla \cdot \vec{A} = 0 $$
+	We see that $\Phi$ satisfies the Poisson equation:
+	$$ \nabla^2 \Phi = -\rho / \varepsilon_0 $$
+	with solution:
+	$$ \Phi(\vec{x}, t) = \frac{1}{4\pi\varepsilon_0} \int \frac{\rho(\vec{x}', t)}{|\vec{x}-\vec{x}'|} d^3x' $$
+	which is the instantaneous Coulomb potential due to the charge density $\rho(\vec{x}, t)$.
+	The vector potential satisfies:
+	$$ \nabla^2 \vec{A} - \frac{1}{c^2} \frac{\partial^2 \vec{A}}{\partial t^2} = -\mu_0 \vec{J} + \frac{1}{c^2} \nabla \frac{\partial \Phi}{\partial t} $$
+	
+	The current density can be written as:
+	$$ \vec{J} = \vec{J}_l + \vec{J}_t $$
+	where $\vec{J}_l$ is the longitudinal or irrotational current and has $\nabla \times \vec{J}_l = 0$, while $\vec{J}_t$ is the transverse or solenoidal current and has $\nabla \cdot \vec{J}_t = 0$.
+	
+	By: $\nabla \times (\nabla \times \vec{J}) = \nabla(\nabla \cdot \vec{J}) - \nabla^2 \vec{J}$ together with $\nabla^2(\frac{1}{|\vec{x}-\vec{x}'|}) = -4\pi\delta(\vec{x}-\vec{x}')$, we can obtain
+	$$ \vec{J}_l = -\frac{1}{4\pi} \nabla \int \frac{\nabla' \cdot \vec{J}}{|\vec{x}-\vec{x}'|} d^3x' $$
+	$$ \vec{J}_t = \frac{1}{4\pi} \nabla \times \nabla \times \int \frac{\vec{J}}{|\vec{x}-\vec{x}'|} d^3x' $$
+	We see that,
+	$$ \frac{1}{c^2}\nabla \frac{\partial \Phi}{\partial t} = \mu_0 \vec{J}_l $$
+	$$ \nabla^2 \vec{A} - \frac{1}{c^2} \frac{\partial^2 \vec{A}}{\partial t^2} = -\mu_0 \vec{J}_t $$
+	
+	The Coulomb or transverse gauge is often used when no sources are present.
+	Then $\Phi=0$, and $\vec{A}$ satisfies the wave equations.
+	The fields are given by
+	$$ \vec{E} = -\frac{\partial \vec{A}}{\partial t} $$
+	$$ \vec{B} = \nabla \times \vec{A} $$
+	\section*{6.4 Green Functions for the Wave Equation}
+	
+	The Wave equations have the basic structure
+	$$ \nabla^2 \Psi - \frac{1}{c^2} \frac{\partial^2 \Psi}{\partial t^2} = -4\pi f(\vec{x}, t) $$
+	where $f(\vec{x}, t)$ is a known source distribution, $c$ is the velocity of propagation in the medium. We suppose $\Psi(\vec{x}, t)$, $f(\vec{x}, t)$ have the Fourier integral representations:
+	$$ \Psi(\vec{x}, t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \Psi(\vec{x}, \omega) e^{-i\omega t} d\omega $$
+	$$ f(\vec{x}, t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(\vec{x}, \omega) e^{-i\omega t} d\omega $$
+	with
+	$$ \Psi(\vec{x}, \omega) = \int_{-\infty}^{\infty} \Psi(\vec{x}, t) e^{i\omega t} dt $$
+	$$ f(\vec{x}, \omega) = \int_{-\infty}^{\infty} f(\vec{x}, t) e^{i\omega t} dt $$
+	We find that $\Psi(\vec{x}, \omega)$ satisfies the inhomogeneous Helmholtz wave equation
+	$$ (\nabla^2 + k^2) \Psi(\vec{x}, \omega) = -4\pi f(\vec{x}, \omega) $$
+	where $k = \omega/c$.
+	When $k=0$, we have the Poisson equation.
+	
+	The Green function $G(\vec{x}, \vec{x}')$ satisfies
+	$$ (\nabla^2 + k^2) G_k(\vec{x}, \vec{x}') = -4\pi \delta(\vec{x}-\vec{x}') $$
+	And the Green function depends only on $\vec{R} = \vec{x} - \vec{x}'$ and must be spherically symmetric.
+	We obtain that:
+	$$ \frac{1}{R} \frac{d^2}{dR^2} (R G_k) + k^2 G_k = -4\pi \delta(\vec{R}) $$
+	If $R \neq 0$, we thus have
+	$$ \frac{d^2}{dR^2}(R G_k) + k^2 (R G_k) = 0 $$
+	with the solution $R G_k(R) = A e^{ikR} + B e^{-ikR}$.
+	The delta function has influence only at $R \to 0$. Since $kR \ll 1$, we can have the Poisson equation. The normalization is $\lim_{k \to 0} G_k(R) = \frac{1}{R}$.
+	The general solution is $G_k(R) = A G_k^{(+)}(R) + B G_k^{(-)}(R)$ where
+	$$ G_k^{(\pm)}(R) = \frac{e^{\pm ikR}}{R} \quad \text{with } A+B=1 $$
+	The choice of A and B depends on the boundary conditions in time.
+	
+	We can construct the corresponding time-dependent Green functions that satisfy:
+	$$ (\nabla^2 - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}) G(\vec{x},t; \vec{x}',t') = -4\pi \delta(\vec{x}-\vec{x}') \delta(t-t') $$
+	The source term $f(\vec{x}, \omega)$ would be $-4\pi \delta(\vec{x}-\vec{x}') e^{i\omega t'}$.
+	The solutions are $G_k^{(\pm)}(R) e^{i\omega t'}$.
+	The time-dependent Green functions are
+	$$ G^{(\pm)}(R, \tau) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{e^{\pm ikR}}{R} e^{-i\omega\tau} d\omega, $$
+	where $\tau = t - t'$.
+	For a nondispersive medium where $k = \omega/c$,
+	$$ G^{(+)}(\vec{x},t; \vec{x}',t') = \frac{1}{R} \delta\left(\tau - \frac{R}{c}\right) = \frac{\delta\left(t' - \left[t - \frac{|\vec{x}-\vec{x}'|}{c}\right]\right)}{|\vec{x}-\vec{x}'|} $$
+	which is the \textbf{retarded Green function}. The effect at $\vec{x}, t$ is caused by the action of a source a distance $R$ away at $t' = t - R/c$.
+	Similarly, $G^{(-)}$ is the \textbf{advanced Green function}.
+	
+	The particular integrals of the inhomogeneous wave function
+	$$ \nabla^2 \Psi - \frac{1}{c^2} \frac{\partial^2 \Psi}{\partial t^2} = -4\pi f(\vec{x}, t) $$
+	are
+	$$ \Psi(\vec{x}, t) = \int G(\vec{x},t; \vec{x}',t') f(\vec{x}', t') d^3x' dt' $$
+	\textbf{Case 1:} At time $t \to -\infty$, there exists a wave $\Psi_{in}(\vec{x}, t)$ that satisfies the homogeneous wave equation and the complete solution is
+	$$ \Psi(\vec{x}, t) = \Psi_{in}(\vec{x}, t) + \iint G^{(+)}(\vec{x},t; \vec{x}',t') f(\vec{x}', t') d^3x' dt' $$
+	$G^{(+)}$ assures that before the source is activated, the integral vanishes.
+	
+	\textbf{Case 2:} $\Psi(\vec{x}, t) = \Psi_{out}(\vec{x}, t) + \iint G^{(-)}(\vec{x},t; \vec{x}',t') f(\vec{x}', t') d^3x' dt'$
+	
+	The commonest situation is with $\Psi_{in} = 0$, with the Green function inserted:
+	$$ \Psi(\vec{x}, t) = \int \frac{[f(\vec{x}', t')]_{ret}}{|\vec{x}-\vec{x}'|} d^3x' $$
+	where $[ \cdot ]_{ret}$ means $t'$ is to be evaluated at $t' = t - |\vec{x}-\vec{x}'|/c$.
+	\section{Retarded Solutions for the Fields}
+	\subsection{Jefimenko's Generalizations of the Coulomb and Biot-Savart Laws; Heaviside-Feynman Expressions for Fields of Point Charge}
+	
+	We use the retarded solution for the wave equations which yields the potentials \(\Phi\) and \(\vec{A}\).
+	\begin{gather}
+		\Phi(\vec{x}, t) = \frac{1}{4\pi\epsilon_0} \int d^3x' \frac{1}{R} \left[ \rho(\vec{x}', t') \right]_{\text{ret}} \\
+		\vec{A}(\vec{x}, t) = \frac{\mu_0}{4\pi} \int d^3x' \frac{1}{R} \left[ \vec{J}(\vec{x}', t') \right]_{\text{ret}}
+	\end{gather}
+	where we define \(R = |\vec{x} - \vec{x}'|\) and \(\hat{R} = \frac{\vec{x} - \vec{x}'}{R}\). The retarded time is denoted by \(t' = t - R/c\).
+	
+	The wave equations for the fields in free space with given charge and current densities are:
+	\begin{gather}
+		\nabla^2\vec{E} - \frac{1}{c^2}\frac{\partial^2\vec{E}}{\partial t^2} = \frac{1}{\epsilon_0} \left( -\nabla\rho - \frac{1}{c^2}\frac{\partial\vec{J}}{\partial t} \right) \\
+		\nabla^2\vec{B} - \frac{1}{c^2}\frac{\partial^2\vec{B}}{\partial t^2} = -\mu_0 \nabla \times \vec{J}
+	\end{gather}
+	
+	The retarded solutions for the fields \(\vec{E}\) and \(\vec{B}\) are:
+	\begin{gather}
+		\vec{E}(\vec{x}, t) = \frac{1}{4\pi\epsilon_0} \int d^3x' \frac{1}{R} \left[ -\nabla'\rho - \frac{1}{c^2}\frac{\partial\vec{J}}{\partial t'} \right]_{\text{ret}} \\
+		\vec{B}(\vec{x}, t) = \frac{\mu_0}{4\pi} \int d^3x' \frac{1}{R} \left[ \nabla' \times \vec{J} \right]_{\text{ret}}
+	\end{gather}
+	
+	Since for any function \(f(\vec{x}', t')\) with \(t' = t - R/c\), we have:
+	\begin{align}
+		\left[ \nabla'\rho \right]_{\text{ret}} &= \nabla'[\rho]_{\text{ret}} - [\frac{\partial\rho}{\partial t'}]_{\text{ret}} \nabla'(t-R/c) \notag \\
+		&= \nabla'[\rho]_{\text{ret}} + \frac{\hat{R}}{c} [\frac{\partial\rho}{\partial t'}]_{\text{ret}}
+	\end{align}
+	and
+	\begin{align}
+		\left[ \nabla' \times \vec{J} \right]_{\text{ret}} &= \nabla' \times [\vec{J}]_{\text{ret}} + [\frac{\partial\vec{J}}{\partial t'}]_{\text{ret}} \times \nabla'(t-R/c) \notag \\
+		&= \nabla' \times [\vec{J}]_{\text{ret}} - \frac{1}{c} [\frac{\partial\vec{J}}{\partial t'}]_{\text{ret}} \times \hat{R}
+	\end{align}
+	
+	We arrive at:
+	\begin{align}
+		\vec{E}(\vec{x}, t) &= \frac{1}{4\pi\epsilon_0} \int d^3x' \left\{ \frac{\hat{R}}{R^2}[\rho(\vec{x}', t')]_{\text{ret}} + \frac{\hat{R}}{Rc}\left[\frac{\partial\rho(\vec{x}', t')}{\partial t'}\right]_{\text{ret}} - \frac{1}{Rc^2}\left[\frac{\partial\vec{J}(\vec{x}', t')}{\partial t'}\right]_{\text{ret}} \right\} \\
+		\vec{B}(\vec{x}, t) &= \frac{\mu_0}{4\pi} \int d^3x' \left\{ \frac{[\vec{J}(\vec{x}', t')]_{\text{ret}} \times \hat{R}}{R^2} + \frac{1}{Rc} \frac{[\partial\vec{J}(\vec{x}', t')]}{\partial t'} \times \hat{R} \right\}
+	\end{align}
+	These are Jefimenko's generalizations of the Coulomb and Biot-Savart laws.
+	
+	We note that \(\left[ \frac{\partial f(\vec{x}', t')}{\partial t'} \right]_{\text{ret}} = \frac{\partial}{\partial t} [f(\vec{x}', t')]_{\text{ret}}\), which facilitates the specialization of the Jefimenko formulas to the Heaviside-Feynman expressions for the fields of a point charge.
+	
+	With \(\rho(\vec{x}', t') = q\,\delta(\vec{x}' - \vec{r}_0(t'))\) and \(\vec{J}(\vec{x}', t') = \rho\,\vec{v}(t')\), we get:
+	\begin{gather}
+		\vec{E} = \frac{q}{4\pi\epsilon_0} \left\{ \left[ \frac{\hat{R}}{KR^2} \right]_{\text{ret}} + \frac{1}{c} \frac{\partial}{\partial t} \left[ \frac{\hat{R}}{KR} \right]_{\text{ret}} \right\} \\
+		\vec{B} = \frac{\mu_0 q}{4\pi} \left\{ \left[ \frac{\vec{v} \times \hat{R}}{KR^2} \right]_{\text{ret}} + \frac{1}{c} \frac{\partial}{\partial t} \left[ \frac{\vec{v} \times \hat{R}}{KR} \right]_{\text{ret}} \right\}
+	\end{gather}
+	where \(K = 1 - \frac{\vec{v} \cdot \hat{R}}{c}\).
+	
+	With \(t = t' + |\vec{x} - \vec{r}_0(t')|/c\), Feynman's expression for the electric field is and Heaviside's expression for magnetic field:
+	\begin{gather}
+		\vec{E} = \frac{q}{4\pi\epsilon_0} \left\{ \left[ \frac{\hat{R}}{R^2} \right]_{\text{ret}} + \frac{R}{c}\frac{\partial}{\partial t}\left[\frac{\hat{R}}{R^2}\right]_{\text{ret}} + \frac{1}{c^2}\frac{\partial^2}{\partial t^2}[\hat{R}]_{\text{ret}} \right\} \\
+		\vec{B} = \frac{\mu_0 q}{4\pi} \left\{ \left[ \frac{\vec{v} \times \hat{R}}{R^2} \right]_{\text{ret}} + \frac{1}{cR} \frac{\partial}{\partial t} \left[ \vec{v} \times \hat{R} \right]_{\text{ret}} \right\} = \frac{1}{c}[\hat{R}]_{\text{ret}} \times \vec{E}
+	\end{gather}
+	
+	\section{Derivation of the Equations of Macroscopic Electromagnetism}
+	\subsection{The Macroscopic Maxwell Equations}
+	The macroscopic Maxwell equations are:
+	\begin{gather}
+		\nabla \cdot \vec{D} = \rho_f \\
+		\nabla \cdot \vec{B} = 0 \\
+		\nabla \times \vec{E} + \frac{\partial\vec{B}}{\partial t} = 0 \\
+		\nabla \times \vec{H} - \frac{\partial\vec{D}}{\partial t} = \vec{J}_f
+	\end{gather}
+	where \(\vec{D} = \epsilon_0\vec{E} + \vec{P}\) and \(\vec{H} = \frac{1}{\mu_0}\vec{B} - \vec{M}\). Here, \(\rho_f\) and \(\vec{J}_f\) are the free charge and current densities.
+	
+	We view the nuclei as point systems as well as the electrons, hence we obtain the microscopic equations:
+	\begin{gather}
+		\nabla \cdot \vec{e} = \eta / \epsilon_0 \\
+		\nabla \cdot \vec{b} = 0 \\
+		\nabla \times \vec{e} + \frac{\partial\vec{b}}{\partial t} = 0 \\
+		\nabla \times \vec{b} - \frac{1}{c^2}\frac{\partial\vec{e}}{\partial t} = \mu_0 \vec{j}
+	\end{gather}
+	where \(\eta\) is the microscopic charge and \(\vec{j}\) is the microscopic current. Since all charges are included in \(\eta\) and \(\vec{j}\), there are no corresponding fields \(\vec{d}\) and \(\vec{h}\).
+	
+	\subsection{Spatial Averaging}
+	The spatial average of a function \(F(\vec{x}, t)\) with respect to a test function \(f(\vec{x})\) is:
+	\begin{equation}
+		\langle F(\vec{x}, t) \rangle = \int d^3x' f(\vec{x}') F(\vec{x} - \vec{x}', t)
+	\end{equation}
+	where \(f(\vec{x})\) is real, non-zero in some neighborhood of \(\vec{x}\) and normalized to unity over all space.
+	
+	For example:
+	\begin{equation}
+		(1) f(\vec{r}) = 
+		\begin{cases} 
+			\frac{3}{4\pi R^3} & r < R \\
+			0 & r > R 
+		\end{cases}
+	\end{equation}
+	\begin{equation}
+		(2) f(\vec{r}) = (\pi R^2)^{-3/2} e^{-r^2/R^2}
+	\end{equation}
+	The first example is a spherical averaging volume of radius $R$ which has an abrupt discontinuity at $r=R$. We can extend the smooth test function $f(\vec{x})$ into a rapidly converging Taylor series.
+	
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=0.7\linewidth]{figure1}
+    	\caption{}
+    	\label{fig:figure1}
+    \end{figure}
+	
+	We can have:
+	\begin{equation}
+		\langle \frac{\partial F}{\partial x^\alpha} \rangle = \frac{\partial}{\partial x^\alpha} \langle F \rangle
+	\end{equation}
+	and
+	\begin{equation}
+		\langle F(\vec{x}',t) \rangle = \int d^3x' f(\vec{x}-\vec{x}') F(\vec{x}',t) = \langle F(\vec{x},t) \rangle
+	\end{equation}
+	
+	The macroscopic electric/magnetic fields $\vec{E}, \vec{B}$ are the averages of the microscopic fields $\vec{e}, \vec{b}$:
+	\begin{equation}
+		\vec{E}(\vec{x},t) = \langle \vec{e}(\vec{x},t) \rangle
+	\end{equation}
+	\begin{equation}
+		\vec{B}(\vec{x},t) = \langle \vec{b}(\vec{x},t) \rangle
+	\end{equation}
+	Then the averages of the two homogeneous equations:
+	\begin{gather}
+		\langle \nabla \cdot \vec{b} \rangle = 0 \implies \nabla \cdot \vec{B} = 0 \\
+		\langle \nabla \times \vec{e} + \frac{\partial \vec{b}}{\partial t} \rangle = 0 \implies \nabla \times \vec{E} + \frac{\partial \vec{B}}{\partial t} = 0
+	\end{gather}
+	And the averaged inhomogeneous equations:
+	\begin{gather}
+		\nabla \cdot \vec{E} = \frac{1}{\epsilon_0} \langle \rho(\vec{x},t) \rangle \\
+		\mu_0(\nabla \times \vec{B} - \epsilon_0 \frac{\partial \vec{E}}{\partial t}) = \mu_0 \langle \vec{j}(\vec{x},t) \rangle
+	\end{gather}
+	
+	We consider a medium made up of molecules composed of nuclei and electrons where the free charges are not localized around any particular molecule.
+	
+	The microscopic charge density:
+	\begin{equation}
+		\rho(\vec{x},t) = \sum_j q_j \delta(\vec{x} - \vec{r}_j(t))
+	\end{equation}
+	where $\vec{r}_j(t)$ is the position of $q_j$.
+	
+	We decompose $\rho$ as $\rho = \rho_{\text{free}} + \rho_{\text{bound}}$ and write
+	\begin{equation}
+		\rho_{\text{free}} = \sum_j q_j \delta(\vec{x}-\vec{r}_j)
+	\end{equation}
+	\begin{equation}
+		\rho_{\text{bound}} = \sum_n \rho_n(\vec{x},t)
+	\end{equation}
+	where $\rho_n$ is the charge density of the $n$th molecule.
+	\begin{equation}
+		\rho_n(\vec{x},t) = \sum_i q_{ni} \delta(\vec{x} - \vec{x}_{ni}(t))
+	\end{equation}
+	Let $\vec{x}_{ni}(t)$ be the coordinate of the charge in the molecule and $\vec{x}_n(t)$ that of the fixed point in the molecule.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure2}
+		\caption{}
+		\label{fig:figure2}
+	\end{figure}
+	
+	
+	The average charge density of the $n$th molecule:
+	\begin{equation}
+		\langle \rho_n(\vec{x},t) \rangle = \langle \sum_i q_{ni} f(\vec{x}-\vec{x}_{ni}) \rangle
+	\end{equation}
+	We make a Taylor series expansion around $\vec{x}_n$:
+	\begin{equation}
+		\langle \rho_n(\vec{x},t) \rangle = \sum_{i} \langle q_{ni} [f(\vec{x}-\vec{x}_n) - (\vec{x}_{ni}-\vec{x}_n)\cdot\nabla f(\vec{x}-\vec{x}_n) + \frac{1}{2}(\vec{x}_{ni}-\vec{x}_n)_\alpha (\vec{x}_{ni}-\vec{x}_n)_\beta \frac{\partial^2 f}{\partial x_\alpha \partial x_\beta}(\vec{x}-\vec{x}_n) + \dots] \rangle
+	\end{equation}
+	The sums over the charges in the molecule are just molecular multipole moments.
+	\begin{gather}
+		\text{Molecular charge: } q_n = \sum_i q_{ni} \\
+		\text{Molecular dipole moment: } \vec{p}_n = \sum_i q_{ni} (\vec{x}_{ni} - \vec{x}_n) \\
+		\text{Molecular quadrupole moment: } (Q_n)_{\alpha\beta} = \sum_i q_{ni} (\vec{x}_{ni}-\vec{x}_n)_\alpha (\vec{x}_{ni}-\vec{x}_n)_\beta
+	\end{gather}
+	Thus, in terms of these multipole moments:
+	\begin{equation}
+		\langle \rho_n(\vec{x},t) \rangle = q_n f(\vec{x}-\vec{x}_n) - \vec{p}_n \cdot \nabla f(\vec{x}-\vec{x}_n) + \frac{1}{2}(Q_n)_{\alpha\beta} \frac{\partial^2 f(\vec{x}-\vec{x}_n)}{\partial x_\alpha \partial x_\beta} + \dots
+	\end{equation}
+	where the first term is the averaging of a point charge density at $\vec{x}_n$, and the second as the divergence of the average of a point dipole density at $\vec{x}_n = \vec{x}_n$.
+	\begin{equation}
+		\langle \rho_n(\vec{x},t) \rangle = \langle q_n \delta(\vec{x}-\vec{x}_n) \rangle - \nabla \cdot \langle \vec{p}_n \delta(\vec{x}-\vec{x}_n) \rangle + \frac{1}{2} \frac{\partial^2}{\partial x_\alpha \partial x_\beta} \langle (Q_n)_{\alpha\beta} \delta(\vec{x}-\vec{x}_n) \rangle + \dots
+	\end{equation}
+	Thus we can view the molecule as a collection of point multipoles located at one fixed point.
+	
+	With the Fourier transformations, we can write that
+	\begin{equation}
+		\langle F(\vec{x},t) \rangle = \frac{1}{(2\pi)^3} \int d^3k \, \tilde{f}(\vec{k},t) \tilde{F}(\vec{k},t) e^{i\vec{k}\cdot\vec{x}}
+	\end{equation}
+	Thus:
+	\begin{equation}
+		FT\langle F(\vec{x},t) \rangle = \tilde{f}(\vec{k}) \tilde{F}(\vec{k},t)
+	\end{equation}
+	where $\tilde{f}(0)=1$ and $FT[g(\vec{x},t)] = \tilde{g}(\vec{k},t)$. For the Gaussian test function, the Fourier transformation $FT f(\vec{x}) = \tilde{f}(\vec{k}) = e^{-k^2R^2/4}$.
+	
+	We consider the averaging of the charge density of the $n$th molecule. The Fourier transform of the quantity:
+	\begin{equation}
+		FT \langle \rho_n(\vec{x},t) \rangle = \tilde{f}(\vec{k}) \tilde{\rho}_n(\vec{k},t)
+	\end{equation}
+	where $\tilde{\rho}_n(\vec{k},t) = \int d^3x' \rho_n(\vec{x}',t) e^{-i\vec{k}\cdot(\vec{x}'-\vec{x}_n)}$ whose Taylor series expansion is, for small $|\vec{k}|$:
+	\begin{equation}
+		\tilde{\rho}_n(\vec{k},t) \approx \tilde{\rho}_n(0,t) + \vec{k} \cdot \nabla_{\vec{k}} \tilde{\rho}_n(0,t) + \dots
+	\end{equation}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure3}
+		\caption{}
+		\label{fig:figure3}
+	\end{figure}
+	
+	
+	We then have:
+	\begin{equation}
+		\tilde{\rho}_n(\vec{k},t) = \int d^3x' \rho_n(\vec{x}',t) [1 - i\vec{k}\cdot(\vec{x}'-\vec{x}_n) + \dots]
+	\end{equation}
+	or
+	\begin{equation}
+		\tilde{\rho}_n(\vec{k},t) \approx q_n - i\vec{k}\cdot\vec{p}_n + \text{quadrupole and higher}.
+	\end{equation}
+	Therefore:
+	\begin{align}
+		\langle \rho_n(\vec{x},t) \rangle &= \frac{1}{(2\pi)^3} \int d^3k \, \tilde{f}(\vec{k}) e^{i\vec{k}\cdot(\vec{x}-\vec{x}_n)} [q_n - i\vec{k}\cdot\vec{p}_n + \dots] \\
+		&= q_n f(\vec{x}-\vec{x}_n) - \vec{p}_n \cdot \nabla f(\vec{x}-\vec{x}_n) + \dots
+	\end{align}
+	Summing up over all the molecules:
+	\begin{equation}
+		\langle \rho(\vec{x},t) \rangle = \rho(\vec{x},t) - \nabla \cdot \vec{P}(\vec{x},t) + \frac{1}{2}\frac{\partial^2}{\partial x_\alpha \partial x_\beta} Q_{\alpha\beta}(\vec{x},t) + \dots
+	\end{equation}
+	where $\rho$ is the macroscopic charge density
+	\begin{equation}
+		\rho(\vec{x},t) = \langle \sum_{\text{free}} q_j \delta(\vec{x}-\vec{r}_j) + \sum_{\text{molecules}} q_n \delta(\vec{x}-\vec{x}_n) \rangle
+	\end{equation}
+	$\vec{P}$ is the macroscopic polarization
+	\begin{equation}
+		\vec{P}(\vec{x},t) = \langle \sum_{\text{molecules}} \vec{p}_n \delta(\vec{x}-\vec{x}_n) \rangle
+	\end{equation}
+	and $Q_{\alpha\beta}$ is the macroscopic quadrupole density
+	\begin{equation}
+		Q_{\alpha\beta}(\vec{x},t) = \langle \sum_{\text{molecules}} (Q_n)_{\alpha\beta} \delta(\vec{x}-\vec{x}_n) \rangle
+	\end{equation}
+	In terms of the expression of $\langle \rho(\vec{x},t) \rangle$ the averaged inhomogeneous equations
+	\begin{equation}
+		\frac{\partial}{\partial x_\alpha} [\epsilon_0 E_\alpha + P_\alpha - \frac{1}{2} \frac{\partial Q_{\alpha\beta}}{\partial x_\beta} + \dots] = \rho
+	\end{equation}
+	or
+	\begin{equation}
+		\nabla \cdot \vec{D} = \rho
+	\end{equation}
+	with
+	\begin{equation}
+		D_\alpha = \epsilon_0 E_\alpha + P_\alpha - \frac{1}{2} \frac{\partial Q_{\alpha\beta}}{\partial x_\beta} + \dots
+	\end{equation}
+	
+	Begin with the microscopic current density.
+	\begin{equation}
+		\vec{j}(\vec{x},t) = \sum_j q_j \vec{v}_j \delta(\vec{x}-\vec{r}_j(t))
+	\end{equation}
+	where $\vec{v}_j = d\vec{r}_j/dt$ is the velocity of the $j$th charge.
+	The average of which is
+	\begin{equation}
+		\langle \vec{j}_n(\vec{x},t) \rangle = \sum_j q_j \langle (\vec{v}_{jn}+\vec{V}_n) f(\vec{x}-\vec{x}_n-\vec{x}_{jn}) \rangle
+	\end{equation}
+	where the velocity of the $j$th charge is the sum of an internal relative velocity $\vec{v}_{jn}$ and the velocity $\vec{V}_n = d\vec{x}_n/dt$ of the origin $O^n$ in the molecule.
+	A portion of the current involves the molecular magnetic moment
+	\begin{equation}
+		\vec{m}_n = \frac{1}{2}\sum_j q_{nj} (\vec{x}_{jn} \times \vec{v}_{jn})
+	\end{equation}
+	A component of the averaged microscopic current density
+	\begin{multline}
+		\langle j_\alpha(\vec{x},t) \rangle = J_\alpha(\vec{x},t) + [\nabla \times \vec{M}(\vec{x},t)]_\alpha - \frac{\partial P_\alpha}{\partial t} + \frac{\partial}{\partial x_\beta} \langle \sum_{\text{molecules}} [(P_n)_\alpha (V_n)_\beta - (P_n)_\beta (V_n)_\alpha] \delta(\vec{x}-\vec{x}_n) \rangle \\
+		- \frac{1}{2} \frac{\partial}{\partial x_\beta} \langle \sum_{\text{molecules}} [(Q_n)_{\alpha\gamma}(V_n)_\beta - (Q_n)_{\beta\gamma}(V_n)_\alpha] \frac{\partial}{\partial x_\gamma} \delta(\vec{x}-\vec{x}_n) \rangle + \dots
+	\end{multline}
+	The macroscopic current density
+	\begin{equation}
+		\vec{J}(\vec{x},t) = \langle \sum_{\text{free}} q_j \vec{v}_j \delta(\vec{x}-\vec{r}_j) + \sum_{\text{molecules}} q_n \vec{V}_n \delta(\vec{x}-\vec{x}_n) \rangle
+	\end{equation}
+	The macroscopic magnetization
+	\begin{equation}
+		\vec{M}(\vec{x},t) = \langle \sum_{\text{molecules}} \vec{m}_n \delta(\vec{x}-\vec{x}_n) \rangle
+	\end{equation}
+	\section*{Electrodynamics and Conservation Laws}
+	
+	\subsection*{Molecular Moments and Charge Density}
+	
+	In terms of the $\langle J^1 \rangle$, we again write
+	\[ \langle \frac{1}{2c} (\vec{x} \times \vec{B} - \vec{H}) \rangle_\alpha = M\alpha + \left\langle \sum_{\text{molecules}} (P_n \times \nabla_n)_\alpha \delta(\vec{x} - \vec{x}_n) \right\rangle \]
+	\[ - \frac{1}{6c} \epsilon_{\alpha\beta\gamma} \frac{\partial}{\partial x_\delta} \left\langle \sum_{\text{molecules}} (Q_n)_{\gamma\delta} (v_n)_\beta \delta(\vec{x} - \vec{x}_n) \right\rangle + \dots \]
+	We neglect any other motion of the molecules. We put $\vec{v}_n = v$ for all $n$. We obtain
+	\[ \frac{1}{2c} \vec{J} \times \vec{B} - \vec{H} = \vec{M} + c(\vec{D} - \epsilon_0 \vec{E}) \times \vec{v} \]
+	
+	\subsubsection*{Traceless Molecular Quadrupole Moment}
+	We define a traceless molecular quadrupole moment $(Q_n)_{\alpha\beta}$ by:
+	\[ (Q_n)_{\alpha\beta} = \int (Q_n)' d\tau = \int (3x'_\alpha x'_\beta - r'^2 \delta_{\alpha\beta}) \rho_n(x') d^3x' \]
+	We introduce a mean square charge radius $r_n^2$ of the molecular charge distribution by
+	\[ e r_n^2 = \sum_j e_j (\vec{x}_j)^2 = \int |\vec{x}|^2 \rho(x) d^3x \]
+	where $\rho$ is some unit of charge.
+	
+	For a proton, we have: $(Q_n)_{\alpha\beta} = (Q_n) d\tau_p + e r_n^2 \delta_{\alpha\beta}$.
+	The macroscopic quadrupole density:
+	\[ Q_{\alpha\beta} = \langle Q_n \rangle_{\alpha\beta} = \left\langle \frac{1}{6} \sum_{\text{molecules}} e r_n^2 \delta_{\alpha\beta} \delta(\vec{x} - \vec{x}_n) \right\rangle \]
+	And the charge density:
+	\[ \rho = \rho_{\text{free}} + \left\langle \sum_{\text{molecules}} q_n \delta(\vec{x}-\vec{x}_n) \right\rangle + \frac{1}{6} \nabla' \left\langle \sum_{\text{molecules}} e r_n^2 \delta(\vec{x}-\vec{x}_n) \right\rangle \]
+	We can define the form factor $F(k)$ for $\rho(\vec{x})$
+	\[ F(k^2) = \int d^3x \, \rho(\vec{x}) \langle e^{i\vec{k}\cdot\vec{x}} \rangle \bigg|_{l=0 \text{ part}} \]
+	\[ = \int d^3x \, \rho(\vec{x}) \frac{\sin(kr)}{kr} \approx \int d^3x \, \rho - \frac{1}{6} k^2 \int r^2 \rho \, d^3x + \dots \]
+	
+	\subsection*{6.7 Poynting's Theorem and Conservation of Energy and Momentum for a System of Charged Particles and Electromagnetic Fields}
+	
+	\begin{enumerate}
+		\item For a single charge $q$, the rate of doing work by $\vec{E}$ and $\vec{B}$ is $q\vec{v} \cdot \vec{E}$.
+		
+		For continuous distribution of charge and current, the total rate of doing work by the fields in a finite volume $V$ is
+		\[ \int_V \vec{J} \cdot \vec{E} \, d^3x = \int_V \vec{E} \cdot [(\nabla \times \vec{H}) - \frac{\partial \vec{D}}{\partial t}] \, d^3x \]
+		By the identity
+		\[ \nabla \cdot (\vec{E} \times \vec{H}) = \vec{H} \cdot (\nabla \times \vec{E}) - \vec{E} \cdot (\nabla \times \vec{H}) \]
+		and use Faraday's Law,
+		\[ \int_V \vec{J} \cdot \vec{E} \, d^3x = - \int_V \left[ \nabla \cdot (\vec{E} \times \vec{H}) + \vec{E} \cdot \frac{\partial \vec{D}}{\partial t} + \vec{H} \cdot \frac{\partial \vec{B}}{\partial t} \right] d^3x \]
+		We assume that the macroscopic medium is linear in its electric and magnetic properties with negligible dispersion or losses. The sum of $\int \vec{E} \cdot \dot{\vec{D}} \, d^3x$ and $\int \vec{H} \cdot \dot{\vec{B}} \, d^3x$ is total energy even for time varying fields.
+		We denote the total energy density as
+		\[ u = \frac{1}{2}(\vec{E} \cdot \vec{D} + \vec{B} \cdot \vec{H}) \]
+		Thus:
+		\[ -\int_V \vec{J} \cdot \vec{E} \, d^3x = \int_V \left[ \frac{\partial u}{\partial t} + \nabla \cdot (\vec{E} \times \vec{H}) \right] d^3x \]
+		Hence
+		\[ \frac{\partial u}{\partial t} + \nabla \cdot \vec{S} = -\vec{J} \cdot \vec{E} \]
+		where $\vec{S} = \vec{E} \times \vec{H}$ is the Poynting vector.
+		
+		Hence, the rate of change of electromagnetic energy within a certain volume, plus the energy flowing out through the boundary surfaces of the volume per unit time, is equal to the negative of the total work done by the fields on the sources.
+		$\Rightarrow$ Conservation of Energy (Poynting's Theorem).
+		
+		\item We denote the total energy of the particles within the volume $V$ as $E_{\text{mech}}$.
+		\[ \frac{dE_{\text{mech}}}{dt} = \int_V \vec{J} \cdot \vec{E} \, d^3x \]
+		Then Poynting's theorem for combined system
+		\[ \frac{dE}{dt} = \frac{d}{dt} (E_{\text{mech}} + E_{\text{field}}) = - \oint_S \vec{n} \cdot \vec{S} \, da \]
+		where
+		\[ E_{\text{field}} = \int_V u \, d^3x = \frac{1}{2} \int_V (\epsilon_0 E^2 + c^2 B^2) \, d^3x \]
+		The total electromagnetic force on a particle
+		\[ \vec{F} = q(\vec{E} + \vec{v} \times \vec{B}) \]
+		By Newton's second Law
+		\[ \frac{d\vec{P}_{\text{mech}}}{dt} = \int_V (\rho \vec{E} + \vec{J} \times \vec{B}) \, d^3x \]
+		By $\rho = \epsilon_0 \nabla \cdot \vec{E}$, $\vec{J} = \frac{1}{\mu_0} \nabla \times \vec{B} - \epsilon_0 \frac{\partial \vec{E}}{\partial t}$
+		We write that
+		\[ \rho\vec{E} + \vec{J} \times \vec{B} = \epsilon_0 \left[ \vec{E}(\nabla \cdot \vec{E}) + \vec{B} \times \frac{\partial \vec{E}}{\partial t} - c^2 \vec{B} \times (\nabla \times \vec{B}) \right] \]
+		Then writing
+		\[ \vec{B} \times \frac{\partial \vec{E}}{\partial t} = -\frac{\partial}{\partial t}(\vec{E} \times \vec{B}) + \vec{E} \times \frac{\partial \vec{B}}{\partial t} \]
+		and with $c^2(\nabla \cdot \vec{B}) = 0$, we obtain
+		\[ \rho\vec{E} + \vec{J} \times \vec{B} = \epsilon_0 \left[ \vec{E}(\nabla \cdot \vec{E}) + c^2 \vec{B}(\nabla \cdot \vec{B}) - \vec{E} \times (\nabla \times \vec{E}) - c^2 \vec{B} \times (\nabla \times \vec{B}) \right] - \epsilon_0 \frac{\partial}{\partial t}(\vec{E} \times \vec{B}) \]
+		The rate of change of mechanical momentum
+		\[ \frac{d\vec{P}_{\text{mech}}}{dt} + \frac{d}{dt} \int_V \epsilon_0 (\vec{E} \times \vec{B}) \, d^3x \]
+		\[ = \epsilon_0 \int_V \left[ \vec{E}(\nabla \cdot \vec{E}) - \vec{E} \times (\nabla \times \vec{E}) + c^2 \vec{B}(\nabla \cdot \vec{B}) - c^2 \vec{B} \times (\nabla \times \vec{B}) \right] d^3x \]
+		The total electromagnetic momentum $\vec{P}_{\text{field}}$ in $V$
+		\[ \vec{P}_{\text{field}} = \epsilon_0 \int_V (\vec{E} \times \vec{B}) \, d^3x = \mu_0 \epsilon_0 \int_V \vec{S} \, d^3x \]
+		We note that the momentum density
+		\[ \vec{g} = \frac{1}{c^2}(\vec{E} \times \vec{H}) = \mu_0 \epsilon_0 (\vec{E} \times \vec{H}) = \frac{1}{c^2} \vec{S} \]
+		We let the Cartesian coordinates be $x_\alpha$, $\alpha = 1, 2, 3$.
+		The $\alpha$ component of the integrand is
+		\[ [ \vec{E}(\nabla \cdot \vec{E}) - \vec{E} \times (\nabla \times \vec{E}) ]_\alpha \]
+		\[ = \frac{\partial}{\partial x_1} (E_1^2) + \frac{\partial}{\partial x_2} (E_1 E_2) + \frac{\partial}{\partial x_3} (E_1 E_3) - \frac{1}{2} \frac{\partial}{\partial x_1} (E_1^2 + E_2^2 + E_3^2) \]
+		or
+		\[ [ \vec{E}(\nabla \cdot \vec{E}) - \vec{E} \times (\nabla \times \vec{E}) ]_\alpha = \sum_\beta \frac{\partial}{\partial x_\beta} \left( E_\alpha E_\beta - \frac{1}{2} \vec{E}^2 \delta_{\alpha\beta} \right) \]
+		with the Maxwell stress tensor $T_{\alpha\beta}$
+		\[ T_{\alpha\beta} = \epsilon_0 \left[ E_\alpha E_\beta + c^2 B_\alpha B_\beta - \frac{1}{2} (\vec{E}^2 + c^2 \vec{B}^2) \delta_{\alpha\beta} \right] \]
+		We can write that
+		\[ \frac{d}{dt} (P_{\text{mech}} + P_{\text{field}})_\alpha = \sum_\beta \int_V \frac{\partial}{\partial x_\beta} T_{\alpha\beta} \, d^3x \]
+		By the divergence theorem,
+		\[ \frac{d}{dt} (P_{\text{mech}} + P_{\text{field}})_\alpha = \oint_S \sum_\beta T_{\alpha\beta} n_\beta \, da \]
+		where $\vec{n}$ is the outward normal to S.
+		
+	\end{enumerate}
+	\section*{6.8 Poynting's Theorem in Linear Dispersive Media with Losses}
+	\subsection*{(1) In the linear media with no dispersion or losses}
+	\[
+	\vec{D} = \epsilon \vec{E}, \quad \vec{B} = \mu \vec{H}
+	\]
+	We consider a Fourier decomposition in time:
+	\[
+	\vec{D}(\vec{x}, t) = \int_{-\infty}^{\infty} d\omega \vec{D}(\vec{x}, \omega) e^{-i\omega t}
+	\]
+	\[
+	\vec{E}(\vec{x}, t) = \int_{-\infty}^{\infty} d\omega \vec{E}(\vec{x}, \omega) e^{-i\omega t}
+	\]
+	We see that
+	\[
+	\vec{D}(\vec{x}, \omega) = \epsilon(\omega) \vec{E}(\vec{x}, \omega)
+	\]
+	Similarly we write that
+	\[
+	\vec{H}(\vec{x}, \omega) = \frac{1}{\mu(\omega)} \vec{B}(\vec{x}, \omega)
+	\]
+	\[
+	\vec{E} \cdot \frac{\partial\vec{D}}{\partial t} = \int d\omega' \vec{E}^*(\omega') e^{i\omega' t} \int d\omega [-i\omega \epsilon(\omega) \vec{E}(\omega)] e^{-i\omega t}
+	\]
+	We expand $\epsilon(\omega)$ around $\omega = \omega_0$.
+	Thus:
+	\[
+	\vec{E} \cdot \frac{\partial \vec{D}}{\partial t} = \int d\omega \int d\omega' \vec{E}^*(\omega') \vec{E}(\omega) e^{-i(\omega-\omega')t} [ \omega_0 \text{Im} \epsilon(\omega_0) + \dots ]
+	\]
+	Same for $\vec{H} \cdot \frac{\partial\vec{B}}{\partial t}$ with $\vec{E} \leftrightarrow \vec{H}$ and $\epsilon \leftrightarrow \mu$.
+	
+	\subsection*{(2) We use the expression}
+	\[
+	\vec{E}(\vec{x}, t) = \vec{E}(t) \cos(\omega_0 t + \alpha)
+	\]
+	\[
+	\vec{H}(t) = \vec{H}(t) \cos(\omega t + \alpha)
+	\]
+	Then:
+	\[
+	\left\langle \vec{E} \cdot \frac{\partial\vec{D}}{\partial t} + \vec{H} \cdot \frac{\partial\vec{B}}{\partial t} \right\rangle = \omega_0 \text{Im}(\epsilon) \langle \vec{E}(\vec{x},t) \cdot \vec{E}(\vec{x},t) \rangle + \omega_0 \text{Im}(\mu) \langle \vec{H}(\vec{x},t) \cdot \vec{H}(\vec{x},t) \rangle
+	\]
+	where
+	\[
+	\frac{\partial u_{eff}}{\partial t} = \frac{1}{2} \text{Re} \left[ \frac{d(\omega\epsilon)}{d\omega} \bigg|_{\omega_0} \right] \langle \vec{E}(\vec{x},t) \cdot \vec{E}(\vec{x},t) \rangle + \frac{1}{2} \text{Re} \left[ \frac{d(\omega\mu)}{d\omega} \bigg|_{\omega_0} \right] \langle \vec{H}(\vec{x},t) \cdot \vec{H}(\vec{x},t) \rangle
+	\]
+	Poynting's theorem reads:
+	\[
+	\frac{\partial u_{eff}}{\partial t} + \nabla \cdot \vec{S} = - \vec{j} \cdot \vec{E} - \omega_0 \text{Im}(\epsilon) \langle \vec{E}(\vec{x},t) \cdot \vec{E}(\vec{x},t) \rangle - \omega_0 \text{Im}(\mu) \langle \vec{H}(\vec{x},t) \cdot \vec{H}(\vec{x},t) \rangle
+	\]
+	The first term on the right side describes the explicit ohmic losses, while the second term is the absorptive dissipation in the medium.
+	
+	\section*{6.9 Poynting's Theorem for Harmonic Fields}
+	\subsection*{Field Definitions of Impedance and Admittance}
+	(1) We assume all fields and sources have a time dependence $e^{-i\omega t}$ and we have
+	\[
+	\vec{E}'(\vec{x}, t) = \text{Re}[\vec{E}(\vec{x}) e^{-i\omega t}] = \frac{1}{2} [ \vec{E}(\vec{x})e^{-i\omega t} + \vec{E}^*(\vec{x})e^{i\omega t} ]
+	\]
+	For harmonic fields the Maxwell Equations:
+	\begin{align*}
+		\nabla \cdot \vec{B} &= 0, & \nabla \times \vec{E} - i\omega \vec{B} &= 0 \\
+		\nabla \cdot \vec{D} &= \rho, & \nabla \times \vec{H} + i\omega \vec{D} &= \vec{J}
+	\end{align*}
+	We consider
+	\begin{align*}
+		\frac{1}{2} \int_V \vec{J}^* \cdot \vec{E} d^3x &= \frac{1}{2} \int_V \vec{E} \cdot [\nabla \times \vec{H}^* - i\omega\vec{D}^*] d^3x \\
+		&= \frac{1}{2} \int_V [ - \nabla \cdot (\vec{E} \times \vec{H}^*) + i\omega(\vec{B} \cdot \vec{H}^*) - i\omega(\vec{E} \cdot \vec{D}^*)] d^3x
+	\end{align*}
+	By $\vec{S} = \frac{1}{2} \text{Re}(\vec{E} \times \vec{H}^*)$ and the harmonic magnetic energy densities: $w_e = \frac{1}{4}(\vec{E} \cdot \vec{D}^*)$, $w_m = \frac{1}{4}(\vec{B} \cdot \vec{H}^*)$.
+	Then:
+	\[
+	\frac{1}{2} \int_V \vec{J}^* \cdot \vec{E} d^3x + 2i\omega \int_V (w_e - w_m) d^3x + \oint_S \vec{S} \cdot \hat{n} da = 0
+	\]
+	If $w_e$ and $w_m$ have real volume integrals, as occurs for systems with lossless dielectrics and perfect conductors; the real part is:
+	\[
+	\int_V \frac{1}{2} \text{Re}(\vec{J}^* \cdot \vec{E}) d^3x + \oint_S \text{Re}(\vec{S} \cdot \hat{n}) da = 0
+	\]
+	showing the steady-state, time averaged rate of doing work on the sources in V by the fields is equal to the average flow of power into the V through the S. \\
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure4}
+		\caption{}
+		\label{fig:figure4}
+	\end{figure}
+	
+	The second term of the complex power input
+	\[
+	\frac{1}{2} I_i^* V_i = - \oint_S \vec{S} \cdot \hat{n} da
+	\]
+	\[
+	= \frac{1}{2} \int_V \vec{J}^* \cdot \vec{E} d^3x + 2i\omega \int_V (w_e - w_m) d^3x + \oint_{S-S_i} \vec{S} \cdot \hat{n} da
+	\]
+	where the surface integral is the power flow out of the V through S except for input $S_i$.
+	
+	(2) The input $Z = R - iX$, by $V_i = Z I_i$, where
+	\[
+	R = \frac{1}{|I_i|^2} \left\{ \text{Re} \int_V \vec{J}^* \cdot \vec{E} d^3x + 2\oint_{S-S_i} \vec{S} \cdot \hat{n} da + 4\omega \text{Im} \int_V (w_e - w_m) d^3x \right\}
+	\]
+	\[
+	X = \frac{1}{|I_i|^2} \left\{ 4\omega \text{Re} \int_V (w_m - w_e) d^3x - \text{Im} \int_V \vec{J}^* \cdot \vec{E} d^3x \right\}
+	\]
+	
+	\section*{6.10 Transformation Properties of Electromagnetic Fields and Sources Under Rotations, Spatial Reflections and Time Reversal}
+	\subsection*{(1) Rotations}
+	Such transformation is such that the sum of the square of the coordinates remains invariant $\Rightarrow$ orthogonal transformation.
+	The transformed coordinates
+	\[
+	x'_{\alpha} = \sum_{\beta} a_{\alpha\beta} x_{\beta}
+	\]
+	We require $(\vec{x}')^2 = (\vec{x})^2$, and thus
+	\[
+	\sum_{\alpha} a_{\alpha\beta} a_{\alpha\gamma} = \delta_{\beta\gamma} \quad \text{where} \quad (a^{-1})_{\beta\alpha} = a_{\alpha\beta}
+	\]
+	and the square of the determinant of the matrix(a) is equal to unity.
+	We denote the transformation from $\vec{x}_i$ to $\vec{x}_i'$
+	\[
+	\phi'(\vec{x}') = \phi(\vec{x})
+	\]
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure5}
+		\caption{}
+		\label{fig:figure5}
+	\end{figure}
+	
+	\subsection*{(2) Spatial Reflection or Inversion}
+	From $\vec{x}_i \to \vec{x}_i' = -\vec{x}_i$, the polar vectors behave as
+	\[
+	\vec{V} \to \vec{V}' = -\vec{V}
+	\]
+	Axial / pseudovectors behave as
+	\[
+	\vec{A} \to \vec{A}' = \vec{A}
+	\]
+	
+	\subsection*{(3) Time Reversal}
+	The Newton's equation of motion
+	\[
+	\frac{d\vec{p}}{dt} = -\nabla U(\vec{x})
+	\]
+	is invariant under time reversal $t \to t' = -t$, since $\vec{x} \to \vec{x}' = \vec{x}$, $\vec{p} \to \vec{p}' = -\vec{p}$.\\
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{table1}
+		\caption{}
+		\label{table1}
+	\end{figure}
+	
+	\subsection*{(4) R. Electromagnetic Quantities}
+	We see that by $\nabla \cdot \vec{E} = \rho / \epsilon_0$.
+	\[
+	\nabla \times \vec{E} + \frac{\partial\vec{B}}{\partial t} = 0
+	\]
+	shows that $\vec{B}$ is a pseudovector, odd under time reversal.
+	\[
+	\frac{1}{\mu_0} \nabla \times \vec{B} - \epsilon_0 \frac{\partial\vec{E}}{\partial t} = \vec{J}
+	\]
+	shows $\vec{J}$ is a polar vector, odd under time reversal.
+	\section*{6.11 The Question of Magnetic Monopoles}
+	We suppose there exist magnetic charge and current densities $\rho_m$ and $\vec{J}_m$.
+	
+	The Maxwell equations:
+	\begin{align}
+		\nabla \cdot \vec{D} &= \rho_e & \nabla \times \vec{H} &= \frac{\partial \vec{D}}{\partial t} + \vec{J}_e \\
+		\nabla \cdot \vec{B} &= \rho_m & -\nabla \times \vec{E} &= \frac{\partial \vec{B}}{\partial t} + \vec{J}_m
+	\end{align}
+	We consider the duality transformation:
+	\begin{align}
+		\vec{E} &= \vec{E}' \cos\xi + Z_0 \vec{H}' \sin\xi \\
+		Z_0 \vec{J}_e &= Z_0 \vec{J}_e' \cos\xi + \vec{J}_m' \sin\xi \\
+		\rho_m &= -Z_0 \rho_e' \sin\xi + \rho_m' \cos\xi \\
+		\vec{J}_m &= -Z_0 \vec{J}_e' \sin\xi + \vec{J}_m' \cos\xi
+	\end{align}
+	We can see that
+	\begin{itemize}
+		\item $\rho_m$ is a pseudoscalar density, odd under time reversal
+		\item $\vec{J}_m$ is a pseudovector density, even under time reversal
+	\end{itemize}
+	Dirac considers an electron in the presence of a magnetic monopole, with the quantization condition
+	\begin{equation}
+		\frac{eg}{4\pi\hbar} = \frac{\alpha g}{Z_0 e} = \frac{n}{2}, \quad n=0, \pm 1, \pm 2, \dots
+	\end{equation}
+	where $\alpha = e^2 / 4\pi\epsilon_0\hbar c$ is the fine structure constant ($\alpha \approx 1/137$) and $g$ is the magnetic charge of the monopole.
+	We see that
+	\begin{equation}
+		\frac{g^2}{4\pi\epsilon_0\hbar c} = \frac{g^2}{4\pi\mu_0\hbar c} \left( \frac{\mu_0}{\epsilon_0} \right) = \frac{g^2}{4\pi\mu_0\hbar c} Z_0^2 \sim \frac{137}{4} n^2
+	\end{equation}
+	
+	\section*{6.12 Dirac Quantization Condition}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure6}
+		\caption{}
+		\label{fig:figure6}
+	\end{figure}
+	
+	We consider the deflection at large impact parameters of a particle, of charge $e$ and mass $m$ by the field of a stationary magnetic monopole of magnetic charge $g$. At sufficiently large impact parameter, we assume the charged particle is undeflected.
+	The particle is incident parallel to the z-axis with $b$, and $v$ and is acted on by the rapid radially directed magnetic field of the monopole
+	\begin{equation}
+		\vec{B}' = g \vec{r} / 4\pi r^3
+	\end{equation}
+	The only force acting through the collision is a y-component:
+	\begin{equation}
+		F_y = evB_x = \frac{eg}{4\pi} \frac{vb}{(v^2t^2+b^2)^{3/2}}
+	\end{equation}
+	whose impulse is:
+	\begin{equation}
+		\Delta p_y = \int_{-\infty}^{\infty} F_y(t) dt = \frac{egvb}{4\pi} \int_{-\infty}^{\infty} \frac{dt}{(v^2t^2+b^2)^{3/2}} = \frac{eg}{2\pi b v}
+	\end{equation}
+	The change in $L_z$ is:
+	\begin{equation}
+		\Delta L_z = b \Delta p_y = \frac{eg}{2\pi}
+	\end{equation}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure7}
+		\caption{}
+		\label{fig:figure7}
+	\end{figure}
+	
+	If the monopole $g$ is at $\vec{x}=\vec{R}$ and $e$ is at $\vec{x}=0$:
+	\begin{equation}
+		\vec{H} = -\frac{g}{4\pi\mu_0} \nabla \left(\frac{1}{|\vec{r}|}\right) = \frac{g}{4\pi\mu_0} \frac{\vec{n}}{r^2}, \quad \vec{E} = -\frac{e}{4\pi\epsilon_0} \nabla \left(\frac{1}{|\vec{r}'|}\right) = \frac{e}{4\pi\epsilon_0} \frac{\vec{n}'}{r'^2}
+	\end{equation}
+	where $\vec{r}'=\vec{r}-\vec{R}$, $\vec{r}=|\vec{r}|$. $\vec{n}$ and $\vec{n}'$ are unit vectors in the directions of $(\vec{x}-\vec{R})$ and $\vec{x}$.
+	The angular momentum $\vec{L}_{em}$ is given by the integral of $\vec{x} \times \vec{g}$ where $\vec{g} = (\vec{E} \times \vec{H})/c^2$ is the electromagnetic momentum density.
+	The total momentum of fields, $\vec{P}_{em} = \int \vec{g} d^3x$. $\vec{P}_{em}$ vanishes because $\vec{P}_{em}$ is a vector and the only vector available is $\vec{R}$.
+	But $\vec{g} \propto \vec{R} \cdot (\vec{n} \times \vec{n}')$, and since $\vec{R}$ lies in the plane defined by $\vec{n}, \vec{n}'$, the triple scalar product vanishes and so does $\vec{P}_{em}$.
+	Thus $\vec{L}_{em} = \frac{1}{c^2} \int \vec{x} \times (\vec{E} \times \vec{H}) d^3x$ is independent of the choice of origin.
+	And
+	\begin{equation}
+		4\pi \vec{L}_{em} = \frac{e}{4\pi\epsilon_0} \int \vec{x} \times (\vec{n}' \times (\nabla \times \vec{A})) d^3x = -\epsilon \int \vec{n}'[\vec{x}\cdot(\nabla\times\vec{A})] - (\vec{x}\cdot\vec{n}')(\nabla\times\vec{A}) d^3x
+	\end{equation}
+	Using a vector identity from the front flyleaf
+	\begin{equation}
+		4\pi \vec{L}_{em} = -e \int (\vec{B} \cdot \nabla) \vec{n}' d^3x
+	\end{equation}
+	where $\vec{B} = \mu_0\vec{H}$.
+	Integration by parts
+	\begin{equation}
+		4\pi \vec{L}_{em} = e \int \vec{n}'(\nabla\cdot\vec{B}')d^3x - e \oint_S \vec{n}'(\vec{B}'\cdot\vec{n}_s)da
+	\end{equation}
+	where $\vec{n}_s$ is the outward normal to the surface. Since $\vec{B}'$ is caused by a point monopole at $\vec{x}=\vec{R}$ whose divergence $\nabla \cdot \vec{B}' = g\delta(\vec{x}-\vec{R})$.
+	\begin{equation}
+		\vec{L}_{em} = \frac{eg}{4\pi} \frac{\vec{R}}{R}
+	\end{equation}
+	
+	\subsection*{Alternative approach}
+	We consider the interaction Hamiltonian in the standard form
+	\begin{equation}
+		H_{int} = e\phi - \frac{e}{m} \vec{p} \cdot \vec{A} + \frac{e^2}{2m} \vec{A} \cdot \vec{A}
+	\end{equation}
+	We imagine that the $g$ is the end of a line of dipoles or a tightly wound solenoid that stretches at infinity.
+	\begin{equation}
+		d\vec{A}'(\vec{x}) = \frac{\mu_0}{4\pi} d\vec{m} \times \nabla\left(\frac{1}{|\vec{x}'|}\right)
+	\end{equation}
+	For a string of dipoles or solenoid whose location is given by the string $L$, the vector potential
+	\begin{equation}
+		\vec{A}_L'(\vec{x}) = -\frac{g}{4\pi} \int_L d\vec{l} \times \nabla \left(\frac{1}{|\vec{x}'|}\right)
+	\end{equation}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure8}
+		\caption{}
+		\label{fig:figure8}
+	\end{figure}
+	
+	The field of the monopole is exhibited by $\vec{B}'_{monopole} = \nabla\times\vec{A}_L'$ where $\vec{B}'$ exists only on the string.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure9}
+		\caption{}
+		\label{fig:figure9}
+	\end{figure}
+	
+	We can write that
+	\begin{equation}
+		\vec{A}_L'(\vec{x}) = \vec{A}(\vec{x}) + \frac{g}{4\pi} \nabla\Omega_c(\vec{x})
+	\end{equation}
+	where $\Omega_c$ is the solid angle subtended by the contour $C$ at $\vec{r}$.
+	With the gauge transformation $\vec{A} \to \vec{A}' = \vec{A} + \nabla\chi$ and $\Phi \to \Phi' = \Phi - \frac{\partial\chi}{\partial t}$. With $\chi = g\Omega_c/4\pi$.
+	
+\end{document}

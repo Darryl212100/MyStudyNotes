@@ -1,0 +1,1797 @@
+\documentclass{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{braket}
+\usepackage{physics}
+\usepackage{bm}
+\begin{document}
+	
+	\section*{XI Special Theory of Relativity}
+	
+	\subsection*{11.1 Einstein's Two Postulates}
+	
+	We consider two reference frames $k$ and $k'$ with $(x, y, z, t)$ and $(x', y', z', t')$.
+	
+	By Galilean relativity, we have
+	\begin{align*}
+		\vec{x}' &= \vec{x} - \vec{v}t \\
+		t' &= t
+	\end{align*}
+	
+	For example, we consider a group of particles interacting via two-body central potentials.
+	The equation of motion of the $i$-th particle in $k'$
+	\[ m_i \frac{d\vec{v}_i}{dt} = -\nabla_i' \sum_j V_{ij}(|\vec{x}_i' - \vec{x}_j'|) = -\nabla_i \sum_j V_{ij}(|\vec{x}_i - \vec{x}_j|) \]
+	
+	We assume that a field $\psi(x', t')$ satisfies
+	\[ \left[ \sum_i \left( \frac{\partial^2}{\partial {x_i'}^2} \right) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \right] \psi = 0 \]
+	in the frame $k'$.
+	
+	In terms of the coordinates in the frame $k$, it becomes
+	\[ \left( \nabla^2 - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} - \frac{2}{c^2} \vec{v} \cdot \nabla \frac{\partial}{\partial t} - \frac{1}{c^2} (\vec{v} \cdot \nabla)(\vec{v} \cdot \nabla) \right) \psi = 0 \]
+	$\implies$ The wave equation is not invariant under Galilean transformations.
+	$\implies$ Another preferred reference frame where the luminiferous either was at rest.
+	$\implies$ Lorentz transformation
+	\[ L = L_0 \sqrt{1-v^2/c^2} \]
+	
+	Einstein's special theory of relativity is based on two postulates.
+	\begin{enumerate}
+		\item \textbf{Postulate of relativity} \\
+		There exists a triply infinite set of equivalent Euclidean reference frames moving with constant velocities in rectilinear paths relative to one another in which all physical phenomena occur in an identical manner.
+		$\implies$ inertial reference.
+		
+		\item \textbf{Postulate of the constancy of the speed of light} \\
+		The speed of light is infinite and independent of the motion of its source.
+	\end{enumerate}
+	
+	\subsection*{11.2 Some Experiments}
+	\subsubsection*{A: Ether - Drift based on the M\"{o}ssbauer effect}
+	For a plane electromagnetic wave in vacuum, its phase as observed in the inertial frames $k$ and $k'$ are connected by Galilean transformation.
+	\[ \phi = \omega \left( t - \frac{\vec{n} \cdot \vec{x}}{c} \right) = \omega' \left( t' - \frac{\vec{n}' \cdot \vec{x}'}{c'} \right) \]
+	\[ = \omega' \left[ t' \left( 1 - \frac{\vec{n}' \cdot \vec{v}}{c'} \right) - \frac{\vec{n}' \cdot \vec{x}'}{c'} \right] \quad \text{for all } t' \text{ and } \vec{x}' \]
+	We find
+	\begin{align*}
+		\vec{n} &= \vec{n}' \\
+		\frac{\omega}{c} &= \frac{\omega'}{c'} (1 - \frac{\vec{n}' \cdot \vec{v}}{c'}) \\
+		c' &= c - \vec{n} \cdot \vec{v}
+	\end{align*}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure1}
+		\caption{}
+		\label{fig:figure1}
+	\end{figure}
+	
+	In $k'$, the direction of motion of the wave packet is the direction of energy flow, along a unit vector
+	\[ \vec{m} = \frac{c\vec{n}' - \vec{v}}{|c\vec{n}' - \vec{v}|} \approx (1 - \frac{\vec{n} \cdot \vec{v}}{c})\vec{m} + \frac{\vec{v}}{c} \]
+	where $\vec{v}_0$ is the velocity of the laboratory relative to the either rest frame.
+	
+	We now consider a phase wave whose frequency is $\omega$ in the ether rest from, $\omega_0$ in the laboratory and $\omega_1$ in an inertial frame k, moving with $\vec{v} = \vec{v}_1 - \vec{v}_0$ relative to the either rest from. Thus
+	\begin{align*}
+		\omega_1 &= \omega \left( 1 - \frac{\vec{n} \cdot \vec{v}_1}{c} \right) \\
+		\omega_0 &= \omega \left( 1 - \frac{\vec{n} \cdot \vec{v}_0}{c} \right)
+	\end{align*}
+	
+	If $\omega_1$ is expressed in terms of $\omega_0$ and eliminate $\vec{n}$
+	\[ \omega_1 \approx \omega_0 \left[ 1 - \frac{\vec{u}_1 \cdot (\vec{m} + \vec{v}_0')}{c} \right] \]
+	where $\vec{u}_1$ is the velocity of k relative to the laboratory, $\vec{m}$ is the direction of energy propagation in the laboratory, $\omega_0$ is the frequency of the wave in the laboratory, $\vec{v}_0'$ is velocity of the laboratory relative to the ether.
+	
+	Consider two M\"{o}ssbauer systems, with $\vec{u}_1$ and $\vec{u}_2$. The difference is:
+	\[ \frac{\omega_1 - \omega_2}{\omega_0} = \frac{1}{c} (\vec{u}_2 - \vec{u}_1) \cdot (\vec{m} + \frac{\vec{v}_0}{c}) \]
+	[If the emitter and absorber are located on the opposite ends of a rod of length $2R$ that is rotated about its center with angular velocity $\Omega$ 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure2}
+		\caption{}
+		\label{fig:figure2}
+	\end{figure}
+	
+	Then $(\vec{u}_2 - \vec{u}_1) \cdot \vec{m} = 0$.
+	\[ \frac{\omega_1 - \omega_2}{\omega_0} = \frac{2\Omega R}{c^2} \sin \Omega t |(\vec{v}_0)_{\perp}| \]
+	where $|(\vec{v}_0)_{\perp}|$ is the component of $\vec{v}_0$ perpendicular to the axis of rotation.
+	
+	\subsubsection*{B: Speed of Light from a Moving Source}
+	\subsubsection*{C: Frequency Dependence of the Speed of Light in Vacuum}
+	
+	\subsection*{11.3 Lorentz Transformations and Basic Kinematic Results of Special Relativity}
+	\subsubsection*{A: Simple Lorentz Transformations of Coordinates}
+	We consider $k$ and $k'$ with a relative $\vec{v}$ and the coordinates $(t, x, y, z)$ and $(t', x', y', z')$. Let the origins of the coordinates in $k$ and $k'$ be coincident at $t = t' = 0$.
+	
+	The wave front reaches a point $(x, y, z)$ in $k$ at $t$.
+	\[ c^2t^2 - (x^2 + y^2 + z^2) = 0 \]
+	Similarly in $k'$,
+	\[ c^2t'^2 - (x'^2 + y'^2 + z'^2) = 0 \]
+	We assume that the space-time is homogeneous and isotropic, the equations are related by
+	\[ c^2t^2 - (x^2 + y^2 + z^2) = \lambda^2 [c^2t'^2 - (x'^2 + y'^2 + z'^2)] \]
+	where $\lambda = \lambda(|\vec{v}|)$ is a possible change of scale.
+	We can see that $\lambda(v)=1$ and the lorentz transformation between $k'$ and $k$.
+	\begin{align*}
+		x_0' &= \gamma (x_0 - \beta x_1) \\
+		x_1' &= \gamma (x_1 - \beta x_0) \\
+		x_2' &= x_2 \\
+		x_3' &= x_3
+	\end{align*}
+	where we introduce $x_0 = ct$, $x_1 = x$, $x_2 = y$, $x_3 = z$.
+	and $\vec{\beta} = \frac{\vec{v}}{c}$, $\beta = |\vec{\beta}|$, $\gamma = (1-\beta^2)^{-1/2}$
+	$\implies$
+	\begin{align*}
+		x_0 &= \gamma (x_0' + \beta x_1') \\
+		x_1 &= \gamma (x_1' + \beta x_0') \\
+		x_2 &= x_2' \\
+		x_3 &= x_3'
+	\end{align*}
+	\section*{Lorentz Transformation for an Arbitrary Direction}
+	If $\vec{v}$ is in an arbitrary direction, we generalize that
+	\[
+	\begin{cases}
+		x_0' = \gamma(x_0 - \vec{\beta} \cdot \vec{x}) \\
+		\vec{x}' = \vec{x} + (\frac{\gamma - 1}{\beta^2})(\vec{\beta} \cdot \vec{x})\vec{\beta} - \gamma \vec{\beta} x_0
+	\end{cases}
+	\]
+	Since $0 \le \beta \le 1$, $1 \le \gamma \le \infty$, we replace with
+	\[
+	\begin{cases}
+		\beta = \tanh \zeta \\
+		\gamma = \cosh \zeta \\
+		\gamma\beta = \sinh \zeta
+	\end{cases}
+	\text{where } \zeta \text{ is the boost parameter}
+	\]
+	\begin{align*}
+		\implies
+		x_0' &= x_0 \cosh\zeta - x_i \sinh\zeta \\
+		x_i' &= -x_0 \sinh\zeta + x_i \cosh\zeta
+	\end{align*}
+	
+	\subsection*{B: 4-vectors}
+	For $(A_0, A_1, A_2, A_3)$, the Lorentz transformation is
+	\[
+	\begin{cases}
+		A_0' = \gamma(A_0 - \vec{\beta} \cdot \vec{A}) \\
+		A_{\parallel}' = \gamma(A_{\parallel} - \beta A_0) \\
+		A_{\perp}' = A_{\perp}
+	\end{cases}
+	\]
+	where the relative velocity $\vec{v} = c\vec{\beta}$.
+	
+	The invariance is
+	\[
+	A_0^2 - |\vec{A}|^2 = A_0'^2 - |\vec{A}'|^2
+	\]
+	We can also prove that for $\begin{cases} (A_0, A_1, A_2, A_3) \\ (B_0, B_1, B_2, B_3) \end{cases}$
+	\[
+	A_0 B_0 - \vec{A} \cdot \vec{B} = A_0' B_0' - \vec{A}' \cdot \vec{B}'
+	\]
+	
+	\section*{C: Light Cone, Proper Time and Time Dilation}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure3}
+		\caption{}
+		\label{fig:figure3}
+	\end{figure}
+	
+	(only in one dimension)
+	We divide the space-time into three regions by a "cone" (light cone) whose surface is specified by $x^2 + y^2 + z^2 = c^2 t^2$.
+	As time goes on, it would trace out a path called world line.
+	When $t > 0$, the path of the system lies inside the upper half-cone $\implies$ future.
+	Similarly, the lower half-cone $\implies$ past.
+	And the shaded region outside the light cone is the elsewhere.
+	
+	We consider two events with the interval $S_{12}$
+	\[ P_1(t_1, \vec{x}_1), \quad P_2(t_2, \vec{x}_2) \]
+	\[ S_{12}^2 = c^2(t_1 - t_2)^2 - |\vec{x}_1 - \vec{x}_2|^2 \]
+	There are three possibilities:
+	\[
+	\begin{cases}
+		1) \quad S_{12}^2 > 0 & : \text{time like separation} \\
+		2) \quad S_{12}^2 < 0 & : \text{spacelike separation} \\
+		3) \quad S_{12}^2 = 0 & : \text{lightlike separation}
+	\end{cases}
+	\]
+	\begin{enumerate}
+		\item We can find a Lorentz transformation such that $\vec{x}_1' = \vec{x}_2'$, then $S_{12}^2 = c^2(t_1' - t_2')^2 > 0$.
+		\item We can find an inertial frame $k''$ where $t_1'' = t_2''$, then $S_{12}^2 = -|\vec{x}_1'' - \vec{x}_2''|^2 < 0$.
+		\item We can only connect two events by light signals.
+	\end{enumerate}
+	
+	We consider a system of a particle moving with an instantaneous velocity $\vec{u}(t)$ relative to $k$.
+	In a time interval $dt$, the position change is $d\vec{x} = \vec{u}dt$. Thus,
+	\[ ds^2 = c^2 dt^2 - |d\vec{x}|^2 = c^2 dt^2 (1 - \beta^2) \quad \text{where } \beta = u/c \]
+	In $k'$, the space-time increments are $dt' = d\tau$, $d\vec{x}' = 0$ since the system is at rest. Thus the invariant interval is $ds = c d\tau$ and $d\tau$ is a Lorentz invariant quantity that takes the form
+	\[ d\tau = dt\sqrt{1 - \beta^2(t)} = \frac{dt}{\gamma(t)} \]
+	The time $\tau$ is the proper time, and $\tau_2 - \tau_1$ is given by
+	\[ \tau_2 - \tau_1 = \int_{t_1}^{t_2} \frac{dt}{\gamma(t)} = \int_{t_1}^{t_2} \sqrt{1 - \beta^2(t)} dt \]
+	\[ \implies \text{Time dilation} \]
+	
+	\section*{D: Relativistic Doppler Shift}
+	We consider a plane wave with frequency $\omega$ and wave vector $\vec{k}$ in $k$ and $\omega'$, $\vec{k}'$ in $k'$.
+	The phase of the wave is an invariant.
+	\[ \phi = \omega t - \vec{k} \cdot \vec{x} = \omega' t' - \vec{k}' \cdot \vec{x}' \]
+	For light waves $|\vec{k}| = k_0$, $|\vec{k}'| = k_0'$.
+	\[
+	\begin{cases}
+		k_0' = \gamma (k_0 - \beta k_x) \\
+		k_x' = \gamma (k_x - \beta k_0) \\
+		k_y' = k_y \\
+		k_z' = k_z
+	\end{cases}
+	\implies
+	\begin{cases}
+		\omega' = \gamma \omega (1 - \beta \cos\theta) \\
+		\tan\theta' = \frac{\sin\theta}{\gamma(\cos\theta - \beta)}
+	\end{cases}
+	\]
+	
+	\section*{11.4 Addition of Velocities: 4-Vector}
+	We consider a moving point $P$ whose velocity $\vec{u}'$ has coordinates $(u_x', u_y', u_z')$ in $k'$, which is moving with $\vec{v} = c\vec{\beta}$ in the positive $x_1$ direction with respect to $k$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure4}
+		\caption{}
+		\label{fig:figure4}
+	\end{figure}
+	
+	\begin{align*}
+		dx_0 &= \gamma_v (dx_0' + \beta dx_1') \\
+		dx_1 &= \gamma_v (dx_1' + \beta dx_0') \\
+		dx_2 &= dx_2' \\
+		dx_3 &= dx_3'
+	\end{align*}
+	The velocity components in each frame are $u_i' = c \, dx_i' / dx_0'$ and $u_i = c \, dx_i / dx_0$.
+	\[
+	\implies
+	\begin{cases}
+		u_{\parallel} = \frac{u_{\parallel}' + v}{1 + \frac{u_{\parallel}' v}{c^2}} \\
+		u_{\perp} = \frac{u_{\perp}'}{\gamma_v(1 + \frac{u_{\parallel}' v}{c^2})}
+	\end{cases}
+	\]
+	Since $u_2/u_3 = u_2'/u_3'$, the azimuthal angles in the two frames are equal.
+	\[ \tan\theta = \frac{u' \sin\theta'}{\gamma_v(u' \cos\theta' + v)} \]
+	\[ u = \sqrt{u_{\parallel}^2 + u_{\perp}^2} = \frac{\sqrt{(u' \cos\theta' + v)^2 + (u' \sin\theta' / \gamma_v)^2}}{1 + \frac{u'v}{c^2}\cos\theta'} \]
+	As $u, v \ll c$, we obtain the Galilean transformation.
+	\section*{Addition of Velocities: 4-Vector (Continued)}
+	
+	But if $\vec{u}'$ or $\vec{u}$ is close to $c$, we have the case of parallel velocities addition law
+	\[ u = \frac{u' + v}{1 + \frac{u'v}{c^2}} \]
+	And if $u' = c$, we have $u=c$ which is the one example of Einstein's second postulate.
+	
+	\subsection*{In terms of 4-vector}
+	The expression $(1 + \vec{u} \cdot \vec{v} / c^2)$ can be expressed through
+	\[ \gamma_u = \gamma_v \gamma_{u'} (1 + \frac{\vec{v} \cdot \vec{u}'}{c^2}) \]
+	And thus we have
+	\[
+	\begin{cases}
+		\gamma_u u_{\parallel} = \gamma_v (\gamma_{u'} u_{\parallel}' + \gamma_{u'} v) \\
+		\gamma_u u_{\perp} = \gamma_{u'} u_{\perp}'
+	\end{cases}
+	\]
+	Hence, the four quantities $(\gamma_u c, \gamma_u \vec{u})$ form a 4-vector.
+	Lorentz transformations $\implies$ time-space components of the 4-velocity $(U_0, \vec{U})$
+	where
+	\[
+	\begin{cases}
+		U_0 = \frac{dx_0}{d\tau} = \frac{dx_0}{dt}\frac{dt}{d\tau} = \gamma_u c \\
+		\vec{U} = \frac{d\vec{x}}{d\tau} = \frac{d\vec{x}}{dt}\frac{dt}{d\tau} = \gamma_u \vec{u}
+	\end{cases}
+	\]
+	
+	\section*{11.5 Relativistic Momentum and Energy of a Particle}
+	
+	\subsection*{For a particle with speed small compared to c}
+	We have
+	\[
+	\begin{cases}
+		\vec{p} = m\vec{u} \\
+		E = E(0) + \frac{1}{2} m u^2
+	\end{cases}
+	\]
+	where $E(0)$ is the rest energy.
+	The only possible generalization consistent with the first postulate are
+	\[
+	\begin{cases}
+		\vec{p} = M(u)\vec{u} \\
+		E = \mathcal{E}(u)
+	\end{cases}
+	\text{where } M \text{ and } \mathcal{E} \text{ are functions of } |\vec{u}|.
+	\]
+	We see that
+	\[
+	\begin{cases}
+		M(0) = m \\
+		(-\frac{\partial \mathcal{E}}{\partial u^2}|_{u=0}) = \frac{m}{2}
+	\end{cases}
+	\]
+	
+	\subsection*{Collision Analysis}
+	We now consider the collision in $k$ and $k'$ connected by Lorentz transformation.
+	The two identical particles have initial velocities $\vec{u}_a = \vec{v}$, $\vec{u}_b = -\vec{v}$ along the $z$ axis. After collision the final velocities are $\vec{u}_c, \vec{u}_d$.
+	(c.f. Fig 5, page 534)
+	
+	In $k'$, the conservation are
+	\[
+	\begin{cases}
+		\vec{p}_a' + \vec{p}_b' = \vec{p}_c' + \vec{p}_d' \\
+		E_a' + E_b' = E_c' + E_d'
+	\end{cases}
+	\]
+	or
+	\[
+	\begin{cases}
+		M(v')\vec{v'} - M(v')\vec{v'} = M(v'')\vec{v''} + M(v'')(-\vec{v''}) \\
+		\mathcal{E}(v') + \mathcal{E}(v') = \mathcal{E}(v'') + \mathcal{E}(v'')
+	\end{cases}
+	\]
+	where we require $\mathcal{E}(v') = \mathcal{E}(v'')$. We have, then $v' = v'' = v$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure5}
+		\caption{}
+		\label{fig:figure5}
+	\end{figure}
+	
+	We now consider the collision in $k$, moving with $-\vec{v}$ in the $z$ direction with respect to $k'$.
+	We see that $b$ is at rest in $k$ while $a$ is incident along the $z$ axis with a velocity
+	\[ u_a = \frac{2v}{1+v^2/c^2} = \frac{2c\beta}{1+\beta^2} \]
+	The components in $k$ are
+	\begin{align*}
+		(u_c)_x &= \frac{c\beta\sin\theta'}{\gamma(1+\beta^2\cos\theta')} & (u_c)_z &= \frac{c\beta(1+\cos\theta')}{1+\beta^2\cos\theta'} \\
+		(u_d)_x &= -\frac{c\beta\sin\theta'}{\gamma(1-\beta^2\cos\theta')} & (u_d)_z &= \frac{c\beta(1-\cos\theta')}{1-\beta^2\cos\theta'}
+	\end{align*}
+	where $\gamma = \frac{1}{\sqrt{1-\beta^2}}$.
+	The equations of conservation in $k$ are
+	\[ M(u_a)\vec{u}_a + M(u_b)\vec{u}_b = M(u_c)\vec{u}_c + M(u_d)\vec{u}_d \]
+	\[ \mathcal{E}(u_a) + \mathcal{E}(u_b) = \mathcal{E}(u_c) + \mathcal{E}(u_d) \]
+	The x-component is ($(u_b)_x = (u_d)_x = 0$)
+	\[ 0 = M(u_c)\frac{c\beta\sin\theta'}{\gamma(1+\beta^2\cos\theta')} - M(u_d)\frac{c\beta\sin\theta'}{\gamma(1-\beta^2\cos\theta')} \]
+	\[ \implies M(u_c)(1-\beta^2\cos\theta') = M(u_d)(1+\beta^2\cos\theta') \quad \text{for all } \theta' \]
+	Specifically for $\theta' = 0$ where $u_c = u_a$, $u_d=0$.
+	\[ M(u_a)\frac{1-\beta^2}{1+\beta^2} = M(0)\frac{1}{\sqrt{1-u_a^2/c^2}} = \gamma_a \]
+	with $M(0)=m$, we have $M(u_a) = \gamma_a m$.
+	\[ \implies \vec{p} = \gamma m \vec{u} = \frac{m\vec{u}}{\sqrt{1-u^2/c^2}} \]
+	
+	\subsection*{Energy Derivation}
+	For small $\theta'$, we have
+	\[ \mathcal{E}(u_a) + \mathcal{E}(0) = \mathcal{E}(u_c) + \mathcal{E}(u_d) \]
+	where $u_c$ and $u_d$ are functions of $\theta'$.
+	Correct to order $\theta'^2$ inclusive,
+	\begin{align*}
+		u_c^2 &= u_a^2 - \frac{\eta}{\gamma_a^2} + O(\theta'^4) \\
+		u_d^2 &= \eta + O(\theta'^4)
+	\end{align*}
+	where $\gamma_a$ is given by $\frac{1+\beta^2}{1-\beta^2}$ and $\eta = c^2 \beta^2 \theta'^2 / (1-\beta^2)$ is a convenient expansion parameter.
+	
+	We now expand in Taylor series
+	\[ \mathcal{E}(u_a) + \mathcal{E}(0) = \mathcal{E}(u_c) + \mathcal{E}(u_d) = \mathcal{E}(u_a) + \eta \cdot (\frac{d\mathcal{E}(u_c)}{du_c^2}|_{u_c=u_a} \frac{\partial u_c^2}{\partial \eta}|_{\eta=0} + \frac{d\mathcal{E}(u_d)}{du_d^2}|_{u_d=0}) + \dots \]
+	The first-order terms yield
+	\[ 0 = -\frac{1}{\gamma_a^2}\frac{d\mathcal{E}(u_a)}{du_a^2} + [\frac{d\mathcal{E}(u_d)}{du_d^2}]_{u_d=0} \]
+	We thus find:
+	\[ \frac{d\mathcal{E}(u_a)}{du_a^2} = \frac{1}{2}m\gamma_a^3 = \frac{m}{2(1-u_a^2/c^2)^{3/2}} \]
+	Integration yields
+	\[ \mathcal{E}(u) = \frac{mc^2}{\sqrt{1-u^2/c^2}} + [\mathcal{E}(0) - mc^2] \]
+	And the kinetic energy is given by
+	\[ T(u) = \mathcal{E}(u) - \mathcal{E}(0) = mc^2\left[\frac{1}{\sqrt{1-u^2/c^2}} - 1\right] \]
+	\section*{Part 1}
+	
+	We further consider the decay of a neutral K-meson into two photons, $k^0 \to \gamma\gamma$, where $\mathcal{E}_k(0)$ is the rest energy.
+	
+	For another decay mode of a neutral K-meson into two pions, the kinetic energy of each pion in the K-meson's rest frame must be:
+	$$ T_{\pi} = \frac{1}{2}\mathcal{E}_k(0) - \mathcal{E}_{\pi}(0) $$
+	where $\mathcal{E}(0) = mc^2$.
+	
+	The total energy of a particle with mass $m$ and velocity $\vec{u}$ is given by:
+	$$ E = \gamma m c^2 = \frac{mc^2}{\sqrt{1 - u^2/c^2}} $$
+	
+	The energy and momentum conservation for an arbitrary collision are:
+	$$ \sum_{\text{initial}} (P_0)_a - \sum_{\text{final}} (P_0)_b = \Delta_0 $$
+	$$ \sum_{\text{initial}} \vec{P}_a - \sum_{\text{final}} \vec{P}_b = \vec{\Delta} $$
+	where $(\Delta_0, \vec{\Delta})$ is a 4-vector with $\Delta = 0$.
+	And
+	$$ c\Delta_0 = \sum_{\text{final}} [\mathcal{E}_b(0) - m_b c^2] - \sum_{\text{initial}} [\mathcal{E}_a(0) - m_a c^2] $$
+	If $\Delta=0$ in all inertial frames, it's necessary that $\Delta_0 = 0$ for each particle.
+	
+	\section*{Part 2}
+	
+	The velocity in terms of momentum $\vec{p}$ and energy $E$ is:
+	$$ \vec{u} = \frac{c^2 \vec{p}}{E} $$
+	
+	The invariant length of $(P_0 = E/c, \vec{P})$ is:
+	$$ P_0^2 - \vec{p} \cdot \vec{p} = (mc)^2 $$
+	
+	And the energy in terms of momentum is:
+	$$ E = \sqrt{c^2p^2 + m^2c^4} $$
+	
+	We consider a particle with momentum $\vec{p}$ in frame $K$ with transverse momentum $\vec{p}_\perp$ and a $z$ component $p_\parallel$. There is a unique Lorentz transformation in the $z$ direction to a frame $K'$.
+	In $K'$, the momentum and energy are:
+	$$ p'_\perp = p_\perp, \quad E' = \Omega = \sqrt{p_\perp^2 + m^2c^2} $$
+	Let the rapidity parameter from $K$ to $K'$ be $\xi$.
+	In the frame $K$, the momentum components are:
+	$$ p_\parallel = \Omega \sinh\xi, \quad \frac{E}{c} = \Omega \cosh\xi $$
+	with $\Omega = \sqrt{p_\perp^2 + m^2c^2}$, and $\Omega$ is the transverse mass.
+	If the particle is at rest in $K'$, that is $p'_\parallel = 0$, then:
+	$$ p = mc \sinh\xi, \quad E = mc^2 \cosh\xi $$
+	
+	\section*{Part 3}
+	
+	\subsection*{11.6 Mathematical Properties of the Space-Time of Special Theory}
+	
+	The Lorentz transformation of the four-dimensional coordinates $(x_0, \vec{x})$ follow from the invariance of
+	$$ s^2 = x_0^2 - x_1^2 - x_2^2 - x_3^2 $$
+	The group of all transformations that leave $s^2$ invariant is the homogeneous Lorentz group.
+	The group of transformations that leave invariant $s^2(x, y) = (x_0 - y_0)^2 - (x_1 - y_1)^2 - (x_2 - y_2)^2 - (x_3 - y_3)^2$ is the inhomogeneous Lorentz group / Poincaré group.
+	
+	In a non-Euclidean vector space, the space-time continuum is defined in terms of $x^0, x^1, x^2, x^3$ and the transformation yields $x'^0, x'^1, x'^2, x'^3$.
+	$$ x'^\alpha = x'^\alpha(x^0, x^1, x^2, x^3) \quad (\alpha=0,1,2,3) $$
+	For the contravariant vector $A^\alpha$ with $A^0, A^1, A^2, A^3$:
+	$$ A'^\alpha = \frac{\partial x'^\alpha}{\partial x^\beta} A^\beta \quad (\text{sum on } \beta=0,1,2,3) $$
+	$$ A'^0 = \frac{\partial x'^0}{\partial x^0} A^0 + \frac{\partial x'^0}{\partial x^1} A^1 + \dots $$
+	For the covariant vector $B_\alpha$:
+	$$ B'_\alpha = \frac{\partial x^\beta}{\partial x'^\alpha} B_\beta \quad (\text{sum on } \beta) $$
+	
+	\section*{Part 4}
+	
+	For a tensor of rank two, it consists of 16 quantities.
+	$$ F'^{\alpha\beta} = \frac{\partial x'^\alpha}{\partial x^\gamma} \frac{\partial x'^\beta}{\partial x^\delta} F^{\gamma\delta} \quad (\text{sum on } \gamma, \delta) $$
+	$$ G'^{\alpha}_{\beta} = \frac{\partial x'^\alpha}{\partial x^\gamma} \frac{\partial x^\delta}{\partial x'^\beta} G^{\gamma}_{\delta} \quad (\text{sum on } \delta, \gamma) $$
+	$$ H'_{\alpha\beta} = \frac{\partial x^\gamma}{\partial x'^\alpha} \frac{\partial x^\delta}{\partial x'^\beta} H_{\gamma\delta} \quad (\text{sum on } \gamma, \delta) $$
+	We have some properties:
+	$$ B \cdot A = B_\alpha A^\alpha $$
+	$$ B' \cdot A' = \frac{\partial x^\beta}{\partial x'^\alpha} \frac{\partial x'^\alpha}{\partial x^\gamma} B_\beta A^\gamma = \delta^\beta_\gamma B_\beta A^\gamma = B_\beta A^\beta = B \cdot A $$
+	
+	In differential form, the infinitesimal interval is:
+	$$ (ds)^2 = (dx^0)^2 - (dx^1)^2 - (dx^2)^2 - (dx^3)^2 $$
+	$$ (ds)^2 = g_{\alpha\beta} dx^\alpha dx^\beta $$
+	where $g_{\alpha\beta}$ is the metric tensor, and $g_{00}=1, g_{11}=g_{22}=g_{33}=-1$.
+	
+	By the Kronecker delta in four dimensions, $\delta^\alpha_\beta = g^{\alpha\gamma} g_{\gamma\beta}$.
+	We can obtain the covariant coordinate 4-vector $x_\alpha$ in terms of the contravariant $x^\beta$ and $g_{\alpha\beta}$, that is:
+	$$ x_\alpha = g_{\alpha\beta} x^\beta $$
+	and its inverse
+	$$ g^{\alpha\beta} x_\beta = x^\alpha $$
+	\section*{11.7 Matrix Representation of Lorentz Transformations, Infinitesimal Generators}
+	
+	We define the coordinates $x^\alpha$ as a vector
+	\[
+	x = \begin{pmatrix} x^0 \\ x^1 \\ x^2 \\ x^3 \end{pmatrix}
+	\]
+	and the Matrix A scalar products of 4-vectors as
+	\[
+	(a, b) = \tilde{a}b
+	\]
+	with the
+	\[
+	g = \begin{pmatrix} 1 & & & \\ & -1 & & \\ & & -1 & \\ & & & -1 \end{pmatrix}
+	\quad \text{and} \quad g^2 = I
+	\]
+	we see that
+	\[
+	gx = \begin{pmatrix} x^0 \\ -x^1 \\ -x^2 \\ -x^3 \end{pmatrix}
+	\]
+	we also read that
+	\[
+	a \cdot b = (a, gb) = (\tilde{a}g)b = \tilde{a}gb
+	\]
+	We now seek a group of linear transformations on the coordinates
+	\[
+	x' = Ax
+	\]
+	where A is a 4x4 matrix such that $(x, gx)$ is invariant
+	\[
+	\tilde{x}'g x' = \tilde{x}gx
+	\]
+	By substitution, we have
+	\[
+	\tilde{x} \tilde{A} g A x = \tilde{x} g x \quad \text{for all } x.
+	\]
+	\[
+	\Rightarrow \tilde{A} g A = g
+	\]
+	Taking the determinant:
+	\[
+	\det(\tilde{A} g A) = \det(g) (\det A)^2 = \det g = -1 \neq 0
+	\]
+	\[
+	\Rightarrow \det A = \pm 1
+	\]
+	$\det A = -1$ : improper Lorentz transformations (sufficient but not necessary) \\
+	$\det A = +1$ : proper Lorentz transformations
+	
+	\vspace{1cm}
+	
+	We make the ansatz $A = e^L$ where L is 4x4. The determinant is $\det A = \det(e^L) = e^{\text{Tr}L}$.
+	If A is traceless, $\det A = +1 \Rightarrow$ proper Lorentz transformation.
+	Thus $\tilde{A} g A = g \Rightarrow g\tilde{A}g A = I$ since $\tilde{A}=A^{-1}$ with $A = e^L$ and $g^2 = I$.
+	We have: $\tilde{A} = e^{\tilde{L}}, g \tilde{A} g = g e^{\tilde{L}} g = e^{g \tilde{L} g}$, $A^{-1} = e^{-L}$
+	\[
+	\Rightarrow g\tilde{L}g = -L \quad \text{or} \quad \tilde{gL} = -gL
+	\]
+	From these properties, we have the general form
+	\[
+	L = \begin{pmatrix} 0 & L_{01} & L_{02} & L_{03} \\ L_{01} & 0 & L_{12} & L_{13} \\ L_{02} & -L_{12} & 0 & L_{23} \\ L_{03} & -L_{13} & -L_{23} & 0 \end{pmatrix}
+	\]
+	The set of fundamental matrices defined by
+	\[
+	S_1 = \begin{pmatrix} & & & \\ & & & -1 \\ & & 1 & \end{pmatrix}, \quad
+	S_2 = \begin{pmatrix} & & & \\ & & 1 & \\ & & & \\ & -1 & & \end{pmatrix}, \quad
+	S_3 = \begin{pmatrix} & & & \\ & & -1 & \\ & 1 & & \\ & & & \end{pmatrix}
+	\]
+	\[
+	K_1 = \begin{pmatrix} & -1 & & \\ -1 & & & \\ & & & \\ & & & \end{pmatrix}, \quad
+	K_2 = \begin{pmatrix} & & -1 & \\ & & & \\ -1 & & & \\ & & & \end{pmatrix}, \quad
+	K_3 = \begin{pmatrix} & & & -1 \\ & & & \\ & & & \\ -1 & & & \end{pmatrix}
+	\]
+	$S_i$ generate rotations in three dimensions
+	$K_i$ produce boost
+	
+	The square of those are
+	\[
+	S_1^2 = \begin{pmatrix} 0 & & & \\ & 0 & & \\ & & -1 & \\ & & & -1 \end{pmatrix}, \quad
+	K_1^2 = \begin{pmatrix} 1 & & & \\ & 1 & & \\ & & 0 & \\ & & & 0 \end{pmatrix}
+	\]
+	\[
+	S_2^2 = \begin{pmatrix} 0 & & & \\ & -1 & & \\ & & 0 & \\ & & & -1 \end{pmatrix}, \quad
+	K_2^2 = \begin{pmatrix} 1 & & & \\ & 0 & & \\ & & 1 & \\ & & & 0 \end{pmatrix}
+	\]
+	\[
+	S_3^2 = \begin{pmatrix} 0 & & & \\ & -1 & & \\ & & -1 & \\ & & & 0 \end{pmatrix}, \quad
+	K_3^2 = \begin{pmatrix} 1 & & & \\ & 0 & & \\ & & 0 & \\ & & & 1 \end{pmatrix}
+	\]
+	we can also prove that:
+	\[
+	(\epsilon \cdot S)^2 = - \epsilon^2 \cdot S
+	\]
+	\[
+	(\epsilon' \cdot K)^2 = \epsilon' \cdot K
+	\]
+	where $\epsilon, \epsilon'$ are any real unit 3-vectors.
+	
+	The general result for $L$ can be shown as
+	\[
+	L = -w \cdot S - \zeta \cdot K
+	\]
+	where $w$ and $\zeta$ are constant 3-vectors
+	\[
+	A = e^{-w \cdot S - \zeta \cdot K}
+	\]
+	We consider a situation in which $w=0, \zeta = \zeta \hat{k}_1$.
+	The $L = - \zeta K_1$ and $K_1^2 = K_1$ and $S_i^2, K_j^2$
+	\[
+	A = \begin{pmatrix} \cosh\zeta & -\sinh\zeta & 0 & 0 \\ -\sinh\zeta & \cosh\zeta & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
+	\]
+	If $\zeta=0$ and $w = w \hat{E}_3$
+	\[
+	A = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & \cos(w) & \sin(w) & 0 \\ 0 & -\sin(w) & \cos(w) & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
+	\]
+	For a boost in an arbitrary direction:
+	\[
+	A = e^{-\vec{\zeta} \cdot \vec{K}}
+	\]
+	where $\vec{\zeta} = \hat{\beta} \tanh^{-1} \beta$, where $\hat{\beta}$ is a unit vector in the direction of the relative velocity of the two inertial frames.
+	
+	The pure boost is
+	\[
+	A_{boost}(\beta) = e^{-\vec{\zeta} \cdot \vec{K}} \tanh^{-1} \beta
+	\]
+	\[
+	= \begin{pmatrix}
+		\gamma & -\gamma \beta_1 & -\gamma \beta_2 & -\gamma \beta_3 \\
+		-\gamma \beta_1 & 1 + (\gamma-1)\frac{\beta_1^2}{\beta^2} & (\gamma-1)\frac{\beta_1 \beta_2}{\beta^2} & (\gamma-1)\frac{\beta_1 \beta_3}{\beta^2} \\
+		-\gamma \beta_2 & (\gamma-1)\frac{\beta_2 \beta_1}{\beta^2} & 1 + (\gamma-1)\frac{\beta_2^2}{\beta^2} & (\gamma-1)\frac{\beta_2 \beta_3}{\beta^2} \\
+		-\gamma \beta_3 & (\gamma-1)\frac{\beta_3 \beta_1}{\beta^2} & (\gamma-1)\frac{\beta_3 \beta_2}{\beta^2} & 1 + (\gamma-1)\frac{\beta_3^2}{\beta^2}
+	\end{pmatrix}
+	\]
+	The six matrices $S_i, K_j$ are a representation of the infinitesimal generators of the Lorentz group.
+	They satisfy the commutation relations
+	\[
+	[S_i, S_j] = \epsilon_{ijk} S_k
+	\]
+	\[
+	[S_i, K_j] = \epsilon_{ijk} K_k \quad \text{where } [A,B] = AB-BA
+	\]
+	\[
+	[K_i, K_j] = \epsilon_{ijk} S_k
+	\]
+	
+	\newpage
+	
+	\[
+	\Rightarrow F_{\alpha\beta} = g_{\alpha\delta} F^{\delta}_{\beta}
+	\]
+	\[
+	G..._{\alpha..} = g_{\alpha\beta} G^{...\beta}_{...}
+	\]
+	\[
+	A^0, A^1, A^2, A^3 \quad \rightarrow \quad A_0 = A^0, A_1 = -A^1, A_2 = -A^2, A_3 = -A^3
+	\]
+	We write this concisely:
+	\[
+	A^\alpha = (A^0, \vec{A}), \quad A_\alpha = (A^0, -\vec{A})
+	\]
+	where $\vec{A}$ is a 3-vector with $A^1 A^2 A^3$ and
+	\[
+	B \cdot A = B_\alpha A^\alpha = B^0 A^0 - \vec{B} \cdot \vec{A}
+	\]
+	We have the operator
+	\[
+	\frac{\partial}{\partial x'^\alpha} = \frac{\partial x^\beta}{\partial x'^\alpha} \frac{\partial}{\partial x^\beta}
+	\]
+	we employ the notation
+	\[
+	\partial^\alpha = \frac{\partial}{\partial x_\alpha} = (\frac{\partial}{\partial x_0}, -\nabla)
+	\]
+	\[
+	\partial_\alpha = \frac{\partial}{\partial x^\alpha} = (\frac{\partial}{\partial x^0}, \nabla)
+	\]
+	\[
+	\partial_\alpha \partial^\alpha = \frac{\partial}{\partial x^0} \frac{\partial}{\partial x_0} + \nabla \cdot (-\nabla) \text{ is the invariant}
+	\]
+	The four-dimensional Laplacian operator is defined to be the invariant contraction
+	\[
+	\Box = \partial_\alpha \partial^\alpha = \frac{\partial^2}{\partial x_0^2} - \nabla^2
+	\]
+	which is the operator of the wave equation in vacuum.
+	\section*{11.8 Thomas Precession}
+	
+	\subsection*{By Uhlenbeck-Goudsmit hypothesis}
+	The electron possesses a spin angular momentum $\vec{s}$ and a magnetic moment $\vec{\mu}$ related by
+	$$ \vec{\mu} = \frac{g e}{2mc} \vec{s} \quad \text{where } g \approx 2 $$
+	We suppose the electron moves with $\vec{v}$ in fields $\vec{E}$ and $\vec{B}$.
+	The equation of motion in its rest frame is:
+	$$ \left( \frac{d\vec{s}}{dt} \right)_{\text{rest frame}} = \vec{\mu} \times \vec{B}' $$
+	where $\vec{B}' \approx \vec{B} - \frac{\vec{v}}{c} \times \vec{E}$.
+	Then,
+	$$ \left( \frac{d\vec{s}}{dt} \right)_{\text{rest frame}} = \vec{\mu} \times \left( \vec{B} - \frac{\vec{v}}{c} \times \vec{E} \right) $$
+	which is equivalent to an energy of interaction of the electron spin
+	$$ U' = - \vec{\mu} \cdot \left( \vec{B} - \frac{\vec{v}}{c} \times \vec{E} \right) $$
+	We view $e\vec{E} = - \vec{\nabla} V = -\frac{\vec{r}}{r}\frac{dV}{dr}$, then
+	$$ U' = -\frac{ge}{2mc} \vec{s} \cdot \vec{B} + \frac{g}{2m^2c^2} (\vec{s} \cdot \vec{L}) \frac{1}{r} \frac{dV}{dr} $$
+	where $\vec{L} = m(\vec{r} \times \vec{v})$.
+	This gives the anomalous Zeeman effect.
+	
+	\subsection*{Coordinate System Rotation}
+	If the coordinate system rotates, any vector $\vec{G}$ is given by
+	$$ \left( \frac{d\vec{G}}{dt} \right)_{\text{non-rot}} = \left( \frac{d\vec{G}}{dt} \right)_{\text{rest frame}} + \vec{w}_T \times \vec{G} $$
+	where $\vec{w}_T$ is the angular velocity of rotation.
+	Thus:
+	$$ \left( \frac{d\vec{G}}{dt} \right)_{\text{non-rot}} = \vec{s} \times \left( \frac{ge\vec{B}}{2mc} - \vec{w}_T \right) $$
+	The corresponding energy of interaction is
+	$$ U = U' + \vec{s} \cdot \vec{w}_T $$
+	where $U'$ is the electromagnetic spin interaction.
+	
+	We consider an electron moving with $\vec{v}(t)$ with respect to a laboratory inertial frame. Let the velocity of the rest frame with respect to the laboratory at laboratory time $t$ be $\vec{v}(t)=c\vec{\beta}$ and at $t+\delta t$ be $\vec{v}(t+\delta t)=c(\vec{\beta}+\delta\vec{\beta})$.
+	The connection is
+	$$ \begin{cases} \vec{x}' = A \text{boost}(\vec{\beta}) \vec{x} \\ \vec{x}'' = A \text{boost}(\vec{\beta}+\delta\vec{\beta}) \vec{x} \end{cases} $$
+	$$ \implies \vec{x}'' = A \text{boost}(\vec{\beta}+\delta\vec{\beta}) A^{-1} \text{boost}(\vec{\beta}) \vec{x}' = AT \vec{x}' $$
+	where $AT = A \text{boost}(\vec{\beta}+\delta\vec{\beta}) A^{-1} \text{boost}(\vec{\beta}) = A \text{boost}(\vec{\beta}+\delta\vec{\beta}) A \text{boost}(-\vec{\beta})$.
+	
+	
+	
+	We choose a proper laboratory frame where $\vec{\beta}$ at $t$ is parallel to the 1-axis and the $\delta\vec{\beta}$ lies in the 1-2 plane.
+	
+	Hence,
+	$$ A \text{boost}(-\vec{\beta}) = \begin{pmatrix} \gamma & -\gamma\beta & 0 & 0 \\ -\gamma\beta & \gamma & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
+	since $-\beta_1 = \beta$, $\beta_2 = \beta_3 = 0$.
+	Similarly,
+	$$ A \text{boost}(\vec{\beta}+\delta\vec{\beta}) = \begin{pmatrix} \gamma^3 \beta \delta\beta_1 & -(\gamma\beta+\gamma^3\delta\beta_1) & -\gamma\delta\beta_2 & 0 \\ -(\gamma\beta+\gamma^3\delta\beta_1) & \gamma+\gamma^3\beta\delta\beta_1 & (\frac{\gamma-1}{\beta^2})\delta\beta_2 & 0 \\ -\gamma\delta\beta_2 & -(\frac{\gamma-1}{\beta^2})\delta\beta_2 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
+	Thus:
+	$$ AT = \begin{pmatrix} 1 & -\gamma^2 \delta\beta_1 & -\gamma\delta\beta_2 & 0 \\ -\gamma^2 \delta\beta_1 & 1 & (\frac{\gamma-1}{\beta^2})\delta\beta_2 & 0 \\ -\gamma\delta\beta_2 & -(\frac{\gamma-1}{\beta^2})\delta\beta_2 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
+	$$ = I - \frac{\gamma^2}{\gamma+1} (\vec{\beta} \times \delta\vec{\beta}) \cdot \vec{S} - (\gamma^2 \beta_1 \delta\beta_1 + \gamma \delta\beta_2) \vec{K} $$
+	where $\delta\vec{\beta}_1$ and $\delta\vec{\beta}_2$ are components of $\delta\vec{\beta}$.
+	
+	To first order in $\delta\vec{\beta}$,
+	$$ AT = A \text{boost}(\Delta\vec{\beta}) R(\delta\vec{\Omega}) \approx A \text{boost}(\delta\vec{\beta'}) $$
+	where $\{ A \text{boost}(\Delta\vec{\beta'}) = I - \Delta\vec{\beta'} \cdot \vec{K} \}$, $\{ R(\Delta\vec{\Omega}) = I - \Delta\vec{\Omega} \cdot \vec{S} \}$
+	with
+	$$ \Delta\vec{\beta'} = \gamma^2 \delta\vec{\beta_1} + \delta\vec{\beta_2} $$
+	$$ \Delta\vec{\Omega} = (\frac{\gamma-1}{\beta^2}) \vec{\beta} \times \delta\vec{\beta} = \frac{\gamma^2}{\gamma+1} \vec{\beta} \times \delta\vec{\beta} $$
+	That is: a pure Lorentz boost to the frame with $c(\vec{\beta}+\delta\vec{\beta})$ is a boost to/from a frame with $c\vec{\beta}$, followed by an infinitesimal transformation consisting of a boost with $c\Delta\vec{\beta}$ and a rotation $\Delta\vec{\Omega}$.
+	
+	\subsection*{Rest Frame Coordinates}
+	We now consider the rest-frame coordinates at $t+\delta t$ that are given from those at $t$ by the Boost($\Delta\vec{\beta}$)
+	$$ \vec{x}''' = A \text{boost}(\Delta\vec{\beta}) \vec{x}' = R(-\Delta\vec{\Omega}) A \text{boost}(\vec{\beta}+\delta\vec{\beta}) \vec{x} $$
+	If a vector $\vec{G}$ has a time rate of change $\frac{d\vec{G}}{dt}$ in the rest frame, the precession of the rest-frame axes with respect to the laboratory makes the vector have a total time rate of change with respect to the laboratory axes of:
+	$$ \vec{\omega}_T = \lim_{\delta t \to 0} \frac{\Delta\vec{\Omega}}{\delta t} = \frac{\gamma^2}{\gamma+1} \frac{\vec{a} \times \vec{v}}{c^2} $$
+	where $\vec{a}$ is the acceleration in the laboratory frame.
+	To be more precise
+	$$ \left( \frac{d\vec{G}}{dt} \right)_{\text{rest frame}} = + (\gamma-1) \left( \frac{d\vec{G}}{dt} \right)_{\text{rest frame}} $$
+	For an electron in the atom
+	$$ \vec{\omega}_T = -\frac{1}{2m^2c^2} \frac{1}{r}\frac{dV}{dr} \vec{L} = -\frac{1}{2m^2c^2} \frac{1}{r}\frac{dV}{dr} (\vec{r} \times \vec{p}) $$
+	The Thomas precession reduces the spin-orbit coupling, yielding
+	$$ U = \frac{ge}{2mc} \vec{s} \cdot \vec{B} + (\frac{g-1}{2m^2c^2}) \vec{s} \cdot \vec{L} \frac{1}{r} \frac{dV}{dr} $$
+	With $g=2$, the spin-orbit interaction is reduced by $\frac{1}{2}$.
+	\section*{Continuation of Previous Notes}
+	
+	\subsection*{Rotating Coordinate Systems and Composition of Boosts}
+	If the coordinate system rotates, any vector $\vec{G}$ is given by
+	\[
+	\left( \frac{d\vec{G}}{dt} \right)_{\text{non-rot}} = \left( \frac{d\vec{G}}{dt} \right)_{\text{rest frame}} + \vec{w}_T \times \vec{G}
+	\]
+	where $\vec{w}_T$ is the angular velocity of rotation.
+	Thus,
+	\[
+	\left( \frac{d\vec{G}}{dt} \right)_{\text{non-rot}} = S \times \left( \frac{g e B}{2mc} - \vec{w}_T \right)
+	\]
+	The corresponding energy of interaction
+	\[
+	U = U' + S \cdot \vec{w}_T
+	\]
+	where $U'$ is the electromagnetic spin interaction.
+	
+	We consider an electron moving with $\vec{v}(t)$ with respect to a laboratory inertial frame.
+	Let the velocity of the rest frame with respect to the laboratory at laboratory time $t: \vec{v}(t) = c\vec{\beta}$ and at $t+\delta t: \vec{v}(t+\delta t) = c(\vec{\beta} + \delta\vec{\beta})$.
+	The connection is:
+	\begin{align*}
+		x' &= A_{\text{boost}}(\vec{\beta}) x \\
+		x'' &= A_{\text{boost}}(\vec{\beta} + \delta\vec{\beta}) x \\
+		\Rightarrow x'' &= A' x' = A' A^{-1} x
+	\end{align*}
+	where $AT = A_{\text{boost}}(\vec{\beta}+\delta\vec{\beta}) A^{-1}_{\text{boost}}(\vec{\beta}) = A_{\text{boost}}(\vec{\beta}+\delta\vec{\beta}) A_{\text{boost}}(-\vec{\beta})$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure7}
+		\caption{}
+		\label{fig:figure7}
+	\end{figure}
+	
+	We choose a proper laboratory frame where $\vec{\beta}$ at $t$ is parallel to the 1-axis and the $\delta\vec{\beta}$ lies in the 1-2 plane.
+	Hence
+	\[
+	A_{\text{boost}}(-\vec{\beta}) = \begin{pmatrix} \gamma & \gamma\beta & 0 & 0 \\ \gamma\beta & \gamma & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
+	\]
+	since $-\beta_1 = \beta$, $\beta_2 = \beta_3 = 0$.
+	
+	Similarly,
+	\[
+	A_{\text{boost}}(\vec{\beta}+\delta\vec{\beta}) = 
+	\begin{pmatrix}
+		\gamma + \gamma^3 \beta \delta\beta_1 & -(\gamma\beta + \gamma^3 \delta\beta_1) & -(\gamma+\gamma^3\beta^2)\delta\beta_2 & 0 \\
+		-(\gamma\beta + \gamma^3 \delta\beta_1) & \gamma+\gamma^3\beta^2\delta\beta_1 & (\gamma-1)\frac{\delta\beta_2}{\beta} & 0 \\
+		-\gamma\delta\beta_2 & -\gamma\beta\delta\beta_2 & 1 & 0 \\
+		0 & 0 & 0 & 1
+	\end{pmatrix}
+	\]
+	Thus,
+	\[
+	AT = 
+	\begin{pmatrix}
+		1 & -\gamma^2 \delta\beta_1 & -(\gamma\beta)\delta\beta_2 & 0 \\
+		-\gamma^2 \delta\beta_1 & 1 & (\frac{\gamma-1}{\beta})\delta\beta_2 & 0 \\
+		-\gamma\delta\beta_2 & -\frac{\gamma(\gamma-1)}{\beta}\delta\beta_2 & 1 & 0 \\
+		0 & 0 & 0 & 1
+	\end{pmatrix}
+	\]
+	\[
+	= I - (\frac{\gamma}{\beta}) (\vec{\beta} \times \delta\vec{\beta}) \cdot \vec{S} - (\gamma^2 \beta \delta\beta_1 + \gamma \delta\beta_2) \vec{K}
+	\]
+	where $\delta\beta_1$ and $\delta\beta_2$ are components of $\delta\vec{\beta}$.
+	
+	To first order in $\delta\vec{\beta}$
+	\[
+	AT = A_{\text{boost}}(\Delta\vec{\beta}') R(\delta\vec{\Omega}) \approx A_{\text{boost}}(\Delta\vec{\beta}')
+	\]
+	where $\{ A_{\text{boost}}(\Delta\vec{\beta}') = I - \Delta\vec{\beta}' \cdot \vec{K} \}$.
+	$\{ R(\Delta\vec{\Omega}) = I - \Delta\vec{\Omega} \cdot \vec{S} \}$
+	with $\Delta\vec{\beta}' = \gamma^2 \delta\beta_1 \hat{i} + \gamma \delta\beta_2 \hat{j}$.
+	\[
+	\Delta\vec{\Omega} = (\frac{\gamma-1}{\beta^2}) \vec{\beta} \times \delta\vec{\beta} = \frac{\gamma^2}{c^2} \vec{v} \times \delta\vec{v}
+	\]
+	That is: a pure Lorentz boost to the frame with $c(\vec{\beta}+\delta\vec{\beta})$ is a boost to/from with $c\vec{\beta}$, followed by an infinitesimal transformation consisting of a boost with $c\Delta\vec{\beta}$ and a rotation $\Delta\vec{\Omega}$.
+	
+	\newpage
+	
+	\section*{11.9 Invariance of Electric Charge; Covariance of Electrodynamics}
+	
+	\subsection*{Lorentz Force}
+	Consider the Lorentz force for a particle
+	\[
+	\frac{d\vec{p}}{dt} = q(\vec{E} + \frac{\vec{v}}{c} \times \vec{B})
+	\]
+	We know $\vec{p}$ transforms as the space part of the 4-vector of energy and momentum
+	\[
+	P^\alpha = (P_0, \vec{P}) = m(U_0, \vec{U})
+	\]
+	where $P_0=E/c$ and $U^\alpha$ is the 4-velocity.
+	We use proper time $\tau$:
+	\[
+	\frac{d\vec{P}}{d\tau} = \frac{q}{c}(U_0\vec{E} + \vec{U} \times \vec{B})
+	\]
+	where the left-hand side is the space part.
+	The corresponding time component
+	\[
+	\frac{dP_0}{d\tau} = \frac{q}{c} \vec{U} \cdot \vec{E}
+	\]
+	
+	\subsection*{Maxwell Equations}
+	We then consider the Maxwell equations
+	\[
+	\frac{\partial \rho}{\partial t} + \nabla \cdot \vec{J} = 0
+	\]
+	We postulate that $\rho$ and $\vec{J}$ form a 4-vector $\vec{J}$
+	\[
+	J^\alpha = (c\rho, \vec{J})
+	\]
+	The continuity equation becomes
+	\[
+	\partial_\alpha J^\alpha = 0
+	\]
+	The 4-dimensional volume element $d^4x = dx^0 dx^1 dx^2 dx^3$ is a Lorentz invariant
+	\[
+	d^4x' = \frac{\partial(x^0, x^1, x^2, x^3)}{\partial(x'^0, x'^1, x'^2, x'^3)} d^4x = \det A d^4x = d^4x
+	\]
+	In the Lorentz family of gauges the wave equations for $\vec{A}'$ and $\Phi$:
+	\[
+	\left\{
+	\begin{aligned}
+		\frac{1}{c^2}\frac{\partial^2\vec{A}}{\partial t^2} - \nabla^2\vec{A} &= \frac{4\pi}{c}\vec{J} \\
+		\frac{1}{c^2}\frac{\partial^2\Phi}{\partial t^2} - \nabla^2\Phi &= 4\pi\rho
+	\end{aligned}
+	\right.
+	\]
+	with Lorentz condition
+	\[
+	\frac{1}{c}\frac{\partial\Phi}{\partial t} + \nabla\cdot\vec{A} = 0
+	\]
+	The Lorentz covariance requires that $\Phi$ and $\vec{A}$ form a 4-vector potential
+	\[
+	A^\alpha = (\Phi, \vec{A})
+	\]
+	\[
+	\Rightarrow \Box A^\alpha = \frac{4\pi}{c} J^\alpha
+	\]
+	\[
+	\partial_\alpha A^\alpha = 0
+	\]
+	We express $\vec{E}, \vec{B}$ in terms of $\Phi, \vec{A}$
+	\[
+	\vec{E} = -\frac{1}{c}\frac{\partial\vec{A}}{\partial t} - \nabla\Phi
+	\]
+	\[
+	\vec{B} = \nabla \times \vec{A}
+	\]
+	The x-components
+	\[
+	E_x = -\frac{1}{c}\frac{\partial A_x}{\partial t} - \frac{\partial\Phi}{\partial x} = -(\partial^0 A^1 - \partial^1 A^0)
+	\]
+	\[
+	B_x = \frac{\partial A_z}{\partial y} - \frac{\partial A_y}{\partial z} = -(\partial^2 A^3 - \partial^3 A^2)
+	\]
+	These equations indicate that $\vec{E}$ and $\vec{B}$ form a second-rank, antisymmetric field-strength tensor
+	\[
+	F^{\alpha\beta} = \partial^\alpha A^\beta - \partial^\beta A^\alpha
+	\]
+	In matrix form, the field-strength tensor $F^{\alpha\beta}$ is:
+	\[
+	F^{\alpha\beta} = 
+	\begin{pmatrix}
+		0 & -E_x & -E_y & -E_z \\
+		E_x & 0 & -B_z & B_y \\
+		E_y & B_z & 0 & -B_x \\
+		E_z & -B_y & B_x & 0
+	\end{pmatrix}
+	\]
+	The covariant tensor $F_{\alpha\beta} = g_{\alpha\gamma} F^{\gamma\delta} g_{\delta\beta}$ is:
+	\[
+	F_{\alpha\beta} = 
+	\begin{pmatrix}
+		0 & E_x & E_y & E_z \\
+		-E_x & 0 & -B_z & B_y \\
+		-E_y & B_z & 0 & -B_x \\
+		-E_z & -B_y & B_x & 0
+	\end{pmatrix}
+	\]
+	We define the dual field-strength tensor by
+	\[
+	\mathcal{F}^{\alpha\beta} = \frac{1}{2}\epsilon^{\alpha\beta\gamma\delta}F_{\gamma\delta} = 
+	\begin{pmatrix}
+		0 & -B_x & -B_y & -B_z \\
+		B_x & 0 & E_z & -E_y \\
+		B_y & -E_z & 0 & E_x \\
+		B_z & E_y & -E_x & 0
+	\end{pmatrix}
+	\]
+	where $\epsilon^{\alpha\beta\gamma\delta}$ is the Levi-Civita pseudotensor.
+	
+	\subsection*{Maxwell's Equations in Covariant Form}
+	The two inhomogeneous equations
+	\[
+	\nabla \cdot \vec{E} = 4\pi\rho
+	\]
+	\[
+	\nabla \times \vec{B} - \frac{1}{c}\frac{\partial\vec{E}}{\partial t} = \frac{4\pi}{c}\vec{J}
+	\]
+	can be written compactly as
+	\[
+	\Rightarrow \partial_\alpha F^{\alpha\beta} = \frac{4\pi}{c}J^\beta
+	\]
+	Similarly, the two homogeneous equations
+	\[
+	\nabla \cdot \vec{B} = 0
+	\]
+	\[
+	\nabla \times \vec{E} + \frac{1}{c}\frac{\partial\vec{B}}{\partial t} = 0
+	\]
+	become
+	\[
+	\Rightarrow \partial_\alpha \mathcal{F}^{\alpha\beta} = 0
+	\]
+	which is equivalent to the cyclic identity
+	\[
+	\partial_\gamma F_{\alpha\beta} + \partial_\alpha F_{\beta\gamma} + \partial_\beta F_{\gamma\alpha} = 0
+	\]
+	
+	\subsection*{Lorentz Force in Covariant Form}
+	We can write the Lorentz force equation as
+	\[
+	\frac{dP^\alpha}{d\tau} = m\frac{dU^\alpha}{d\tau} = \frac{q}{c} F^{\alpha\beta}U_\beta
+	\]
+	Its components are:
+	\[
+	\frac{d\vec{P}}{dt} = q(\vec{E} + \frac{\vec{v}}{c} \times \vec{B})
+	\]
+	\[
+	\frac{dP_0}{d\tau} = \frac{q}{c} \vec{U} \cdot \vec{E}
+	\]
+	As we denote for $(\vec{E}, \vec{B}) \rightarrow (\vec{D}, \vec{H})$, the covariant form is
+	(we denote for $(\vec{E}, \vec{B})$ as $F^{\alpha\beta}$, and for $(\vec{D}, \vec{H})$ as $G^{\alpha\beta}$)
+	\[
+	\left\{
+	\begin{aligned}
+		\partial_\alpha G^{\alpha\beta} &= \frac{4\pi}{c} j^\beta \\
+		\partial_\alpha \mathcal{F}^{\alpha\beta} &= 0
+	\end{aligned}
+	\right.
+	\]
+	\section*{11.10 Transformations of Electromagnetic Fields}
+	
+	We express the second-rank tensor in $k'$ in terms of the values in $k$.
+	\[ F'^{\alpha\beta} = \frac{\partial x'^\alpha}{\partial x^\gamma} \frac{\partial x'^\beta}{\partial x^\delta} F^{\gamma\delta} \]
+	\[ F' = A F A^T \]
+	where A is the Lorentz transformation.
+	
+	For example: we consider a frame $k'$ changed to another frame $k$ with $\vec{\beta}$ along the $x_1$ axis.
+	\begin{align*}
+		E'_1 &= E_1, & B'_1 &= B_1 \\
+		E'_2 &= \gamma(E_2 - \beta B_3), & B'_2 &= \gamma(B_2 + \beta E_3) \\
+		E'_3 &= \gamma(E_3 + \beta B_2), & B'_3 &= \gamma(B_3 - \beta E_2)
+	\end{align*}
+	
+	By putting $\vec{E} \to -\vec{B}$, we get the transformation
+	\begin{align*}
+		\vec{E}' &= \gamma(\vec{E} + \vec{\beta} \times \vec{B}) - \frac{\gamma^2}{\gamma+1} \vec{\beta}(\vec{\beta} \cdot \vec{E}) \\
+		\vec{B}' &= \gamma(\vec{B} - \vec{\beta} \times \vec{E}) - \frac{\gamma^2}{\gamma+1} \vec{\beta}(\vec{\beta} \cdot \vec{B})
+	\end{align*}
+	$\Rightarrow \vec{E}', \vec{B}'$ are interrelated.
+	
+	We consider one example that there exists no magnetic field in $k'$ and one or more point charges at rest in $k'$. In the k we have
+	\[ \vec{B} = \vec{\beta} \times \vec{E} \]
+	As an important example: we now consider the fields in $k$ when a point charge $q$ moves by in a straight-line path with $\vec{v}$. The charge is at rest in $k'$. We suppose the charge moves in the positive $x_1$.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure8}
+		\caption{}
+		\label{fig:figure8}
+	\end{figure}
+	
+	The observer is at P. In the $k'$, P has coordinates $x'_1 = -vt'$, $x'_2 = b$, $x'_3 = 0$, and a distance $r' = \sqrt{(vt')^2 + b^2}$ away from q.
+	With the transformation $t' = \gamma[t - (v/c^2)x_1] = \gamma t$ since $x_1 = 0$ for P in k.
+	
+	In the rest frame $k'$ the fields at P are
+	\begin{align*}
+		E'_1 &= \frac{-qvt'}{(b^2 + v^2 t'^2)^{3/2}} \\
+		E'_2 &= \frac{qb}{(b^2 + v^2 t'^2)^{3/2}} \\
+		E'_3 &= 0 \\
+		B'_1 &= 0, \quad B'_2 = 0, \quad B'_3 = 0
+	\end{align*}
+	Substituting $t' = \gamma t$:
+	\begin{align*}
+		E'_1 &= \frac{-q\gamma vt}{(b^2 + \gamma^2 v^2 t^2)^{3/2}} \\
+		E'_2 &= \frac{qb}{(b^2 + \gamma^2 v^2 t^2)^{3/2}}
+	\end{align*}
+	The inverse in the k:
+	\begin{align*}
+		E_1 &= E'_1 = \frac{-q\gamma vt}{(b^2 + \gamma^2 v^2 t^2)^{3/2}} \\
+		E_2 &= \gamma E'_2 = \frac{\gamma q b}{(b^2 + \gamma^2 v^2 t^2)^{3/2}} \\
+		B_3 &= \gamma \beta E'_2 = \beta E_2
+	\end{align*}
+	with the other components vanishing.
+	
+	As $\epsilon \to 0$, we see that the magnetic field becomes almost equal to $E_2$. When $\gamma \approx 1$,
+	\[ B' \approx \frac{q}{c} \frac{\vec{v} \times \vec{r}}{r^3} \]
+	which is the Ampere-Biot-Savart expression.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure9}
+		\caption{}
+		\label{fig:figure9}
+	\end{figure}
+	
+	\section*{11.11 Relativistic Equation of Motion for Spin in Uniform or Slowly Varying External Fields}
+	The equation of motion for the spin in the rest frame
+	\[ \frac{d\vec{s}}{dt} = \frac{ge}{2mc} \vec{s} \times \vec{B} \]
+	
+	\subsection*{A: Covariant Equation of Motion}
+	We define an axial vector $S^\alpha$, then the time-component in the rest frame $k'$ is
+	\[ S'^0 = \gamma(S^0 - \vec{\beta} \cdot \vec{s}) = 0 \]
+	where $U^\alpha$ is the 4-velocity.
+	By the covariant constraint,
+	\[ U_\alpha S^\alpha = 0 \]
+	In an inertial frame where the particle has $\vec{\beta}$, the time component of $S$ is
+	\[ S_0 = \vec{\beta} \cdot \vec{s} \]
+	\begin{align*}
+		\vec{s}' &= \vec{s} - \frac{\gamma}{\gamma+1}(\vec{\beta} \cdot \vec{s})\vec{\beta} \\
+		\vec{s} &= \vec{s}' + \frac{\gamma}{\gamma+1}(\vec{\beta} \cdot \vec{s}')\vec{\beta} \\
+		S_0 &= \gamma \vec{\beta} \cdot \vec{s}'
+	\end{align*}
+	\section*{A. Construction of 4-vectors and Equation of Motion}
+	
+	We construct the 4-vectors
+	\[
+	F^{\alpha\beta}S_\beta, \quad (S_{\lambda}F^{\lambda\mu}U_\mu)U^\alpha, \quad \left(S_\beta \frac{dU^\beta}{d\tau}\right)U^\alpha
+	\]
+	The equation of motion
+	\begin{align*}
+		\frac{dS^\alpha}{d\tau} = A_1 F^{\alpha\beta}S_\beta + A_2 (S_\lambda F^{\lambda\mu}U_\mu)U^\alpha + A_3 \left(S_\beta \frac{dU^\beta}{d\tau}\right)U^\alpha
+	\end{align*}
+	The constraint equation must hold at all times which requires
+	\[
+	\frac{d}{d\tau}(U_\alpha S^\alpha) = S^\alpha \frac{dU_\alpha}{d\tau} + U_\alpha \frac{dS^\alpha}{d\tau} = 0
+	\]
+	Hence,
+	\[
+	(A_1 - A_2)U_\alpha F^{\alpha\beta}S_\beta + (A_3+1)S_\beta \frac{dU^\beta}{d\tau} = 0
+	\]
+	If non-electromagnetic or field gradient forces are allowed, it's necessary $A_1=A_2$, $A_3=-1$. Reduction to the rest frame gives $A_1 = \frac{ge}{2mc}$.
+	Thus,
+	\[
+	\frac{dS^\alpha}{d\tau} = \frac{ge}{2mc} \left[ F^{\alpha\beta}S_\beta + \frac{1}{c^2} U^\alpha (S_\lambda F^{\lambda\mu}U_\mu) \right] - \frac{1}{c^2} U^\alpha \left(S_\beta \frac{dU^\beta}{d\tau}\right)
+	\]
+	If the electromagnetic fields are uniform, or if gradient force terms like $\nabla(\vec{s} \cdot \vec{B})$ can be neglected, and there are no other appreciable forces on the particle, the translational motion is described by
+	\[
+	\frac{dU^\alpha}{d\tau} = \frac{e}{mc} F^{\alpha\beta}U_\beta
+	\]
+	Then we have the BMT equation
+	\[
+	\frac{dS^\alpha}{d\tau} = \frac{e}{mc} \left[ \frac{g}{2} F^{\alpha\beta}S_\beta + \frac{1}{c^2} (\frac{g}{2}-1)U^\alpha (S_\lambda F^{\lambda\mu}U_\mu) \right]
+	\]
+	
+	\section*{B. Connection to the Thomas Precession}
+	
+	We consider the rest-frame spin $\vec{s}$
+	\[
+	S_0 = \frac{\gamma}{c} \vec{v} \cdot \vec{s}
+	\]
+	and $\vec{S} = \vec{s} + \frac{\gamma^2}{\gamma+1} \frac{(\vec{\beta} \cdot \vec{s})\vec{\beta}}{c^2}$
+	We find:
+	\[
+	\begin{cases}
+		\frac{d\vec{S}}{dt} = \vec{F} + \gamma^2 \vec{v} (\vec{S} \cdot \frac{d\vec{\beta}}{dt}) \\
+		\frac{dS_0}{dt} = \vec{F}_0 + \gamma^2 (\vec{S} \cdot \frac{d\vec{\beta}}{dt})
+	\end{cases}
+	\]
+	can be combined to give
+	\[
+	\frac{d\vec{s}}{dt} = \vec{F} - \frac{\gamma \vec{\beta}}{\gamma+1} \vec{F}_0 + \frac{\gamma^2}{\gamma+1} \left[ \vec{s} \cdot \vec{\beta} \times \frac{d\vec{\beta}}{dt} \right]
+	\]
+	By $F_0 = \vec{\beta} \cdot \vec{F}$ and definition of $\vec{\omega}_T$
+	\[
+	\frac{d\vec{s}}{dt} = \frac{1}{\gamma} \vec{F} + \vec{\omega}_T \times \vec{s}
+	\]
+	For motion in electromagnetic fields where $\frac{dU^\alpha}{d\tau} = \frac{e}{mc}F^{\alpha\beta}U_\beta$ holds,
+	\[
+	\frac{d\vec{p}}{dt} = \frac{e}{mc} \left[ \vec{E} + \vec{\beta} \times \vec{B} - \vec{\beta}(\vec{\beta} \cdot \vec{E}) \right]
+	\]
+	By the transformation properties
+	\[
+	\vec{F} = \frac{ge}{2mc^2} \left[ \vec{s} \times \left( \vec{B} - \frac{\gamma}{\gamma+1} (\vec{\beta} \cdot \vec{B})\vec{\beta} - \vec{\beta} \times \vec{E} \right) \right]
+	\]
+	\[
+	\Rightarrow \frac{d\vec{s}}{dt} = \frac{e}{mc} \vec{s} \times \left[ \left(\frac{g}{2}-1+\frac{1}{\gamma}\right)\vec{B} - \left(\frac{g}{2}-1\right)\frac{\gamma}{\gamma+1}(\vec{\beta} \cdot \vec{B})\vec{\beta} - \left(\frac{g}{2}-\frac{\gamma}{\gamma+1}\right)\vec{\beta} \times \vec{E} \right]
+	\]
+	Thomas's equation
+	
+	\section*{C. Rate of Change of Longitudinal Polarization}
+	
+	We consider the rate of change of the component of $\vec{s}$ parallel to the velocity or net helicity of the particle.
+	The longitudinal polarization is $\hat{\beta} \cdot \vec{S}$.
+	Thus:
+	\[
+	\frac{d}{dt}(\hat{\beta} \cdot \vec{S}) = \frac{d\hat{\beta}}{dt} \cdot \vec{S} + \hat{\beta} \cdot \frac{d\vec{S}}{dt}
+	\]
+	By $\frac{d\hat{\beta}}{dt}$ and $\frac{d\vec{S}}{dt}$ we have
+	\[
+	\frac{d}{dt}(\hat{\beta} \cdot \vec{S}) = -\frac{e}{mc} \vec{s}_\perp \cdot \left[ -\left(\frac{g}{2}-1\right)\hat{\beta} \times \vec{B} + \left(\frac{g\beta}{2}-\frac{1}{\beta}\right)\vec{E}_\perp \right]
+	\]
+	where $\vec{s}_\perp$ is the component of $\vec{s}$ perpendicular to the velocity.
+	
+	\section*{11.12 Note on Notation and Units in Relativistic Kinematics}
+	
+	We replace
+	\[
+	\begin{pmatrix} S_0 \\ c\vec{p} \\ E \\ m c^2 \\ \frac{\vec{v}}{c} \end{pmatrix}
+	\quad \text{with} \quad
+	\begin{pmatrix} P_0 \\ \vec{P} \\ E \\ m \\ \vec{v} \end{pmatrix}
+	\]
+	We can also write that
+	\[
+	a \cdot b = a_\alpha b^\alpha = a_0 b_0 - \vec{a} \cdot \vec{b}
+	\]
+	
+	\section*{Lorentz Transformations}
+	
+	\subsection*{Derivation from Postulates}
+	We consider one-dimensional relative movement for two frames $K$ and $K'$. So, $y'=y$, $z'=z$.
+	Frame $K'$ is moving with velocity $V$ with respect to $K$. We introduce $\gamma$ so that
+	\begin{equation}
+		x' = \gamma(x - vt)
+	\end{equation}
+	By the principle of relativity, the inverse transformation must have the same form, with $v \to -v$:
+	\begin{equation}
+		x = \gamma(x' + vt')
+	\end{equation}
+	At $t = t' = 0$, the origins of $K$ and $K'$ are coincided.
+	
+	We imagine a light pulse propagating along the positive x-axis. After some time $t$, the light pulse reaches at $x=ct$ in frame $K$. While in $K'$, it reaches at $x'=ct'$.
+	We consider the postulate that the speed of light is invariant in all inertial frames.
+	\begin{align*}
+		x' &= ct' = \gamma(x-vt) = \gamma(ct-vt) \\
+		x &= ct = \gamma(x'+vt') = \gamma(ct'+vt')
+	\end{align*}
+	Multiply them:
+	\begin{align*}
+		c^2 t t' &= \gamma^2(ct-vt)(ct'+vt') \\
+		c^2 t t' &= \gamma^2 (c^2 tt' + cvtt' - vctt' - v^2tt') \\
+		c^2 t t' &= \gamma^2 t t' (c^2 - v^2) \\
+		c^2 &= \gamma^2(c^2 - v^2) \\
+		\gamma^2 &= \frac{c^2}{c^2-v^2} = \frac{1}{1-v^2/c^2}
+	\end{align*}
+	\begin{equation}
+		\Rightarrow \gamma = \frac{1}{\sqrt{1-\frac{v^2}{c^2}}}
+	\end{equation}
+	By substituting $x' = \gamma(x-vt)$ into $x = \gamma(x'+vt')$, we can solve for $t'$.
+	\begin{align*}
+		x &= \gamma(\gamma(x-vt) + vt') \\
+		\frac{x}{\gamma} &= \gamma(x-vt) + vt' \\
+		vt' &= \frac{x}{\gamma} - \gamma x + \gamma vt \\
+		t' &= \frac{x}{v\gamma} - \frac{\gamma x}{v} + \gamma t \\
+		t' &= \gamma t + \frac{x}{v} (\frac{1}{\gamma} - \gamma) = \gamma t + \frac{x}{v} \left( \frac{1-\gamma^2}{\gamma} \right) \\
+		t' &= \gamma t + \frac{x}{v\gamma} \left(1 - \frac{1}{1-v^2/c^2}\right) = \gamma t + \frac{x}{v\gamma} \left(\frac{-v^2/c^2}{1-v^2/c^2}\right) \\
+		t' &= \gamma t + \frac{x}{v\gamma} (-\frac{v^2}{c^2} \gamma^2) = \gamma \left(t - \frac{vx}{c^2}\right)
+	\end{align*}
+	The complete Lorentz transformations are:
+	\begin{equation}
+		\left\{
+		\begin{aligned}
+			t' &= \gamma\left(t-\frac{vx}{c^2}\right) \\
+			x' &= \gamma(x-vt) \\
+			y' &= y \\
+			z' &= z
+		\end{aligned}
+		\right.
+		\quad \text{where } \gamma = \frac{1}{\sqrt{1-v^2/c^2}}
+	\end{equation}
+	
+	\section*{4-Vectors}
+	A 4-vector is a quantity $(A_0, A_1, A_2, A_3) \to (A_0, \vec{A})$. We may view it as a complex number with one real part and three imaginary parts:
+	\begin{equation*}
+		q = w + i\pi + jy + zk \quad \text{where } i^2=j^2=k^2=ijk=-1
+	\end{equation*}
+	The Lorentz transformation of 4-vectors:
+	For $A=(A_0, \vec{A}) \to (A_0', \vec{A}')$
+	\begin{equation}
+		\left\{
+		\begin{aligned}
+			A_0' &= \gamma(A_0 - \vec{\beta} \cdot \vec{A}) \\
+			A_{\parallel}' &= \gamma(A_{\parallel} - \beta A_0) \\
+			A_{\perp}' &= A_{\perp}
+		\end{aligned}
+		\right.
+		\quad \text{where } \vec{\beta} = \frac{\vec{v}}{c}, A_0 = ct, A_0' = ct'
+	\end{equation}
+	The scalar product is invariant:
+	\begin{equation}
+		A' \cdot B' = A_0' B_0' - \vec{A}' \cdot \vec{B}' = A_0 B_0 - \vec{A} \cdot \vec{B}
+	\end{equation}
+	and
+	\begin{equation}
+		A_0'^2 - |\vec{A}'|^2 = A_0^2 - |\vec{A}|^2
+	\end{equation}
+	
+	\section*{Relativistic Kinematics}
+	
+	\subsection*{4-Velocity and Time Dilation}
+	The 4-velocity is defined as:
+	\begin{equation}
+		U = \frac{dx}{d\tau} = \left(\frac{d(ct)}{d\tau}, \frac{d\vec{x}}{d\tau}\right)
+	\end{equation}
+	where $\tau$ is the proper time. The 4-velocity is invariant under Lorentz transformation.
+	
+	We first derive time dilation. From the Lorentz transformation for time:
+	\begin{equation*}
+		t' = \gamma\left(t - \frac{vx}{c^2}\right)
+	\end{equation*}
+	For a clock at rest in the moving frame K', its position is $x=vt$.
+	\begin{equation*}
+		\Rightarrow t' = \gamma\left(t - \frac{v(vt)}{c^2}\right) = \gamma t \left(1 - \frac{v^2}{c^2}\right) = \gamma t \frac{1}{\gamma^2} = \frac{t}{\gamma}
+	\end{equation*}
+	We see that $t'$ is the proper time and $t$ is the laboratory time.
+	Thus, the proper time interval is $d\tau = \frac{1}{\gamma} dt$.
+	
+	The components of the 4-velocity are:
+	\begin{equation*}
+		U^0 = \frac{d(ct)}{d\tau} = c \frac{dt}{d\tau} = c\gamma
+	\end{equation*}
+	\begin{equation*}
+		\vec{U} = \frac{d\vec{x}}{d\tau} = \frac{d\vec{x}}{dt} \frac{dt}{d\tau} = \vec{u}\gamma
+	\end{equation*}
+	So, the 4-velocity is $U = (U^0, \vec{U}) = (\gamma c, \gamma \vec{u})$.
+	
+	\subsection*{Velocity Addition}
+	With the Lorentz transformation differentials:
+	\begin{align*}
+		dt' &= \gamma \left(dt - \frac{v}{c^2}dx\right) \\
+		dx &= \gamma (dx' + v dt') \\
+		dy &= dy' \\
+		dz &= dz'
+	\end{align*}
+	\begin{equation*}
+		\Rightarrow u_x = \frac{dx}{dt} = \frac{\gamma(dx' + vdt')}{\gamma(dt' + \frac{v}{c^2}dx')} = \frac{\frac{dx'}{dt'} + v}{1 + \frac{v}{c^2}\frac{dx'}{dt'}} = \frac{u_x' + v}{1 + \frac{v u_x'}{c^2}}
+	\end{equation*}
+	\begin{equation*}
+		u_y = \frac{dy}{dt} = \frac{dy'}{\gamma(dt' + \frac{v}{c^2}dx')} = \frac{\frac{dy'}{dt'}}{\gamma(1 + \frac{v}{c^2}\frac{dx'}{dt'})} = \frac{u_y'}{\gamma(1+\frac{v u_x'}{c^2})}
+	\end{equation*}
+	The velocity addition formulas are:
+	\begin{equation}
+		\Rightarrow \left\{
+		\begin{aligned}
+			u_{\parallel} &= \frac{u_{\parallel}' + v}{1+\frac{vu_{\parallel}'}{c^2}} \\
+			u_{\perp} &= \frac{u_{\perp}'}{\gamma\left(1+\frac{vu_{\parallel}'}{c^2}\right)}
+		\end{aligned}
+		\right.
+	\end{equation}
+	Especially, we see that if $u_x' = c$, then $u_x = \frac{c+v}{1+vc/c^2} = \frac{c+v}{(c+v)/c} = c$.
+	
+	\section*{Relativistic Dynamics}
+	
+	\subsection*{Relativistic Doppler Effect}
+	We then consider the Doppler effect.
+	The observer is in frame $S$ and the light source is in frame $S'$, which is moving with $\vec{v}$ with respect to $S$.
+	We use the 4-wavevector $(k_0, \vec{k})$ and $(k_0', \vec{k}')$. The transformation for the time-like component is:
+	\begin{equation*}
+		k_0' = \gamma(k_0 - \vec{\beta} \cdot \vec{k})
+	\end{equation*}
+	The timelike component is $k_0 = \omega/c$. For a photon, $|\vec{k}| = \omega/c$.
+	\begin{equation*}
+		\Rightarrow \frac{\omega_s}{c} = \gamma\left(\frac{\omega_o}{c} - \vec{\beta} \cdot \vec{k}\right) = \gamma \frac{\omega_o}{c} (1 - \beta \cos\theta)
+	\end{equation*}
+	where $|\vec{k}| = \omega_o/c$.
+	Thus:
+	\begin{equation}
+		\omega_o = \frac{\omega_s}{\gamma(1-\beta\cos\theta)}
+	\end{equation}
+	where $\omega_o$ is the observed frequency and $\omega_s$ is the fixed (source) frequency.
+	This implies, using $f = \omega / (2\pi)$ and $\gamma = 1/\sqrt{1-\beta^2}$:
+	\begin{equation}
+		f_o = f_s \frac{\sqrt{1-\beta^2}}{1-\beta\cos\theta}
+	\end{equation}
+	
+	\subsection*{4-Momentum and Mass-Energy Equivalence}
+	We further consider the 4-momentum.
+	\begin{equation}
+		P = m_0 U = m_0(\gamma c, \gamma \vec{u}) = (\gamma m_0 c, \gamma m_0 \vec{u})
+	\end{equation}
+	We first prove the mass-energy equation.
+	Let $K$ be the kinetic energy.
+	\begin{align*}
+		dK &= \frac{d\vec{p}}{dt} \cdot d\vec{x} = \vec{u} \cdot d\vec{p} \\
+		&= \vec{u} \cdot d(\gamma m_0 \vec{u}) \\
+		&= m_0 (\vec{u} \gamma d\vec{u} + \vec{u} \cdot \vec{u} d\gamma) \\
+		&= m_0 u \gamma du \left(\frac{\gamma^2 u}{c^2} + 1\right) = m_0 u \gamma^3 du
+	\end{align*}
+	And, since $d\gamma = d(1-u^2/c^2)^{-1/2} = \frac{\gamma^3 u}{c^2}du$:
+	\begin{equation*}
+		d(m_0 c^2 \gamma) = m_0 c^2 d\gamma = m_0 c^2 \frac{\gamma^3 u}{c^2} du = m_0 u \gamma^3 du = dK
+	\end{equation*}
+	Therefore:
+	\begin{equation*}
+		K = \int_0^K dK' = \int_{u=0}^{u} d(m_0 c^2 \gamma) = \gamma m_0 c^2 - \gamma(u=0)m_0 c^2 = \gamma m_0 c^2 - m_0 c^2
+	\end{equation*}
+	\begin{equation}
+		\Rightarrow \gamma m_0 c^2 = K + m_0 c^2
+	\end{equation}
+	which is the total energy $E$. And we shall define $m_0 c^2$ as the static energy.
+	Hence, the 4-momentum can be written as:
+	\begin{equation}
+		P = \left(\frac{E}{c}, \gamma m_0 \vec{u}\right) = \left(\frac{E}{c}, \vec{p}\right)
+	\end{equation}
+	We have already seen that in all inertial frames, the scalar product $P \cdot P$ is an invariant:
+	\begin{equation*}
+		P \cdot P = (P^0)^2 - |\vec{p}|^2 = \left(\frac{E}{c}\right)^2 - |\vec{p}|^2
+	\end{equation*}
+	We consider the special case in which $\vec{p}=0$ (the rest frame). In this frame, $E=m_0c^2$, so that
+	\begin{equation*}
+		\left(\frac{E}{c}\right)^2 - |\vec{p}|^2 = (m_0 c)^2
+	\end{equation*}
+	Since this quantity is an invariant, it holds in all frames.
+	\begin{equation}
+		E^2 = (pc)^2 + (m_0 c^2)^2
+	\end{equation}
+	\section*{(5)}
+	We know that, $\vec{P} = m\vec{u}$
+	\[ E = E(0) + \frac{1}{2} m u^2 \]
+	We assume... under $M(\vec{u}) \dots E \to E(u)$
+	where $M(0)=m$, $\frac{\partial^2 E(0)}{\partial u_i \partial u_j} = m\delta_{ij}$
+	
+	\section*{(6)}
+	(The tensor part has been discussed in other notes)
+	
+	For space-time, in all inertial frames the space-time interval is invariant.
+	\[ (ds)^2 = (dx^0)^2 - (dx^1)^2 - (dx^2)^2 - (dx^3)^2 \]
+	since
+	\[ (c\Delta t)^2 - (\Delta \vec{x})^2 = (c\Delta t')^2 - (\Delta \vec{x}')^2 \]
+	\[ \Rightarrow (ds)^2 = g_{\alpha\beta} dx^\alpha dx^\beta \quad \text{metric tensor} \]
+	\[ g_{\alpha\beta} = g^{\alpha\beta} =
+	\begin{pmatrix}
+		1 & & & \\
+		& -1 & & \\
+		& & -1 & \\
+		& & & -1
+	\end{pmatrix}
+	\]
+	\[
+	\begin{cases}
+		\frac{\partial}{\partial x^\alpha} = (\frac{\partial}{\partial x^0}, \nabla) \\
+		\\
+		\frac{\partial}{\partial x_\alpha} = (\frac{\partial}{\partial x^0}, -\nabla)
+	\end{cases}
+	\]
+	\[ \Delta^\beta = g^{\beta\alpha} \Delta_\alpha \]
+	\[ \partial'_\lambda = g_{\lambda\alpha} \partial^\alpha = \dots = (-)\frac{\partial}{\partial x^1} = \frac{\partial}{\partial x_1} \]
+	
+	\section*{(7) In matrix notation}
+	\[ x =
+	\begin{pmatrix} x^0 \\ x^1 \\ x^2 \\ x^3 \end{pmatrix}
+	=
+	\begin{pmatrix} ct \\ x \\ y \\ z \end{pmatrix}
+	\]
+	\[ (ds)^2 = (ct)^2 - x^2 - y^2 - z^2 \]
+	\[ = x^T g x \]
+	\[ (ds')^2 = x'^T g x' \]
+	We have the transformation $x' = Ax$ and $x'^T = x^T A^T$
+	\[ \Rightarrow x^T g x = x'^T g x' = x^T A^T g A x \quad \text{for all } x \]
+	\[ \Rightarrow A^T g A = g \]
+	Take the norm: $\det A = \pm 1 \Rightarrow A^T = A^{-1}$
+	We define $A = e^L$ where $L$, a 4x4 matrix, is the generator of $A$.
+	We have: $\tilde{A}gA = g$.
+	\[ \tilde{A}gA = g \cdot g = I \]
+	\[ g\tilde{A}g A A^{-1} = A^{-1} \]
+	\[ A = e^L \]
+	\[ A^{-1} = e^{-L} \]
+	For infinitesimal transformation: $e^L \approx I + L$
+	\[ \Rightarrow g \tilde{L} g = -L \]
+	
+	\section*{Decomposition}
+	For the elements of $L$, $L_{\mu\nu}$, with $g = \text{diag}(1,-1,-1,-1)$
+	we find
+	\[ L =
+	\begin{pmatrix}
+		0 & L_{01} & L_{02} & L_{03} \\
+		L_{01} & 0 & L_{12} & L_{13} \\
+		L_{02} & -L_{12} & 0 & L_{23} \\
+		L_{03} & -L_{13} & -L_{23} & 0
+	\end{pmatrix}
+	\]
+	decomposed
+	\[ S_1 = \begin{pmatrix}
+		0 & & & \\
+		& 0 & 0 & 0 \\
+		& 0 & 0 & -1 \\
+		& 0 & 1 & 0
+	\end{pmatrix}
+	\quad
+	S_2 = \begin{pmatrix}
+		0 & & & \\
+		& 0 & 0 & 1 \\
+		& 0 & 0 & 0 \\
+		& -1 & 0 & 0
+	\end{pmatrix}
+	\]
+	\[ S_3 = \begin{pmatrix}
+		0 & & & \\
+		& 0 & -1 & 0 \\
+		& 1 & 0 & 0 \\
+		& 0 & 0 & 0
+	\end{pmatrix}
+	\quad
+	K_1 = \begin{pmatrix}
+		0 & 1 & & \\
+		1 & 0 & & \\
+		& & 0 & \\
+		& & & 0
+	\end{pmatrix}
+	\]
+	\[ K_2 = \begin{pmatrix}
+		0 & 0 & 1 & \\
+		0 & 0 & 0 & \\
+		1 & 0 & 0 & \\
+		& & & 0
+	\end{pmatrix}
+	\quad
+	K_3 = \begin{pmatrix}
+		0 & 0 & 0 & 1 \\
+		0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0 \\
+		1 & 0 & 0 & 0
+	\end{pmatrix}
+	\]
+	$\Rightarrow$
+	\[ S_1^2 = \begin{pmatrix}
+		0 & & & \\
+		& 0 & & \\
+		& & -1 & \\
+		& & & -1
+	\end{pmatrix}
+	\quad
+	S_2^2 = \begin{pmatrix}
+		0 & & & \\
+		& -1 & & \\
+		& & 0 & \\
+		& & & -1
+	\end{pmatrix}
+	\]
+	\[ S_3^2 = \begin{pmatrix}
+		0 & & & \\
+		& -1 & & \\
+		& & -1 & \\
+		& & & 0
+	\end{pmatrix}
+	\quad
+	K_1^2 = \begin{pmatrix}
+		1 & & & \\
+		& 1 & & \\
+		& & 0 & \\
+		& & & 0
+	\end{pmatrix}
+	\]
+	\[ K_2^2 = \begin{pmatrix}
+		1 & & & \\
+		& 0 & & \\
+		& & 1 & \\
+		& & & 0
+	\end{pmatrix}
+	\quad
+	K_3^2 = \begin{pmatrix}
+		1 & & & \\
+		& 0 & & \\
+		& & 0 & \\
+		& & & 1
+	\end{pmatrix}
+	\]
+	where $S_1, S_2, S_3$ represent the rotations along x,y,z axes while $K_1, K_2, K_3$ represent the boost along x,y,z axes.
+	
+	\section*{Lorentz Transformation Expression}
+	\[
+	\Rightarrow
+	\begin{cases}
+		L = -w \cdot S - \zeta \cdot K \\
+		\\
+		A = e^{-w \cdot S - \zeta \cdot K}
+	\end{cases}
+	\]
+	For example: only boost along x-axis: $w=0$,
+	\[ A = e^{-\zeta K_1} \]
+	\[ L = -\zeta K_1 \]
+	By Taylor series
+	\[ A = e^{-\zeta K_1} = I + (-\zeta K_1) + \dots \]
+	with $K_1^2 = \begin{pmatrix} 1 & & \\ & 1 & & \\ & & 0 & \\ & & & 0 \end{pmatrix}$, $K_1^3 = K_1$, $K_1^4 = K_1^2, \dots$
+	\[ A = I + \left\{ S_1^2 \frac{\zeta^2}{2!} + S_1^4 \frac{\zeta^4}{4!} + \dots \right\} - \left( S_1 K_1 + \frac{S_1^3}{3!} K_1^3 + \dots \right) \]
+	And we note that
+	\[
+	\begin{cases}
+		\cosh \zeta = 1 + \frac{\zeta^2}{2!} + \dots \\
+		\\
+		\sinh \zeta = \zeta + \frac{\zeta^3}{3!} + \dots
+	\end{cases}
+	\]
+	\[ \Rightarrow A = I + (\cosh\zeta - 1)K_1^2 - \sinh(\zeta)K_1 \]
+	Similarly, for only rotation along z-axis: $\zeta=0$,
+	\[ A = e^{-w S_3} \]
+	\[ L = -w S_3 \]
+	\[ A =
+	\begin{pmatrix}
+		1 & & & \\
+		& \cos w & -\sin w & \\
+		& \sin w & \cos w & \\
+		& & & 1
+	\end{pmatrix}
+	\]
+	\section*{Commutation Relations}
+	
+	By definitions of $K_i, S_j$, we note that
+	\begin{align*}
+		[S_i, S_j] &= i\epsilon_{ijk} S_k \\
+		[S_i, K_j] &= i\epsilon_{ijk} K_k \quad \text{where } [A, B] = AB - BA \\
+		[K_i, K_j] &= -i\epsilon_{ijk} S_k
+	\end{align*}
+	Two boosts in two directions produces an additional rotation $\Rightarrow$ Thomas Precession.
+	
+	\section{The interaction energy of the electron spin}
+	The interaction energy is given by
+	\[ U' = -\vec{\mu} \cdot \left( \vec{B} - \frac{\vec{v} \times \vec{E}}{c} \right) \]
+	where $\vec{\mu} = \frac{g e}{2mc}\vec{S}$, $\vec{L} = \vec{r} \times m\vec{v}$, and $\vec{E} = -\frac{\vec{r}}{er} \frac{dV}{dr}$.
+	\[ = U' = \frac{g e}{2mc} \vec{S} \cdot \vec{B} + \frac{g}{2m^2c^2} (\vec{S} \cdot \vec{L}) \frac{1}{r} \frac{dV}{dr} \]
+	For a spin electron in $\vec{B}'$, $\vec{\mu}$ will be acted by a torque, leading to Larmor precession.
+	\[ \left( \frac{d\vec{S}}{dt} \right)_{\text{Larmor}} = \vec{\mu} \times \vec{B}' \quad \text{where } \vec{B}' = \vec{B} - \frac{\vec{v} \times \vec{E}}{c} \]
+	\[ U' = -\vec{\mu} \cdot \vec{B}' = \frac{g}{2m^2c^2} \vec{S} \cdot \vec{L} \frac{1}{r} \frac{dV}{dr} \]
+	where $g=2 \Rightarrow U'$ is twice the experiment.
+	The equation $\frac{d\vec{S}}{dt} = \vec{\mu} \times \vec{B}'$ is only valid in an inertial frame, but the spin electron's rest frame is rotating.
+	\[ \Rightarrow \left( \frac{d\vec{G}}{dt} \right)_{\text{nonrot}} = \left( \frac{d\vec{G}}{dt} \right)_{\text{rest frame}} + \vec{\omega}_T \times \vec{G} \]
+	where $\vec{\omega}_T$ is the Thomas precession frequency.
+	The Larmor precession is given by
+	\[ \left( \frac{d\vec{S}}{dt} \right)_{\text{Larmor}} = \vec{\omega}_L \times \vec{S} = \vec{\mu} \times \vec{B}' \]
+	\[ \vec{\omega}_T = \frac{e}{2mc} (\vec{v} \times \vec{E}) = -\frac{g}{2mc^2} \vec{S} \times (\vec{v} \times \vec{E}) \]
+	\[ = \frac{g}{2m^2c^2} \frac{1}{r} \frac{dV}{dr} (\vec{L} \cdot \vec{S}) \]
+	
+	\section{Thomas Precession from consecutive boosts}
+	We now consider two boosts: $x' = A_{\text{boost}}(\vec{\beta})x$ and $x'' = A_{\text{boost}}(\vec{\beta} + \delta\vec{\beta})x'$.
+	Then $x'' = A_T x'$, where
+	\[ A_T = A_{\text{boost}}(\vec{\beta} + \delta\vec{\beta}) A^{-1}_{\text{boost}}(\vec{\beta}) = A_{\text{boost}}(\vec{\beta} + \delta\vec{\beta}) A_{\text{boost}}(-\vec{\beta}) \]
+	By the expression of $A_{\text{boost}}(\vec{\beta})$, we have
+	\[ A_{\text{boost}}(-\vec{\beta}) = \begin{pmatrix} \gamma & \gamma\beta & 0 & 0 \\ \gamma\beta & \gamma & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \]
+	Since we only consider a boost $\vec{\beta}$ in the 1-axis, and we consider $\vec{\beta} + \delta\vec{\beta}$ with $\delta\beta_2, \delta\beta_3 \neq 0$.
+	And we only consider $\vec{B} + \delta\vec{B}$ in the same plane with $\vec{B}$ ($B \perp \delta B$).
+	\begin{align*}
+		A_{\text{boost}}(\delta\vec{\beta} + \vec{\beta}) &= \begin{pmatrix} \gamma(\gamma+\delta\gamma\beta_1) & -(\gamma\beta_1 + \gamma\delta\beta_1) & -\gamma\delta\beta_2 & 0 \\ -(\gamma\beta_1+\gamma\delta\beta_1) & \gamma^2\delta\beta_1 & (\frac{\gamma^2}{\gamma+1})\delta\beta_1 & 0 \\ -\gamma\delta\beta_2 & (\frac{\gamma^2}{\gamma+1})\delta\beta_2 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \\
+		&= \gamma A_T = \begin{pmatrix} 1 & -\gamma^2\delta\beta_1 & -\gamma\delta\beta_2 & 0 \\ \gamma^2\delta\beta_1 & 1 & (\frac{\gamma^2}{\gamma+1})\delta\beta_2 & 0 \\ \gamma\delta\beta_2 & -(\frac{\gamma^2}{\gamma+1})\delta\beta_2 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \\
+		&= I - \begin{pmatrix} \frac{\gamma^2}{\gamma+1}(\vec{\beta} \times \delta\vec{\beta}) \cdot \vec{S} - (\gamma^2\delta\beta_1 + \gamma\delta\beta_1) \vec{K} \end{pmatrix} \\
+		&= A_{\text{boost}}(\delta\vec{\beta}) R(\delta\vec{\Omega}) = R(\delta\vec{\Omega}) A_{\text{boost}}(\delta\vec{\beta})
+	\end{align*}
+	where $R(\delta\vec{\Omega}) = I - \delta\vec{\Omega} \cdot \vec{S}$ and $A_{\text{boost}}(\delta\vec{\beta}) = I - \delta\vec{\beta} \cdot \vec{K}$.
+	with $\delta\vec{\beta}' = \gamma^2\delta\beta_{||} + \gamma\delta\beta_{\perp}$ (velocity).
+	and $\delta\vec{\Omega} = (\frac{\gamma^2}{\gamma+1})(\vec{\beta} \times \delta\vec{\beta}) - \frac{\gamma-1}{v^2}\vec{\beta} \times \delta\vec{v}$ (angle).
+	
+	Relativistic addition of velocities:
+	\[ \vec{v}_f = \frac{\vec{u} + \vec{w}_{||} + \sqrt{1-u^2/c^2}\vec{w}_{\perp}}{1 + \vec{u}\cdot\vec{w}/c^2} \]
+	Let $\vec{u} = c\vec{\beta}$, $\vec{w} = c\delta\vec{\beta}$.
+	$w_{||} = \delta\beta_{||}$, $w_{\perp} = \delta\beta_{\perp}$.
+	$\Rightarrow v_{f||} \approx \gamma^2 \delta\beta_{||}$, $v_{f\perp} \approx \gamma \delta\beta_{\perp}$.
+	
+	\pagebreak
+	
+	If the boost is arbitrary with no rotation, $A = e^{-\vec{\zeta} \cdot \vec{K}}$.
+	We define a matrix $M$ by $K_i K_j K_k$
+	\[ M = \begin{pmatrix} 0 & n_3 & n_2 \\ n_3 & 0 & n_1 \\ n_2 & n_1 & 0 \end{pmatrix}, \quad \text{where } n_1^2+n_2^2+n_3^2=1 \]
+	\[ M^2 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} - \begin{pmatrix} n_1^2 & n_1n_2 & n_1n_3 \\ n_2n_1 & n_2^2 & n_2n_3 \\ n_3n_1 & n_3n_2 & n_3^2 \end{pmatrix} \]
+	\[ M^3 = M \]
+	Let $\vec{\zeta} = \hat{\beta} \tanh^{-1}\beta$.
+	\[ A = e^{-\vec{\zeta} \cdot \vec{M}} = I - \zeta M + \frac{\zeta^2}{2!} M^2 - \frac{\zeta^3}{3!} M^3 + \dots \]
+	By $\sinh\zeta = \zeta + \frac{\zeta^3}{3!} + \dots$ and $\cosh\zeta = 1 + \frac{\zeta^2}{2!} + \dots$
+	\[ A = I - (\sinh\zeta) M + (\cosh\zeta - 1) M^2 \]
+	and $\sinh\zeta = \sinh(\tanh^{-1}\beta) = \gamma\beta$ and $\cosh\zeta = \gamma$.
+	\[ \Rightarrow A = I - (\gamma\beta) M + (\gamma-1) M^2 \]
+	where $n_i = \frac{\beta_i}{\beta}$.
+	
+	\section{Derivation of Thomas Precession Frequency}
+	\[ \vec{\omega}_T = -\frac{1}{c^2} \frac{\gamma^2}{\gamma+1} (\vec{v} \times \vec{a}) = -\frac{\gamma-1}{v^2} \vec{v} \times \vec{a} \]
+	where $\vec{a}$ is the laboratory acceleration, which is produced by Coulomb force ($e\vec{E}$).
+	Thus,
+	\[ \vec{\omega}_T = \frac{\gamma^2}{(\gamma+1)c^2} \frac{1}{m\gamma} \frac{1}{r} \frac{dV}{dr} (\vec{v} \times \vec{r}) = -\frac{\gamma^2}{(\gamma+1)c^2 m\gamma} \frac{1}{r} \frac{dV}{dr} \vec{L} \]
+	Since $\vec{L} = m(\vec{r} \times \gamma\vec{v}) = \gamma m(\vec{r} \times \vec{v})$.
+	Hence,
+	\[ \vec{\omega}_T = -\frac{\gamma^2}{(\gamma+1)c^2 m^2\gamma} \frac{1}{r} \frac{dV}{dr} \vec{L} = -\frac{\gamma}{(\gamma+1)m^2c^2} \frac{1}{r} \frac{dV}{dr} \vec{L} \]
+	The contribution of Thomas precession to the energy is
+	\[ U_T = \vec{s} \cdot \vec{\omega}_T \approx -\frac{1}{2m^2c^2} \frac{1}{r} \frac{dV}{dr} \vec{s} \cdot \vec{L} = -\frac{1}{2}U_{\text{total}} \]
+	
+	\section{Covariance of Electrodynamics}
+	Lorentz force: $\frac{d\vec{p}}{dt} = q(\vec{E} + \vec{v} \times \vec{B})$.
+	By 4-momentum: $p^{\alpha} = (p_0, \vec{p}) = m(U_0, \vec{U})$.
+	Using proper time $\tau$ such that $\gamma d\tau = dt$.
+	\[ \frac{dp^i}{d\tau} = \frac{q}{c} (U_0 E^i + (\vec{U} \times \vec{B})^i) \quad \frac{dp_0}{d\tau} = \frac{q}{c} \vec{U} \cdot \vec{E} \]
+	\[ \frac{dp_0}{dt} = \frac{1}{\gamma} \frac{dp_0}{d\tau} = \frac{q}{\gamma c} \vec{U} \cdot \vec{E} = \frac{q}{c} \vec{v} \cdot \vec{E} \]
+	$\vec{v} = \frac{\vec{U}}{U_0}$. $\gamma=U_0$.
+	\[ \frac{d p_0}{d E} = \frac{q}{c} \vec{U} \cdot \vec{E} \].
+	\section{Relativistic Electrodynamics Formalism}
+	
+	By continuous equation
+	\[ \frac{\partial \rho}{\partial t} + \nabla \cdot \vec{j} = 0 \]
+	we construct $j^\alpha = (c\rho, \vec{j})$.
+	Then, $\partial_\alpha j^\alpha = 0$ where $\partial_\alpha = (\frac{1}{c}\frac{\partial}{\partial t}, \nabla)$.
+	
+	The four-dimensional volume element
+	$d^4x = dx^0 d^3x$ is a Lorentz invariant.
+	\[ d^4x' = \left| \frac{\partial(x'^0, x'^1, x'^2, x'^3)}{\partial(x^0, x^1, x^2, x^3)} \right| d^4x = d^4x \]
+	$\det A = 1$.
+	
+	By Maxwell equations
+	\[ \Rightarrow
+	\begin{cases}
+		\frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial t^2} - \nabla^2 \vec{A} = \frac{4\pi}{c} \vec{j} \\
+		\\
+		\frac{1}{c^2}\frac{\partial^2 \phi}{\partial t^2} - \nabla^2 \phi = 4\pi\rho
+	\end{cases}
+	\]
+	With Lorentz condition, we make the transformation
+	\[
+	\begin{cases}
+		\vec{A}' = \vec{A} + \nabla\chi \\
+		\phi' = \phi - \frac{1}{c}\frac{\partial\chi}{\partial t}
+	\end{cases}
+	\quad \text{to such that} \quad
+	\begin{cases}
+		\vec{E}' = \vec{E} \\
+		\vec{B}' = \vec{B}
+	\end{cases}
+	\]
+	where $\chi$ is scalar.
+	
+	The D'Alembert operator
+	\[ \Box = \partial_\mu \partial^\mu = g^{\mu\nu}\partial_\mu\partial_\nu = \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2 \]
+	which is a Lorentz invariant.
+	
+	The Lorentz condition:
+	\[ \frac{1}{c}\frac{\partial\phi}{\partial t} + \nabla \cdot \vec{A} = 0 \]
+	
+	\section{The Electromagnetic Field Tensor}
+	
+	With the condition we thus transform the equation into: $\partial_\beta \partial^\beta A^\alpha = 0$ [where $A^\alpha = (\phi, \vec{A})$]
+	\[ \Leftarrow \left( \frac{1}{c^2}\frac{\partial^2\vec{A}}{\partial t^2} - \nabla^2\vec{A} \right) + \nabla(\nabla \cdot \vec{A} + \frac{1}{c}\frac{\partial\phi}{\partial t}) = \frac{4\pi}{c}\vec{j} \quad \text{coupled term source} \]
+	And
+	\[
+	\begin{cases}
+		\vec{E} = -\frac{1}{c}\frac{\partial\vec{A}}{\partial t} - \nabla\phi \\
+		\vec{B} = \nabla \times \vec{A}
+	\end{cases}
+	\]
+	The components:
+	\[ E_x = -\frac{1}{c}\frac{\partial A_x}{\partial t} - \frac{\partial\phi}{\partial x} = -(\partial^0 A^1 - \partial^1 A^0) \]
+	\[ B_x = \frac{\partial A_z}{\partial y} - \frac{\partial A_y}{\partial z} = -(\partial^2 A^3 - \partial^3 A^2) \]
+	where
+	\[
+	\begin{cases}
+		A^1 = A_x \\
+		A^2 = A_y \\
+		A^3 = A_z \\
+		A^0 = \phi
+	\end{cases}
+	\]
+	We now construct the tensor of field.
+	We find $E_x, E_y, E_z, B_x, B_y, B_z$ can all be written in the form like $-(\partial^0 A^1 - \partial^1 A^0)$, $-(\partial^2 A^3 - \partial^3 A^2)$.
+	\[ F^{\alpha\beta} = \partial^\alpha A^\beta - \partial^\beta A^\alpha \quad \text{(antisymmetric)} \]
+	\[
+	\begin{cases}
+		F^{01} = \partial^0 A^1 - \partial^1 A^0 = -E_x \\
+		F^{02} = -E_y \\
+		F^{03} = -E_z
+	\end{cases}
+	\]
+	\[ F^{12} = \partial^1 A^2 - \partial^2 A^1 = -(\frac{\partial}{\partial x}(A_y) - (-\frac{\partial}{\partial y}A_x)) = -(\nabla \times \vec{A})_z = -B_z \]
+	\[ F^{23} = -B_x \]
+	\[ F^{31} = -B_y \]
+	By antisymmetry
+	\[ F^{\alpha\beta} =
+	\begin{pmatrix}
+		0 & -E_x & -E_y & -E_z \\
+		E_x & 0 & -B_z & B_y \\
+		E_y & B_z & 0 & -B_x \\
+		E_z & -B_y & B_x & 0
+	\end{pmatrix}
+	\]
+	\[ F_{\alpha\beta} = g_{\alpha\gamma} F^{\gamma\delta} g_{\delta\beta} \quad \text{where } g_{\alpha\beta}=(1,-1,-1,-1) \]
+	($F^{\alpha\beta} = +F_{\alpha\beta}$, $F^{0i} = -F_{0i}$)
+	
+	The dual tensor
+	\[ \mathcal{G}^{\alpha\beta} = \frac{1}{2} \epsilon^{\alpha\beta\gamma\delta} F_{\gamma\delta} =
+	\begin{pmatrix}
+		0 & -B_x & -B_y & -B_z \\
+		B_x & 0 & E_z & -E_y \\
+		B_y & -E_z & 0 & E_x \\
+		B_z & E_y & -E_x & 0
+	\end{pmatrix}
+	\]
+	where $\epsilon^{\alpha\beta\gamma\delta} =
+	\begin{cases}
+		1 & \text{even} \\
+		-1 & \text{odd} \\
+		0 & \text{any two equal}
+	\end{cases}
+	$
+	
+	By Maxwell equations
+	\[ \nabla \cdot \vec{E} = 4\pi\rho, \quad \nabla \cdot \vec{B} = 0 \]
+	\[ \nabla \times \vec{B} - \frac{1}{c}\frac{\partial\vec{E}}{\partial t} = \frac{4\pi}{c}\vec{j}, \quad \nabla \times \vec{E} = -\frac{1}{c}\frac{\partial\vec{B}}{\partial t} \]
+	In terms of $F^{\alpha\beta}, \mathcal{G}^{\alpha\beta}$:
+	\[ \partial_\alpha F^{\alpha\beta} = \frac{4\pi}{c}j^\beta \quad (\text{summation on } \alpha) \]
+	\[ \partial_\alpha \mathcal{G}^{\alpha\beta} = 0 \]
+	By Bianchi identity
+	\[ \partial_\alpha F_{\beta\gamma} + \partial_\beta F_{\gamma\alpha} + \partial_\gamma F_{\alpha\beta} = 0 \]
+	
+	\section{Fields in Media and Transformations}
+	In fields with medium we transform
+	\[ F^{\alpha\beta} = (\vec{E}, \vec{B}) \Rightarrow G^{\alpha\beta} = (\vec{D}, \vec{H}) \]
+	Thus: $\partial_\alpha G^{\alpha\beta}=0$, $\partial_\alpha F^{\alpha\beta}=0$.
+	
+	In conductors:
+	\begin{align*}
+		\text{How source produces fields} &
+		\begin{cases}
+			\nabla \cdot \vec{E} = \rho/\epsilon_0 \\
+			\nabla \times \vec{B} - \mu_0\epsilon_0\frac{\partial\vec{E}}{\partial t} = \mu_0\vec{j}
+		\end{cases}
+		\rightarrow \partial_\beta F^{\alpha\beta} = \frac{4\pi}{c}j^\beta \quad (\downarrow \text{with media } E\&B \to G) \\
+		\text{The structure of fields themselves} &
+		\begin{cases}
+			\nabla \cdot \vec{B} = 0 \\
+			\nabla \times \vec{E} + \frac{\partial\vec{B}}{\partial t} = 0
+		\end{cases}
+		\rightarrow \partial_\beta \mathcal{G}^{\alpha\beta} = 0
+	\end{align*}
+	
+	\subsection*{(10) Transformation of Electromagnetic Fields}
+	We know that
+	\[ F'^{\alpha\beta} = \frac{\partial x'^\alpha}{\partial x^\gamma} \frac{\partial x'^\beta}{\partial x^\delta} F^{\gamma\delta} \]
+	\[ \Rightarrow F' = A F \tilde{A} \quad \text{A is the Lorentz transformation} \]
+	Consider one example that $K'$ is moving at $v$ along positive $x$ with respect to $K$.
+	\[
+	\begin{aligned}
+		x' &= \gamma(x-vt) \\
+		y' &= y, z' = z \\
+		t' &= \gamma(t - vx/c^2)
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		x^\alpha &= (ct, x, y, z) \\
+		x'^\alpha &= (ct', x', y', z') \\
+		\text{and } x'^\alpha &= \Lambda^\alpha_\beta x^\beta
+	\end{aligned}
+	\quad \Rightarrow A =
+	\begin{pmatrix}
+		\gamma & -\gamma\beta & 0 & 0 \\
+		-\gamma\beta & \gamma & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & 1
+	\end{pmatrix}
+	\]
+	\[ \Rightarrow
+	\begin{aligned}
+		E'_1 &= E_1, \quad E'_2 = \gamma(E_2 - \beta B_3), \quad B'_2 = \gamma(B_2 + \beta E_3) \\
+		B'_1 &= B_1, \quad E'_3 = \gamma(E_3 + \beta B_2), \quad B'_3 = \gamma(B_3 - \beta E_2)
+	\end{aligned}
+	\]
+	
+	\subsection*{Example: Field of a Moving Charge}
+	As an example, consider the fields produced by a moving charge with $q, v$.
+	In $K'$ where $q$ is at rest
+	\[ \vec{B}'=0, \quad \vec{E}'=\frac{q\vec{r}'}{r'^3} \]
+	\[ r' = \sqrt{(x'_1)^2+(x'_2)^2+(x'_3)^2} = \sqrt{\gamma(1-v/c^2)t^2 + \dots} \]
+	since $\vec{r}' = (\gamma vt, b, 0)$.
+	
+	From $K' \to K$
+	\[
+	\begin{cases}
+		E_1 = E'_1 \\
+		E_2 = \gamma(E'_2 + vB'_3) = \gamma E'_2 \\
+		E_3 = \gamma(E'_3 - vB'_2) = 0 \\
+		B_1 = B'_1 = 0 \\
+		B_2 = \gamma(B'_2 - \frac{v}{c^2}E'_3) = 0 \\
+		B_3 = \gamma(B'_3 + \frac{v}{c^2}E'_2) = \gamma \beta E'_2
+	\end{cases}
+	\quad
+	\begin{aligned}
+		E_2 &= \gamma(E'_2+(-B_3')) = \gamma E'_2 \\
+		B_2 &= \gamma(B'_2 - (-E_3')) = 0 \\
+		B_3 &= \gamma(B'_3 + (-E_2')) = \gamma\beta E'_2
+	\end{aligned}
+	\]
+	This shows that magnetic fields are actually a relativistic effect.
+	The electric field is amplified by $\gamma$ times in the direction perpendicular to $\vec{v}$.
+	
+\end{document}
